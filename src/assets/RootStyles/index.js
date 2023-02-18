@@ -80,28 +80,28 @@ export const Colors = {
   gray: '#D9D9D9',
 };
 
-export const ToastColors = {
-  [toastMessageTypes.ERROR]: {
-    background: '#FEE1E3',
-    border: '#EA3841',
-    borderLight: '#F8B0B4',
-  },
-  [toastMessageTypes.WARNING]: {
-    background: '#FFFAE7',
-    border: '#EBA825',
-    borderLight: '#FFC737',
-  },
-  [toastMessageTypes.INFO]: {
-    background: '#F6F9FC',
-    border: '#4173A5',
-    borderLight: '#D1DFEC',
-  },
-  [toastMessageTypes.SUCCESS]: {
-    background: '#EEFFF3',
-    border: '#55AD2A',
-    borderLight: '#B1E4BF',
-  },
-};
+// export const ToastColors = {
+//   [toastMessageTypes.ERROR]: {
+//     background: '#FEE1E3',
+//     border: '#EA3841',
+//     borderLight: '#F8B0B4',
+//   },
+//   [toastMessageTypes.WARNING]: {
+//     background: '#FFFAE7',
+//     border: '#EBA825',
+//     borderLight: '#FFC737',
+//   },
+//   [toastMessageTypes.INFO]: {
+//     background: '#F6F9FC',
+//     border: '#4173A5',
+//     borderLight: '#D1DFEC',
+//   },
+//   [toastMessageTypes.SUCCESS]: {
+//     background: '#EEFFF3',
+//     border: '#55AD2A',
+//     borderLight: '#B1E4BF',
+//   },
+// };
 
 export const Fonts = {
   arm: {
