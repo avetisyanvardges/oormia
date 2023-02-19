@@ -1,7 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
+import {Text, View} from 'react-native';
 import {Colors} from '../../../assets/RootStyles';
 import {deviceInfo} from '../../../assets/deviceInfo';
+import Input from "../../../components/input";
+
+
 
 const LoginScreen = () => {
   return (
@@ -22,6 +25,7 @@ const LoginScreen = () => {
             borderTopRightRadius: 20,
           }}
         />
+          <Input title='password' titleStyle={{color:'blue'}}/>
       </View>
     </View>
   );
