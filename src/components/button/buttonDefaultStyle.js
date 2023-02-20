@@ -1,17 +1,18 @@
 import { StyleSheet } from "react-native"
-import { Colors,globalStyles,BorderStyles } from "../../assets/RootStyles";
+import { Colors,BorderStyles } from "../../assets/RootStyles";
+import { normalize } from "../../assets/RootStyles/normalize";
 
 
 
 
 export const styles = StyleSheet.create({
     buttonDefaultStyle: {
-        width: 100,
-        height: 38,
+        width: normalize(100),
+        height: normalize(38),
         background: Colors.white,
         borderWidth: BorderStyles.widths.normal,
-        borderColor: BorderStyles.color,
-        borderRadius: BorderStyles.radius.s,
+        borderColor: "#E3E3E3",
+        borderRadius: BorderStyles.radius.ss,
         flexDirection:"row",
         justifyContent: "center",
         alignItems: "center",
