@@ -6,6 +6,8 @@ import ButtonMy from '../components/button';
 import VkIcon from '../assets/img/svg/buttonSvg/VkIcon';
 import InstIcon from '../assets/img/svg/buttonSvg/InstIcon';
 import FbIcon from '../assets/img/svg/buttonSvg/FbIcon';
+import CodeVerification from '../screens/CodeVerfiication';
+import LoginScreen from '../screens/AuthLayer/Login';
 
 
 
@@ -26,9 +28,7 @@ const onClick = ()=>{
         translucent={false}
         backgroundColor={Colors.oxford_blue['30']}
       />
-     <ButtonMy icon={<VkIcon/>} textButton="Logo" onClick={onClick} />
-     <ButtonMy icon={<InstIcon/>} textButton="Logo" onClick={onClick} />
-     <ButtonMy icon={<FbIcon/>} textButton="Logo" onClick={onClick} />
+   <CodeVerification/>
       <Navigation />
   
     </Fragment>
