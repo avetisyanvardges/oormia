@@ -9,6 +9,7 @@ import { FB,IN } from '../assets/svg/buttonSvg/buttonSvgConstant';
 
 
 
+
 function Main() {
 
 const onClick = ()=>{
@@ -24,6 +25,7 @@ const onClick = ()=>{
       />
       <ButtonMy textButton="knopka" svgIconType={IN} onClick={onClick} />
       <Navigation />
+      
     </Fragment>
   );
 }
