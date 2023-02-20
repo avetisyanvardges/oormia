@@ -3,9 +3,11 @@ import {Provider} from 'react-redux';
 import Main from './src/Main';
 import {store} from './src/state/store';
 
+
+
 const App = () => {
   return (
-    <Provider    store={store}>
+    <Provider  store={store}>
       <Main />
     </Provider>
   );
