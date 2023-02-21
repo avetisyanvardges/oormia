@@ -57,7 +57,41 @@ export const styles = StyleSheet.create({
 
     timer: {
         ...FontStyle.text_h6.medium,
-        color: "#A347FF"
+        color: "#A347FF",
+        marginBottom: 40
+        
+    },
+    keybordContainer:{
+        borderTopWidth: 0.5,
+        borderTopColor: "#E3E3E3",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        
+        
+    },
+
+    numberContainer:{
+        justifyContent: "center",
+        alignItems: "center",
+        width: "33%",
+        marginTop: normalize(35)
+    },
+
+    arrowContainer:{
+        width:"100%",
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        marginBottom: normalize(53)
+    },
+
+    arrowStyle:{
+        color: "#818195"
+    },
+
+    numberTextStyle:{
+        ...FontStyle.text_h4.medium,
         
     }
+
+
 })
