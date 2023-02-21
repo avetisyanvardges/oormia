@@ -5,10 +5,10 @@ import {normalize} from "../../assets/RootStyles/normalize";
 import styles from "./style";
 import Text from "../text";
 
-function Index({title = '', titleStyle = {}, inputStyle = {}, size, type,}) {
+function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeholder=""}) {
     return (
         <KeyboardAvoidingView
-            style={{flex: 1}}
+            
             {...(deviceInfo.ios
                 ? {
                     behavior: 'padding',
@@ -31,6 +31,7 @@ function Index({title = '', titleStyle = {}, inputStyle = {}, size, type,}) {
                         ...styles.inputDefault,
                         ...inputStyle,
                     }}
+                    placeholder={placeholder}
                     // onFocus={()=>setFocus?setFocus(true):null}
                     // onBlur={()=>setFocus?setFocus(false):null}
                     // value={text}

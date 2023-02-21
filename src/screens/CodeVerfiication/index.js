@@ -5,7 +5,7 @@ import { styles } from "./CodeVerificationStyle";
 import Timer from "../../components/timer";
 import CodeVerfiicationNumber from "./CodeVerificationNumber";
 import ArrowRight from "../../assets/img/svg/arrow/arrowRight";
-import { number } from "yup";
+
 
 
 
@@ -16,14 +16,13 @@ import { number } from "yup";
 
 function CodeVerification(){
 
-const [pin, setPin]= useState(Array.from({length:4}));
+const [pin, setPin]= useState([]);
 const [index, setIndex]= useState(0);
-const [pinLength, setPinLength]=useState(pin.length-1)
+
 
 
 const onClick =(text)=>{
-    console.log(index)
-    
+
     if(pin.length <= 4 && !pin[index]){
         pin.splice(index,1,text) 
         setPin([...pin])
@@ -39,23 +38,30 @@ const onClick =(text)=>{
 }
 
 const onDelet = ()=>{
-    console.log(index)
-    pin.splice(index,1,undefined);
-    setPin([...pin])
+let pinLength= pin.length -1;
+
+   if(!(pinLength < 0)){
+    pin.splice(pinLength,1) 
+        setPin([...pin])
+    // setPin(pin.filter((el,i)=>{
+    //     if(i !== x){
+    //         return el
+    //     }
+    //    }))
+   }
     
     if(index <= 0 ){
-        pin.splice(0,1,undefined);
-        setPin([...pin])
         return
     }else{
         setIndex(index -1)
     }
-
-   
+    
 }
 
+
+
 useEffect(()=>{
-    setPin(Array.from({length:4}))
+    
     setIndex(0);
 
 },[])
@@ -69,8 +75,8 @@ useEffect(()=>{
                    <Text text="Enter verification code here"  style={styles.textEnterV}/> 
                 </View>
               <View style={styles.containerItem}>
-              { pin.map((el,i)=>{
-                return  <View style={styles.item} key={i} ><Text  text={el}/></View>
+              { Array.from({length:4}).map((el,i)=>{
+                return  <View style={styles.item} key={i} ><Text  text={pin[i]} style={styles.numberTextStyle}/></View>
               })}
               </View>
               <Timer timerText="Send me code again" timerStyle={styles.timer}/>

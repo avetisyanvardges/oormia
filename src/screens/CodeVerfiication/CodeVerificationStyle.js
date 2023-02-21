@@ -20,7 +20,9 @@ export const styles = StyleSheet.create({
     textCodV: {
         marginLeft:25,
         marginTop:46,
-        ...FontStyle.display_h4.medium,
+        fontWeight: normalize(500),
+        fontSize: normalize(16),
+        lineHeight:normalize(20),
         color:"#2C2C2C"
 
        
@@ -28,8 +30,11 @@ export const styles = StyleSheet.create({
     textEnterV:{
         marginTop: 25,
          marginLeft:25,
-         ...FontStyle.display_h6.regular,
-         color:"#818195"
+         
+         color:"#818195",
+         fontWeight:normalize(400),
+         fontSize: normalize(12),
+         lineHeight: normalize(15)
     },
 
     containerItem:{
@@ -56,7 +61,9 @@ export const styles = StyleSheet.create({
     },
 
     timer: {
-        ...FontStyle.text_h6.medium,
+        fontWeight:normalize(500),
+         fontSize: normalize(12),
+         lineHeight: normalize(15),
         color: "#A347FF",
         marginBottom: 40
         
@@ -89,7 +96,9 @@ export const styles = StyleSheet.create({
     },
 
     numberTextStyle:{
-        ...FontStyle.text_h4.medium,
+        fontWeight:normalize(500),
+         fontSize: normalize(20),
+         lineHeight: normalize(24)
         
     }
 

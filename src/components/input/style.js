@@ -3,8 +3,7 @@ import {normalize} from "../../assets/RootStyles/normalize";
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'red',
-        maxHeight: normalize(44, true),
+       
         // paddingLeft: normalize(24),
         // paddingRight: normalize(21),
         // flexDirection: 'row',
@@ -15,8 +14,10 @@ const styles = StyleSheet.create({
         // justifyContent: 'space-between',
     },
     inputDefault: {
-        width: '100%',
-        height: '100%',
+        width: normalize(326),
+        height: normalize(38),
+        borderRadius: normalize(12),
+        backgroundColor: "#F3F3F3",
     },
     textStyle: {
         // width: RW(330),

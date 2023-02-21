@@ -13,19 +13,19 @@ import { normalize } from "../../assets/RootStyles/normalize";
 
 
 
-function ButtonMy({textButton="", icon="",  onClick, styleButton={},  }){
+function Button({textButton="", icon="",  onClick, styleButton={}, textStyle={} }){
 
 
-const style = styleButton ? styleButton:  styles
+
 
 
     return (
        <TouchableOpacity onPress={onClick} style={{...styles.buttonDefaultStyle, ...styleButton}} >
          {icon}
-         <Index text={textButton}  style={{marginLeft: normalize(10)}}/>
+         <Index text={textButton}  style={{...styles.textStyle, ...textStyle}}/>
        </TouchableOpacity>
         )
 }
 
 
-export default ButtonMy
+export default Button

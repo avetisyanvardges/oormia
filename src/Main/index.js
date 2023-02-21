@@ -8,7 +8,8 @@ import InstIcon from '../assets/img/svg/buttonSvg/InstIcon';
 import FbIcon from '../assets/img/svg/buttonSvg/FbIcon';
 import CodeVerification from '../screens/CodeVerfiication';
 import LoginScreen from '../screens/AuthLayer/Login';
-
+import SignUp from '../screens/SignUp';
+import Input from '../components/input';
 
 
 
@@ -28,9 +29,8 @@ const onClick = ()=>{
         translucent={false}
         backgroundColor={Colors.oxford_blue['30']}
       />
-   <CodeVerification/>
-      <Navigation />
-  
+     
+      <SignUp />
     </Fragment>
   );
 }
