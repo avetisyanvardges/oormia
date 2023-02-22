@@ -5,10 +5,10 @@ import {normalize} from "../../assets/RootStyles/normalize";
 import styles from "./style";
 import Text from "../text";
 
-function Index({title = '', titleStyle = {}, inputStyle = {}, size, type,}) {
+function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeholder="", value="", inputContainerStyle={}, onChange,onBlur, errorText=""}) {
     return (
         <KeyboardAvoidingView
-            style={{flex: 1}}
+            
             {...(deviceInfo.ios
                 ? {
                     behavior: 'padding',
@@ -17,7 +17,7 @@ function Index({title = '', titleStyle = {}, inputStyle = {}, size, type,}) {
                 }
                 : {})}
         >
-            <View style={styles.container}>
+            <View style={{...styles.container, ...inputContainerStyle}}>
                 {title ? <Text
                     text={title}
                     style={{
@@ -31,6 +31,12 @@ function Index({title = '', titleStyle = {}, inputStyle = {}, size, type,}) {
                         ...styles.inputDefault,
                         ...inputStyle,
                     }}
+                    placeholder={placeholder} 
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    
+                    
                     // onFocus={()=>setFocus?setFocus(true):null}
                     // onBlur={()=>setFocus?setFocus(false):null}
                     // value={text}
@@ -41,7 +47,9 @@ function Index({title = '', titleStyle = {}, inputStyle = {}, size, type,}) {
                     // placeholder={placeholder || ''}
                     // style={[styles.textStyle, textStyle , {color: ICON}]}
                 />
+                 <Text text={errorText} style={{paddingLeft: 6,  color:"red",}}/>
             </View>
+           
         </KeyboardAvoidingView>
     );
 }

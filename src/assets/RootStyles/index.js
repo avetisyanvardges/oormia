@@ -472,6 +472,7 @@ export const BorderStyles = {
   radius: {
     xs: 8,
     s: 10,
+    ss: 12,
     sm: 16,
     md: 30,
     lg: 60,
