@@ -5,7 +5,7 @@ import {normalize} from "../../assets/RootStyles/normalize";
 import styles from "./style";
 import Text from "../text";
 
-function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeholder="", value="", inputContainerStyle={}, onChange,onBlur, errorText=""}) {
+function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeholder="", value="", inputContainerStyle={}, onChange,onBlur, errorText="", secureTextEntry=false}) {
     return (
         <KeyboardAvoidingView
             {...(deviceInfo.ios
@@ -34,6 +34,7 @@ function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeh
                     value={value}
                     onChangeText={onChange}
                     onBlur={onBlur}
+                    secureTextEntry={secureTextEntry}
                     // onFocus={()=>setFocus?setFocus(true):null}
                     // onBlur={()=>setFocus?setFocus(false):null}
                     // value={text}

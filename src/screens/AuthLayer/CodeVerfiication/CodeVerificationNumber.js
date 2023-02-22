@@ -6,7 +6,7 @@ import Text from "../../../components/text";
 function CodeVerificationNumber({numberText, numberTextStyle, numberContainerStyle, onClick}){
 
     return (
-            <TouchableOpacity style={numberContainerStyle} onPress={()=> onClick(numberText)}>
+            <TouchableOpacity style={numberContainerStyle} onPress={()=> onClick(numberText)} >
                 <Text text={numberText} style={numberTextStyle} />
             </TouchableOpacity>
     )

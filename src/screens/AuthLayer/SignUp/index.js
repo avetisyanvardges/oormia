@@ -23,7 +23,7 @@ function SignUp() {
             }}
             onSubmit={values => console.log(values)}
         >
-            {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
+            {({handleChange, handleBlur, handleSubmit, values, errors, touched, isValid,dirty}) => (
                 <ScrollView
                     showsVerticalScrollIndicator={false}
                 >
@@ -43,7 +43,7 @@ function SignUp() {
                            
                             <TouchableOpacity  onPress={()=>console.log("hay")}><Text  text="I agree with the Terms of Servise & Privacy Policy"
                                 style={styles.textButtonText} /></TouchableOpacity>
-                            <Button  styleButton={styles.buttonStyle} textButton="Join us" textStyle={styles.buttonTextStyle} onClick={handleSubmit}/>
+                            <Button  styleButton={styles.buttonStyle} textButton="Join us" textStyle={styles.buttonTextStyle} onClick={handleSubmit} disabled={!(isValid && dirty)}/>
                             <View style={styles.signInTextContainer}>
                                 <TouchableOpacity onPress={()=>console.log("hay")}><Text text="Already haven an account?" style={styles.textButtonText}/></TouchableOpacity>
                                 <TouchableOpacity  onPress={()=>console.log("hay")}><Text  text="Sign in"  style={styles.signInText} /></TouchableOpacity>

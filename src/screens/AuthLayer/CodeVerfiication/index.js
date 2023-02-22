@@ -47,15 +47,14 @@ useEffect(()=>{
             <Timer timerText="Send me code again" timerStyle={styles.timer}/>
             <View style={styles.keyboardContainer} >
                {Array.from({length: 9}).map((el, i) => {
-                     return <CodeVerificationNumber key={i} numberContainerStyle={styles.numberContainer} numberText={i + 1}
-                      numberTextStyle={styles.numberTextStyle} onClick={onClick}/>
+                     return <CodeVerificationNumber key={i} numberContainerStyle={styles.numberContainer} numberText={i + 1} numberTextStyle={styles.numberTextStyle} onClick={onClick}/>
                })}
             </View>
             <View style={styles.arrowContainer}>
                <CodeVerificationNumber numberContainerStyle={styles.numberContainer} numberText={0} onClick={onClick}
                      numberTextStyle={styles.numberTextStyle}/>
                <CodeVerificationNumber numberContainerStyle={styles.numberContainer} numberText={<ArrowRight/>} onClick={onDelete}
-                     numberTextStyle={styles.arrowStyle}/>
+                       numberTextStyle={styles.arrowStyle}/>
             </View>
         </View>
     )
