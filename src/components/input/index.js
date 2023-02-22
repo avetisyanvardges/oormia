@@ -5,7 +5,7 @@ import {normalize} from "../../assets/RootStyles/normalize";
 import styles from "./style";
 import Text from "../text";
 
-function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeholder=""}) {
+function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeholder="", value="", inputContainerStyle={}, onChange,onBlur, errorText=""}) {
     return (
         <KeyboardAvoidingView
             
@@ -17,7 +17,7 @@ function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeh
                 }
                 : {})}
         >
-            <View style={styles.container}>
+            <View style={{...styles.container, ...inputContainerStyle}}>
                 {title ? <Text
                     text={title}
                     style={{
@@ -31,7 +31,12 @@ function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeh
                         ...styles.inputDefault,
                         ...inputStyle,
                     }}
-                    placeholder={placeholder}
+                    placeholder={placeholder} 
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    
+                    
                     // onFocus={()=>setFocus?setFocus(true):null}
                     // onBlur={()=>setFocus?setFocus(false):null}
                     // value={text}
@@ -42,7 +47,9 @@ function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeh
                     // placeholder={placeholder || ''}
                     // style={[styles.textStyle, textStyle , {color: ICON}]}
                 />
+                 <Text text={errorText} style={{paddingLeft: 6,  color:"red",}}/>
             </View>
+           
         </KeyboardAvoidingView>
     );
 }

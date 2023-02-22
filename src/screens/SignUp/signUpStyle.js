@@ -8,16 +8,23 @@ export const styles = StyleSheet.create({
 
     container: {
         alignItems: "center",
-        paddingTop: normalize(30)
+        paddingTop: normalize(20)
     },
 
     textStyle: {
         alignSelf: "flex-start",
         marginLeft: normalize(25),
-        marginBottom: normalize(27),
-        fontWeight:normalize(500),
+        marginBottom: normalize(17),
+       
          fontSize: normalize(16),
          lineHeight: normalize(20)
+    },
+
+
+    inputContainerStyle: {
+        marginBottom: normalize(15),
+        justifyContent: "flex-start",
+        height: 63
     },
     
     inputStyle: {
@@ -25,11 +32,9 @@ export const styles = StyleSheet.create({
         fontSize: normalize(14),
         lineHeight: normalize(17),
         paddingLeft: normalize(14),
-        marginBottom: normalize(15),
-       
     },
     bottomContainer:{
-        marginTop:normalize(58),
+        marginTop:normalize(18),
         alignItems: "center"
     },
 

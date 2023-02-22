@@ -3,7 +3,7 @@ import {normalize} from "../../assets/RootStyles/normalize";
 
 const styles = StyleSheet.create({
     container: {
-       
+      
         // paddingLeft: normalize(24),
         // paddingRight: normalize(21),
         // flexDirection: 'row',
