@@ -1,10 +1,9 @@
 import React from "react";
-import {ScrollView, View} from "react-native";
+import {ScrollView, View, TouchableOpacity} from "react-native";
 import Input from "../../../components/input";
 import Text from "../../../components/text";
 import {styles} from "./style";
 import Button from "../../../components/button";
-import TextButton from "../../../components/textButton";
 import Stroke from "../../../assets/img/svg/stroke/stroke";
 import {Formik} from 'formik';
 import {validationSchema} from '../../../services/ValidationSchema'
@@ -41,11 +40,13 @@ function SignUp() {
                         <Input placeholder="Password *" value={values.password} onChange={handleChange("password")}
                                errorText={touched.password && errors.password} onBlur={handleBlur("password")}/>
                         <View style={styles.bottomContainer}>
-                            {/*<TextButton icon={<Stroke/>} text="I agree with the Terms of Servise & Privacy Policy"  textStyle={styles.textButtonText} onClick={()=>Alert.alert("hay")}/>*/}
+                           
+                            <TouchableOpacity  onPress={()=>console.log("hay")}><Text  text="I agree with the Terms of Servise & Privacy Policy"
+                                style={styles.textButtonText} /></TouchableOpacity>
                             <Button  styleButton={styles.buttonStyle} textButton="Join us" textStyle={styles.buttonTextStyle} onClick={handleSubmit}/>
                             <View style={styles.signInTextContainer}>
-                                <TextButton text="Already haven an account?"  textStyle={styles.textButtonText} onClick={()=>console.log("hay")}/>
-                                <TextButton text="Sign in"  textStyle={styles.signInText} buttonStyle={styles.signInButton} onClick={()=>console.log("hay")}/>
+                                <TouchableOpacity onPress={()=>console.log("hay")}><Text text="Already haven an account?" style={styles.textButtonText}/></TouchableOpacity>
+                                <TouchableOpacity  onPress={()=>console.log("hay")}><Text  text="Sign in"  style={styles.signInText} /></TouchableOpacity>
                             </View>
                         </View>
                     </View>

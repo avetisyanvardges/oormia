@@ -1,29 +1,29 @@
 import {StyleSheet} from "react-native";
 import {normalize} from "../../../assets/RootStyles/normalize";
 import {BorderStyles} from "../../../assets/RootStyles";
-import {FontStyle} from "../../../assets/RootStyles";
+import {FontStyle,Colors} from "../../../assets/RootStyles";
 
 export const styles = StyleSheet.create({
     container: {
-        alignItems: "center"
+        alignItems: "center",
+        
     },
     containerText: {
         width: "100%",
         alignItems: "flex-start",
     },
     textCodV: {
-        marginLeft: 25,
-        marginTop: 46,
-        fontWeight: normalize(500),
+        marginLeft: normalize(25),
+        marginTop: normalize(46),
+        ...FontStyle.display_h5.medium,
         fontSize: normalize(16),
-        lineHeight: normalize(20),
-        color: "#2C2C2C"
+        color: Colors.black[100]
     },
     textEnterV: {
-        marginTop: 25,
-        marginLeft: 25,
-        color: "#818195",
-        fontWeight: normalize(400),
+        marginTop: normalize(25),
+        marginLeft: normalize(25),
+        color: Colors.black[200],
+        ...FontStyle.display_h6.regular,
         fontSize: normalize(12),
         lineHeight: normalize(15)
     },
@@ -35,28 +35,31 @@ export const styles = StyleSheet.create({
         marginTop: normalize(11),
         marginBottom: normalize(12),
         marginRight: normalize(27),
-        marginLeft: normalize(25),
-        paddingLeft: normalize(17)
+        marginLeft: normalize(10),
+        
+        
     },
     item: {
         width: normalize(68),
         height: normalize(68),
         borderRadius: BorderStyles.radius.ss,
-        backgroundColor: "#F3F3F3",
+        backgroundColor: Colors.grey[1000],
         justifyContent: "center",
         alignItems: "center",
         marginRight: normalize(17),
     },
     timer: {
+        marginBottom: 40,
+        alignSelf:"center",
+        color: Colors.lilac,
+        // ...FontStyle.display_h6.medium,
         fontWeight: normalize(500),
         fontSize: normalize(12),
         lineHeight: normalize(15),
-        color: "#A347FF",
-        marginBottom: 40
     },
     keyboardContainer: {
         borderTopWidth: 0.5,
-        borderTopColor: "#E3E3E3",
+        borderTopColor: Colors.grey[1100],
         flexDirection: "row",
         flexWrap: "wrap",
     },
@@ -64,7 +67,7 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         width: "33%",
-        marginTop: normalize(35)
+        marginTop: normalize(45)
     },
     arrowContainer: {
         width: "100%",
@@ -73,7 +76,7 @@ export const styles = StyleSheet.create({
         marginBottom: normalize(53)
     },
     arrowStyle: {
-        color: "#818195"
+        color: Colors.black[100]
     },
     numberTextStyle: {
         fontWeight: normalize(500),

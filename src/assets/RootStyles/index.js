@@ -3,7 +3,11 @@ import {deviceInfo} from '../deviceInfo';
 
 export const Colors = {
   white: '#ffffff',
-  black: '#000000',
+  black: {
+    50: '#000000',
+    100: "#2C2C2C",
+    200: "#818195",
+  },
   green: {
     50: '#eff8ea',
     100: '#cdeabf',
@@ -27,6 +31,8 @@ export const Colors = {
     700: '#1b1b1b',
     800: '#151515',
     900: '#101010',
+    1000: "#F3F3F3",
+    1100: "#E3E3E3",
   },
   oxford_blue: {
     30: '#F5F5F5',
@@ -78,6 +84,7 @@ export const Colors = {
   blue_tint_ec: '#ECF3FB',
   blue_tint_f6: '#F6F9FC',
   gray: '#D9D9D9',
+  lilac: "#A347FF",
 };
 
 // export const ToastColors = {

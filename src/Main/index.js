@@ -25,8 +25,7 @@ const onClick = ()=>{
         translucent={false}
         backgroundColor={Colors.oxford_blue['30']}
       />
-
-      <SignUp />
+      <CodeVerification />
     </Fragment>
   );
 }
