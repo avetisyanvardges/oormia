@@ -3,21 +3,18 @@ import {normalize} from "../../assets/RootStyles/normalize";
 
 const styles = StyleSheet.create({
     container: {
-      
-        // paddingLeft: normalize(24),
-        // paddingRight: normalize(21),
-        // flexDirection: 'row',
-        // borderRadius: normalize(10),
-        // alignItems: 'center',
-        // paddingVertical: normalize(10, true),
-        // backgroundColor: 'blue',
-        // justifyContent: 'space-between',
+        marginBottom: normalize(15),
+        justifyContent: "flex-start",
+        height: normalize(63)
     },
     inputDefault: {
         width: normalize(326),
         height: normalize(38),
         borderRadius: normalize(12),
         backgroundColor: "#F3F3F3",
+        fontSize: normalize(14),
+        lineHeight: normalize(17),
+        paddingLeft: normalize(14),
     },
     textStyle: {
         // width: RW(330),

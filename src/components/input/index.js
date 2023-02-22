@@ -8,7 +8,6 @@ import Text from "../text";
 function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeholder="", value="", inputContainerStyle={}, onChange,onBlur, errorText=""}) {
     return (
         <KeyboardAvoidingView
-            
             {...(deviceInfo.ios
                 ? {
                     behavior: 'padding',
@@ -31,12 +30,10 @@ function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeh
                         ...styles.inputDefault,
                         ...inputStyle,
                     }}
-                    placeholder={placeholder} 
+                    placeholder={placeholder}
                     value={value}
                     onChangeText={onChange}
                     onBlur={onBlur}
-                    
-                    
                     // onFocus={()=>setFocus?setFocus(true):null}
                     // onBlur={()=>setFocus?setFocus(false):null}
                     // value={text}
@@ -49,7 +46,6 @@ function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeh
                 />
                  <Text text={errorText} style={{paddingLeft: 6,  color:"red",}}/>
             </View>
-           
         </KeyboardAvoidingView>
     );
 }

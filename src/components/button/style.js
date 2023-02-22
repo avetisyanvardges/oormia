@@ -2,9 +2,6 @@ import { StyleSheet } from "react-native"
 import { Colors,BorderStyles } from "../../assets/RootStyles";
 import { normalize } from "../../assets/RootStyles/normalize";
 
-
-
-
 export const styles = StyleSheet.create({
     buttonDefaultStyle: {
         width: normalize(100),
@@ -17,7 +14,6 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-
     textStyle:{
         marginLeft: normalize(10)
     }
