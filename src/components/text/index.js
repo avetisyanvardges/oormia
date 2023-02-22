@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text} from 'react-native';
-import styleDefault from "./style";
+import styles from "./style";
 
 function Index({text, style = {}}) {
     return (
         <Text
             style={{
-                ...styleDefault.textDefaultStyle,
+                ...styles.textDefaultStyle,
                 ...style,
             }}>
             {text}

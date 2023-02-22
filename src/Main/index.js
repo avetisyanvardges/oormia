@@ -6,14 +6,10 @@ import ButtonMy from '../components/button';
 import VkIcon from '../assets/img/svg/buttonSvg/VkIcon';
 import InstIcon from '../assets/img/svg/buttonSvg/InstIcon';
 import FbIcon from '../assets/img/svg/buttonSvg/FbIcon';
-import CodeVerification from '../screens/CodeVerfiication';
+import CodeVerification from '../screens/AuthLayer/CodeVerfiication';
 import LoginScreen from '../screens/AuthLayer/Login';
-import SignUp from '../screens/SignUp';
+import SignUp from '../screens/AuthLayer/SignUp';
 import Input from '../components/input';
-
-
-
-
 
 
 function Main() {
@@ -29,7 +25,7 @@ const onClick = ()=>{
         translucent={false}
         backgroundColor={Colors.oxford_blue['30']}
       />
-     
+
       <SignUp />
     </Fragment>
   );

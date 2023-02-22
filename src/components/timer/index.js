@@ -1,31 +1,25 @@
-import React,{useState, useEffect} from "react";
-import { getPadTime } from "./getPadTime";
-
-
+import React, {useState, useEffect} from "react";
 import Text from "../text";
 
+const getPadTime = (time) => time.toString().padStart(2, 0);
 
+function Index({timerText = "", timerStyle, duration = 120}) {
 
+    const [time, setTime] = useState(duration);
 
-function Index({timerText="", timerStyle}){
-
-    const [time, setTime]= useState(2 *60)
-
-
+    let interval
     const minutes = getPadTime(Math.floor(time / 60));
     const seconds = getPadTime((time - minutes * 60));
-    let interval
-    useEffect(()=>{
-      interval = setInterval(() => {
-            setTime((time)=> (time >= 1 ? time - 1:  null))
-        },1000);
-    
-        if(time <=0){
-            return ()=>  clearInterval(interval)
-          }
-        
-    },[])
 
+    useEffect(() => {
+        interval = setInterval(() => {
+            setTime((time) => (time >= 1 ? time - 1 : null))
+        }, 1000);
+
+        if (time <= 0) {
+            return () => clearInterval(interval)
+        }
+    }, [])
 
     return (
         <Text text={`${timerText} ${minutes}:${seconds}`} style={timerStyle}/>
