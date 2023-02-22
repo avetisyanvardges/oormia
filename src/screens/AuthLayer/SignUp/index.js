@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {ScrollView, View, TouchableOpacity} from "react-native";
 import Input from "../../../components/input";
 import Text from "../../../components/text";
@@ -6,9 +6,18 @@ import {styles} from "./style";
 import Button from "../../../components/button";
 import Stroke from "../../../assets/img/svg/stroke/stroke";
 import {Formik} from 'formik';
-import {validationSchema} from '../../../services/ValidationSchema'
+import {validationSchema} from '../../../services/ValidationSchema';
+import HideIcon from "../../../assets/img/svg/show/hide";
+import ShowIcon from "../../../assets/img/svg/show/show";
 
 function SignUp() {
+    const[secureTextEntry, setSecureTextEntry]=useState(false);
+ 
+    const showHide=()=>{
+        setSecureTextEntry(!secureTextEntry)
+    }
+
+    const icon = secureTextEntry ? <ShowIcon/>: <HideIcon/>
 
     return (
         <Formik
@@ -38,7 +47,8 @@ function SignUp() {
                         <Input placeholder="Email *" value={values.email} onChange={handleChange("email")}
                                errorText={touched.email && errors.email} onBlur={handleBlur("email")}/>
                         <Input placeholder="Password *" value={values.password} onChange={handleChange("password")}
-                               errorText={touched.password && errors.password} onBlur={handleBlur("password")}/>
+                               errorText={touched.password && errors.password} onBlur={handleBlur("password")} icon={icon} 
+                               secureTextEntry={secureTextEntry} iconOnClick={showHide}/>
                         <View style={styles.bottomContainer}>
                            
                             <TouchableOpacity  onPress={()=>console.log("hay")}><Text  text="I agree with the Terms of Servise & Privacy Policy"

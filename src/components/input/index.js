@@ -1,11 +1,11 @@
-import React from 'react';
-import {KeyboardAvoidingView, TextInput, View} from 'react-native';
+import React, { useState } from 'react';
+import {KeyboardAvoidingView, TextInput, TouchableOpacity, View} from 'react-native';
 import {deviceInfo} from '../../assets/deviceInfo';
 import {normalize} from "../../assets/RootStyles/normalize";
 import styles from "./style";
 import Text from "../text";
 
-function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeholder="", value="", inputContainerStyle={}, onChange,onBlur, errorText="", secureTextEntry=false}) {
+function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeholder="", value="", inputContainerStyle={}, onChange,onBlur, errorText="", secureTextEntry=false, inputContainer={}, icon="", iconOnClick}) {
     return (
         <KeyboardAvoidingView
             {...(deviceInfo.ios
@@ -25,7 +25,8 @@ function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeh
                         ...titleStyle
                     }}
                 /> : null}
-                <TextInput
+              <View style={{...styles.inputContainerDef, inputContainer }}>
+              <TextInput
                     style={{
                         ...styles.inputDefault,
                         ...inputStyle,
@@ -45,6 +46,10 @@ function Index({title = '', titleStyle = {}, inputStyle = {}, size, type, placeh
                     // placeholder={placeholder || ''}
                     // style={[styles.textStyle, textStyle , {color: ICON}]}
                 />
+                <TouchableOpacity onPress={iconOnClick}>
+                    {icon}
+                </TouchableOpacity>
+              </View>
                  <Text text={errorText} style={{paddingLeft: 6,  color:"red",}}/>
             </View>
         </KeyboardAvoidingView>
