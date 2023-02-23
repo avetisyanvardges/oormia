@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     container: {
         marginBottom: normalize(15),
         justifyContent: "flex-start",
-        height: normalize(63),
+     
     },
     inputContainerDef:{
         width: normalize(326),

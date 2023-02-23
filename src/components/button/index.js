@@ -3,7 +3,7 @@ import {TouchableOpacity} from "react-native";
 import Text from "../text";
 import {styles} from "./style";
 
-function Button({textButton = "", icon = "", onClick, styleButton = {}, textStyle = {},  disabled=""}) {
+function Button({textButton = "", icon = "", onClick, styleButton = {}, textStyle = {},  disabled=false}) {
 
 const validStyle = disabled ?  {opacity: 0.5} : {} ;   
     return (

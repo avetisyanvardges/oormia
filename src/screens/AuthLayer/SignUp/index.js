@@ -54,6 +54,10 @@ function SignUp({navigation}) {
                                    errorText={touched.password && errors.password} onBlur={handleBlur("password")}
                                    icon={icon}
                                    secureTextEntry={secureTextEntry} iconOnClick={showHide}/>
+                            <Input placeholder="ConfirmPassword *" value={values.confirmPassword} onChange={handleChange("confirmPassword")}
+                                   errorText={touched.confirmPassword && errors.confirmPassword} onBlur={handleBlur("confirmPassword")}
+                                   icon={icon}
+                                   secureTextEntry={secureTextEntry} iconOnClick={showHide}/>
                             <View style={styles.bottomContainer}>
                                 <TouchableOpacity onPress={() => console.log("hay")}><Text
                                     text="I agree with the Terms of Servise & Privacy Policy"
