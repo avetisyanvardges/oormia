@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
         height: normalize(38),
         background: Colors.white,
         borderWidth: BorderStyles.widths.normal,
-        borderColor: "#E3E3E3",
+        borderColor: Colors.grey[1100],
         borderRadius: BorderStyles.radius.ss,
         flexDirection:"row",
         justifyContent: "center",
