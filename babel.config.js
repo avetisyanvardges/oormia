@@ -3,7 +3,7 @@ module.exports = {
   plugins: [
     'react-native-reanimated/plugin',
     [
-      'module-resolver',
+      require.resolve('babel-plugin-module-resolver'),
       {
         root: ['./src'],
         extensions: ['.ios.js', '.android.js', '.js', '.ts', '.tsx', '.json'],

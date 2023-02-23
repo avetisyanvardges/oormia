@@ -1,6 +1,14 @@
 export const ICON_NAMES = {
   TAB_BAR: {
-    COMPASS: 'CompassIcon',
-    ACTIVE_COMPASS: 'activeTabCompassIcon',
+    CHAT: 'ChatIcon',
+    CREATE_ICON: 'createEventIcon',
+    EVENTS: 'eventsIcon',
+    GROUP: 'groupIcon',
+    MAP: 'mapIcon',
+    MENTOR: 'mentorIcon',
+    REQUEST: 'requestIcon',
+    ROUTING: 'routingIcon',
+    USER: 'userIcon',
+    WORLD: 'worldIcon',
   },
 };

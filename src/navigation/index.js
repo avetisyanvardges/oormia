@@ -13,8 +13,12 @@ const StackNavigation = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
-        screenOptions={{headerShown: false, animationEnabled: true,gestureDirection: 'horizontal',}}
-        initialRouteName={initialRoute}>
+        screenOptions={{
+          headerShown: false,
+          animationEnabled: true,
+          gestureDirection: 'horizontal',
+        }}
+        initialRouteName={routNames.APP_LAYER}>
         <Stack.Screen name={routNames.AUTH_LAYER} component={AuthStack} />
         <Stack.Screen name={routNames.APP_LAYER} component={AppStack} />
       </Stack.Navigator>
