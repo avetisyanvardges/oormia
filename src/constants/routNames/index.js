@@ -3,4 +3,6 @@ export const routNames = {
   APP_LAYER: 'AppLayer',
   LOGIN: 'Login',
   REGISTRATION: 'Registration',
+  MAIN_TAB: 'mainTab',
+  COMPASS: 'Compass',
 };
