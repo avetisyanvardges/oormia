@@ -3,31 +3,17 @@ import {Text, View} from 'react-native';
 import {Colors} from '../../../assets/RootStyles';
 import {deviceInfo} from '../../../assets/deviceInfo';
 import Input from "../../../components/input";
+import ScreenMask from "../../../components/screenMask";
 
 
 
 const LoginScreen = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: Colors.oxford_blue['50'],
+      <ScreenMask style={{
+          height:'70%'
       }}>
-      <View style={{flex: 1, justifyContent: 'flex-end'}}>
-        <View
-          style={{
-            width: deviceInfo.deviceWidth,
-            height: '70%',
-            backgroundColor: Colors.white,
-            borderTopLeftRadius: 20,
-            borderTopRightRadius: 20,
-          }}
-        />
-          <Input title='password' titleStyle={{color:'blue'}}/>
-      </View>
-    </View>
+
+      </ScreenMask>
   );
 };
 

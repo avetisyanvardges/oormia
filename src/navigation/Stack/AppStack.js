@@ -7,7 +7,7 @@ const AppStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false,
+
       }}
     />
   );
