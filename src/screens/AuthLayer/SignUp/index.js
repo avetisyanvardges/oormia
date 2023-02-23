@@ -20,7 +20,6 @@ function SignUp({navigation}) {
   };
 
   const icon = secureTextEntry ? <ShowIcon /> : <HideIcon />;
-
   return (
     <ScreenMask>
       <Formik

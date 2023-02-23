@@ -3,6 +3,7 @@ import {TouchableOpacity} from 'react-native';
 import Text from '../Text';
 import {styles} from './style';
 
+
 function Button({
   textButton = '',
   icon = '',
@@ -21,6 +22,7 @@ function Button({
       <Text text={textButton} style={{...styles.textStyle, ...textStyle}} />
     </TouchableOpacity>
   );
+
 }
 
 export default Button;

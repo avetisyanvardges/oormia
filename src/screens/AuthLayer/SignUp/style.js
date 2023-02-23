@@ -1,6 +1,7 @@
 import {StyleSheet} from "react-native";
 import {normalize} from "../../../assets/RootStyles/normalize";
 import {Colors} from "../../../assets/RootStyles";
+import { FontStyle } from "../../../assets/RootStyles";
 
 export const styles = StyleSheet.create({
     container: {
@@ -34,11 +35,6 @@ export const styles = StyleSheet.create({
         lineHeight: normalize(17),
         color: Colors.white,
     },
-    textButton: {},
-    textButtonText: {
-        color: Colors.black[100],
-        marginLeft: normalize(7)
-    },
     signInTextContainer: {
         width: normalize(326),
         flexDirection: "row",
@@ -51,5 +47,11 @@ export const styles = StyleSheet.create({
     },
     signInButton: {
         marginLeft: normalize(110)
+    },
+    textButtonText: {
+        color: Colors.black[100],
+        ...FontStyle.display_h6.medium,
+        fontSize: normalize(12),
+        lineHeight: normalize(15),
     }
 })

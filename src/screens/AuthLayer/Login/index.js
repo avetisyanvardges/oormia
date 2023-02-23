@@ -1,5 +1,6 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
+
 import Text from '../../../components/Text';
 import {Colors} from '../../../assets/RootStyles';
 import {deviceInfo} from '../../../assets/deviceInfo';
