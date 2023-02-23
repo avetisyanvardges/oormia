@@ -5,16 +5,24 @@ const styles = StyleSheet.create({
     container: {
         marginBottom: normalize(15),
         justifyContent: "flex-start",
-        height: normalize(63)
+        height: normalize(63),
     },
-    inputDefault: {
+    inputContainerDef:{
         width: normalize(326),
         height: normalize(38),
-        borderRadius: normalize(12),
         backgroundColor: "#F3F3F3",
+        borderRadius: normalize(12),
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingRight: 10
+        
+    },
+    inputDefault: {
+        width: normalize(290),
         fontSize: normalize(14),
         lineHeight: normalize(17),
-        paddingLeft: normalize(14),
+        paddingLeft: normalize(14), 
     },
     textStyle: {
         // width: RW(330),

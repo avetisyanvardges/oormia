@@ -1,15 +1,23 @@
-import React from "react";
-import {ScrollView, View} from "react-native";
+import React,{useState} from "react";
+import {ScrollView, View, TouchableOpacity} from "react-native";
 import Input from "../../../components/input";
 import Text from "../../../components/text";
 import {styles} from "./style";
 import Button from "../../../components/button";
-import TextButton from "../../../components/textButton";
 import Stroke from "../../../assets/img/svg/stroke/stroke";
 import {Formik} from 'formik';
-import {validationSchema} from '../../../services/ValidationSchema'
+import {validationSchema} from '../../../services/ValidationSchema';
+import HideIcon from "../../../assets/img/svg/show/hide";
+import ShowIcon from "../../../assets/img/svg/show/show";
 
 function SignUp() {
+    const[secureTextEntry, setSecureTextEntry]=useState(false);
+ 
+    const showHide=()=>{
+        setSecureTextEntry(!secureTextEntry)
+    }
+
+    const icon = secureTextEntry ? <ShowIcon/>: <HideIcon/>
 
     return (
         <Formik
@@ -24,7 +32,7 @@ function SignUp() {
             }}
             onSubmit={values => console.log(values)}
         >
-            {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
+            {({handleChange, handleBlur, handleSubmit, values, errors, touched, isValid,dirty}) => (
                 <ScrollView
                     showsVerticalScrollIndicator={false}
                 >
@@ -39,13 +47,15 @@ function SignUp() {
                         <Input placeholder="Email *" value={values.email} onChange={handleChange("email")}
                                errorText={touched.email && errors.email} onBlur={handleBlur("email")}/>
                         <Input placeholder="Password *" value={values.password} onChange={handleChange("password")}
-                               errorText={touched.password && errors.password} onBlur={handleBlur("password")}/>
+                               errorText={touched.password && errors.password} onBlur={handleBlur("password")} icon={icon} 
+                               secureTextEntry={secureTextEntry} iconOnClick={showHide}/>
                         <View style={styles.bottomContainer}>
-                            {/*<TextButton icon={<Stroke/>} text="I agree with the Terms of Servise & Privacy Policy"  textStyle={styles.textButtonText} onClick={()=>Alert.alert("hay")}/>*/}
-                            <Button  styleButton={styles.buttonStyle} textButton="Join us" textStyle={styles.buttonTextStyle} onClick={handleSubmit}/>
+                            <TouchableOpacity  onPress={()=>console.log("hay")}><Text  text="I agree with the Terms of Servise & Privacy Policy"
+                                style={styles.textButtonText} /></TouchableOpacity>
+                            <Button  styleButton={styles.buttonStyle} textButton="Join us" textStyle={styles.buttonTextStyle} onClick={handleSubmit} disabled={!(isValid && dirty)}/>
                             <View style={styles.signInTextContainer}>
-                                <TextButton text="Already haven an account?"  textStyle={styles.textButtonText} onClick={()=>console.log("hay")}/>
-                                <TextButton text="Sign in"  textStyle={styles.signInText} buttonStyle={styles.signInButton} onClick={()=>console.log("hay")}/>
+                                <TouchableOpacity onPress={()=>console.log("hay")}><Text text="Already haven an account?" style={styles.textButtonText}/></TouchableOpacity>
+                                <TouchableOpacity  onPress={()=>console.log("hay")}><Text  text="Sign in"  style={styles.signInText} /></TouchableOpacity>
                             </View>
                         </View>
                     </View>
