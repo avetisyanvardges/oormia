@@ -6,7 +6,6 @@ import {FontStyle,Colors} from "../../../assets/RootStyles";
 export const styles = StyleSheet.create({
     container: {
         alignItems: "center",
-        
     },
     containerText: {
         width: "100%",
@@ -36,8 +35,6 @@ export const styles = StyleSheet.create({
         marginBottom: normalize(12),
         marginRight: normalize(27),
         marginLeft: normalize(10),
-        
-        
     },
     item: {
         width: normalize(68),
@@ -53,7 +50,7 @@ export const styles = StyleSheet.create({
         alignSelf:"center",
         color: Colors.lilac,
         // ...FontStyle.display_h6.medium,
-        fontWeight: normalize(500),
+        fontWeight:500,
         fontSize: normalize(12),
         lineHeight: normalize(15),
     },
@@ -79,7 +76,7 @@ export const styles = StyleSheet.create({
         color: Colors.black[100]
     },
     numberTextStyle: {
-        fontWeight: normalize(500),
+        fontWeight:500,
         fontSize: normalize(20),
         lineHeight: normalize(24)
     }

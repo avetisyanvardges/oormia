@@ -2,31 +2,26 @@ import React from 'react'
 import {SafeAreaView, StyleSheet, View} from 'react-native'
 import {Colors} from "../../assets/RootStyles";
 import {deviceInfo} from "../../assets/deviceInfo";
+import {normalize} from "../../assets/RootStyles/normalize";
 
 const ScreenMask = ({ children, style }) => {
     return (
-        <View
-            style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: Colors.oxford_blue['50'],
-            }}>
             <View style={{flex: 1, justifyContent: 'flex-end'}}>
                 <View
                     style={{
                         width: deviceInfo.deviceWidth,
-                        height: '70%',
+                        height: '100%',
                         backgroundColor: Colors.white,
-                        borderTopLeftRadius: 20,
-                        borderTopRightRadius: 20,
+                        borderTopLeftRadius: normalize(20),
+                        borderTopRightRadius: normalize(20),
                         ...style
                     }}
                 >
-                    <SafeAreaView style={{ flex: 1 }}>{children}</SafeAreaView>
+                    <SafeAreaView style={{ flex: 1 }}>
+                        {children}
+                    </SafeAreaView>
                 </View>
             </View>
-        </View>
     )
 }
 

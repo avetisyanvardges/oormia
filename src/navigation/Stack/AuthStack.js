@@ -13,9 +13,9 @@ const AuthStack = () => {
         <Stack.Navigator
             screenOptions={{headerShown: false, animationEnabled: true, gestureDirection: 'horizontal',}}
         >
-            {/*<Stack.Screen name={routNames.LOGIN} component={LoginScreen}/>*/}
-            {/*<Stack.Screen name={routNames.REGISTRATION} component={SignUpScreen}/>*/}
-            {/*<Stack.Screen name={routNames.FORGOT} component={ForgotScreen}/>*/}
+            <Stack.Screen name={routNames.LOGIN} component={LoginScreen}/>
+            <Stack.Screen name={routNames.REGISTRATION} component={SignUpScreen}/>
+            <Stack.Screen name={routNames.FORGOT} component={ForgotScreen}/>
             <Stack.Screen name={routNames.CODE_VERIFICATION} component={CodeVerificationScreen}/>
         </Stack.Navigator>
     );

@@ -1,11 +1,15 @@
 import React from 'react';
-import {View} from "react-native";
+import ScreenMask from "../../../components/screenMask";
+import Text from "../../../components/text";
 
 function Index(props) {
     return (
-        <View>
+        <ScreenMask>
+            <Text
+                text='forgot'
+            />
 
-        </View>
+        </ScreenMask>
     );
 }
 

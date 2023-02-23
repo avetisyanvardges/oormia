@@ -1,18 +1,19 @@
 import React,{useState} from "react";
-import {ScrollView, View, TouchableOpacity} from "react-native";
+import {ScrollView, View, TouchableOpacity, Pressable} from "react-native";
 import Input from "../../../components/input";
 import Text from "../../../components/text";
 import {styles} from "./style";
 import Button from "../../../components/button";
 import Stroke from "../../../assets/img/svg/stroke/stroke";
 import {Formik} from 'formik';
-import {validationSchema} from '../../../services/ValidationSchema';
+import {validationSchema} from '../../../constants/validations';
 import HideIcon from "../../../assets/img/svg/show/hide";
 import ShowIcon from "../../../assets/img/svg/show/show";
+import {routNames} from '../../../constants/routNames'
 
-function SignUp() {
+function SignUp({navigation}) {
     const[secureTextEntry, setSecureTextEntry]=useState(false);
- 
+
     const showHide=()=>{
         setSecureTextEntry(!secureTextEntry)
     }
@@ -47,7 +48,7 @@ function SignUp() {
                         <Input placeholder="Email *" value={values.email} onChange={handleChange("email")}
                                errorText={touched.email && errors.email} onBlur={handleBlur("email")}/>
                         <Input placeholder="Password *" value={values.password} onChange={handleChange("password")}
-                               errorText={touched.password && errors.password} onBlur={handleBlur("password")} icon={icon} 
+                               errorText={touched.password && errors.password} onBlur={handleBlur("password")} icon={icon}
                                secureTextEntry={secureTextEntry} iconOnClick={showHide}/>
                         <View style={styles.bottomContainer}>
                             <TouchableOpacity  onPress={()=>console.log("hay")}><Text  text="I agree with the Terms of Servise & Privacy Policy"
@@ -55,9 +56,21 @@ function SignUp() {
                             <Button  styleButton={styles.buttonStyle} textButton="Join us" textStyle={styles.buttonTextStyle} onClick={handleSubmit} disabled={!(isValid && dirty)}/>
                             <View style={styles.signInTextContainer}>
                                 <TouchableOpacity onPress={()=>console.log("hay")}><Text text="Already haven an account?" style={styles.textButtonText}/></TouchableOpacity>
-                                <TouchableOpacity  onPress={()=>console.log("hay")}><Text  text="Sign in"  style={styles.signInText} /></TouchableOpacity>
+                                {/*<TouchableOpacity  onPress={navigation.navigate(routNames.LOGIN)}><Text  text="Sign in"  style={styles.signInText} /></TouchableOpacity>*/}
                             </View>
                         </View>
+                        <Pressable
+                            onPress={()=>navigation.navigate(routNames.CODE_VERIFICATION)}
+                            style={{
+                            alignItems:'center',
+                            justifyContent:'center',
+                            width:160,
+                            height:60,
+                            backgroundColor:'red'
+                        }}
+                        >
+                            <Text text='CUSTOM NEXT'/>
+                        </Pressable>
                     </View>
                 </ScrollView>
             )}
