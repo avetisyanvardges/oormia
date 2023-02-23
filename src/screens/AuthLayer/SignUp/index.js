@@ -50,7 +50,6 @@ function SignUp() {
                                errorText={touched.password && errors.password} onBlur={handleBlur("password")} icon={icon} 
                                secureTextEntry={secureTextEntry} iconOnClick={showHide}/>
                         <View style={styles.bottomContainer}>
-                           
                             <TouchableOpacity  onPress={()=>console.log("hay")}><Text  text="I agree with the Terms of Servise & Privacy Policy"
                                 style={styles.textButtonText} /></TouchableOpacity>
                             <Button  styleButton={styles.buttonStyle} textButton="Join us" textStyle={styles.buttonTextStyle} onClick={handleSubmit} disabled={!(isValid && dirty)}/>
