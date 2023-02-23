@@ -1,9 +1,10 @@
 import React, {Fragment} from 'react';
 import Navigation from '../navigation';
-import {StatusBar} from 'react-native';
+import {StatusBar, View} from 'react-native';
 import {Colors} from '../assets/RootStyles';
 
 function Main() {
+
   return (
     <Fragment>
       <StatusBar
@@ -11,7 +12,7 @@ function Main() {
         translucent={false}
         backgroundColor={Colors.oxford_blue['30']}
       />
-      <Navigation />
+        <Navigation/>
     </Fragment>
   );
 }

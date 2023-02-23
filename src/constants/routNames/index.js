@@ -1,6 +1,7 @@
 export const routNames = {
   AUTH_LAYER: 'AuthLayer',
-  APP_LAYER: 'AppLayer',
+  FORGOT: 'Forgot',
+  CODE_VERIFICATION:'CodeVerification',
   LOGIN: 'Login',
   REGISTRATION: 'Registration',
   MAIN_TAB: 'mainTab',
