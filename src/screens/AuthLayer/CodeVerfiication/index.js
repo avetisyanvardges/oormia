@@ -5,6 +5,7 @@ import {styles} from "./style";
 import Timer from "../../../components/timer";
 import CodeVerificationNumber from "./CodeVerificationNumber";
 import ArrowRight from "../../../assets/img/svg/arrow/arrowRight";
+import ScreenMask from "../../../components/screenMask";
 
 function CodeVerification() {
 
@@ -27,9 +28,7 @@ function CodeVerification() {
 
 
     return (
-        <View style={{
-            backgroundColor:'white'
-        }}>
+        <ScreenMask>
             <View style={styles.containerText}>
                 <Text text="Code Verification" style={styles.textCodV}/>
                 <Text text="Enter verification code here" style={styles.textEnterV}/>
@@ -54,7 +53,7 @@ function CodeVerification() {
                                         onClick={onDelete}
                                         numberTextStyle={styles.arrowStyle}/>
             </View>
-        </View>
+        </ScreenMask>
     )
 }
 
