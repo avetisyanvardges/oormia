@@ -10,7 +10,7 @@ export var mapStyle = [
   },
   {
     featureType: 'administrative',
-    elementType: 'labels.text.fill',
+    elementType: 'labels.Text.fill',
     stylers: [
       {
         visibility: 'on',
@@ -82,7 +82,7 @@ export var mapStyle = [
   },
   {
     featureType: 'road',
-    elementType: 'labels.text.fill',
+    elementType: 'labels.Text.fill',
     stylers: [
       {
         color: '#9e9e9e',
