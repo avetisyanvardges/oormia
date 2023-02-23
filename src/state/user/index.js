@@ -1,4 +1,4 @@
-import {AnyAction, AsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 import {userLogAuth} from './operations/userLogOut';
 
 const initialState = {

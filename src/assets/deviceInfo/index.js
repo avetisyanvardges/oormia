@@ -1,5 +1,5 @@
-import { Dimensions, Platform } from "react-native";
-import DeviceInfo from "react-native-device-info";
+import {Dimensions, Platform} from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 export const deviceInfo = {
   deviceWidth: Dimensions.get('window').width,
