@@ -18,7 +18,8 @@ const CustomText = ({
       style={[styles.font, globalStyle]}
       ellipsizeMode={ellipsizeMode}
       numberOfLines={numberOfLines}>
-      <FormattedMessage id={children} values={values} />
+      {/*<FormattedMessage id={children} values={values} />*/}
+      {values}
     </Text>
   );
 };

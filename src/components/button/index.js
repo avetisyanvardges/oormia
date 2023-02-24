@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
-import Text from '../Text';
+import {CustomText} from '../Text';
 import {styles} from './style';
 
 
@@ -19,7 +19,7 @@ function Button({
       style={{...styles.buttonDefaultStyle, ...styleButton, ...validStyle}}
       disabled={disabled}>
       {icon}
-      <Text text={textButton} style={{...styles.textStyle, ...textStyle}} />
+      <CustomText values={textButton} globalStyle={{...styles.textStyle, ...textStyle}} />
     </TouchableOpacity>
   );
 

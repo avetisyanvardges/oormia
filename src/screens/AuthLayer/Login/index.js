@@ -1,16 +1,13 @@
 import React,{useState} from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
-
-import Text from '../../../components/Text';
-import {Colors} from '../../../assets/RootStyles';
-import {deviceInfo} from '../../../assets/deviceInfo';
+import {CustomText} from 'components/Text';
 import Input from '../../../components/input';
 import ScreenMask from '../../../components/screenMask';
 import {Formik} from 'formik';
-import {validationSchema} from '../../../constants/validations';
+import {validationSchema} from 'constants/validations';
 import {styles} from '../SignUp/style';
 import Button from '../../../components/button';
-import {routNames} from '../../../constants/routNames';
+import {routNames} from 'constants/routNames';
 
 const LoginScreen = ({navigation}) => {
   return (
@@ -37,7 +34,7 @@ const LoginScreen = ({navigation}) => {
         }) => (
           <View>
             <View style={styles.container}>
-              <Text text="Log In" style={styles.textStyle} />
+              <CustomText values='Log In'  globalStyle={styles.textStyle} />
               <Input
                 placeholder="Email *"
                 value={values.email}
@@ -47,9 +44,9 @@ const LoginScreen = ({navigation}) => {
               />
               <View style={styles.bottomContainer}>
                 <TouchableOpacity onPress={() => console.log('hay')}>
-                  <Text
-                    text="I agree with the Terms of Servise & Privacy Policy"
-                    style={styles.textButtonText}
+                  <CustomText
+                    values="I agree with the Terms of Servise & Privacy Policy"
+                    globalStyle={styles.textButtonText}
                   />
                 </TouchableOpacity>
                 <Button
@@ -61,17 +58,17 @@ const LoginScreen = ({navigation}) => {
                 />
                 <TouchableOpacity
                   onPress={() => navigation.navigate(routNames.FORGOT)}>
-                  <Text text="Forgot password" style={styles.signInText} />
+                  <CustomText values="Forgot password" globalStyle={styles.signInText} />
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => navigation.navigate(routNames.REGISTRATION)}>
-                  <Text text="Sign Up" style={styles.signInText} />
+                  <CustomText values="Sign Up" globalStyle={styles.signInText} />
                 </TouchableOpacity>
                 <View style={styles.signInTextContainer}>
                   <TouchableOpacity onPress={() => console.log('hay')}>
-                    <Text
-                      text="Already haven an account?"
-                      style={styles.textButtonText}
+                    <CustomText
+                      values="Already haven an account?"
+                      globalStyle={styles.textButtonText}
                     />
                   </TouchableOpacity>
                 </View>
