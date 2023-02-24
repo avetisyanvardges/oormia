@@ -5,17 +5,17 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {deviceInfo} from '../../assets/deviceInfo';
-import {normalize} from '../../assets/RootStyles/normalize';
+import {deviceInfo} from 'assets/deviceInfo';
+import {normalize} from 'assets/RootStyles/normalize';
 import styles from './style';
-import Text from '../Text';
+import {CustomText} from '../Text';
 
 function Index({
   title = '',
   titleStyle = {},
   inputStyle = {},
-  size,
-  type,
+  size=10,
+  type='sad',
   placeholder = '',
   value = '',
   inputContainerStyle = {},
@@ -38,9 +38,9 @@ function Index({
         : {})}>
       <View style={{...styles.container, ...inputContainerStyle}}>
         {title ? (
-          <Text
-            text={title}
-            style={{
+          <CustomText
+            values={title}
+            globalStyle={{
               position: 'absolute',
               marginTop: normalize(-30),
               ...titleStyle,
@@ -70,7 +70,7 @@ function Index({
           />
           <TouchableOpacity onPress={iconOnClick}>{icon}</TouchableOpacity>
         </View>
-        <Text text={errorText} style={{paddingLeft: 6, color: 'red'}} />
+        <CustomText text={errorText} style={{paddingLeft: 6, color: 'red'}} />
       </View>
     </KeyboardAvoidingView>
   );

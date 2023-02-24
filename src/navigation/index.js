@@ -20,7 +20,7 @@ const StackNavigation = () => {
         }}
         initialRouteName={routNames.APP_LAYER}>
         <Stack.Screen name={routNames.AUTH_LAYER} component={AuthStack} />
-        <Stack.Screen name={routNames.APP_LAYER} component={AppStack} />
+        {/*<Stack.Screen name={routNames.APP_LAYER} component={AppStack} />*/}
       </Stack.Navigator>
     </NavigationContainer>
   );
