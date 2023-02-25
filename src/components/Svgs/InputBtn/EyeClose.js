@@ -5,7 +5,7 @@ import {normalize} from "assets/RootStyles/normalize";
 function EyeClose({width, height, colors}) {
     return (
         <Svg
-            width={normalize(width|| 20)}
+            width={normalize(width|| 23)}
             height={normalize(height || 18)}
             viewBox="0 0 20 18"
             fill="none"

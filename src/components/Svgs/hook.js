@@ -16,9 +16,37 @@ import {
   Clear,
   EyeClose,
   EyeOpen,
-} from './InputBtn'
+} from './InputBtn';
+import {
+  FbIcon,
+  VkIcon,
+  InstIcon,
+  AppleIcon,
+  GoogleIcon,
+} from "./ButtonIcon";
+import {
+  ArrowLeft
+} from "./Assets"
 
 export const ICONS = {
+  [ICON_NAMES.ASSETS_ICON.ARROW_LEFT]: ({width, height, size, color}) => (
+    <ArrowLeft width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.BUTTON_ICON.GOOGLE]: ({width, height, size, color}) => (
+    <GoogleIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.BUTTON_ICON.APPLE]: ({width, height, size, color}) => (
+    <AppleIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.BUTTON_ICON.INST]: ({width, height, size, color}) => (
+    <InstIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.BUTTON_ICON.VK]: ({width, height, size, color}) => (
+    <VkIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.BUTTON_ICON.FB]: ({width, height, size, color}) => (
+    <FbIcon width={width} height={height} size={size} color={color} />
+  ),
   [ICON_NAMES.INPUT_BTN.CLEAR]: ({width, height, size, color}) => (
       <Clear width={width} height={height} size={size} color={color} />
   ),

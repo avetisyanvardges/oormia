@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import {ScrollView, View, TouchableOpacity, Pressable} from 'react-native';
-import Input from '../../../components/input';
-import {CustomText} from '../../../components/Text';
+import Input from 'components/input';
+import { CustomText } from 'components/Text';
 import {styles} from './style';
-import Button from '../../../components/button';
-import Stroke from '../../../assets/img/svg/stroke/stroke';
+import Button from 'components/button';
+import Stroke from 'assets/img/svg/stroke/stroke';
 import {Formik} from 'formik';
 import {validationSchema} from 'constants/validations';
-import {routNames} from '../../../constants/routNames';
-import ScreenMask from '../../../components/screenMask';
+import { routNames } from 'constants/routNames';
+import ScreenMask from 'components/screenMask';
 
 function SignUp({navigation}) {
   const [secureTextEntry, setSecureTextEntry] = useState(false);
@@ -41,7 +41,7 @@ function SignUp({navigation}) {
           dirty,
         }) => (
           <ScrollView showsVerticalScrollIndicator={false}>
-            {/*<View style={styles.container}>*/}
+            <View style={styles.container}>
               <CustomText values="SIgn Up" globalStyle={styles.textStyle} />
               <Input
                 placeholder="First Name *"
@@ -50,61 +50,76 @@ function SignUp({navigation}) {
                 errorText={touched.firstName && errors.firstName}
                 onBlur={handleBlur('firstname')}
               />
-            {/*  <Input*/}
-            {/*    placeholder="Last Name *"*/}
-            {/*    value={values.lastName}*/}
-            {/*    onChange={handleChange('lastName')}*/}
-            {/*    errorText={touched.lastName && errors.lastName}*/}
-            {/*    onBlur={handleBlur('lastName')}*/}
-            {/*  />*/}
-            {/*  <Input*/}
-            {/*    placeholder="Number *"*/}
-            {/*    value={values.number}*/}
-            {/*    onChange={handleChange('number')}*/}
-            {/*    errorText={touched.number && errors.number}*/}
-            {/*    onBlur={handleBlur('number')}*/}
-            {/*  />*/}
-            {/*  <Input*/}
-            {/*    placeholder="Email *"*/}
-            {/*    value={values.email}*/}
-            {/*    onChange={handleChange('email')}*/}
-            {/*    errorText={touched.email && errors.email}*/}
-            {/*    onBlur={handleBlur('email')}*/}
-            {/*  />*/}
-            {/*  <Input*/}
-            {/*    placeholder="Password *"*/}
-            {/*    value={values.password}*/}
-            {/*    onChange={handleChange('password')}*/}
-            {/*    errorText={touched.password && errors.password}*/}
-            {/*    onBlur={handleBlur('password')}*/}
-            {/*    icon={icon}*/}
-            {/*    secureTextEntry={secureTextEntry}*/}
-            {/*    iconOnClick={showHide}*/}
-            {/*  />*/}
-            {/*  <View style={styles.bottomContainer}>*/}
-            {/*    <TouchableOpacity onPress={() => console.log('hay')}>*/}
-            {/*      <Text*/}
-            {/*        text="I agree with the Terms of Servise & Privacy Policy"*/}
-            {/*        style={styles.textButtonText}*/}
-            {/*      />*/}
-            {/*    </TouchableOpacity>*/}
-            {/*    <Button*/}
-            {/*      styleButton={styles.buttonStyle}*/}
-            {/*      textButton="Join us"*/}
-            {/*      textStyle={styles.buttonTextStyle}*/}
-            {/*      onClick={handleSubmit}*/}
-            {/*      disabled={!(isValid && dirty)}*/}
-            {/*    />*/}
-            {/*    <View style={styles.signInTextContainer}>*/}
-            {/*      <TouchableOpacity onPress={() => console.log('hay')}>*/}
-            {/*        <Text*/}
-            {/*          text="Already haven an account?"*/}
-            {/*          style={styles.textButtonText}*/}
-            {/*        />*/}
-            {/*      </TouchableOpacity>*/}
-            {/*      /!*<TouchableOpacity  onPress={navigation.navigate(routNames.LOGIN)}><Text  Text="Sign in"  style={styles.signInText} /></TouchableOpacity>*!/*/}
-            {/*    </View>*/}
-            {/*  </View>*/}
+             <Input
+                placeholder="Last Name *"
+                value={values.lastName}
+                onChange={handleChange('lastName')}
+                errorText={touched.lastName && errors.lastName}
+                onBlur={handleBlur('lastName')}
+              />
+              <Input
+                placeholder="Number *"
+                value={values.number}
+                onChange={handleChange('number')}
+                errorText={touched.number && errors.number}
+                onBlur={handleBlur('number')}
+              />
+              <Input
+                placeholder="Email *"
+                value={values.email}
+                onChange={handleChange('email')}
+                errorText={touched.email && errors.email}
+                onBlur={handleBlur('email')}
+              />
+              <Input
+                secure
+                placeholder="Password *"
+                value={values.password}
+                onChange={handleChange('password')}
+                errorText={touched.password && errors.password}
+                onBlur={handleBlur('password')}
+                secureTextEntry={secureTextEntry}
+                iconOnClick={showHide}
+              />
+              <Input
+                secure
+                placeholder="Confirmpassword *"
+                value={values.confirmPassword}
+                onChange={handleChange('confirmPassword')}
+                errorText={touched.confirmPassword && errors.confirmPassword}
+                onBlur={handleBlur('confirmPassword')}
+                secureTextEntry={secureTextEntry}
+                iconOnClick={showHide}
+              />
+              <View style={styles.bottomContainer}>
+                <TouchableOpacity onPress={() => console.log('hay')}>
+                  <CustomText
+                    values="I agree with the Terms of Servise & Privacy Policy"
+                    globalStyle={styles.textButtonText}
+                  />
+                </TouchableOpacity>
+                <Button
+                  styleButton={styles.buttonStyle}
+                  textButton="Join us"
+                  textStyle={styles.buttonTextStyle}
+                  onClick={handleSubmit}
+                  disabled={!(isValid && dirty)}
+                />
+                <View style={styles.signInTextContainer}>
+                  <TouchableOpacity onPress={() => console.log('hay')}>
+                    <CustomText
+                      values="Already haven an account?"
+                      globalStyle={styles.textButtonText}
+                    />
+                  </TouchableOpacity>
+                  {/* <TouchableOpacity 
+                     onPress={navigation.navigate(routNames.LOGIN)}>
+                    <CustomText 
+                      values="Sign in"
+                      globalStyle={styles.signInText} />
+                  </TouchableOpacity> */}
+                </View>
+              </View> 
               <Pressable
                 onPress={() => navigation.navigate(routNames.CODE_VERIFICATION)}
                 style={{
@@ -116,7 +131,7 @@ function SignUp({navigation}) {
                 }}>
                 <CustomText values="CUSTOM NEXT" />
               </Pressable>
-            {/*</View>*/}
+            </View>
           </ScrollView>
         )}
       </Formik>

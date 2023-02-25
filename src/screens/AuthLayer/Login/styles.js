@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
         width: normalize(328),
         height: normalize(38),
         backgroundColor: Colors.lilac,
-        marginTop: normalize(-10),
+        marginTop: normalize(15),
         marginBottom: normalize(9)
     },
     buttonTextStyle: {
@@ -57,10 +57,10 @@ export const styles = StyleSheet.create({
     buttonApple: {
         width: normalize(326),
         height: normalize(38),
+        marginBottom: normalize(13),
         backgroundColor: Colors.black[50],
-        marginBottom: normalize(13)
     },
-    appleText: {
+    appleGoogleText: {
         color: Colors.grey[1200],
         ...FontStyle.text_h5.regular
     },
@@ -70,10 +70,6 @@ export const styles = StyleSheet.create({
         justifyContent: "flex-start",
         paddingLeft: normalize(15),
         marginBottom: normalize(13)
-    },
-    googleText: {
-        color: Colors.grey[1200],
-        ...FontStyle.text_h5.regular
     },
     fbVkContainer: {
         flexDirection:"row",

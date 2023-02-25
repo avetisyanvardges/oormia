@@ -10,7 +10,8 @@ export const styles = StyleSheet.create({
     },
     firstText: {
         ...FontStyle.text_h5.regular,
-        color: Colors.black[100]
+        color: Colors.black[100],
+        marginTop: normalize(39)
     },
     secondText: {
         ...FontStyle.text_h6.regular,
