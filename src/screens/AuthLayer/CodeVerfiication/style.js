@@ -55,12 +55,15 @@ export const styles = StyleSheet.create({
         lineHeight: normalize(15),
     },
     keyboardContainer: {
+        marginTop:'auto',
         borderTopWidth: 0.5,
         borderTopColor: Colors.grey[1100],
         flexDirection: "row",
         flexWrap: "wrap",
     },
     numberContainer: {
+        // backgroundColor:'red',
+        height:normalize(50),
         justifyContent: "center",
         alignItems: "center",
         width: "33%",

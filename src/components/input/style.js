@@ -1,5 +1,6 @@
 import {StyleSheet} from "react-native";
-import {normalize} from "../../assets/RootStyles/normalize";
+import {normalize} from "assets/RootStyles/normalize";
+import {Colors} from "assets/RootStyles";
 
 const styles = StyleSheet.create({
     container: {
@@ -9,11 +10,11 @@ const styles = StyleSheet.create({
     inputContainerDef:{
         width: normalize(326),
         height: normalize(38),
-        backgroundColor: "#F3F3F3",
+        backgroundColor: Colors.grey[1000],
         borderRadius: normalize(10),
         alignItems: "center",
         justifyContent: "space-between",
-        paddingRight: 10,
+        paddingRight:normalize(10),
         overflow:'hidden',
     },
     inputDefault: {

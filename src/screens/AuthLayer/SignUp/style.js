@@ -1,7 +1,7 @@
 import {StyleSheet} from "react-native";
 import {normalize} from "../../../assets/RootStyles/normalize";
 import {Colors} from "../../../assets/RootStyles";
-import { FontStyle } from "../../../assets/RootStyles";
+import {FontStyle} from "../../../assets/RootStyles";
 
 export const styles = StyleSheet.create({
     container: {
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     },
     bottomContainer: {
         marginVertical: normalize(10),
-        width:'100%',
+        width: '100%',
         alignItems: "center",
 
     },
@@ -46,10 +46,10 @@ export const styles = StyleSheet.create({
     signInText: {
         color: Colors.lilac,
     },
-    forgot:{
-        width:'100%',
-        marginVertical:normalize(10),
-      alignItems:'flex-start'
+    forgot: {
+        width: '100%',
+        marginVertical: normalize(10),
+        alignItems: 'flex-start'
     },
     signInButton: {
         marginLeft: normalize(110)

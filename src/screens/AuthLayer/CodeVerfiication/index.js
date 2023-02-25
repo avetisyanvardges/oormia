@@ -62,7 +62,6 @@ function CodeVerification() {
           numberTextStyle={styles.numberTextStyle}
         />
         <CodeVerificationNumber
-          numberContainerStyle={styles.numberContainer}
           numberText={<ArrowRight />}
           onClick={onDelete}
           numberTextStyle={styles.arrowStyle}
