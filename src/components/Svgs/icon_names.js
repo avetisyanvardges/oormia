@@ -13,7 +13,10 @@ export const ICON_NAMES = {
   },
   INPUT_BTN:{
     CLEAR:'Clear',
-    EYE_OPEN:'EYE_OPEN',
-    EYE_CLOSE:'EYE_CLOSE',
+    EYE_OPEN:'EeyOpen',
+    EYE_CLOSE:'EyeClose',
+  },
+  ASSETS_SVG:{
+    CHECKBOX:'Checkbox',
   }
 };

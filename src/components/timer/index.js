@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Text from '../Text';
+import Text, {CustomText} from '../Text';
 
 const getPadTime = time => time.toString().padStart(2, 0);
 
@@ -21,7 +21,7 @@ function Index({timerText = '', timerStyle, duration = 120}) {
   }, []);
 
   return (
-    <Text text={`${timerText} ${minutes}:${seconds}`} style={timerStyle} />
+    <CustomText values={`${timerText} ${minutes}:${seconds}`} globalStyle={timerStyle} />
   );
 }
 

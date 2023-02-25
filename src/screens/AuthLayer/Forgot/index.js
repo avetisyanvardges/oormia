@@ -3,7 +3,7 @@ import ScreenMask from '../../../components/screenMask';
 import {CustomText } from "components/Text";
 import Input from 'components/input';
 import { View, Keyboard } from 'react-native';
-import Button from 'components/button';
+import Button from 'components/Button';
 import {styles} from "./style";
 import { Formik } from 'formik';
 import { validationSchema } from 'constants/validations';

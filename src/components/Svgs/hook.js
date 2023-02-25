@@ -16,9 +16,15 @@ import {
   Clear,
   EyeClose,
   EyeOpen,
-} from './InputBtn'
+} from './InputBtn';
+import {
+  Checkbox
+} from "./Assets";
 
 export const ICONS = {
+  [ICON_NAMES.ASSETS_SVG.CHECKBOX]:({width, height, size, color})=>(
+    <Checkbox width={width} height={height} size={size} color={color} />
+  ),
   [ICON_NAMES.INPUT_BTN.CLEAR]: ({width, height, size, color}) => (
       <Clear width={width} height={height} size={size} color={color} />
   ),

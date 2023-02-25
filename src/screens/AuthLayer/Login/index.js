@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
 import {CustomText} from 'components/Text';
-import Input from '../../../components/input';
+import Input from "components/input";
 import ScreenMask from '../../../components/screenMask';
 import {Formik} from 'formik';
 import {validationSchema} from 'constants/validations';
 import {styles} from '../SignUp/style';
-import Button from '../../../components/button';
+import Button from '../../../components/Button';
 import {routNames} from 'constants/routNames';
 import Language from "components/language";
 
