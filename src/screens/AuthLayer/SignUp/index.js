@@ -7,8 +7,6 @@ import Button from '../../../components/button';
 import Stroke from '../../../assets/img/svg/stroke/stroke';
 import {Formik} from 'formik';
 import {validationSchema} from 'constants/validations';
-import HideIcon from '../../../assets/img/svg/show/hide';
-import ShowIcon from '../../../assets/img/svg/show/show';
 import {routNames} from '../../../constants/routNames';
 import ScreenMask from '../../../components/screenMask';
 
@@ -19,7 +17,6 @@ function SignUp({navigation}) {
     setSecureTextEntry(!secureTextEntry);
   };
 
-  const icon = secureTextEntry ? <ShowIcon /> : <HideIcon />;
   return (
     <ScreenMask>
       <Formik
@@ -108,17 +105,17 @@ function SignUp({navigation}) {
             {/*      /!*<TouchableOpacity  onPress={navigation.navigate(routNames.LOGIN)}><Text  Text="Sign in"  style={styles.signInText} /></TouchableOpacity>*!/*/}
             {/*    </View>*/}
             {/*  </View>*/}
-            {/*  <Pressable*/}
-            {/*    onPress={() => navigation.navigate(routNames.CODE_VERIFICATION)}*/}
-            {/*    style={{*/}
-            {/*      alignItems: 'center',*/}
-            {/*      justifyContent: 'center',*/}
-            {/*      width: 160,*/}
-            {/*      height: 60,*/}
-            {/*      backgroundColor: 'red',*/}
-            {/*    }}>*/}
-            {/*    <Text text="CUSTOM NEXT" />*/}
-            {/*  </Pressable>*/}
+              <Pressable
+                onPress={() => navigation.navigate(routNames.CODE_VERIFICATION)}
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: 160,
+                  height: 60,
+                  backgroundColor: 'red',
+                }}>
+                <CustomText values="CUSTOM NEXT" />
+              </Pressable>
             {/*</View>*/}
           </ScrollView>
         )}

@@ -1,13 +1,77 @@
 import React from 'react';
 import ScreenMask from '../../../components/screenMask';
-import Text from '../../../components/Text';
+import {CustomText } from "components/Text";
+import Input from 'components/input';
+import { View, Keyboard } from 'react-native';
+import Button from 'components/button';
+import {styles} from "./style";
+import { Formik } from 'formik';
+import { validationSchema } from 'constants/validations';
+import { Pressable } from 'react-native';
 
-function Index(props) {
-  return (
-    <ScreenMask>
-      <Text text="forgot" />
-    </ScreenMask>
-  );
+function Index({navigation}) {
+
+    return (
+        <ScreenMask style={styles.screenMask}>
+            <Pressable onPress={()=>navigation.goBack()} style={{
+                backgroundColor:'red',
+                width:50,
+                height:50
+            }}>
+                <CustomText values={'GOBACKS'}/>
+            </Pressable>
+            <Formik
+                validationSchema={validationSchema}
+                initialValues={{
+                    email: '',
+                }}
+                onSubmit={values => console.log(values)}>
+                {({
+                      handleChange,
+                      handleBlur,
+                      handleSubmit,
+                      values,
+                      errors,
+                      touched,
+                      isValid,
+                      dirty,
+                  }) => (
+                    <View>
+                        {/*<Pressable*/}
+                        {/*    onPress={Keyboard.dismiss}*/}
+                        {/*    style={{width: "100%", height: "100%"}}*/}
+                        {/*>*/}
+                            <CustomText
+                                values="Forgot your password"
+                                globalStyle={styles.firstText}
+                            />
+                            <CustomText
+                                values="We will send the code to reset the password to your mail"
+                                globalStyle={styles.secondText}
+                            />
+                            <Input
+                                placeholder='E-mail'
+                                value={values.email}
+                                onChange={handleChange('email')}
+                                errorText={touched.email && errors.email}
+                                onBlur={handleBlur('email')}
+                            />
+                            <View style={styles.line}></View>
+                            <Button
+                                textButton='Reset'
+                                styleButton={styles.button}
+                                textStyle={styles.buttonText}
+                                onClick={handleSubmit}
+                                disabled={!(isValid && dirty)}
+                            />
+                        {/*</Pressable>*/}
+                    </View>
+                )}
+            </Formik>
+        </ScreenMask>
+    );
 }
 
 export default Index;
+
+

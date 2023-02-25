@@ -11,4 +11,9 @@ export const ICON_NAMES = {
     USER: 'userIcon',
     WORLD: 'worldIcon',
   },
+  INPUT_BTN:{
+    CLEAR:'Clear',
+    EYE_OPEN:'EYE_OPEN',
+    EYE_CLOSE:'EYE_CLOSE',
+  }
 };
