@@ -6,11 +6,10 @@ import { FontStyle } from "../../../assets/RootStyles";
 export const styles = StyleSheet.create({
     container: {
         alignItems: "center",
-        paddingTop: normalize(20)
+        padding: normalize(20),
     },
     textStyle: {
         alignSelf: "flex-start",
-        marginLeft: normalize(25),
         marginBottom: normalize(17),
         fontSize: normalize(16),
         lineHeight: normalize(20)
@@ -21,8 +20,10 @@ export const styles = StyleSheet.create({
         height: normalize(63)
     },
     bottomContainer: {
-        marginTop: normalize(18),
-        alignItems: "center"
+        marginVertical: normalize(10),
+        width:'100%',
+        alignItems: "center",
+
     },
     buttonStyle: {
         width: normalize(328),
@@ -45,6 +46,11 @@ export const styles = StyleSheet.create({
     signInText: {
         color: Colors.lilac,
     },
+    forgot:{
+        width:'100%',
+        marginVertical:normalize(10),
+      alignItems:'flex-start'
+    },
     signInButton: {
         marginLeft: normalize(110)
     },
@@ -53,5 +59,21 @@ export const styles = StyleSheet.create({
         ...FontStyle.display_h6.medium,
         fontSize: normalize(12),
         lineHeight: normalize(15),
-    }
+    },
+    orContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginTop: normalize(10),
+        marginBottom: normalize(44),
+    },
+    or: {
+        borderWidth: 1,
+        borderColor: Colors.grey[1100],
+        width: normalize(142)
+    },
+    orText: {
+        marginHorizontal: normalize(8),
+        color: Colors.black[100],
+        ...FontStyle.text_h5.medium
+    },
 })

@@ -1,12 +1,13 @@
 import { StyleSheet } from "react-native";
-import { normalize } from "../../../assets/RootStyles/normalize";
-import { Colors } from "../../../assets/RootStyles";
-import { FontStyle } from "../../../assets/RootStyles";
+import { normalize } from "assets/RootStyles/normalize";
+import { Colors } from "assets/RootStyles";
+import { FontStyle } from "assets/RootStyles";
 
 export const styles = StyleSheet.create({
     container: {
         alignItems:"center",
         padding: normalize(16),
+        width:'100%'
     },
     textStyle: {
         alignSelf: "flex-start",

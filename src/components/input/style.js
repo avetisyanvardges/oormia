@@ -3,26 +3,33 @@ import {normalize} from "../../assets/RootStyles/normalize";
 
 const styles = StyleSheet.create({
     container: {
-        marginBottom: normalize(15),
+        marginVertical: normalize(6),
         justifyContent: "flex-start",
-     
     },
     inputContainerDef:{
         width: normalize(326),
         height: normalize(38),
         backgroundColor: "#F3F3F3",
-        borderRadius: normalize(12),
-        flexDirection: "row",
+        borderRadius: normalize(10),
         alignItems: "center",
         justifyContent: "space-between",
-        paddingRight: 10
-        
+        paddingRight: 10,
+        overflow:'hidden',
     },
     inputDefault: {
         width: normalize(290),
         fontSize: normalize(14),
         lineHeight: normalize(17),
-        paddingLeft: normalize(14), 
+        paddingLeft: normalize(14),
+    },
+    title:{
+        marginBottom:normalize(10)
+    },
+    errBlock:{
+        position:'absolute',
+        width: '100%',
+        bottom:0,
+        height: normalize(3),
     },
     textStyle: {
         // width: RW(330),

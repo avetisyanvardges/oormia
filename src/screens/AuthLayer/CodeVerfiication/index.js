@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import Text from '../../../components/Text';
+import {CustomText} from 'components/Text';
 import {styles} from './style';
 import Timer from '../../../components/timer';
 import CodeVerificationNumber from './CodeVerificationNumber';
@@ -28,14 +28,14 @@ function CodeVerification() {
   return (
     <ScreenMask>
       <View style={styles.containerText}>
-        <Text text="Code Verification" style={styles.textCodV} />
-        <Text text="Enter verification code here" style={styles.textEnterV} />
+        <CustomText values="Code Verification" globalStyle={styles.textCodV} />
+        <CustomText values="Enter verification code here" globalStyle={styles.textEnterV} />
       </View>
       <View style={styles.containerItem}>
         {Array.from({length: 4}).map((el, i) => {
           return (
             <View style={styles.item} key={i}>
-              <Text text={pin[i]} style={styles.numberTextStyle} />
+              <CustomText values={pin[i]} globalStyle={styles.numberTextStyle} />
             </View>
           );
         })}

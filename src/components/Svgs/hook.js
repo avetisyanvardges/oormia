@@ -12,8 +12,22 @@ import {
   UserIcon,
   WorldIcon,
 } from './TabBar';
+import {
+  Clear,
+  EyeClose,
+  EyeOpen,
+} from './InputBtn'
 
 export const ICONS = {
+  [ICON_NAMES.INPUT_BTN.CLEAR]: ({width, height, size, color}) => (
+      <Clear width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.INPUT_BTN.EYE_OPEN]: ({width, height, size, color}) => (
+      <EyeClose width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.INPUT_BTN.EYE_CLOSE]: ({width, height, size, color}) => (
+      <EyeOpen width={width} height={height} size={size} color={color} />
+  ),
   [ICON_NAMES.TAB_BAR.CHAT]: ({width, height, size, color}) => (
     <ChatIcon width={width} height={height} size={size} color={color} />
   ),
