@@ -2,10 +2,12 @@ import React, {useState} from 'react';
 import {View} from 'react-native';
 import {CustomText} from 'components/Text';
 import {styles} from './style';
-import Timer from '../../../components/timer';
+import Timer from 'components/timer';
 import CodeVerificationNumber from './CodeVerificationNumber';
-import ArrowRight from '../../../assets/img/svg/arrow/arrowRight';
-import ScreenMask from '../../../components/screenMask';
+import ScreenMask from 'components/screenMask';
+import Icon from 'components/Svgs';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+
 
 function CodeVerification() {
   const [pin, setPin] = useState([]);
@@ -61,11 +63,14 @@ function CodeVerification() {
           onClick={onClick}
           numberTextStyle={styles.numberTextStyle}
         />
-        <CodeVerificationNumber
-          numberText={<ArrowRight />}
-          onClick={onDelete}
-          numberTextStyle={styles.arrowStyle}
-        />
+        <Icon name={ICON_NAMES.ASSETS_SVG.ARROW_LEFT} onPress={onDelete} style={styles.numberContainer} width={9} height={13}/>
+{/*=======*/}
+{/*        <CodeVerificationNumber*/}
+{/*          numberText={<ArrowRight />}*/}
+{/*          onClick={onDelete}*/}
+{/*          numberTextStyle={styles.arrowStyle}*/}
+{/*        />*/}
+{/*>>>>>>> main*/}
       </View>
     </ScreenMask>
   );

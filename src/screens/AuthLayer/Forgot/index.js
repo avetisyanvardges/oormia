@@ -8,18 +8,23 @@ import {styles} from "./style";
 import { Formik } from 'formik';
 import { validationSchema } from 'constants/validations';
 import { Pressable } from 'react-native';
+import Icon from 'components/Svgs';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
 
 function Index({navigation}) {
 
     return (
         <ScreenMask style={styles.screenMask}>
-            <Pressable onPress={()=>navigation.goBack()} style={{
-                backgroundColor:'red',
-                width:50,
-                height:50
-            }}>
-                <CustomText values={'GOBACKS'}/>
-            </Pressable>
+
+            <Icon name={ICON_NAMES.ASSETS_SVG.ARROW_LEFT} onPress={()=>navigation.goBack()}/>
+            <CustomText
+                 values="Forgot your password"
+                globalStyle={styles.firstText}
+            />
+            <CustomText
+                values="We will send the code to reset the password to your mail"
+                globalStyle={styles.secondText}
+            />
             <Formik
                 validationSchema={validationSchema}
                 initialValues={{
@@ -41,14 +46,7 @@ function Index({navigation}) {
                         {/*    onPress={Keyboard.dismiss}*/}
                         {/*    style={{width: "100%", height: "100%"}}*/}
                         {/*>*/}
-                            <CustomText
-                                values="Forgot your password"
-                                globalStyle={styles.firstText}
-                            />
-                            <CustomText
-                                values="We will send the code to reset the password to your mail"
-                                globalStyle={styles.secondText}
-                            />
+
                             <Input
                                 placeholder='E-mail'
                                 value={values.email}

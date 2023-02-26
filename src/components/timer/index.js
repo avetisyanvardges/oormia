@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Text, {CustomText} from '../Text';
+import { CustomText } from 'components/Text';
 
 const getPadTime = time => time.toString().padStart(2, 0);
 

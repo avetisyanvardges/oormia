@@ -16,7 +16,15 @@ export const ICON_NAMES = {
     EYE_OPEN:'EeyOpen',
     EYE_CLOSE:'EyeClose',
   },
+  BUTTON_ICON:{
+    FB: "FB",
+    VK: "VK",
+    INST: "INST",
+    APPLE: "APPLE",
+    GOOGLE: "GOOGLE"
+  },
   ASSETS_SVG:{
     CHECKBOX:'Checkbox',
+    ARROW_LEFT:"ArrowLeft"
   }
 };

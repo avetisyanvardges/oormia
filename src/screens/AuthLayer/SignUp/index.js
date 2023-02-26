@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import {ScrollView, View, Pressable, TouchableOpacity,} from 'react-native';
-import Input from '../../../components/input';
-import Button from "components/Button";
-import {CustomText} from 'components/Text';
+import {ScrollView, View, TouchableOpacity, Pressable} from 'react-native';
+import Input from 'components/input';
+import { CustomText } from 'components/Text';
 import {styles} from './style';
+import Button from "components/Button";
 import {Formik} from 'formik';
-import {validationSchema} from 'constants/validations';
-import {routNames} from 'constants/routNames';
 import ScreenMask from '../../../components/screenMask';
 import Checkbox from "components/Checkbox";
+import {routNames} from "constants/routNames";
+import {validationSchema} from "constants/validations";
+
 
 function SignUp({navigation}) {
     const [checked, setChecked]=useState(false)
@@ -105,6 +106,7 @@ function SignUp({navigation}) {
                       globalStyle={styles.textButtonText}
                     />
                   </TouchableOpacity>
+
                   <TouchableOpacity  onPress={()=>navigation.goBack()}>
                       <CustomText  values="Sign in"  globalStyle={styles.signInText} />
                   </TouchableOpacity>

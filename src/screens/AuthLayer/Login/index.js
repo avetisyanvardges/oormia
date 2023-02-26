@@ -9,6 +9,9 @@ import {styles} from '../SignUp/style';
 import Button from '../../../components/Button';
 import {routNames} from 'constants/routNames';
 import Language from "components/language";
+import Icon from 'components/Svgs';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { normalize } from 'assets/RootStyles/normalize';
 
 const LoginScreen = ({navigation}) => {
     return (
@@ -40,7 +43,7 @@ const LoginScreen = ({navigation}) => {
                                 <CustomText values='Log In' globalStyle={styles.textStyle}/>
                                 <Input
                                     title={'Email'}
-                                    placeholder="Email *"
+                                    placeholder="Enter mobile or e-mail"
                                     value={values.email}
                                     onChange={handleChange('email')}
                                     errorText={values.email && errors.email}
@@ -55,10 +58,10 @@ const LoginScreen = ({navigation}) => {
                                     errorText={values.password && errors.password}
                                     onBlur={handleBlur('password')}
                                 />
-                                <View style={styles.bottomContainer}>
+                                <View >
                                     <Button
                                         styleButton={styles.buttonStyle}
-                                        textButton="Join us"
+                                        textButton="Sign in"
                                         textStyle={styles.buttonTextStyle}
                                         onClick={handleSubmit}
                                         disabled={!(isValid && dirty)}
@@ -73,15 +76,56 @@ const LoginScreen = ({navigation}) => {
                                         <CustomText values="or" globalStyle={styles.orText}/>
                                         <View style={styles.or}></View>
                                     </View>
-                                    <TouchableOpacity
-                                        onPress={() => navigation.navigate(routNames.REGISTRATION)}>
-                                        <CustomText values="Sign Up" globalStyle={styles.signInText}/>
-                                    </TouchableOpacity>
+                                    <Button
+                                        styleButton={styles.buttonApple}
+                                        textButton="Login with Apple ID"
+                                        textStyle={styles.appleGoogleText}
+                                        onClick={handleSubmit}
+                                        disabled={!(isValid && dirty)}
+                                        icon={<Icon  name={ICON_NAMES.BUTTON_ICON.APPLE}/>}
+                                    />
+                                    <Button
+                                        styleButton={styles.buttonGoogle}
+                                        textButton="Login with Google"
+                                        textStyle={styles.appleGoogleText}
+                                        onClick={handleSubmit}
+                                        disabled={!(isValid && dirty)}
+                                        icon={<Icon  name={ICON_NAMES.BUTTON_ICON.GOOGLE}/>}
+                                    />
+                                  <View style={styles.fbVkContainer}>
+                                    <Button
+                                        textButton="Login"
+                                        onClick={handleSubmit}
+                                        disabled={!(isValid && dirty)}
+                                        icon={<Icon  name={ICON_NAMES.BUTTON_ICON.FB}/>}
+                                    />
+                                    <Button
+                                        styleButton={{marginHorizontal: normalize(13)}}
+                                        textButton="Login"
+                                        onClick={handleSubmit}
+                                        disabled={!(isValid && dirty)}
+                                        icon={<Icon  name={ICON_NAMES.BUTTON_ICON.VK}/>}
+                                    />
+                                    <Button
+                                        textButton="Login"
+                                        onClick={handleSubmit}
+                                        disabled={!(isValid && dirty)}
+                                        icon={<Icon  name={ICON_NAMES.BUTTON_ICON.INST}/>}
+                                    />
+                                  </View>
                                     <View style={styles.signInTextContainer}>
-                                        <TouchableOpacity onPress={() => console.log('hay')}>
+                                        <TouchableOpacity
+                                            onPress={() => console.log('hay')}>
                                             <CustomText
-                                                values="Already haven an account?"
+                                                values="Don’t have an account ?"
                                                 globalStyle={styles.textButtonText}
+                                            />
+                                        </TouchableOpacity>
+                                        <TouchableOpacity
+                                            onPress={() => navigation.navigate(routNames.REGISTRATION)}>
+                                            <CustomText
+                                            values="Sign Up"
+                                            globalStyle={styles.signInText}
                                             />
                                         </TouchableOpacity>
                                     </View>

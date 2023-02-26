@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
     },
     inputContainerDef:{
+
         width: normalize(326),
         height: normalize(38),
         backgroundColor: Colors.grey[1000],

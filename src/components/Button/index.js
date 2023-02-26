@@ -12,7 +12,7 @@ function Button({
   textStyle = {},
   disabled = '',
 }) {
-  const validStyle = disabled ? {opacity: 0.5} : {};
+  const validStyle = disabled ? {opacity: 0.7} : {};
   return (
     <TouchableOpacity
       onPress={onClick}
