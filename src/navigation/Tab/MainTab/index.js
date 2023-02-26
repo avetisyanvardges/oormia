@@ -8,6 +8,7 @@ import {CreateEvent} from 'screens/AppLayer/Create';
 import {Groups} from 'screens/AppLayer/Groups';
 import Profile from 'screens/AppLayer/Profile';
 import {HomeScreen} from 'screens/AppLayer/HomeScreen';
+import EventsScreen from 'screens/AppLayer/Events';
 
 function MainTab() {
   const Tab = createBottomTabNavigator();
@@ -18,7 +19,7 @@ function MainTab() {
         headerShown: false,
       }}
       tabBar={props => <TabBar {...props} />}>
-      <Tab.Screen name={routNames.TRIP} component={Trip} />
+      <Tab.Screen name={routNames.EVENTS} component={EventsScreen} />
       <Tab.Screen name={routNames.HOME} component={HomeScreen} />
       <Tab.Screen name={routNames.CREATE_EVENT} component={CreateEvent} />
       <Tab.Screen name={routNames.GROUPS} component={Groups} />

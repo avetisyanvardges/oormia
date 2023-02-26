@@ -23,7 +23,8 @@ const TabBar = ({state, descriptors, navigation}) => {
         <View
           style={{
             paddingBottom: normalize(16),
-            borderRadius: 15,
+            borderTopLeftRadius: normalize(20),
+            borderTopRightRadius: normalize(20),
             backgroundColor: Colors.white,
             flexDirection: 'row',
             alignItems: 'center',

@@ -9,6 +9,7 @@ export const routNames = {
   COMPASS: 'Compass',
   HOME: 'homeScreen',
   TRIP: 'tripScreen',
+  EVENTS: 'eventScreen',
   CREATE_EVENT: 'createEvent',
   GROUPS: 'groupsScreen',
   PROFILE: 'profileScreen',
