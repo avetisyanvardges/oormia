@@ -3,7 +3,7 @@ import ScreenMask from '../../../components/screenMask';
 import {CustomText } from "components/Text";
 import Input from 'components/input';
 import { View, Keyboard } from 'react-native';
-import Button from 'components/button';
+import Button from 'components/Button';
 import {styles} from "./style";
 import { Formik } from 'formik';
 import { validationSchema } from 'constants/validations';
@@ -15,8 +15,8 @@ function Index({navigation}) {
 
     return (
         <ScreenMask style={styles.screenMask}>
-            
-            <Icon name={ICON_NAMES.ASSETS_ICON.ARROW_LEFT} onPress={()=>navigation.goBack()}/>
+
+            <Icon name={ICON_NAMES.ASSETS_SVG.ARROW_LEFT} onPress={()=>navigation.goBack()}/>
             <CustomText
                  values="Forgot your password"
                 globalStyle={styles.firstText}
@@ -46,7 +46,7 @@ function Index({navigation}) {
                         {/*    onPress={Keyboard.dismiss}*/}
                         {/*    style={{width: "100%", height: "100%"}}*/}
                         {/*>*/}
-                            
+
                             <Input
                                 placeholder='E-mail'
                                 value={values.email}

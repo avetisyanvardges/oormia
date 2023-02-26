@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
 import {CustomText} from 'components/Text';
-import Input from '../../../components/input';
+import Input from "components/input";
 import ScreenMask from '../../../components/screenMask';
 import {Formik} from 'formik';
 import {validationSchema} from 'constants/validations';
-import {styles} from './styles';
-import Button from '../../../components/button';
+import {styles} from '../SignUp/style';
+import Button from '../../../components/Button';
 import {routNames} from 'constants/routNames';
 import Language from "components/language";
 import Icon from 'components/Svgs';
@@ -42,6 +42,7 @@ const LoginScreen = ({navigation}) => {
                                 <Language languages={['AM', 'RU', 'ENG']}/>
                                 <CustomText values='Log In' globalStyle={styles.textStyle}/>
                                 <Input
+                                    title={'Email'}
                                     placeholder="Enter mobile or e-mail"
                                     value={values.email}
                                     onChange={handleChange('email')}
@@ -49,6 +50,7 @@ const LoginScreen = ({navigation}) => {
                                     onBlur={handleBlur('email')}
                                 />
                                 <Input
+                                    title={'Password'}
                                     secure
                                     placeholder="Password *"
                                     value={values.password}
@@ -92,7 +94,6 @@ const LoginScreen = ({navigation}) => {
                                     />
                                   <View style={styles.fbVkContainer}>
                                     <Button
-                                        
                                         textButton="Login"
                                         onClick={handleSubmit}
                                         disabled={!(isValid && dirty)}
@@ -113,7 +114,7 @@ const LoginScreen = ({navigation}) => {
                                     />
                                   </View>
                                     <View style={styles.signInTextContainer}>
-                                        <TouchableOpacity 
+                                        <TouchableOpacity
                                             onPress={() => console.log('hay')}>
                                             <CustomText
                                                 values="Don’t have an account ?"
@@ -123,7 +124,7 @@ const LoginScreen = ({navigation}) => {
                                         <TouchableOpacity
                                             onPress={() => navigation.navigate(routNames.REGISTRATION)}>
                                             <CustomText
-                                            values="Sign Up" 
+                                            values="Sign Up"
                                             globalStyle={styles.signInText}
                                             />
                                         </TouchableOpacity>

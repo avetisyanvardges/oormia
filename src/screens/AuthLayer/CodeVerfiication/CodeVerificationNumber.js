@@ -1,18 +1,17 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import {CustomText} from 'components/Text';
+import {styles} from './style';
 
 function CodeVerificationNumber({
   numberText,
-  numberTextStyle,
-  numberContainerStyle,
   onClick,
 }) {
   return (
     <TouchableOpacity
-      style={numberContainerStyle}
+      style={styles.numberContainer}
       onPress={() => onClick(numberText)}>
-      <CustomText values={numberText} globalStyle={numberTextStyle} />
+      <CustomText values={numberText} globalStyle={styles.numberTextStyle} />
     </TouchableOpacity>
   );
 }

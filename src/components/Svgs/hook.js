@@ -25,11 +25,15 @@ import {
   GoogleIcon,
 } from "./ButtonIcon";
 import {
-  ArrowLeft
+  ArrowLeft,
+  Checkbox,
 } from "./Assets"
 
 export const ICONS = {
-  [ICON_NAMES.ASSETS_ICON.ARROW_LEFT]: ({width, height, size, color}) => (
+  [ICON_NAMES.ASSETS_SVG.ARROW_LEFT]: ({width, height, size, color}) => (
+      <Checkbox width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.ASSETS_SVG.ARROW_LEFT]: ({width, height, size, color}) => (
     <ArrowLeft width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.BUTTON_ICON.GOOGLE]: ({width, height, size, color}) => (

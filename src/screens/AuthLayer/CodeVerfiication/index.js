@@ -63,7 +63,14 @@ function CodeVerification() {
           onClick={onClick}
           numberTextStyle={styles.numberTextStyle}
         />
-        <Icon name={ICON_NAMES.ASSETS_ICON.ARROW_LEFT} onPress={onDelete} style={styles.numberContainer} width={9} height={13}/>
+        <Icon name={ICON_NAMES.ASSETS_SVG.ARROW_LEFT} onPress={onDelete} style={styles.numberContainer} width={9} height={13}/>
+{/*=======*/}
+{/*        <CodeVerificationNumber*/}
+{/*          numberText={<ArrowRight />}*/}
+{/*          onClick={onDelete}*/}
+{/*          numberTextStyle={styles.arrowStyle}*/}
+{/*        />*/}
+{/*>>>>>>> main*/}
       </View>
     </ScreenMask>
   );

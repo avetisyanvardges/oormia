@@ -5,13 +5,13 @@ import { FontStyle } from "assets/RootStyles";
 
 export const styles = StyleSheet.create({
     screenMask: {
-        paddingTop: normalize(40),
+        paddingTop: normalize(20),
         alignItems: "center"
     },
     firstText: {
         ...FontStyle.text_h5.regular,
         color: Colors.black[100],
-        marginTop: normalize(39)
+        marginTop: normalize(20)
     },
     secondText: {
         ...FontStyle.text_h6.regular,
@@ -35,6 +35,6 @@ export const styles = StyleSheet.create({
         backgroundColor: Colors.grey[1100],
         width: normalize(328),
         height: normalize(1),
-        marginVertical: normalize(26)
+        marginVertical: normalize(20)
     }
 })

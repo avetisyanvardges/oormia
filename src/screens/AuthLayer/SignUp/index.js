@@ -3,19 +3,16 @@ import {ScrollView, View, TouchableOpacity, Pressable} from 'react-native';
 import Input from 'components/input';
 import { CustomText } from 'components/Text';
 import {styles} from './style';
-import Button from 'components/button';
-import Stroke from 'assets/img/svg/stroke/stroke';
+import Button from "components/Button";
 import {Formik} from 'formik';
-import {validationSchema} from 'constants/validations';
-import { routNames } from 'constants/routNames';
-import ScreenMask from 'components/screenMask';
+import ScreenMask from '../../../components/screenMask';
+import Checkbox from "components/Checkbox";
+import {routNames} from "constants/routNames";
+import {validationSchema} from "constants/validations";
+
 
 function SignUp({navigation}) {
-  const [secureTextEntry, setSecureTextEntry] = useState(false);
-
-  const showHide = () => {
-    setSecureTextEntry(!secureTextEntry);
-  };
+    const [checked, setChecked]=useState(false)
 
   return (
     <ScreenMask>
@@ -44,60 +41,57 @@ function SignUp({navigation}) {
             <View style={styles.container}>
               <CustomText values="SIgn Up" globalStyle={styles.textStyle} />
               <Input
+                title='First Name'
                 placeholder="First Name *"
                 value={values.firstName}
                 onChange={handleChange('firstName')}
-                errorText={touched.firstName && errors.firstName}
+                errorText={values.firstName && errors.firstName}
                 onBlur={handleBlur('firstname')}
               />
-             <Input
+              <Input
+                title='Last Name'
                 placeholder="Last Name *"
                 value={values.lastName}
                 onChange={handleChange('lastName')}
-                errorText={touched.lastName && errors.lastName}
+                errorText={values.lastName && errors.lastName}
                 onBlur={handleBlur('lastName')}
               />
               <Input
+                title='Number'
                 placeholder="Number *"
                 value={values.number}
                 onChange={handleChange('number')}
-                errorText={touched.number && errors.number}
+                errorText={values.number && errors.number}
                 onBlur={handleBlur('number')}
               />
               <Input
+                title='Email'
                 placeholder="Email *"
                 value={values.email}
                 onChange={handleChange('email')}
-                errorText={touched.email && errors.email}
+                errorText={values.email && errors.email}
                 onBlur={handleBlur('email')}
               />
               <Input
-                secure
+                title='Password'
                 placeholder="Password *"
                 value={values.password}
+                secure
                 onChange={handleChange('password')}
-                errorText={touched.password && errors.password}
+                errorText={values.password && errors.password}
                 onBlur={handleBlur('password')}
-                secureTextEntry={secureTextEntry}
-                iconOnClick={showHide}
               />
               <Input
-                secure
-                placeholder="Confirmpassword *"
-                value={values.confirmPassword}
-                onChange={handleChange('confirmPassword')}
-                errorText={touched.confirmPassword && errors.confirmPassword}
-                onBlur={handleBlur('confirmPassword')}
-                secureTextEntry={secureTextEntry}
-                iconOnClick={showHide}
-              />
-              <View style={styles.bottomContainer}>
-                <TouchableOpacity onPress={() => console.log('hay')}>
-                  <CustomText
-                    values="I agree with the Terms of Servise & Privacy Policy"
-                    globalStyle={styles.textButtonText}
-                  />
-                </TouchableOpacity>
+                    title='Confirm Password'
+                    placeholder="Confirm Password"
+                    value={values.confirmPassword}
+                    secure
+                    onChange={handleChange('confirmPassword')}
+                    errorText={values.confirmPassword && errors.confirmPassword}
+                    onBlur={handleBlur('confirmPassword')}
+                />
+                <Checkbox size={16} isChecked={checked} setChecked={setChecked}
+                          text='I agree with the Terms of Servise & Privacy Policy'/>
                 <Button
                   styleButton={styles.buttonStyle}
                   textButton="Join us"
@@ -112,14 +106,12 @@ function SignUp({navigation}) {
                       globalStyle={styles.textButtonText}
                     />
                   </TouchableOpacity>
-                  {/* <TouchableOpacity 
-                     onPress={navigation.navigate(routNames.LOGIN)}>
-                    <CustomText 
-                      values="Sign in"
-                      globalStyle={styles.signInText} />
-                  </TouchableOpacity> */}
+
+                  <TouchableOpacity  onPress={()=>navigation.goBack()}>
+                      <CustomText  values="Sign in"  globalStyle={styles.signInText} />
+                  </TouchableOpacity>
                 </View>
-              </View> 
+              {/*</View>*/}
               <Pressable
                 onPress={() => navigation.navigate(routNames.CODE_VERIFICATION)}
                 style={{

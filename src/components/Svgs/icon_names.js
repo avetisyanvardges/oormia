@@ -13,8 +13,8 @@ export const ICON_NAMES = {
   },
   INPUT_BTN:{
     CLEAR:'Clear',
-    EYE_OPEN:'EYE_OPEN',
-    EYE_CLOSE:'EYE_CLOSE',
+    EYE_OPEN:'EeyOpen',
+    EYE_CLOSE:'EyeClose',
   },
   BUTTON_ICON:{
     FB: "FB",
@@ -23,7 +23,8 @@ export const ICON_NAMES = {
     APPLE: "APPLE",
     GOOGLE: "GOOGLE"
   },
-  ASSETS_ICON:{
-    ARROW_LEFT:"ARROW_LEFT"
+  ASSETS_SVG:{
+    CHECKBOX:'Checkbox',
+    ARROW_LEFT:"ArrowLeft"
   }
 };
