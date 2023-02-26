@@ -5,19 +5,19 @@ import Input from "components/input";
 import ScreenMask from '../../../components/screenMask';
 import {Formik} from 'formik';
 import {validationSchema} from 'constants/validations';
-import {styles} from '../SignUp/style';
-import Button from '../../../components/Button';
+import {styles} from "screens/AuthLayer/Login/styles";
 import {routNames} from 'constants/routNames';
 import Language from "components/language";
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import { normalize } from 'assets/RootStyles/normalize';
+import Button from "components/Button";
 
 const LoginScreen = ({navigation}) => {
     return (
         <ScreenMask
             style={{
-                height: '70%',
+                height: '80%',
             }}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Formik

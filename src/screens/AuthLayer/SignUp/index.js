@@ -111,7 +111,6 @@ function SignUp({navigation}) {
                       <CustomText  values="Sign in"  globalStyle={styles.signInText} />
                   </TouchableOpacity>
                 </View>
-              {/*</View>*/}
               <Pressable
                 onPress={() => navigation.navigate(routNames.CODE_VERIFICATION)}
                 style={{

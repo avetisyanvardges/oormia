@@ -36,13 +36,11 @@ export const styles = StyleSheet.create({
     forgotText : {
         color: Colors.black[100],
         marginLeft: normalize(7),
-
     },
     orContainer: {
         flexDirection: "row",
         alignItems: "center",
-        marginTop: normalize(35),
-        marginBottom: normalize(44),
+        marginVertical:normalize(10)
     },
     or: {
         borderWidth: 1,

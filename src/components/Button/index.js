@@ -10,14 +10,19 @@ function Button({
   onClick,
   styleButton = {},
   textStyle = {},
-  disabled = '',
+  disabled = false,
 }) {
   const validStyle = disabled ? {opacity: 0.7} : {};
+  console.log(styleButton)
   return (
     <TouchableOpacity
       onPress={onClick}
-      style={{...styles.buttonDefaultStyle, ...styleButton, ...validStyle}}
-      disabled={disabled}>
+      style={{
+        ...styles.buttonDefaultStyle,
+        ...styleButton,
+        ...validStyle}}
+      disabled={disabled}
+    >
       {icon}
       <CustomText values={textButton} globalStyle={{...styles.textStyle, ...textStyle}} />
     </TouchableOpacity>
