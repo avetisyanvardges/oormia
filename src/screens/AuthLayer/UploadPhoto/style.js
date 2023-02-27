@@ -18,7 +18,7 @@ export const styles =StyleSheet.create({
     buttonStyle: {
         width: normalize(328),
         height: normalize(38),
-        backgroundColor: Colors.blue[100],
+        backgroundColor: Colors.lilac,
         marginTop: normalize(15),
         marginBottom: normalize(9)
     },

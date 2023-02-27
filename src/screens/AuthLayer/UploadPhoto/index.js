@@ -9,6 +9,8 @@ import Input from "components/input";
 import { Formik } from "formik";
 import Button from "components/Button";
 import { validationSchema } from "constants/validations";
+import { normalize } from "assets/RootStyles/normalize";
+
 
 
 
@@ -17,9 +19,9 @@ function UploadPhoto (){
 const [img, setImg]= useState()
 
 const onUpload = ()=>{
-    ImagePicker.openPicker({
-        width: 300,
-        height: 400,
+    ImagePicker.openCamera({
+        width: normalize(300),
+        height: normalize(400),
         cropping: true
       }).then(image => {
         setImg(image.path)
@@ -29,7 +31,7 @@ const onUpload = ()=>{
     return (
         <ScreenMask 
            style={{
-               height: '60%',
+               height: '70%',
                alignItems: "center",
             }}
         >
@@ -40,11 +42,21 @@ const onUpload = ()=>{
                    source={
                     {
                     uri: img ,
-                    width: 50,
-                    height: 50
+                    width: normalize(50),
+                    height: normalize(50)
                     }
                    }
-                />: <View style={{width:50,height:50, backgroundColor:"blue", borderRadius:50, ...styles.img}}></View>}
+                />: <View 
+                        style={
+                            {
+                                width:50,height:50,
+                                backgroundColor:"blue",
+                                borderRadius:50,
+                                 ...styles.img
+                            }
+                        }
+                    >
+                    </View>}
                 <TouchableOpacity onPress={onUpload}>
                     <CustomText values="Upload photo"/>
                 </TouchableOpacity>
@@ -53,6 +65,7 @@ const onUpload = ()=>{
                     validationSchema={validationSchema}
                     initialValues={{
                         firstName: "",
+                        number: "",
                     }}
                     onSubmit={values => console.log(values)}>
                     {({
@@ -74,7 +87,22 @@ const onUpload = ()=>{
                                 errorText={values.firstName && errors.firstName}
                                 onBlur={handleBlur('firstName')}
                             />
-                            <View style={{flexDirection:"row", justifyContent: "space-between", marginVertical:40}}>   
+                            <Input
+                                placeholder="Number"
+                                value={values.number}
+                                onChange={handleChange('number')}
+                                errorText={values.number && errors.number}
+                                onBlur={handleBlur('number')}
+                            />
+                            <View 
+                                style={
+                                    {
+                                        flexDirection:"row",
+                                        justifyContent: "space-between",
+                                        marginVertical:40
+                                    }
+                                }
+                            >   
                                 <CustomText
                                     values="Your country"
                                 />

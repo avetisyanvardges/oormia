@@ -19,12 +19,6 @@ export const styles = StyleSheet.create({
         marginVertical: normalize(15),
     },
     checkbox: {
-        width : normalize(40),
-        height: normalize(40),
-        backgroundColor: "#60C8C0",
-        borderRadius: normalize(50),
-        justifyContent: "center",
-        alignItems: "center",
         position: "absolute",
         top: normalize(20),
         left: normalize(5),
