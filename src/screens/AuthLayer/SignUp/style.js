@@ -10,9 +10,12 @@ export const styles = StyleSheet.create({
     },
     textStyle: {
         alignSelf: "flex-start",
-        marginBottom: normalize(17),
+        marginBottom: normalize(16),
+        marginLeft: normalize(5),
+        ...FontStyle.display_h4.medium,
         fontSize: normalize(16),
-        lineHeight: normalize(20)
+        lineHeight: normalize(20),
+        color: Colors.black[100]
     },
     inputContainerStyle: {
         marginBottom: normalize(15),
@@ -23,7 +26,6 @@ export const styles = StyleSheet.create({
         marginVertical: normalize(10),
         width: '100%',
         alignItems: "center",
-
     },
     buttonStyle: {
         width: normalize(328),
@@ -40,8 +42,7 @@ export const styles = StyleSheet.create({
         width: normalize(326),
         flexDirection: "row",
         justifyContent: "space-between",
-        marginTop: normalize(20),
-        marginBottom: normalize(20)
+        marginVertical:normalize(7),
     },
     signInText: {
         color: Colors.lilac,
@@ -55,10 +56,12 @@ export const styles = StyleSheet.create({
         marginLeft: normalize(110)
     },
     textButtonText: {
+        textAlign:'center',
         color: Colors.black[100],
         ...FontStyle.display_h6.medium,
         fontSize: normalize(12),
         lineHeight: normalize(15),
+        margin:0
     },
     orContainer: {
         flexDirection: "row",
