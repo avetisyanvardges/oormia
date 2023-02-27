@@ -1,45 +1,51 @@
-import React, {useState} from 'react';
-import {ScrollView, TouchableOpacity, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {BackHandler, TouchableOpacity, View} from 'react-native';
 import {CustomText} from 'components/Text';
 import Input from "components/input";
 import ScreenMask from '../../../components/screenMask';
 import {Formik} from 'formik';
-import {validationSchema} from 'constants/validations';
+import {validation} from 'constants/validations';
 import {styles} from "screens/AuthLayer/Login/styles";
 import {routNames} from 'constants/routNames';
 import Language from "components/language";
 import Icon from 'components/Svgs';
-import { ICON_NAMES } from 'components/Svgs/icon_names';
-import { normalize } from 'assets/RootStyles/normalize';
+import {ICON_NAMES} from 'components/Svgs/icon_names';
 import Button from "components/Button";
+import * as yup from "yup";
+import SignUp from "screens/AuthLayer/SignUp";
 
 const LoginScreen = ({navigation}) => {
+    const [switchPage, setSwitchPage] = useState(true);
+
+
     return (
         <ScreenMask
             style={{
-                height: '80%',
+                height: '75%',
             }}>
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <Formik
-                    validationSchema={validationSchema}
-                    initialValues={{
-                        email: '',
-                        password: '',
-                    }}
-                    onSubmit={values => console.log(values)}>
-                    {({
-                          handleChange,
-                          handleBlur,
-                          handleSubmit,
-                          values,
-                          errors,
-                          touched,
-                          isValid,
-                          dirty,
-                      }) => (
-                        <View>
-                            <View style={styles.container}>
-                                <Language languages={['AM', 'RU', 'ENG']}/>
+            <View style={styles.container}>
+                <Language languages={['AM', 'RU', 'ENG']}/>
+                {switchPage ? <Formik
+                        validationSchema={yup.object().shape({
+                            email: validation.email,
+                            password: validation.password
+                        })}
+                        initialValues={{
+                            email: '',
+                            password: '',
+                        }}
+                        onSubmit={values => console.log(values)}>
+                        {({
+                              handleChange,
+                              handleBlur,
+                              handleSubmit,
+                              values,
+                              errors,
+                              touched,
+                              isValid,
+                              dirty,
+                          }) => (
+                            <View>
                                 <CustomText values='Log In' globalStyle={styles.textStyle}/>
                                 <Input
                                     title={'Email'}
@@ -58,83 +64,65 @@ const LoginScreen = ({navigation}) => {
                                     errorText={values.password && errors.password}
                                     onBlur={handleBlur('password')}
                                 />
-                                <View >
-                                    <Button
-                                        styleButton={styles.buttonStyle}
-                                        textButton="Sign in"
-                                        textStyle={styles.buttonTextStyle}
-                                        onClick={handleSubmit}
-                                        disabled={!(isValid && dirty)}
-                                    />
-                                    <TouchableOpacity
-                                        style={styles.forgot}
-                                        onPress={() => navigation.navigate(routNames.FORGOT)}>
-                                        <CustomText values="Forgot password" globalStyle={styles.signInText}/>
-                                    </TouchableOpacity>
-                                    <View style={styles.orContainer}>
-                                        <View style={styles.or}></View>
-                                        <CustomText values="or" globalStyle={styles.orText}/>
-                                        <View style={styles.or}></View>
-                                    </View>
-                                    <Button
-                                        styleButton={styles.buttonApple}
-                                        textButton="Login with Apple ID"
-                                        textStyle={styles.appleGoogleText}
-                                        onClick={handleSubmit}
-                                        disabled={!(isValid && dirty)}
-                                        icon={<Icon  name={ICON_NAMES.BUTTON_ICON.APPLE}/>}
-                                    />
-                                    <Button
-                                        styleButton={styles.buttonGoogle}
-                                        textButton="Login with Google"
-                                        textStyle={styles.appleGoogleText}
-                                        onClick={handleSubmit}
-                                        disabled={!(isValid && dirty)}
-                                        icon={<Icon  name={ICON_NAMES.BUTTON_ICON.GOOGLE}/>}
-                                    />
-                                  <View style={styles.fbVkContainer}>
-                                    <Button
-                                        textButton="Login"
-                                        onClick={handleSubmit}
-                                        disabled={!(isValid && dirty)}
-                                        icon={<Icon  name={ICON_NAMES.BUTTON_ICON.FB}/>}
-                                    />
-                                    <Button
-                                        styleButton={{marginHorizontal: normalize(13)}}
-                                        textButton="Login"
-                                        onClick={handleSubmit}
-                                        disabled={!(isValid && dirty)}
-                                        icon={<Icon  name={ICON_NAMES.BUTTON_ICON.VK}/>}
-                                    />
-                                    <Button
-                                        textButton="Login"
-                                        onClick={handleSubmit}
-                                        disabled={!(isValid && dirty)}
-                                        icon={<Icon  name={ICON_NAMES.BUTTON_ICON.INST}/>}
-                                    />
-                                  </View>
-                                    <View style={styles.signInTextContainer}>
-                                        <TouchableOpacity
-                                            onPress={() => console.log('hay')}>
-                                            <CustomText
-                                                values="Don’t have an account ?"
-                                                globalStyle={styles.textButtonText}
-                                            />
-                                        </TouchableOpacity>
-                                        <TouchableOpacity
-                                            onPress={() => navigation.navigate(routNames.REGISTRATION)}>
-                                            <CustomText
-                                            values="Sign Up"
-                                            globalStyle={styles.signInText}
-                                            />
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
+                                <Button
+                                    styleButton={styles.buttonStyle}
+                                    textButton="Sign in"
+                                    textStyle={styles.buttonTextStyle}
+                                    onClick={handleSubmit}
+                                    disabled={!(isValid && dirty)}
+                                />
+                                <TouchableOpacity
+                                    style={styles.forgot}
+                                    onPress={() => navigation.navigate(routNames.FORGOT)}>
+                                    <CustomText values="Forgot password" globalStyle={styles.signInText}/>
+                                </TouchableOpacity>
                             </View>
-                        </View>
-                    )}
-                </Formik>
-            </ScrollView>
+                        )}
+                    </Formik>
+                    : <SignUp setSwitchPage={setSwitchPage}/>}
+                <View style={styles.orContainer}>
+                    <View style={styles.or}></View>
+                    <CustomText values="or" globalStyle={styles.orText}/>
+                    <View style={styles.or}></View>
+                </View>
+                <Button
+                    styleButton={styles.buttonApple}
+                    textButton="Login with Apple ID"
+                    textStyle={styles.appleGoogleText}
+                    // disabled={!(isValid && dirty)}
+                    icon={<Icon name={ICON_NAMES.BUTTON_ICON.APPLE}/>}
+                />
+                <Button
+                    styleButton={styles.buttonGoogle}
+                    textButton="Login with Google"
+                    textStyle={styles.appleGoogleText}
+                    // disabled={!(isValid && dirty)}
+                    icon={<Icon name={ICON_NAMES.BUTTON_ICON.GOOGLE}/>}
+                />
+                {/*<View style={styles.fbVkContainer}>*/}
+                {/*  <Button*/}
+                {/*      textButton="Login"*/}
+                {/*      onClick={handleSubmit}*/}
+                {/*      disabled={!(isValid && dirty)}*/}
+                {/*      icon={<Icon  name={ICON_NAMES.BUTTON_ICON.FB}/>}*/}
+                {/*  />*/}
+                <View style={styles.signInTextContainer}>
+                    <TouchableOpacity
+                        onPress={() => console.log('hay')}>
+                        <CustomText
+                            values="Don’t have an account ?"
+                            globalStyle={styles.textButtonText}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => setSwitchPage(!switchPage)}>
+                        <CustomText
+                            values={switchPage ? 'Sign Up' : 'Log In'}
+                            globalStyle={styles.signInText}
+                        />
+                    </TouchableOpacity>
+                </View>
+            </View>
         </ScreenMask>
     );
 };
