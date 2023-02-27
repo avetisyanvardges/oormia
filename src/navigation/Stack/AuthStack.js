@@ -17,8 +17,8 @@ const AuthStack = () => {
             <Stack.Screen name={routNames.LOGIN} component={LoginScreen}/>
             <Stack.Screen name={routNames.FORGOT} component={ForgotScreen}/>
             <Stack.Screen name={routNames.CODE_VERIFICATION} component={CodeVerificationScreen}/>
-            <Stack.Screen name={routNames.UPLOAD_PHOTO} component={UploadPhotoScreen}/>
-            <Stack.Screen name={routNames.FAVORITE} component={FavoriteScreen}/>
+            {/*<Stack.Screen name={routNames.UPLOAD_PHOTO} component={UploadPhotoScreen}/>*/}
+            {/*<Stack.Screen name={routNames.FAVORITE} component={FavoriteScreen}/>*/}
         </Stack.Navigator>
     );
 };

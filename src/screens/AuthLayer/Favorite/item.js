@@ -3,10 +3,6 @@ import { styles } from "./style";
 import { View, Image, TouchableOpacity } from "react-native";
 import { CustomText } from "components/Text";
 import CheckBox from '@react-native-community/checkbox';
- 
-
-
-
 
 function Item({item, onChecked}){
     return (
