@@ -25,8 +25,7 @@ export const styles = StyleSheet.create({
         width: normalize(328),
         height: normalize(38),
         backgroundColor: Colors.lilac,
-        marginTop: normalize(15),
-        marginBottom: normalize(9)
+        marginTop: normalize(7)
     },
     buttonTextStyle: {
         fontSize: normalize(14),
@@ -80,6 +79,7 @@ export const styles = StyleSheet.create({
         marginBottom: normalize(20)
     },
     signInText: {
+        marginVertical:normalize(10),
         color: Colors.lilac,
     },
     dontHave:{

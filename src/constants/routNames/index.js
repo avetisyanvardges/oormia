@@ -4,7 +4,6 @@ export const routNames = {
   FORGOT: 'Forgot',
   CODE_VERIFICATION: 'CodeVerification',
   LOGIN: 'Login',
-  REGISTRATION: 'Registration',
   MAIN_TAB: 'mainTab',
   COMPASS: 'Compass',
   HOME: 'homeScreen',
