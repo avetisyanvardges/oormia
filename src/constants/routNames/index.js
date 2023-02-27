@@ -12,4 +12,6 @@ export const routNames = {
   CREATE_EVENT: 'createEvent',
   GROUPS: 'groupsScreen',
   PROFILE: 'profileScreen',
+  UPLOAD_PHOTO: 'UploadPhoto',
+  FAVORITE: 'Favorite'
 };

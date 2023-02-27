@@ -14,7 +14,7 @@ function Index({text, size=12,textStyle, isChecked=true, setChecked}) {
             <View style={{
                 ...styles.checkboxBody,
                 width:normalize(size),
-                height:normalize(size)
+                height:normalize(size),
             }}>
                 {isChecked?<Svg width={size}  name={ICON_NAMES.ASSETS_SVG.CHECKBOX}/>:null}
             </View>

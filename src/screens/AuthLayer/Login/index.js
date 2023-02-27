@@ -122,9 +122,16 @@ const LoginScreen = ({navigation}) => {
                                             />
                                         </TouchableOpacity>
                                         <TouchableOpacity
-                                            onPress={() => navigation.navigate(routNames.REGISTRATION)}>
+                                            onPress={() => navigation.navigate(routNames.FAVORITE)}>
                                             <CustomText
-                                            values="Sign Up"
+                                            values="Favorite"
+                                            globalStyle={styles.signInText}
+                                            />
+                                        </TouchableOpacity>
+                                        <TouchableOpacity
+                                            onPress={() => navigation.navigate(routNames.UPLOAD_PHOTO)}>
+                                            <CustomText
+                                            values="Upload Photo"
                                             globalStyle={styles.signInText}
                                             />
                                         </TouchableOpacity>

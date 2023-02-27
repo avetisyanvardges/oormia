@@ -30,7 +30,7 @@ import {
 } from "./Assets"
 
 export const ICONS = {
-  [ICON_NAMES.ASSETS_SVG.ARROW_LEFT]: ({width, height, size, color}) => (
+  [ICON_NAMES.ASSETS_SVG.CHECKBOX]: ({width, height, size, color}) => (
       <Checkbox width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.ASSETS_SVG.ARROW_LEFT]: ({width, height, size, color}) => (
