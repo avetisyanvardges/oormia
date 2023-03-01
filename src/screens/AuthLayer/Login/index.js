@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {BackHandler, TouchableOpacity, View} from 'react-native';
+import {ScrollView, TouchableOpacity, View} from 'react-native';
 import {CustomText} from 'components/Text';
 import Input from "components/input";
 import ScreenMask from '../../../components/screenMask';
@@ -17,13 +17,13 @@ import SignUp from "screens/AuthLayer/SignUp";
 const LoginScreen = ({navigation}) => {
     const [switchPage, setSwitchPage] = useState(true);
 
-
     return (
         <ScreenMask
             style={{
-                height: '75%',
+                height: '80%',
             }}>
-            <View style={styles.container}>
+            <ScrollView showsVerticalScrollIndicator={false}
+                        style={styles.container}>
                 <Language languages={['AM', 'RU', 'ENG']}/>
                 {switchPage ? <Formik
                         validationSchema={yup.object().shape({
@@ -122,7 +122,7 @@ const LoginScreen = ({navigation}) => {
                         />
                     </TouchableOpacity>
                 </View>
-            </View>
+            </ScrollView>
         </ScreenMask>
     );
 };

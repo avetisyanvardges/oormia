@@ -6,6 +6,21 @@ import { StyleSheet } from "react-native";
 
 
 export const styles =StyleSheet.create({
+    imgDef:{
+        width: 50,
+        height: 50,
+        backgroundColor: "blue",
+        borderRadius: 50,
+    },
+    title:{
+      ...FontStyle.display_h6.regular,
+        marginTop:normalize(15),
+    },
+    btn:   {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginVertical: 40
+    },
     imgContainer:{
         flexDirection: "row",
         alignItems: "center",

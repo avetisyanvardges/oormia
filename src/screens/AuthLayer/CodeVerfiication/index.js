@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Pressable, View} from 'react-native';
 import {CustomText} from 'components/Text';
 import {styles} from './style';
 import Timer from 'components/timer';
@@ -7,9 +7,10 @@ import CodeVerificationNumber from './CodeVerificationNumber';
 import ScreenMask from 'components/screenMask';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
+import {routNames} from "constants/routNames";
 
 
-function CodeVerification() {
+function CodeVerification({navigation}) {
   const [pin, setPin] = useState([]);
 
   const onClick = text => {
@@ -26,6 +27,12 @@ function CodeVerification() {
       setPin([...pin]);
     }
   };
+
+  useEffect(()=>{
+      if(pin.length===4){
+          navigation.navigate(routNames.UPLOAD_PHOTO)
+      }
+  },[pin])
 
   return (
     <ScreenMask>
