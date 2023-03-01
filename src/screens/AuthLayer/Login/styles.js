@@ -5,7 +5,6 @@ import { FontStyle } from "assets/RootStyles";
 
 export const styles = StyleSheet.create({
     container: {
-        alignItems:"center",
         padding: normalize(16),
         width:'100%'
     },

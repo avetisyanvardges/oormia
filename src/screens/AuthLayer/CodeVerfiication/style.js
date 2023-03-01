@@ -31,10 +31,7 @@ export const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "space-between",
-        marginTop: normalize(11),
-        marginBottom: normalize(12),
-        marginRight: normalize(27),
-        marginLeft: normalize(10),
+        marginVertical:normalize(15)
     },
     item: {
         width: normalize(68),
@@ -43,7 +40,8 @@ export const styles = StyleSheet.create({
         backgroundColor: Colors.grey[1000],
         justifyContent: "center",
         alignItems: "center",
-        marginRight: normalize(17),
+        marginHorizontal:normalize(7),
+
     },
     timer: {
         marginBottom: 40,

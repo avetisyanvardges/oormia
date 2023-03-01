@@ -4,39 +4,54 @@ import { Colors } from "assets/RootStyles";
 import { FontStyle } from "assets/RootStyles";
 
 export const styles = StyleSheet.create({
+    image:{
+        width: normalize(330),
+        height:normalize(200),
+        padding:normalize(13),
+        justifyContent:'space-between'
+    },
+    flatList:{
+      marginTop:normalize(10),
+    },
+    title:{
+        ...FontStyle.display_h6.bold,
+        lineHeight:normalize(20),
+        fontSize:normalize(18),
+        color:Colors.black[50]
+    },
+    nav:{
+        ...FontStyle.display_h6.bold,
+        fontSize:normalize(16),
+        color:Colors.black[50]
+    },
     screenMask: {
        alignItems: "center",
-       paddingVertical: normalize(10)
+       padding: normalize(13)
     },
     nextContainer: {
+        alignItems:'center',
+        height:normalize(30),
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
     },
     container: {
         marginTop: normalize(30)
     },
     imgContainer: {
-        marginVertical: normalize(15),
+        borderRadius:normalize(20),
+        marginVertical: normalize(10),
     },
-    checkbox: {
-        position: "absolute",
-        top: normalize(20),
-        left: normalize(5),
-        zIndex: 1000
+    text:{
+        color:Colors.white,
+        ...FontStyle.display_h4.medium,
     },
-    imgText: {
-        color:"white",
+    imgTitle: {
         fontSize: normalize(20),
-        position: "absolute",
-        top: normalize(120),
-        left: normalize(5),
-        zIndex: 1000
+        lineHeight:normalize(20)
     },
     places: {
-        color: "white",
-        position: "absolute",
-        top: normalize(150),
-        left: normalize(5),
-        zIndex: 1000
+        fontSize: normalize(16),
+        color: Colors.grey[1200],
+        lineHeight:normalize(20)
     }
 })
