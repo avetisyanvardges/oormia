@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, TouchableOpacity, View} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {CustomText} from 'components/Text';
 import Input from "components/input";
 import ScreenMask from '../../../components/screenMask';
@@ -19,12 +19,12 @@ const LoginScreen = ({navigation}) => {
 
     return (
         <ScreenMask
-            style={{
-                height: '80%',
+            containerStyle={{
+                marginTop:'100%'
             }}>
             <ScrollView showsVerticalScrollIndicator={false}
                         style={styles.container}>
-                <Language languages={['AM', 'RU', 'ENG']}/>
+                {/*<Language languages={['AM', 'RU', 'ENG']}/>*/}
                 {switchPage ? <Formik
                         validationSchema={yup.object().shape({
                             email: validation.email,
@@ -47,6 +47,7 @@ const LoginScreen = ({navigation}) => {
                           }) => (
                             <View>
                                 <CustomText values='Log In' globalStyle={styles.textStyle}/>
+                                <CustomText values='Enter your email and password' globalStyle={styles.title}/>
                                 <Input
                                     title={'Email'}
                                     placeholder="Enter mobile or e-mail"
@@ -64,18 +65,18 @@ const LoginScreen = ({navigation}) => {
                                     errorText={values.password && errors.password}
                                     onBlur={handleBlur('password')}
                                 />
+                                <TouchableOpacity
+                                    style={styles.forgot}
+                                    onPress={() => navigation.navigate(routNames.FORGOT)}>
+                                    <CustomText values="Forgot password?" globalStyle={styles.signInText}/>
+                                </TouchableOpacity>
                                 <Button
                                     styleButton={styles.buttonStyle}
-                                    textButton="Sign in"
+                                    textButton="Login"
                                     textStyle={styles.buttonTextStyle}
                                     onClick={handleSubmit}
                                     disabled={!(isValid && dirty)}
                                 />
-                                <TouchableOpacity
-                                    style={styles.forgot}
-                                    onPress={() => navigation.navigate(routNames.FORGOT)}>
-                                    <CustomText values="Forgot password" globalStyle={styles.signInText}/>
-                                </TouchableOpacity>
                             </View>
                         )}
                     </Formik>

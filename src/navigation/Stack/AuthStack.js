@@ -6,6 +6,7 @@ import ForgotScreen from '../../screens/AuthLayer/Forgot';
 import CodeVerificationScreen from '../../screens/AuthLayer/CodeVerfiication';
 import UploadPhotoScreen from 'screens/AuthLayer/UploadPhoto';
 import FavoriteScreen from 'screens/AuthLayer/Favorite';
+import Home from "screens/Home";
 
 const AuthStack = () => {
     const Stack = createNativeStackNavigator();
@@ -14,6 +15,7 @@ const AuthStack = () => {
         <Stack.Navigator
             screenOptions={{headerShown: false, animationEnabled: true, gestureDirection: 'horizontal',}}
         >
+            <Stack.Screen name={routNames.START} component={Home}/>
             <Stack.Screen name={routNames.LOGIN} component={LoginScreen}/>
             <Stack.Screen name={routNames.FORGOT} component={ForgotScreen}/>
             <Stack.Screen name={routNames.CODE_VERIFICATION} component={CodeVerificationScreen}/>

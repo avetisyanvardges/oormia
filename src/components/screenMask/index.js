@@ -4,9 +4,9 @@ import {Colors} from 'assets/RootStyles';
 import {deviceInfo} from 'assets/deviceInfo';
 import {normalize} from 'assets/RootStyles/normalize';
 
-const ScreenMask = ({children, style}) => {
+const ScreenMask = ({children, style, containerStyle={}}) => {
   return (
-    <View style={{flex: 1, justifyContent: 'flex-end'}}>
+    <View style={{flex: 1, justifyContent: 'flex-end', ...containerStyle}}>
       <View
         style={{
           width: deviceInfo.deviceWidth,

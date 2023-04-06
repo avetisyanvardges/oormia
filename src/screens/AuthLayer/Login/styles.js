@@ -4,16 +4,19 @@ import { Colors } from "assets/RootStyles";
 import { FontStyle } from "assets/RootStyles";
 
 export const styles = StyleSheet.create({
+    title:{
+        alignSelf: "center",
+    },
     container: {
         padding: normalize(16),
         width:'100%'
     },
     textStyle: {
-        alignSelf: "flex-start",
-        marginBottom: normalize(16),
+        alignSelf: "center",
+        marginBottom: normalize(5),
         marginLeft: normalize(5),
         ...FontStyle.display_h4.medium,
-        fontSize: normalize(16),
+        fontSize: normalize(20),
         lineHeight: normalize(20),
         color: Colors.black[100]
     },
@@ -23,7 +26,7 @@ export const styles = StyleSheet.create({
     buttonStyle: {
         width: normalize(328),
         height: normalize(38),
-        backgroundColor: Colors.lilac,
+        backgroundColor: Colors.blue[900],
         marginTop: normalize(7)
     },
     buttonTextStyle: {
@@ -79,7 +82,8 @@ export const styles = StyleSheet.create({
     },
     signInText: {
         marginVertical:normalize(10),
-        color: Colors.lilac,
+        textAlign:'left',
+        color: Colors.blue[900],
     },
     dontHave:{
         color: Colors.black[100],
