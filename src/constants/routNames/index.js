@@ -1,4 +1,5 @@
 export const routNames = {
+  START:'Start',
   AUTH_LAYER: 'AuthLayer',
   APP_LAYER: 'AppLayer',
   FORGOT: 'Forgot',

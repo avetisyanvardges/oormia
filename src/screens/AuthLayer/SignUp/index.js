@@ -9,6 +9,7 @@ import {routNames} from 'constants/routNames';
 import {validation} from "constants/validations";
 import * as yup from "yup";
 import {useNavigation} from "@react-navigation/native";
+import ScreenMask from "components/screenMask";
 
 
 function SignUp({setSwitchPage}) {
@@ -25,6 +26,10 @@ function SignUp({setSwitchPage}) {
     },[])
 
     return (
+        <ScreenMask
+            containerStyle={{
+                marginTop:'100%'
+            }}>
       <Formik
           validationSchema={yup.object().shape({
               email:validation.email,
@@ -85,6 +90,7 @@ function SignUp({setSwitchPage}) {
             </View>
         )}
       </Formik>
+        </ScreenMask>
   );
 }
 

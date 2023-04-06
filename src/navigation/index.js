@@ -1,9 +1,9 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {navigationRef} from '../services/NavigationService';
-import {routNames} from '../constants/routNames';
-import {checkInitialRoute} from '../utils/checkInitialRoute';
+import {navigationRef} from 'services/NavigationService';
+import {routNames} from 'constants/routNames';
+import {checkInitialRoute} from 'utils/checkInitialRoute';
 import AuthStack from './Stack/AuthStack';
 import AppStack from './Stack/AppStack';
 

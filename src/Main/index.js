@@ -13,7 +13,6 @@ function Main() {
         translucent={false}
         backgroundColor={Colors.oxford_blue['30']}
       />
-      
         <Navigation/>
     </Fragment>
   );
