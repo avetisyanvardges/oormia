@@ -48,10 +48,7 @@ export const styles = StyleSheet.create({
         color: Colors.lilac,
     },
     forgot: {
-        width: '100%',
-        backgroundColor:"red",
         marginVertical: normalize(10),
-        alignItems: 'flex-end'
     },
     signInButton: {
         marginLeft: normalize(110)

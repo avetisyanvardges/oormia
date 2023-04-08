@@ -4,8 +4,22 @@ import { Colors } from "assets/RootStyles";
 import { FontStyle } from "assets/RootStyles";
 
 export const styles = StyleSheet.create({
+    lineBody:{
+        borderBottomColor: 'blue',
+        borderBottomWidth: 1,
+        marginBottom: 30,
+        marginLeft:normalize(5),
+    },
+    socialItems:{
+      marginHorizontal:normalize(5)
+    },
+    social:{
+      flexDirection:'row',
+      justifyContent:'center'
+    },
     title:{
         alignSelf: "center",
+        marginBottom:normalize(10)
     },
     container: {
         padding: normalize(16),
@@ -46,12 +60,12 @@ export const styles = StyleSheet.create({
     or: {
         borderWidth: 1,
         borderColor: Colors.grey[1100],
-        width: normalize(142)
+        width: '36%'
     },
     orText: {
         marginHorizontal: normalize(8),
-        color: Colors.black[100],
-        ...FontStyle.text_h5.medium
+        color: Colors.grey[1200],
+        ...FontStyle.text_h6.medium
     },
     buttonApple: {
         width: normalize(326),
@@ -76,13 +90,12 @@ export const styles = StyleSheet.create({
     signInTextContainer: {
         width: normalize(326),
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "center",
         marginTop: normalize(20),
         marginBottom: normalize(20)
     },
     signInText: {
-        marginVertical:normalize(10),
-        textAlign:'left',
+        textAlign:'right',
         color: Colors.blue[900],
     },
     dontHave:{

@@ -70,9 +70,8 @@ const Carousel = ({autoScrollInterval = 5000}) => {
                             textStyle={styles.btnTextLogin}/>
                     <Button textButton={"Sign up"} onClick={() => setPage(SIGN_UP)} styleButton={styles.btnSign}
                             textStyle={styles.btnTextSign}/>
-                </View>) :null
+                </View>) :<Login SIGN_UP={SIGN_UP} LOGIN={LOGIN}  page={page} setPage={setPage}/>
             }
-                {page===LOGIN?<Login/>:page===SIGN_UP?<SignUp/>:null}
         </View>
     );
 };

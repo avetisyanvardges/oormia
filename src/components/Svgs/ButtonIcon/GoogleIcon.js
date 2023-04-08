@@ -1,41 +1,26 @@
 import * as React from "react"
-import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
+import Svg, {G, Path, Defs, ClipPath, Rect} from "react-native-svg"
 import {normalize} from "assets/RootStyles/normalize";
 
 function GoogleIcon({width, height, colors}) {
   return (
-    <Svg
-      width={normalize(width) || normalize(20)}
-      height={normalize(height) || normalize(20)}
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-   
-    >
-      <G clipPath="url(#clip0_7237_3384)">
+      <Svg
+          width={normalize(width) || normalize(35)}
+          height={normalize(height) || normalize(35)}
+          viewBox="0 0 35 35"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+      >
+        <Rect width={35} height={35} rx={10} fill="#0A2540" />
         <Path
-          d="M4.432 12.086l-.696 2.6-2.544.053A9.956 9.956 0 010 10c0-1.658.403-3.222 1.118-4.599l2.266.415.992 2.252A5.944 5.944 0 004.056 10c0 .734.132 1.437.376 2.086z"
-          fill="#FBBB00"
+            d="M27.5 15.625h-9.792v3.854h5.73c-.105.938-.73 2.396-2.084 3.334-.833.625-2.083 1.041-3.646 1.041-2.708 0-5.104-1.77-5.937-4.375-.209-.625-.313-1.354-.313-2.083 0-.73.104-1.459.313-2.084.104-.208.104-.416.208-.52a6.21 6.21 0 015.73-3.75c1.978 0 3.228.833 4.062 1.562l2.916-2.916c-1.77-1.563-4.166-2.605-6.979-2.605-4.062 0-7.604 2.292-9.27 5.73-.73 1.458-1.147 3.02-1.147 4.687 0 1.667.417 3.23 1.146 4.688 1.667 3.437 5.209 5.729 9.271 5.729 2.813 0 5.209-.938 6.875-2.5 1.98-1.771 3.125-4.48 3.125-7.709 0-.833-.104-1.458-.208-2.083z"
+            stroke="#fff"
+            strokeWidth={1.5}
+            strokeMiterlimit={10}
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />
-        <Path
-          d="M19.825 8.132a10.018 10.018 0 01-.044 3.956 9.998 9.998 0 01-3.52 5.71h-.001l-2.853-.146-.404-2.52a5.96 5.96 0 002.564-3.044H10.22V8.132h9.605z"
-          fill="#518EF8"
-        />
-        <Path
-          d="M16.26 17.798A9.958 9.958 0 0110 20a9.999 9.999 0 01-8.808-5.261l3.24-2.653a5.946 5.946 0 008.57 3.045l3.258 2.667z"
-          fill="#28B446"
-        />
-        <Path
-          d="M16.383 2.302l-3.24 2.652a5.948 5.948 0 00-8.767 3.114L1.12 5.401A9.998 9.998 0 0110 0c2.426 0 4.651.864 6.383 2.302z"
-          fill="#F14336"
-        />
-      </G>
-      <Defs>
-        <ClipPath id="clip0_7237_3384">
-          <Path fill={colors || "#fff"} d="M0 0H20V20H0z" />
-        </ClipPath>
-      </Defs>
-    </Svg>
+      </Svg>
   )
 }
 

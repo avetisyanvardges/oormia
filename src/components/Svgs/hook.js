@@ -23,6 +23,7 @@ import {
   InstIcon,
   AppleIcon,
   GoogleIcon,
+  Linkedin,
 } from "./ButtonIcon";
 import {
   ArrowLeft,
@@ -30,6 +31,9 @@ import {
 } from "./Assets"
 
 export const ICONS = {
+  [ICON_NAMES.BUTTON_ICON.LINKEDIN]: ({width, height, size, color}) => (
+      <Linkedin width={width} height={height} size={size} color={color} />
+  ),
   [ICON_NAMES.ASSETS_SVG.CHECKBOX]: ({width, height, size, color}) => (
       <Checkbox width={width} height={height} size={size} color={color} />
   ),
