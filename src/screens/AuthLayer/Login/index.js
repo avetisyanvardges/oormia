@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {Pressable, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {CustomText} from 'components/Text';
 import Input from "components/input";
 import ScreenMask from '../../../components/screenMask';
@@ -14,13 +14,13 @@ import Button from "components/Button";
 import * as yup from "yup";
 import SignUp from "screens/AuthLayer/SignUp";
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({navigation, setPage, page, SIGN_UP, LOGIN}) => {
     const [switchPage, setSwitchPage] = useState(true);
 
     return (
         <ScreenMask
             containerStyle={{
-                marginTop:'100%'
+                marginTop: '100%'
             }}>
             <ScrollView showsVerticalScrollIndicator={false}
                         style={styles.container}>
@@ -46,10 +46,10 @@ const LoginScreen = ({navigation}) => {
                               dirty,
                           }) => (
                             <View>
-                                <CustomText values='Log In' globalStyle={styles.textStyle}/>
-                                <CustomText values='Enter your email and password' globalStyle={styles.title}/>
+                                <CustomText values={page===LOGIN?'Sign Up':'Log In'} globalStyle={styles.textStyle}/>
+                                <CustomText values={`${page===LOGIN?'Create':'Enter'} your email and password'`} globalStyle={styles.title}/>
                                 <Input
-                                    title={'Email'}
+                                    // title={'Email'}
                                     placeholder="Enter mobile or e-mail"
                                     value={values.email}
                                     onChange={handleChange('email')}
@@ -57,7 +57,7 @@ const LoginScreen = ({navigation}) => {
                                     onBlur={handleBlur('email')}
                                 />
                                 <Input
-                                    title={'Password'}
+                                    // title={'Password'}
                                     secure
                                     placeholder="Password *"
                                     value={values.password}
@@ -65,14 +65,14 @@ const LoginScreen = ({navigation}) => {
                                     errorText={values.password && errors.password}
                                     onBlur={handleBlur('password')}
                                 />
-                                <TouchableOpacity
+                                {page===SIGN_UP?<TouchableOpacity
                                     style={styles.forgot}
                                     onPress={() => navigation.navigate(routNames.FORGOT)}>
                                     <CustomText values="Forgot password?" globalStyle={styles.signInText}/>
-                                </TouchableOpacity>
+                                </TouchableOpacity>:null}
                                 <Button
                                     styleButton={styles.buttonStyle}
-                                    textButton="Login"
+                                    textButton={page===LOGIN?'Create':"Login"}
                                     textStyle={styles.buttonTextStyle}
                                     onClick={handleSubmit}
                                     disabled={!(isValid && dirty)}
@@ -83,42 +83,34 @@ const LoginScreen = ({navigation}) => {
                     : <SignUp setSwitchPage={setSwitchPage}/>}
                 <View style={styles.orContainer}>
                     <View style={styles.or}></View>
-                    <CustomText values="or" globalStyle={styles.orText}/>
+                    <CustomText values="Sign In With" globalStyle={styles.orText}/>
                     <View style={styles.or}></View>
                 </View>
-                <Button
-                    styleButton={styles.buttonApple}
-                    textButton="Login with Apple ID"
-                    textStyle={styles.appleGoogleText}
-                    // disabled={!(isValid && dirty)}
-                    icon={<Icon name={ICON_NAMES.BUTTON_ICON.APPLE}/>}
-                />
-                <Button
-                    styleButton={styles.buttonGoogle}
-                    textButton="Login with Google"
-                    textStyle={styles.appleGoogleText}
-                    // disabled={!(isValid && dirty)}
-                    icon={<Icon name={ICON_NAMES.BUTTON_ICON.GOOGLE}/>}
-                />
-                {/*<View style={styles.fbVkContainer}>*/}
-                {/*  <Button*/}
-                {/*      textButton="Login"*/}
-                {/*      onClick={handleSubmit}*/}
-                {/*      disabled={!(isValid && dirty)}*/}
-                {/*      icon={<Icon  name={ICON_NAMES.BUTTON_ICON.FB}/>}*/}
-                {/*  />*/}
+                <View style={styles.social}>
+                    <TouchableOpacity style={styles.socialItems}>
+                        <Icon name={ICON_NAMES.BUTTON_ICON.APPLE}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.socialItems}>
+                        <Icon name={ICON_NAMES.BUTTON_ICON.GOOGLE}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.socialItems}>
+                        <Icon name={ICON_NAMES.BUTTON_ICON.FB}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.socialItems}>
+                        <Icon name={ICON_NAMES.BUTTON_ICON.LINKEDIN}/>
+                    </TouchableOpacity>
+                </View>
                 <View style={styles.signInTextContainer}>
-                    <TouchableOpacity
-                        onPress={() => console.log('hay')}>
                         <CustomText
                             values="Don’t have an account ?"
                             globalStyle={styles.textButtonText}
                         />
-                    </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => setSwitchPage(!switchPage)}>
+                        style={styles.lineBody}
+                        // onPress={() => setPage(page=LOGIN?LOGIN:SIGN_UP)}>
+                        onPress={() =>{console.log(page), setPage(page===LOGIN?SIGN_UP:LOGIN)}}>
                         <CustomText
-                            values={switchPage ? 'Sign Up' : 'Log In'}
+                            values={page===LOGIN?'Log In':'Sign Up'}
                             globalStyle={styles.signInText}
                         />
                     </TouchableOpacity>

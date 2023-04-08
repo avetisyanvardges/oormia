@@ -21,7 +21,8 @@ export const ICON_NAMES = {
     VK: "VK",
     INST: "INST",
     APPLE: "APPLE",
-    GOOGLE: "GOOGLE"
+    GOOGLE: "GOOGLE",
+    LINKEDIN:"LINKEDIN"
   },
   ASSETS_SVG:{
     CHECKBOX:'Checkbox',
