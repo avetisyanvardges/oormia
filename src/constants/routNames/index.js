@@ -13,5 +13,6 @@ export const routNames = {
   GROUPS: 'groupsScreen',
   PROFILE: 'profileScreen',
   UPLOAD_PHOTO: 'UploadPhoto',
-  FAVORITE: 'Favorite'
+  FAVORITE: 'Favorite',
+  RESET:'Reset'
 };

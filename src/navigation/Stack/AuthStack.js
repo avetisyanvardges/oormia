@@ -7,6 +7,7 @@ import CodeVerificationScreen from '../../screens/AuthLayer/CodeVerfiication';
 import UploadPhotoScreen from 'screens/AuthLayer/UploadPhoto';
 import FavoriteScreen from 'screens/AuthLayer/Favorite';
 import Home from "screens/Home";
+import Reset from "screens/AuthLayer/Reset";
 
 const AuthStack = () => {
     const Stack = createNativeStackNavigator();
@@ -21,6 +22,7 @@ const AuthStack = () => {
             <Stack.Screen name={routNames.CODE_VERIFICATION} component={CodeVerificationScreen}/>
             <Stack.Screen name={routNames.UPLOAD_PHOTO} component={UploadPhotoScreen}/>
             <Stack.Screen name={routNames.FAVORITE} component={FavoriteScreen}/>
+            <Stack.Screen name={routNames.RESET} component={Reset}/>
         </Stack.Navigator>
     );
 };
