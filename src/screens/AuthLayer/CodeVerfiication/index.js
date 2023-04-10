@@ -8,6 +8,7 @@ import ScreenMask from 'components/screenMask';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import {routNames} from "constants/routNames";
+import {normalize} from "assets/RootStyles/normalize";
 
 
 function CodeVerification({navigation}) {
@@ -30,14 +31,19 @@ function CodeVerification({navigation}) {
 
   useEffect(()=>{
       if(pin.length===4){
-          navigation.navigate(routNames.UPLOAD_PHOTO)
+          navigation.navigate(routNames.RESET)
       }
   },[pin])
 
   return (
-    <ScreenMask>
-      <View style={styles.containerText}>
+    <ScreenMask style={
+      styles.screenMask
+    }>
+      <View style={styles.btnBlock}>
+        <Icon name={ICON_NAMES.ASSETS_SVG.ARROW_LEFT} onPress={()=>navigation.goBack()}/>
         <CustomText values="Code Verification" globalStyle={styles.textCodV} />
+      </View>
+      <View style={styles.containerText}>
         <CustomText values="Enter verification code here" globalStyle={styles.textEnterV} />
       </View>
       <View style={styles.containerItem}>
@@ -49,7 +55,7 @@ function CodeVerification({navigation}) {
           );
         })}
       </View>
-      <Timer timerText="Send me code again" timerStyle={styles.timer} />
+      <Timer />
       <View style={styles.keyboardContainer}>
         {Array.from({length: 9}).map((el, i) => {
           return (
@@ -71,13 +77,6 @@ function CodeVerification({navigation}) {
           numberTextStyle={styles.numberTextStyle}
         />
         <Icon name={ICON_NAMES.ASSETS_SVG.ARROW_LEFT} onPress={onDelete} style={styles.numberContainer} width={9} height={13}/>
-{/*=======*/}
-{/*        <CodeVerificationNumber*/}
-{/*          numberText={<ArrowRight />}*/}
-{/*          onClick={onDelete}*/}
-{/*          numberTextStyle={styles.arrowStyle}*/}
-{/*        />*/}
-{/*>>>>>>> main*/}
       </View>
     </ScreenMask>
   );

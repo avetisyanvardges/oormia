@@ -13,9 +13,11 @@ import {ICON_NAMES} from 'components/Svgs/icon_names';
 import Button from "components/Button";
 import * as yup from "yup";
 import SignUp from "screens/AuthLayer/SignUp";
+import {useNavigation} from "@react-navigation/native";
 
-const LoginScreen = ({navigation, setPage, page, SIGN_UP, LOGIN}) => {
+const LoginScreen = ({setPage, page, SIGN_UP, LOGIN}) => {
     const [switchPage, setSwitchPage] = useState(true);
+    const navigation=useNavigation();
 
     return (
         <ScreenMask
@@ -107,8 +109,7 @@ const LoginScreen = ({navigation, setPage, page, SIGN_UP, LOGIN}) => {
                         />
                     <TouchableOpacity
                         style={styles.lineBody}
-                        // onPress={() => setPage(page=LOGIN?LOGIN:SIGN_UP)}>
-                        onPress={() =>{console.log(page), setPage(page===LOGIN?SIGN_UP:LOGIN)}}>
+                        onPress={() => setPage(page===LOGIN?SIGN_UP:LOGIN)}>
                         <CustomText
                             values={page===LOGIN?'Log In':'Sign Up'}
                             globalStyle={styles.signInText}
