@@ -19,6 +19,14 @@ const LoginScreen = ({setPage, page, SIGN_UP, LOGIN}) => {
     const [switchPage, setSwitchPage] = useState(true);
     const navigation=useNavigation();
 
+
+    const handlerSubmit=(values)=>{
+       if (page===LOGIN){
+           navigation.navigate(routNames.SIGN_UP_USER_DATA, values)
+       }else if(page===SIGN_UP){
+       }
+    }
+
     return (
         <ScreenMask
             containerStyle={{
@@ -36,7 +44,7 @@ const LoginScreen = ({setPage, page, SIGN_UP, LOGIN}) => {
                             email: '',
                             password: '',
                         }}
-                        onSubmit={values => console.log(values)}>
+                        onSubmit={values =>handlerSubmit(values)}>
                         {({
                               handleChange,
                               handleBlur,

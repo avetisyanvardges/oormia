@@ -14,5 +14,6 @@ export const routNames = {
   PROFILE: 'profileScreen',
   UPLOAD_PHOTO: 'UploadPhoto',
   FAVORITE: 'Favorite',
-  RESET:'Reset'
+  RESET:'Reset',
+  SIGN_UP_USER_DATA:'SignUpUserData'
 };

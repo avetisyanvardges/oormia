@@ -6,7 +6,7 @@ import Svg from "components/Svgs";
 import {ICON_NAMES} from "components/Svgs/icon_names";
 import {normalize} from "assets/RootStyles/normalize";
 
-function Index({text, size=12,textStyle, isChecked=true, setChecked}) {
+function Index({size=20, isChecked=false, setChecked}) {
     return (
         <TouchableOpacity
             onPress={()=>setChecked(!isChecked)}
@@ -16,13 +16,8 @@ function Index({text, size=12,textStyle, isChecked=true, setChecked}) {
                 width:normalize(size),
                 height:normalize(size),
             }}>
-                {isChecked?<Svg width={size}  name={ICON_NAMES.ASSETS_SVG.CHECKBOX}/>:null}
+                {isChecked?<Svg width={size/100*80} color={'white'} name={ICON_NAMES.ASSETS_SVG.CHECKBOX}/>:null}
             </View>
-            <CustomText values={text} globalStyle={{
-                ...styles.text,
-                ...textStyle,
-            }
-            }/>
         </TouchableOpacity>
     );
 }
