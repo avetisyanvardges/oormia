@@ -12,9 +12,9 @@ export const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         borderWidth: 1,
-        borderColor: Colors.grey[1000],
+        borderColor: Colors.blue[900],
         borderRadius: normalize(4),
-        backgroundColor: Colors.grey[1000]
+        backgroundColor: Colors.blue[900]
     },
     text: {
         marginLeft: normalize(5),

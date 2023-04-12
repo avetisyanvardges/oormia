@@ -6,6 +6,33 @@ import { StyleSheet } from "react-native";
 
 
 export const styles =StyleSheet.create({
+    body:{
+        flex:1,
+        paddingBottom:normalize(10)
+    },
+    btnCountry:{
+        fontSize:normalize(20)
+    },
+    btnText:{
+        ...FontStyle.display_h6.regular,
+        fontSize:normalize(14)
+    },
+
+    upload:{
+      marginLeft:normalize(20),
+        ...FontStyle.display_h6.regular,
+        fontSize:normalize(16)
+    },
+    titleBlock:{
+        marginTop:normalize(20),
+        flexDirection:'row',
+        alignItems:"center"
+    },
+    titleSkip:{
+        ...FontStyle.display_h6.regular,
+        fontSize:normalize(16),
+        color:Colors.gray
+    },
     imgDef:{
         width: 50,
         height: 50,
@@ -14,14 +41,16 @@ export const styles =StyleSheet.create({
     },
     title:{
       ...FontStyle.display_h6.regular,
-        marginTop:normalize(15),
+        marginLeft:'auto',
+        marginRight:'auto'
     },
     btn:   {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginVertical: 40
+        marginTop: normalize(40)
     },
     imgContainer:{
+        marginVertical:normalize(10),
         flexDirection: "row",
         alignItems: "center",
     },
@@ -33,8 +62,7 @@ export const styles =StyleSheet.create({
     buttonStyle: {
         width: normalize(328),
         height: normalize(38),
-        backgroundColor: Colors.lilac,
-        marginTop: normalize(15),
-        marginBottom: normalize(9)
+        backgroundColor: Colors.blue[900],
+        marginTop: 'auto',
     },
 })

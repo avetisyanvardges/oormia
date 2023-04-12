@@ -28,9 +28,13 @@ import {
 import {
   ArrowLeft,
   Checkbox,
+  CropPhoto,
 } from "./Assets"
 
 export const ICONS = {
+  [ICON_NAMES.ASSETS_SVG.CROP_PHOTO]: ({width, height, size, color}) => (
+      <CropPhoto width={width} height={height} size={size} color={color} />
+  ),
   [ICON_NAMES.BUTTON_ICON.LINKEDIN]: ({width, height, size, color}) => (
       <Linkedin width={width} height={height} size={size} color={color} />
   ),

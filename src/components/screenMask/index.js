@@ -4,7 +4,7 @@ import {Colors} from 'assets/RootStyles';
 import {deviceInfo} from 'assets/deviceInfo';
 import {normalize} from 'assets/RootStyles/normalize';
 
-const ScreenMask = ({children, style, containerStyle={}}) => {
+const ScreenMask = ({children, style, containerStyle={}, isComplete=null}) => {
   return (
     <View style={{flex: 1, justifyContent: 'flex-end', ...containerStyle}}>
       <View
@@ -12,8 +12,8 @@ const ScreenMask = ({children, style, containerStyle={}}) => {
           width: deviceInfo.deviceWidth,
           height: '100%',
           backgroundColor: Colors.white,
-          borderTopLeftRadius: normalize(20),
-          borderTopRightRadius: normalize(20),
+          borderTopLeftRadius:!isComplete?normalize(20):0,
+          borderTopRightRadius:!isComplete?normalize(20):0,
           ...style,
         }}>
         <SafeAreaView style={{flex: 1}}>{children}</SafeAreaView>
