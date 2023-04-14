@@ -11,12 +11,13 @@ import {validation} from "constants/validations";
 import Input from "components/input";
 import {routNames} from "constants/routNames";
 import Button from "components/Button";
+import BtnGoBack from "components/BtnGoBack";
 
 function Index({navigation}) {
     return (
         <ScreenMask style={styles.screenMask}>
             <View style={styles.btnBlock}>
-                <Icon name={ICON_NAMES.ASSETS_SVG.ARROW_LEFT} onPress={()=>navigation.goBack()}/>
+                <BtnGoBack/>
                 <CustomText values="Reset" globalStyle={styles.textReset} />
             </View>
             <CustomText globalStyle={styles.text} values='Enter your new password'/>

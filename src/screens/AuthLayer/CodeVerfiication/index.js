@@ -9,6 +9,7 @@ import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import {routNames} from "constants/routNames";
 import {normalize} from "assets/RootStyles/normalize";
+import BtnGoBack from "components/BtnGoBack";
 
 
 function CodeVerification({navigation}) {
@@ -40,7 +41,7 @@ function CodeVerification({navigation}) {
       styles.screenMask
     }>
       <View style={styles.btnBlock}>
-        <Icon name={ICON_NAMES.ASSETS_SVG.ARROW_LEFT} onPress={()=>navigation.goBack()}/>
+        <BtnGoBack/>
         <CustomText values="Code Verification" globalStyle={styles.textCodV} />
       </View>
       <View style={styles.containerText}>

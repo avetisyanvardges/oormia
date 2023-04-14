@@ -12,13 +12,14 @@ import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import * as yup from "yup";
 import {routNames} from "constants/routNames";
+import BtnGoBack from "components/BtnGoBack";
 
 function Index({navigation}) {
 
     return (
         <ScreenMask style={styles.screenMask}>
             <View style={styles.btnBack}>
-                <Icon name={ICON_NAMES.ASSETS_SVG.ARROW_LEFT} onPress={()=>navigation.goBack()}/>
+                <BtnGoBack/>
                 <CustomText
                     values="Account Recovery"
                     globalStyle={styles.firstText}
