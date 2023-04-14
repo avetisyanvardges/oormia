@@ -23,6 +23,7 @@ function Index({
                    value = '',
                    inputContainerStyle = {},
                    onChange,
+                   search,
                }) {
 
     const [viewPassword, setViewPassword] = useState(true);
@@ -73,7 +74,11 @@ function Index({
                                 </TouchableOpacity>
                         }
                     </View>
-                    {value ? <View style={{
+                    {search? <View style={{
+                        ...styles.errBlock,
+                        backgroundColor: Colors.gray
+                    }}/>:
+                    value ? <View style={{
                         ...styles.errBlock,
                         backgroundColor: errorText ? Colors.red : Colors.green[600]
                     }}/> : null}
