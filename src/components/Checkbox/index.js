@@ -23,3 +23,4 @@ function Index({size=20, isChecked=false, setChecked}) {
 }
 
 export default Index;
+

@@ -6,6 +6,15 @@ import { StyleSheet } from "react-native";
 
 
 export const styles =StyleSheet.create({
+    buttonTextStyle:{
+        ...FontStyle.display_h6.regular,
+        fontSize:normalize(16),
+        color:Colors.white
+    },
+    activeCountryBlock:{
+        flexDirection:"row",
+        alignItems:'center'
+    },
     body:{
         flex:1,
         paddingBottom:normalize(10)

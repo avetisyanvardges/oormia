@@ -20,7 +20,7 @@ import Country from "screens/AuthLayer/CreateUserLayer/Country";
 function UploadPhoto({navigation}) {
     const [img, setImg] = useState();
     const [git, setGit]=useState(false);
-    const [country, setCountry]=useState(false);
+    const [countryActive, setCountryActive]=useState(null);
     const [countryPageIsOpen, setCountryPageIsOpen]=useState(false)
 
     const onUpload = () => {
@@ -33,8 +33,8 @@ function UploadPhoto({navigation}) {
         });
     }
 
-    if(countryPageIsOpen){
-        return <Country setCountryPageIsOpen={setCountryPageIsOpen} setCountry={setCountry} />
+    if(countryPageIsOpen && git){
+        return <Country setCountryPageIsOpen={setCountryPageIsOpen} countryActive={countryActive} setCountryActive={setCountryActive} />
     }
 
     return (
@@ -108,11 +108,11 @@ function UploadPhoto({navigation}) {
                             <CustomText globalStyle={styles.btnText} values={'Local guide field'}/>
                             <Checkbox isChecked={git} setChecked={setGit} />
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>setCountryPageIsOpen(true)}  style={{...styles.btn, marginTop:normalize(20)}}>
+                        <TouchableOpacity onPress={()=>setCountryPageIsOpen(git)}  style={{...styles.btn, marginTop:normalize(20)}}>
                             <CustomText globalStyle={styles.btnText} values={'Your country'}/>
-                            <View>
+                            <View style={styles.activeCountryBlock}>
+                                <CustomText globalStyle={{...styles.btnText, marginRight:normalize(10)}} values={countryActive?countryActive.country:''}/>
                                 <CustomText globalStyle={styles.btnCountry} values={'>'}/>
-                                <CustomText globalStyle={styles.btnText} values={country}/>
                             </View>
                         </TouchableOpacity>
                         <Button
