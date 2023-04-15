@@ -3,6 +3,9 @@ import {normalize} from "assets/RootStyles/normalize";
 import {Colors} from "assets/RootStyles";
 
 const styles = StyleSheet.create({
+    btnSearch:{
+      marginLeft:normalize(10),
+    },
     container: {
         marginVertical: normalize(6),
         justifyContent: "flex-start",

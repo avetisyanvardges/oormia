@@ -53,6 +53,11 @@ function Index({
                         flexDirection: 'row',
                         alignItems: 'center'
                     }}>
+                        {search?
+                            <TouchableOpacity style={styles.btnSearch}>
+                                <Icon name={ICON_NAMES.ASSETS_SVG.SEARCH}/>
+                             </TouchableOpacity>
+                            :null}
                         <TextInput
                             style={{
                                 ...styles.inputDefault,
@@ -64,14 +69,15 @@ function Index({
                             secureTextEntry={secure && viewPassword}
                         />
                         {
-                            secure ?
+                            !search?
+                            secure  ?
                                 <TouchableOpacity onPress={() => setViewPassword(!viewPassword)}>
                                     {<Icon
                                         name={viewPassword ? ICON_NAMES.INPUT_BTN.EYE_CLOSE : ICON_NAMES.INPUT_BTN.EYE_OPEN}/>}
                                 </TouchableOpacity> :
                                 <TouchableOpacity onPress={() => onChange('')}>
                                     {<Icon name={ICON_NAMES.INPUT_BTN.CLEAR}/>}
-                                </TouchableOpacity>
+                                </TouchableOpacity>:null
                         }
                     </View>
                     {search? <View style={{
@@ -85,7 +91,7 @@ function Index({
                 </View>
             </View>
             {
-                value?<CustomText values={errorText?errorText:'Support message'} globalStyle={{
+                value && !search?<CustomText values={errorText?errorText:'Support message'} globalStyle={{
                     color:errorText?Colors.red:Colors.gray
                 }}/>:null
             }

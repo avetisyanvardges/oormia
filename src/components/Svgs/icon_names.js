@@ -27,6 +27,7 @@ export const ICON_NAMES = {
   ASSETS_SVG:{
     CHECKBOX:'Checkbox',
     ARROW_LEFT:"ArrowLeft",
-    CROP_PHOTO:'CropPhoto'
+    CROP_PHOTO:'CropPhoto',
+    SEARCH:'Search'
   }
 };
