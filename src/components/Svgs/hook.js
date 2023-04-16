@@ -12,11 +12,7 @@ import {
   UserIcon,
   WorldIcon,
 } from './TabBar';
-import {
-  Clear,
-  EyeClose,
-  EyeOpen,
-} from './InputBtn';
+import {Clear, EyeClose, EyeOpen} from './InputBtn';
 import {
   FbIcon,
   VkIcon,
@@ -24,22 +20,18 @@ import {
   AppleIcon,
   GoogleIcon,
   Linkedin,
-} from "./ButtonIcon";
-import {
-  ArrowLeft,
-  Checkbox,
-  CropPhoto,
-} from "./Assets"
+} from './ButtonIcon';
+import {ArrowLeft, Checkbox, CropPhoto} from './Assets';
 
 export const ICONS = {
   [ICON_NAMES.ASSETS_SVG.CROP_PHOTO]: ({width, height, size, color}) => (
-      <CropPhoto width={width} height={height} size={size} color={color} />
+    <CropPhoto width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.BUTTON_ICON.LINKEDIN]: ({width, height, size, color}) => (
-      <Linkedin width={width} height={height} size={size} color={color} />
+    <Linkedin width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.ASSETS_SVG.CHECKBOX]: ({width, height, size, color}) => (
-      <Checkbox width={width} height={height} size={size} color={color} />
+    <Checkbox width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.ASSETS_SVG.ARROW_LEFT]: ({width, height, size, color}) => (
     <ArrowLeft width={width} height={height} size={size} color={color} />
@@ -60,13 +52,13 @@ export const ICONS = {
     <FbIcon width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.INPUT_BTN.CLEAR]: ({width, height, size, color}) => (
-      <Clear width={width} height={height} size={size} color={color} />
+    <Clear width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.INPUT_BTN.EYE_OPEN]: ({width, height, size, color}) => (
-      <EyeClose width={width} height={height} size={size} color={color} />
+    <EyeClose width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.INPUT_BTN.EYE_CLOSE]: ({width, height, size, color}) => (
-      <EyeOpen width={width} height={height} size={size} color={color} />
+    <EyeOpen width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.TAB_BAR.CHAT]: ({width, height, size, color}) => (
     <ChatIcon width={width} height={height} size={size} color={color} />

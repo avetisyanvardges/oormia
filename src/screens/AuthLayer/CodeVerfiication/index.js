@@ -6,10 +6,9 @@ import Timer from 'components/timer';
 import CodeVerificationNumber from './CodeVerificationNumber';
 import ScreenMask from 'components/screenMask';
 import Icon from 'components/Svgs';
-import { ICON_NAMES } from 'components/Svgs/icon_names';
-import {routNames} from "constants/routNames";
-import {normalize} from "assets/RootStyles/normalize";
-
+import {ICON_NAMES} from 'components/Svgs/icon_names';
+import {routNames} from 'constants/routNames';
+import {normalize} from 'assets/RootStyles/normalize';
 
 function CodeVerification({navigation}) {
   const [pin, setPin] = useState([]);
@@ -29,28 +28,35 @@ function CodeVerification({navigation}) {
     }
   };
 
-  useEffect(()=>{
-      if(pin.length===4){
-          navigation.navigate(routNames.RESET)
-      }
-  },[pin])
+  useEffect(() => {
+    if (pin.length === 4) {
+      navigation.navigate(routNames.RESET);
+    }
+  }, [pin]);
 
   return (
-    <ScreenMask style={
-      styles.screenMask
-    }>
+    <ScreenMask style={styles.screenMask}>
       <View style={styles.btnBlock}>
-        <Icon name={ICON_NAMES.ASSETS_SVG.ARROW_LEFT} onPress={()=>navigation.goBack()}/>
+        <Icon
+          name={ICON_NAMES.ASSETS_SVG.ARROW_LEFT}
+          onPress={() => navigation.goBack()}
+        />
         <CustomText values="Code Verification" globalStyle={styles.textCodV} />
       </View>
       <View style={styles.containerText}>
-        <CustomText values="Enter verification code here" globalStyle={styles.textEnterV} />
+        <CustomText
+          values="Enter verification code here"
+          globalStyle={styles.textEnterV}
+        />
       </View>
       <View style={styles.containerItem}>
         {Array.from({length: 4}).map((el, i) => {
           return (
             <View style={styles.item} key={i}>
-              <CustomText values={pin[i]} globalStyle={styles.numberTextStyle} />
+              <CustomText
+                values={pin[i]}
+                globalStyle={styles.numberTextStyle}
+              />
             </View>
           );
         })}
@@ -76,7 +82,13 @@ function CodeVerification({navigation}) {
           onClick={onClick}
           numberTextStyle={styles.numberTextStyle}
         />
-        <Icon name={ICON_NAMES.ASSETS_SVG.ARROW_LEFT} onPress={onDelete} style={styles.numberContainer} width={9} height={13}/>
+        <Icon
+          name={ICON_NAMES.ASSETS_SVG.ARROW_LEFT}
+          onPress={onDelete}
+          style={styles.numberContainer}
+          width={9}
+          height={13}
+        />
       </View>
     </ScreenMask>
   );

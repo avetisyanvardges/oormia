@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { Colors, Fonts, GradientColors, Shadow, Sizes } from "assets/RootStyle";
+import {StyleSheet} from 'react-native';
+import {Colors, Fonts, GradientColors, Shadow, Sizes} from 'assets/RootStyle';
 
 const styles = theme => {
   return StyleSheet.create({

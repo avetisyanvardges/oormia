@@ -1,8 +1,8 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import httpClient from '../../../services/HttpClient';
 
-export const userLogout = createAsyncThunk(
-  'users/userLogout',
+export const userSignIn = createAsyncThunk(
+  'users/userSignIn',
   async (_, {getState}) => {
     const {
       users: {currentUser},
@@ -10,7 +10,7 @@ export const userLogout = createAsyncThunk(
     const body = {id: currentUser?.id};
 
     try {
-      await httpClient.post('/user/logout', body);
+      await httpClient.post('/auth/sign-in', body);
     } catch {
       //
     }

@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {userLogAuth} from './operations/userLogOut';
+import {userLogout} from './operations/userLogOut';
 
 const initialState = {
   currentUser: '',
@@ -10,7 +10,7 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   extraReducers: builder => {
-    builder.addCase(userLogAuth, state => {
+    builder.addCase(userLogout, state => {
       state.currentUser = {};
     });
   },

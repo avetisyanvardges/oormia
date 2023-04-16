@@ -11,22 +11,22 @@ export const ICON_NAMES = {
     USER: 'userIcon',
     WORLD: 'worldIcon',
   },
-  INPUT_BTN:{
-    CLEAR:'Clear',
-    EYE_OPEN:'EeyOpen',
-    EYE_CLOSE:'EyeClose',
+  INPUT_BTN: {
+    CLEAR: 'Clear',
+    EYE_OPEN: 'EeyOpen',
+    EYE_CLOSE: 'EyeClose',
   },
-  BUTTON_ICON:{
-    FB: "FB",
-    VK: "VK",
-    INST: "INST",
-    APPLE: "APPLE",
-    GOOGLE: "GOOGLE",
-    LINKEDIN:"LINKEDIN"
+  BUTTON_ICON: {
+    FB: 'FB',
+    VK: 'VK',
+    INST: 'INST',
+    APPLE: 'APPLE',
+    GOOGLE: 'GOOGLE',
+    LINKEDIN: 'LINKEDIN',
   },
-  ASSETS_SVG:{
-    CHECKBOX:'Checkbox',
-    ARROW_LEFT:"ArrowLeft",
-    CROP_PHOTO:'CropPhoto'
-  }
+  ASSETS_SVG: {
+    CHECKBOX: 'Checkbox',
+    ARROW_LEFT: 'ArrowLeft',
+    CROP_PHOTO: 'CropPhoto',
+  },
 };

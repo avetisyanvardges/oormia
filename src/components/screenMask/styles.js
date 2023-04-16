@@ -1,9 +1,8 @@
-import {StyleSheet} from "react-native";
-import {normalize} from "../../assets/RootStyles/normalize";
+import {StyleSheet} from 'react-native';
+import {normalize} from '../../assets/RootStyles/normalize';
 
 const styles = StyleSheet.create({
-    textDefaultStyle: {
-    },
-})
+  textDefaultStyle: {},
+});
 
 export default styles;

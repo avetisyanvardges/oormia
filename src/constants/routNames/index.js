@@ -1,5 +1,5 @@
 export const routNames = {
-  START:'Start',
+  START: 'Start',
   AUTH_LAYER: 'AuthLayer',
   APP_LAYER: 'AppLayer',
   FORGOT: 'Forgot',
@@ -14,6 +14,6 @@ export const routNames = {
   PROFILE: 'profileScreen',
   UPLOAD_PHOTO: 'UploadPhoto',
   FAVORITE: 'Favorite',
-  RESET:'Reset',
-  SIGN_UP_USER_DATA:'SignUpUserData'
+  RESET: 'Reset',
+  SIGN_UP_USER_DATA: 'SignUpUserData',
 };

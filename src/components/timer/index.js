@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { CustomText } from 'components/Text';
-import {View} from "react-native";
-import {styles} from "components/timer/styles";
+import {CustomText} from 'components/Text';
+import {View} from 'react-native';
+import {styles} from 'components/timer/styles';
 
 const getPadTime = time => time.toString().padStart(2, 0);
 
@@ -23,10 +23,10 @@ function Index({duration = 120}) {
   }, []);
 
   return (
-      <View style={styles.body}>
-        <CustomText values={'Send me code again'} globalStyle={styles.timeText}/>
-        <CustomText values={`${minutes}:${seconds}`} globalStyle={styles.time} />
-      </View>
+    <View style={styles.body}>
+      <CustomText values={'Send me code again'} globalStyle={styles.timeText} />
+      <CustomText values={`${minutes}:${seconds}`} globalStyle={styles.time} />
+    </View>
   );
 }
 
