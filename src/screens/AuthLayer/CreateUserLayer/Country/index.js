@@ -43,10 +43,7 @@ function Index({setCountryPageIsOpen, countryActive, setCountryActive}) {
                 <CustomText values='Choose your country' globalStyle={{...styles.title, marginLeft:'auto', marginRight:"auto"}}/>
             </View>
             <Input value={searchValue} onChange={setSearchValue} search placeholder='Search'/>
-
-            <SafeAreaView style={{
-                // backgroundColor:'red'
-            }} >
+            <SafeAreaView>
                 <FlatList
                     data={country}
                     renderItem={({item}) => <Item item={item}/>}

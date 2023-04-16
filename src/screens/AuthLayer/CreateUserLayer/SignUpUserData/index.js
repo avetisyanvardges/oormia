@@ -128,12 +128,6 @@ function UploadPhoto({navigation}) {
                     </View>
                 )}
             </Formik>
-            {/*{countryPageIsOpen?<View style={{*/}
-            {/*    flex:1,*/}
-            {/*    backgroundColor:'blue',*/}
-            {/*    position:'absolute'*/}
-            {/*}}>*/}
-            {/*</View>:null}*/}
         </ScreenMask>
     )
 }
