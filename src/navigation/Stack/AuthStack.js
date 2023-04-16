@@ -4,7 +4,7 @@ import {routNames} from 'constants/routNames';
 import LoginScreen from '../../screens/AuthLayer/Login';
 import ForgotScreen from '../../screens/AuthLayer/Forgot';
 import CodeVerificationScreen from '../../screens/AuthLayer/CodeVerfiication';
-import FavoriteScreen from 'screens/AuthLayer/Favorite';
+import FavoriteScreen from 'screens/AuthLayer/CreateUserLayer/Preferences';
 import Home from "screens/Home";
 import Reset from "screens/AuthLayer/Reset";
 import SignUpUserData from "screens/AuthLayer/CreateUserLayer/SignUpUserData";
