@@ -19,8 +19,8 @@ const handleRequest = config => {
   const {
     user: {token},
     intl: {locale},
-    version: {api_version},
   } = store.getState();
+
   // if (
   // api_version &&
   // !isEmpty(api_version) &&

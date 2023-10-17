@@ -1,12 +1,8 @@
 //------------------- TAB BAR -----------------------
-export * from './EventsIcon';
-export * from './Chat';
+export * from './HomeIcon';
+export * from './MapIcon';
 export * from './CreateIcon';
-export * from './UserIcon';
-export * from './Mentor';
-export * from './worldIcon';
-export * from './mapIcon';
-export * from './Routing';
-export * from './GroupIcon';
-export * from './RequestIcon';
+export * from './TicketIcon';
+export * from './ProfileIcon';
+
 //------------------- TAB BAR -----------------------

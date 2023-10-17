@@ -1,8 +1,33 @@
 import React from 'react';
-import {View} from 'react-native';
+import {ScrollView} from 'react-native';
+import Highlights from './components/Highlights';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {normalize} from 'assets/RootStyles/normalize';
+import {Colors} from 'assets/RootStyles';
+import HomeHeaderComponent from 'screens/AppLayer/HomeScreen/components/Header';
+import PromotionComponent from 'screens/AppLayer/HomeScreen/components/Promotion';
+import TopEvents from 'screens/AppLayer/HomeScreen/components/TopEvents';
 
 const HomeScreen = ({navigation, route}) => {
-  return <View />;
+  const insets = useSafeAreaInsets();
+  return (
+    <ScrollView
+      style={{
+        flex: 1,
+        paddingTop: insets.top + normalize(16),
+        backgroundColor: Colors.white,
+      }}
+      contentContainerStyle={{paddingBottom: normalize(30)}}>
+      {/* Header component*/}
+      <HomeHeaderComponent />
+      {/* Highlights component */}
+      <Highlights />
+      {/* Promotion component */}
+      <PromotionComponent />
+      {/* Top Events component */}
+      <TopEvents />
+    </ScrollView>
+  );
 };
 
 export {HomeScreen};

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text} from 'react-native';
 import {Styles} from 'components/Text/style';
-import {FormattedMessage} from 'react-intl';
 
 const CustomText = ({
   children,
@@ -19,7 +18,7 @@ const CustomText = ({
       ellipsizeMode={ellipsizeMode}
       numberOfLines={numberOfLines}>
       {/*<FormattedMessage id={children} values={values} />*/}
-      {values}
+      {children}
     </Text>
   );
 };

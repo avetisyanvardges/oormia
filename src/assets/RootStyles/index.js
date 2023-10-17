@@ -5,8 +5,8 @@ export const Colors = {
   white: '#ffffff',
   black: {
     50: '#000000',
-    100: "#2C2C2C",
-    200: "#818195",
+    100: '#2C2C2C',
+    200: '#818195',
   },
   green: {
     50: '#eff8ea',
@@ -31,9 +31,9 @@ export const Colors = {
     700: '#1b1b1b',
     800: '#151515',
     900: '#101010',
-    1000: "#F3F3F3",
-    1100: "#E3E3E3",
-    1200: "#818195",
+    1000: '#F3F3F3',
+    1100: '#E3E3E3',
+    1200: '#818195',
   },
   oxford_blue: {
     30: '#F5F5F5',
@@ -85,7 +85,7 @@ export const Colors = {
   blue_tint_ec: '#ECF3FB',
   blue_tint_f6: '#F6F9FC',
   gray: '#D9D9D9',
-  lilac: "#A347FF",
+  lilac: '#A347FF',
 };
 
 // export const ToastColors = {
@@ -461,14 +461,14 @@ export const Padding = {
 };
 
 export const Shadow = {
-  shadowColor: '#0A25401A',
+  shadowColor: Colors.oxford_blue['200'],
   shadowOffset: {
     width: 0,
-    height: 8,
+    height: 4,
   },
-  shadowOpacity: 0.09,
-  shadowRadius: 16,
-  elevation: 11,
+  shadowOpacity: 0.3,
+  shadowRadius: 4.65,
+  elevation: 8,
 };
 
 export const BorderStyles = {

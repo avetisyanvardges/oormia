@@ -1,10 +1,11 @@
 import {StyleSheet} from 'react-native';
-import {Fonts} from 'assets/RootStyles';
+import {Colors, Fonts} from 'assets/RootStyles';
 
 const Styles = () => {
   return StyleSheet.create({
     font: {
       fontFamily: Fonts.arm.regular,
+      color: Colors.grey['500'],
     },
   });
 };

@@ -1,20 +1,19 @@
-import { StyleSheet } from "react-native"
-import { Colors,BorderStyles } from "../../assets/RootStyles";
-import { normalize } from "../../assets/RootStyles/normalize";
+import {StyleSheet} from 'react-native';
+import {Colors, FontStyle, fullScreen} from '../../assets/RootStyles';
+import {normalize} from '../../assets/RootStyles/normalize';
 
 export const styles = StyleSheet.create({
-    buttonDefaultStyle: {
-        width: normalize(100),
-        height: normalize(38),
-        background: Colors.white,
-        borderWidth: BorderStyles.widths.normal,
-        borderColor: Colors.grey[1100],
-        borderRadius: BorderStyles.radius.ss,
-        flexDirection:"row",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    textStyle:{
-        marginLeft: normalize(10)
-    }
-})
+  buttonDefaultStyle: {
+    width: fullScreen.width - normalize(32),
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: normalize(8),
+    backgroundColor: Colors.oxford_blue['500'],
+    borderColor: Colors.blue_tint_ec,
+    paddingVertical: normalize(12),
+    paddingHorizontal: normalize(12),
+  },
+  textStyle: {
+    ...FontStyle.text_h5.regular,
+  },
+});

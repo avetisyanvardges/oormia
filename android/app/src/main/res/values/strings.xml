@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">OOrmia</string>
+    <string name="server_client_id">599064016739-b7hi4etus7p3t07k2lvgrgp96kj181lq.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">1037213416971526</string>
+    <string name="fb_login_protocol_scheme">fb1037213416971526</string>
+    <string name="facebook_client_token">7179c6a26c04d10beace22770daab27c</string>
 </resources>

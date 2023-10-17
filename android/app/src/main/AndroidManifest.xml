@@ -1,8 +1,31 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT" />
+            <data android:mimeType="image/*" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.PICK" />
+            <data android:mimeType="image/*" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.CHOOSER" />
+        </intent>
+    </queries>
+
     <uses-feature android:name="android.hardware.camera.front" android:required="false" />
 
     <application
@@ -26,7 +49,7 @@
         </intent-filter>
       </activity>
       <meta-data
-          android:name="com.google.android.geo.API_KEY"
-          android:value="AIzaSyA3JgEsDXQmVnH6HQOVHzSpta2wKAN2Tf0"/>
+              android:name="com.google.android.geo.API_KEY"
+              android:value="AIzaSyA3JgEsDXQmVnH6HQOVHzSpta2wKAN2Tf0"/>
     </application>
 </manifest>

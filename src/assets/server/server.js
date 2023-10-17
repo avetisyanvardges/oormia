@@ -1,79 +1,79 @@
 export const server = [
-    {
-        title: "title",
-        text: "text",
-        id: 1,
-        checked: false,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIW3AiJyJ1Q6usG_c-MEK5Z9jyE6H0VD1k7w&usqp=CAU"
-    },
-    {
-        title: "title",
-        text: "text",
-        id: 2,
-        checked: false,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIW3AiJyJ1Q6usG_c-MEK5Z9jyE6H0VD1k7w&usqp=CAU"
-    },
-    {
-        title: "title",
-        text: "text",
-        id: 3,
-        checked: false,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIW3AiJyJ1Q6usG_c-MEK5Z9jyE6H0VD1k7w&usqp=CAU"
-    },
-    {
-        title: "title",
-        text: "text",
-        id: 4,
-        checked: false,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIW3AiJyJ1Q6usG_c-MEK5Z9jyE6H0VD1k7w&usqp=CAU"
-    },
-    {
-        title: "title",
-        text: "text",
-        id: 5,
-        checked: false,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIW3AiJyJ1Q6usG_c-MEK5Z9jyE6H0VD1k7w&usqp=CAU"
-    },
-    {
-        title: "title",
-        text: "text",
-        id: 6,
-        checked: false,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIW3AiJyJ1Q6usG_c-MEK5Z9jyE6H0VD1k7w&usqp=CAU"
-    },
-    {
-        title: "title",
-        text: "text",
-        id: 7,
-        checked: false,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIW3AiJyJ1Q6usG_c-MEK5Z9jyE6H0VD1k7w&usqp=CAU"
-    },
-    {
-        title: "title",
-        text: "text",
-        id: 8,
-        checked: false,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIW3AiJyJ1Q6usG_c-MEK5Z9jyE6H0VD1k7w&usqp=CAU"
-    },
-    {
-        title: "title",
-        text: "text",
-        id: 9,
-        checked: false,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIW3AiJyJ1Q6usG_c-MEK5Z9jyE6H0VD1k7w&usqp=CAU"
-    },
-    {
-        title: "title",
-        text: "text",
-        id: 10,
-        checked: false,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIW3AiJyJ1Q6usG_c-MEK5Z9jyE6H0VD1k7w&usqp=CAU"
-    },
-    {
-        title: "title",
-        text: "text",
-        id: 11,
-        checked: false,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIW3AiJyJ1Q6usG_c-MEK5Z9jyE6H0VD1k7w&usqp=CAU"
-    },
-]
+  {
+    title: 'title',
+    text: 'text',
+    id: 1,
+    checked: false,
+    img: 'https://img.freepik.com/free-photo/blossom-floral-bouquet-decoration-colorful-beautiful-flowers-background-garden-flowers-plant-pattern-wallpapers-greeting-cards-postcards-design-wedding-invites_90220-1103.jpg',
+  },
+  {
+    title: 'title',
+    text: 'text',
+    id: 2,
+    checked: false,
+    img: 'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?w=2000',
+  },
+  {
+    title: 'title',
+    text: 'text',
+    id: 3,
+    checked: false,
+    img: 'https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?cs=srgb&dl=pexels-roberto-nickson-2486168.jpg&fm=jpg',
+  },
+  {
+    title: 'title',
+    text: 'text',
+    id: 4,
+    checked: false,
+    img: 'https://img.freepik.com/premium-photo/illustration-neon-tropical-theme-with-palm-tree-exotic-floral-ai_564714-1270.jpg',
+  },
+  {
+    title: 'title',
+    text: 'text',
+    id: 5,
+    checked: false,
+    img: 'https://images.pexels.com/photos/1187079/pexels-photo-1187079.jpeg?cs=srgb&dl=pexels-artem-saranin-1187079.jpg&fm=jpg',
+  },
+  {
+    title: 'title',
+    text: 'text',
+    id: 6,
+    checked: false,
+    img: 'https://i.pinimg.com/originals/ab/85/bf/ab85bffa87c5a40419b7e03f0ec7b8e0.jpg',
+  },
+  {
+    title: 'title',
+    text: 'text',
+    id: 7,
+    checked: false,
+    img: 'https://images.pexels.com/photos/60597/dahlia-red-blossom-bloom-60597.jpeg?cs=srgb&dl=pexels-pixabay-60597.jpg&fm=jpg',
+  },
+  {
+    title: 'title',
+    text: 'text',
+    id: 8,
+    checked: false,
+    img: 'https://wallpaper-house.com/data/out/8/wallpaper2you_289234.jpg',
+  },
+  {
+    title: 'title',
+    text: 'text',
+    id: 9,
+    checked: false,
+    img: 'https://wallup.net/wp-content/uploads/2019/09/708336-red-lotus-black-background-748x468.jpg',
+  },
+  {
+    title: 'title',
+    text: 'text',
+    id: 10,
+    checked: false,
+    img: 'https://e0.pxfuel.com/wallpapers/574/236/desktop-wallpaper-apple-red-lotus-iphone6-plus-ios8-flower-original-6.jpg',
+  },
+  {
+    title: 'title',
+    text: 'text',
+    id: 11,
+    checked: false,
+    img: 'https://wallpapershome.com/images/pages/pic_h/24525.jpg',
+  },
+];

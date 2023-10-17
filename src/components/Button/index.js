@@ -3,30 +3,31 @@ import {TouchableOpacity} from 'react-native';
 import {CustomText} from '../Text';
 import {styles} from './style';
 
-
 function Button({
-  textButton = '',
+  title = '',
   icon = '',
-  onClick,
-  styleButton = {},
+  onPress,
+  containerStyle = {},
   textStyle = {},
   disabled = false,
 }) {
   const validStyle = disabled ? {opacity: 0.7} : {};
   return (
     <TouchableOpacity
-      onPress={onClick}
+      onPress={onPress}
       style={{
         ...styles.buttonDefaultStyle,
-        ...styleButton,
-        ...validStyle}}
-      disabled={disabled}
-    >
+        ...containerStyle,
+        ...validStyle,
+      }}
+      disabled={disabled}>
       {icon}
-      <CustomText values={textButton} globalStyle={{...styles.textStyle, ...textStyle}} />
+      <CustomText
+        children={title}
+        globalStyle={{...styles.textStyle, ...textStyle}}
+      />
     </TouchableOpacity>
   );
-
 }
 
 export default Button;

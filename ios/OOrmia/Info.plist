@@ -34,23 +34,17 @@
 				<true/>
 			</dict>
 		</dict>
+		<key>NSAllowsArbitraryLoads</key>
+        <true/>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>YOUR TEXT</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>YOUR TEXT</string>
+    <key>NSCameraUsageDescription</key>
+    <string>YOUR TEXT</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>YOUR TEXT</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Black.otf</string>
@@ -99,5 +93,19 @@
 		<string>Montserratarm2-SemiBold.ttf</string>
 		<string>Montserratarm2-Thin.ttf</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

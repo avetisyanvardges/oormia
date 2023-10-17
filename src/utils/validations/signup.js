@@ -6,24 +6,21 @@ import {
 } from 'constants/validations';
 
 const signUpSchema = yup.object().shape({
-  name: yup.string().max(MAX_INPUT_LENGTH).required(),
+  firstName: yup.string().max(MAX_INPUT_LENGTH).required(),
+  lastName: yup.string().max(MAX_INPUT_LENGTH).required(),
+  phoneNumber: yup.string().required('field.required'),
   email: yup
     .string()
     .email('Please enter valid email')
     .max(MAX_INPUT_LENGTH)
-    .required(),
-  phone: yup.string().required(),
+    .required('field.required'),
   password: yup
     .string()
-    .min(
-      SIGN_UP_VALIDATION.PASSWORD.MIN,
-      ({min}) => `Password must be at least ${min} characters`,
-    )
-    .matches(
-      PASSWORD_REGEX,
-      'One Uppercase, One Lowercase, One Number and One Special Case Character',
-    )
-    .required('Password is required'),
+    .min(SIGN_UP_VALIDATION.PASSWORD.MIN, () => ' ')
+    .matches(PASSWORD_REGEX, ' ')
+    .required('field.required'),
+  guide: yup.boolean().required(),
+  guideForCountry: yup.string(),
 });
 
 export default signUpSchema;

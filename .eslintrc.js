@@ -29,6 +29,7 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    curly: ['error', 'multi-line', 'consistent'],
     'padding-line-between-statements': [
       'error',
       {blankLine: 'always', prev: 'block-like', next: '*'},

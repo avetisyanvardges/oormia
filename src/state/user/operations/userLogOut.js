@@ -1,16 +1,12 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import httpClient from '../../../services/HttpClient';
+import {replace} from 'services/NavigationService';
+import {routNames} from 'constants/routNames';
 
 export const userLogAuth = createAsyncThunk(
-  'users/userLogAuth',
+  'user/userLogAuth',
   async (_, {getState}) => {
-    const {
-      users: {currentUser},
-    } = getState();
-    const body = {id: currentUser?.id};
-
     try {
-      await httpClient.post('/user/logout', body);
+      replace(routNames.AUTH_LAYER);
     } catch {
       //
     }
