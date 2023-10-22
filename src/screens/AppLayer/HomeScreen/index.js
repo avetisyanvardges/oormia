@@ -1,15 +1,20 @@
-import React from 'react';
-import {ScrollView} from 'react-native';
+import React, { useEffect } from 'react';
+import { ScrollView } from 'react-native';
 import Highlights from './components/Highlights';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors} from 'assets/RootStyles';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 import HomeHeaderComponent from 'screens/AppLayer/HomeScreen/components/Header';
 import PromotionComponent from 'screens/AppLayer/HomeScreen/components/Promotion';
 import TopEvents from 'screens/AppLayer/HomeScreen/components/TopEvents';
+import { fetchAllUsers } from 'state/user/operations/fetchAllUsers';
+import dispatch from 'utils/dispatch/dispatch';
 
-const HomeScreen = ({navigation, route}) => {
+const HomeScreen = ({ navigation, route }) => {
   const insets = useSafeAreaInsets();
+  useEffect(() => {
+    dispatch(fetchAllUsers());
+  }, []);
   return (
     <ScrollView
       style={{
@@ -17,7 +22,7 @@ const HomeScreen = ({navigation, route}) => {
         paddingTop: insets.top + normalize(16),
         backgroundColor: Colors.white,
       }}
-      contentContainerStyle={{paddingBottom: normalize(30)}}>
+      contentContainerStyle={{ paddingBottom: normalize(30) }}>
       {/* Header component*/}
       <HomeHeaderComponent />
       {/* Highlights component */}
@@ -30,4 +35,4 @@ const HomeScreen = ({navigation, route}) => {
   );
 };
 
-export {HomeScreen};
+export { HomeScreen };

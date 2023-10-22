@@ -1,9 +1,9 @@
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import React, {useEffect, useState} from 'react';
-import {ChooseCategories} from 'screens/AppLayer/CreateEvent/components/ChooseCategories';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import React, { useEffect, useState } from 'react';
+import { ChooseCategories } from 'screens/AppLayer/CreateEvent/components/ChooseCategories';
 import Create from 'screens/AppLayer/CreateEvent/components/Create';
 
-function useContainer({route}) {
+function useContainer({ route }) {
   const insets = useSafeAreaInsets();
   const [screen, setScreen] = useState('choose_category');
   const [selectedCategories, setSelectedCategories] = useState('');
@@ -32,7 +32,7 @@ function useContainer({route}) {
     }
   }, [route]);
 
-  return {insets, screens, screen, setScreen};
+  return { insets, screens, screen, setScreen };
 }
 
 export default useContainer;

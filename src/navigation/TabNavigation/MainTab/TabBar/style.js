@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
+import { StyleSheet } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
 
 const Styles = () => {
   return StyleSheet.create({
@@ -7,7 +7,7 @@ const Styles = () => {
       width: normalize(50),
       height: normalize(50),
       borderRadius: 14,
-      transform: [{rotate: '45deg'}],
+      transform: [{ rotate: '45deg' }],
       justifyContent: 'center',
       alignItems: 'center',
       bottom: normalize(30),
@@ -20,4 +20,4 @@ const Styles = () => {
   });
 };
 
-export {Styles};
+export { Styles };

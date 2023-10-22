@@ -1,13 +1,13 @@
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'components/Svgs';
-import {Styles} from 'components/DropDown/styles';
-import {Colors, FontStyle} from 'assets/RootStyles';
-import {normalize} from 'assets/RootStyles/normalize';
-import {FormattedMessage} from 'react-intl';
-import {CustomText} from 'components/Text';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
-import {deviceInfo} from 'assets/deviceInfo';
+import { Styles } from 'components/DropDown/styles';
+import { Colors, FontStyle } from 'assets/RootStyles';
+import { normalize } from 'assets/RootStyles/normalize';
+import { FormattedMessage } from 'react-intl';
+import { CustomText } from 'components/Text';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { deviceInfo } from 'assets/deviceInfo';
 
 const DropDown = ({
   placeholder,
@@ -31,7 +31,7 @@ const DropDown = ({
       activeOpacity={0.6}
       disabled={disabled || loader}
       onPress={onPress}
-      style={{...style, marginTop: normalize(10)}}>
+      style={{ ...style, marginTop: normalize(10) }}>
       {label && (
         <CustomText
           children={label}
@@ -58,7 +58,7 @@ const DropDown = ({
               borderColor: Colors.oxford_blue['30'],
               paddingHorizontal: normalize(12),
             },
-            validated && {borderColor: Colors.red['500'], borderWidth: 1.5},
+            validated && { borderColor: Colors.red['500'], borderWidth: 1.5 },
           ]}>
           {renderIcon ? renderIcon() : null}
           {value || placeholder ? (
@@ -79,7 +79,7 @@ const DropDown = ({
             </View>
           ) : null}
           {arrow_down_icon && !disabled ? (
-            <View style={{transform: [{rotate: '270deg'}]}}>
+            <View style={{ transform: [{ rotate: '270deg' }] }}>
               <Icon name={ICON_NAMES.ARROW.LEFT} size={normalize(15)} />
             </View>
           ) : null}
@@ -116,7 +116,7 @@ const DropDown = ({
             marginTop: normalize(2),
           }}>
           <Text
-            style={{...FontStyle.text_h6.regular, color: Colors.grey['300']}}>
+            style={{ ...FontStyle.text_h6.regular, color: Colors.grey['300'] }}>
             {supportMessage}
           </Text>
         </View>

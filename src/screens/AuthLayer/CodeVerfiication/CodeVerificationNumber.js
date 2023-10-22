@@ -1,9 +1,9 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
-import {CustomText} from 'components/Text';
-import {styles} from './style';
+import { TouchableOpacity } from 'react-native';
+import { CustomText } from 'components/Text';
+import { styles } from './style';
 
-function CodeVerificationNumber({numberText, onClick}) {
+function CodeVerificationNumber({ numberText, onClick }) {
   return (
     <TouchableOpacity
       style={styles.numberContainer}

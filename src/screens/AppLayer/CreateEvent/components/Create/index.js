@@ -95,6 +95,7 @@ const Create = ({ categories, setScreen, region }) => {
 
   useEffect(() => {
     if (region?.address) {
+      console.log(region?.address, 999);
       setValue('location', region?.address);
       setValue('region', region);
     }

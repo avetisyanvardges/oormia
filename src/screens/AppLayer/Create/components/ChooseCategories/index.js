@@ -1,14 +1,14 @@
 import React from 'react';
-import {FlatList, useWindowDimensions, View} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
+import { FlatList, useWindowDimensions, View } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
 import images from 'assets/images';
 import Button from 'components/Button';
-import {Colors} from 'assets/RootStyles';
+import { Colors } from 'assets/RootStyles';
 import useContainer from './hook';
 
-const ChooseCategories = ({categories, setCategories, setScreen}) => {
-  const {renderCategories, insets} = useContainer();
-  const {width} = useWindowDimensions();
+const ChooseCategories = ({ categories, setCategories, setScreen }) => {
+  const { renderCategories, insets } = useContainer();
+  const { width } = useWindowDimensions();
 
   const selectCategories = () => {
     setScreen('create');
@@ -23,10 +23,10 @@ const ChooseCategories = ({categories, setCategories, setScreen}) => {
       <FlatList
         numColumns="2"
         data={Object.keys(images.categories)}
-        renderItem={({item}) =>
+        renderItem={({ item }) =>
           renderCategories(item, categories, setCategories)
         }
-        ItemSeparatorComponent={() => <View style={{height: 10}} />}
+        ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
         contentContainerStyle={{
           marginTop: normalize(18),
         }}
@@ -41,7 +41,7 @@ const ChooseCategories = ({categories, setCategories, setScreen}) => {
             }}>
             <Button
               title={'Next'}
-              textStyle={{color: Colors.white}}
+              textStyle={{ color: Colors.white }}
               onPress={selectCategories}
               disabled={!categories}
             />
@@ -52,4 +52,4 @@ const ChooseCategories = ({categories, setCategories, setScreen}) => {
   );
 };
 
-export {ChooseCategories};
+export { ChooseCategories };

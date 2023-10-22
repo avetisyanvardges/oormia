@@ -1,9 +1,9 @@
 import React from 'react';
-import {Path, Svg} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors} from 'assets/RootStyles';
+import { Path, Svg } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 
-const EventsIcon = ({width, height, color}) => {
+const EventsIcon = ({ width, height, color }) => {
   return (
     <Svg
       width={width || normalize(24)}
@@ -37,4 +37,4 @@ const EventsIcon = ({width, height, color}) => {
   );
 };
 
-export {EventsIcon};
+export { EventsIcon };

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Svg, {Path} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import Svg, { Path } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-function EyeClose({width, height, colors}) {
+function EyeClose({ width, height, colors }) {
   return (
     <Svg
       width={normalize(width || 23)}
@@ -18,4 +18,4 @@ function EyeClose({width, height, colors}) {
   );
 }
 
-export {EyeClose};
+export { EyeClose };

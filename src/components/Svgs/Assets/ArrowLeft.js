@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Svg, {Path} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import Svg, { Path } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-function ArrowLeft({width, height, colors}) {
+function ArrowLeft({ width, height, colors }) {
   return (
     <Svg
       width={normalize(width) || normalize(16)}
@@ -18,4 +18,4 @@ function ArrowLeft({width, height, colors}) {
   );
 }
 
-export {ArrowLeft};
+export { ArrowLeft };

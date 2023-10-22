@@ -1,8 +1,8 @@
 import React from 'react';
-import {SafeAreaView, View} from 'react-native';
-import {Colors} from 'assets/RootStyles';
-import {deviceInfo} from 'assets/deviceInfo';
-import {normalize} from 'assets/RootStyles/normalize';
+import { SafeAreaView, View } from 'react-native';
+import { Colors } from 'assets/RootStyles';
+import { deviceInfo } from 'assets/deviceInfo';
+import { normalize } from 'assets/RootStyles/normalize';
 
 const ScreenMask = ({
   children,
@@ -11,7 +11,7 @@ const ScreenMask = ({
   isComplete = null,
 }) => {
   return (
-    <View style={{flex: 1, justifyContent: 'flex-end', ...containerStyle}}>
+    <View style={{ flex: 1, justifyContent: 'flex-end', ...containerStyle }}>
       <View
         style={{
           width: deviceInfo.deviceWidth,
@@ -21,7 +21,7 @@ const ScreenMask = ({
           borderTopRightRadius: !isComplete ? normalize(20) : 0,
           ...style,
         }}>
-        <SafeAreaView style={{flex: 1}}>{children}</SafeAreaView>
+        <SafeAreaView style={{ flex: 1 }}>{children}</SafeAreaView>
       </View>
     </View>
   );

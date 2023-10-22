@@ -1,18 +1,18 @@
 import React from 'react';
-import {Pressable, View} from 'react-native';
-import {Styles} from './style';
-import {useSelector} from 'react-redux';
+import { Pressable, View } from 'react-native';
+import { Styles } from './style';
+import { useSelector } from 'react-redux';
 import CreateButton from './createButton';
-import {normalize} from 'assets/RootStyles/normalize';
+import { normalize } from 'assets/RootStyles/normalize';
 import Icon from 'components/Svgs';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
-import {Colors, FontStyle, Shadow} from 'assets/RootStyles';
-import {CustomText} from 'components/Text';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { Colors, FontStyle, Shadow } from 'assets/RootStyles';
+import { CustomText } from 'components/Text';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const TabBar = ({state, descriptors, navigation}) => {
+const TabBar = ({ state, descriptors, navigation }) => {
   const insets = useSafeAreaInsets();
-  const {theme} = useSelector(({theme}) => theme);
+  const { theme } = useSelector(({ theme }) => theme);
   const styles = Styles();
 
   if (state?.index !== 2) {
@@ -37,7 +37,7 @@ const TabBar = ({state, descriptors, navigation}) => {
           }}>
           {state?.routes.map((route, index) => {
             const isFocused = state.index === index;
-            const {options} = descriptors[route.key];
+            const { options } = descriptors[route.key];
             const onPress = () => {
               const event = navigation.emit({
                 type: 'tabPress',
@@ -54,7 +54,7 @@ const TabBar = ({state, descriptors, navigation}) => {
                 testID={options.tabBarTestID}
                 onPress={onPress}
                 accessibilityRole="button"
-                style={{flex: 1, alignItems: 'center'}}>
+                style={{ flex: 1, alignItems: 'center' }}>
                 {index === 0 && (
                   <>
                     <Icon

@@ -1,11 +1,11 @@
 import LinearGradient from 'react-native-linear-gradient';
-import {ImageBackground, Pressable, View} from 'react-native';
+import { ImageBackground, Pressable, View } from 'react-native';
 import images from 'assets/images';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors, fullScreen} from 'assets/RootStyles';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors, fullScreen } from 'assets/RootStyles';
 import CheckBox from '@react-native-community/checkbox';
-import {CustomText} from 'components/Text';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { CustomText } from 'components/Text';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 function useContainer() {
   const insets = useSafeAreaInsets();
@@ -14,7 +14,7 @@ function useContainer() {
     return (
       <Pressable
         onPress={() => setCategories(item)}
-        style={{marginHorizontal: normalize(10)}}>
+        style={{ marginHorizontal: normalize(10) }}>
         <ImageBackground
           source={images.categories[item]}
           resizeMode="cover"
@@ -24,7 +24,7 @@ function useContainer() {
             borderRadius: normalize(10),
             overflow: 'hidden',
           }}>
-          <View style={{alignItems: 'flex-end', padding: normalize(10)}}>
+          <View style={{ alignItems: 'flex-end', padding: normalize(10) }}>
             <CheckBox
               disabled={false}
               value={selected}
@@ -35,12 +35,12 @@ function useContainer() {
               onCheckColor={Colors.white}
               onAnimationType={'one-stroke'}
               offAnimationType={'one-stroke'}
-              style={{borderRadius: normalize(5)}}
+              style={{ borderRadius: normalize(5) }}
             />
           </View>
           <LinearGradient
-            start={{x: 1, y: 0}}
-            end={{x: 1, y: 1}}
+            start={{ x: 1, y: 0 }}
+            end={{ x: 1, y: 1 }}
             locations={[0.5, 0.95]}
             colors={['rgba(0,0,0,.0)', Colors.grey['500']]}
             style={{
@@ -52,7 +52,7 @@ function useContainer() {
             }}>
             <CustomText
               children={item}
-              globalStyle={{color: Colors.white, padding: normalize(10)}}
+              globalStyle={{ color: Colors.white, padding: normalize(10) }}
             />
           </LinearGradient>
         </ImageBackground>
@@ -60,7 +60,7 @@ function useContainer() {
     );
   };
 
-  return {renderCategories, insets};
+  return { renderCategories, insets };
 }
 
 export default useContainer;

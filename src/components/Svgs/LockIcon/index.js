@@ -1,8 +1,8 @@
 import React from 'react';
-import {Path, Svg} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import { Path, Svg } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-const LockIcon = ({width, height, size, color}) => {
+const LockIcon = ({ width, height, size, color }) => {
   return (
     <Svg
       width={width || size || normalize(24)}
@@ -27,4 +27,4 @@ const LockIcon = ({width, height, size, color}) => {
   );
 };
 
-export {LockIcon};
+export { LockIcon };

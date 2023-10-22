@@ -1,16 +1,16 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import ScreenMask from 'components/screenMask';
-import {styles} from 'screens/AuthLayer/Reset/styles';
-import {CustomText} from 'components/Text';
-import {Formik} from 'formik';
+import { styles } from 'screens/AuthLayer/Reset/styles';
+import { CustomText } from 'components/Text';
+import { Formik } from 'formik';
 import * as yup from 'yup';
-import {validation} from 'constants/validations';
+import { validation } from 'constants/validations';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import BtnGoBack from 'components/BtnGoBack';
 
-function Index({navigation}) {
+function Index({ navigation }) {
   return (
     <ScreenMask style={styles.screenMask}>
       <View style={styles.btnBlock}>

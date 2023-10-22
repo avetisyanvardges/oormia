@@ -5,3 +5,5 @@ export const fetchSubCategoriesAllEndpoint = endpoint(
   'get',
   'subCategories/all',
 );
+
+export const fetchPreferencesEndpoint = endpoint('get', 'subCategories/all');

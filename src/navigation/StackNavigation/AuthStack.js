@@ -1,6 +1,6 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {routNames} from 'constants/routNames';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { routNames } from 'constants/routNames';
 import LoginScreen from '../../screens/AuthLayer/Login';
 import ForgotScreen from '../../screens/AuthLayer/Forgot';
 import CodeVerificationScreen from '../../screens/AuthLayer/CodeVerfiication';

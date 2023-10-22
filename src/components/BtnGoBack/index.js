@@ -1,10 +1,10 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import Icon from 'components/Svgs';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
-import {useNavigation} from '@react-navigation/native';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { useNavigation } from '@react-navigation/native';
 
-function Index({onPress}) {
+function Index({ onPress }) {
   const navigation = useNavigation();
   return (
     <TouchableOpacity>

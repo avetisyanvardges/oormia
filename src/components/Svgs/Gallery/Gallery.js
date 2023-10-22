@@ -1,10 +1,10 @@
 import React from 'react';
-import {Path, Svg} from 'react-native-svg';
-import {GradientColors, Sizes} from '../../RootStyle';
-import {Colors} from 'assets/RootStyles';
-import {normalize} from 'assets/RootStyles/normalize';
+import { Path, Svg } from 'react-native-svg';
+import { GradientColors, Sizes } from '../../RootStyle';
+import { Colors } from 'assets/RootStyles';
+import { normalize } from 'assets/RootStyles/normalize';
 
-const Gallery = ({width, height, color}) => {
+const Gallery = ({ width, height, color }) => {
   return (
     <Svg
       width={width || normalize(24)}
@@ -30,4 +30,4 @@ const Gallery = ({width, height, color}) => {
   );
 };
 
-export {Gallery};
+export { Gallery };

@@ -1,9 +1,9 @@
 import React from 'react';
-import {Path, Svg} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors} from 'assets/RootStyles';
+import { Path, Svg } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 
-const ProfileIcon = ({width, height, color}) => {
+const ProfileIcon = ({ width, height, color }) => {
   return (
     <Svg
       width={width || normalize(24)}
@@ -21,4 +21,4 @@ const ProfileIcon = ({width, height, color}) => {
   );
 };
 
-export {ProfileIcon};
+export { ProfileIcon };

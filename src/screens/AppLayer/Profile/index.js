@@ -1,12 +1,12 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import UserInfoSection from 'screens/AppLayer/Profile/Components/UserInfoSection';
-import {normalize} from 'assets/RootStyles/normalize';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {Colors} from 'assets/RootStyles';
+import { normalize } from 'assets/RootStyles/normalize';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Colors } from 'assets/RootStyles';
 import HistorySection from 'screens/AppLayer/Profile/Components/HistorySection';
 
-const Profile = ({navigation}) => {
+const Profile = ({ navigation }) => {
   const insets = useSafeAreaInsets();
   return (
     <View

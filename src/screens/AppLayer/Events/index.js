@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, { useCallback } from 'react';
 import {
   FlatList,
   Image,
@@ -8,16 +8,16 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import {Colors, FontStyle, fullScreen} from 'assets/RootStyles';
-import {normalize} from 'assets/RootStyles/normalize';
+import { Colors, FontStyle, fullScreen } from 'assets/RootStyles';
+import { normalize } from 'assets/RootStyles/normalize';
 import images from 'assets/images';
-import {BlurView} from '@react-native-community/blur';
-import {CustomText} from 'components/Text';
+import { BlurView } from '@react-native-community/blur';
+import { CustomText } from 'components/Text';
 import Icon from 'components/Svgs';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
 import moment from 'moment/moment';
-import {back, navigate} from 'services/NavigationService';
-import {deviceInfo} from 'assets/deviceInfo';
+import { back, navigate } from 'services/NavigationService';
+import { deviceInfo } from 'assets/deviceInfo';
 
 function EventsScreen(props) {
   const renderPromotionItem = useCallback(() => {
@@ -78,7 +78,7 @@ function EventsScreen(props) {
                   alignItems: 'center',
                   marginTop: normalize(4),
                 }}>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Icon
                     name={ICON_NAMES.CALENDAR}
                     size={normalize(18)}
@@ -127,7 +127,11 @@ function EventsScreen(props) {
         back();
       }}>
       <View
-        style={{flex: 1, flexDirection: 'column', justifyContent: 'flex-end'}}>
+        style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+        }}>
         <TouchableWithoutFeedback onPress={() => {}}>
           <View
             style={{
@@ -136,13 +140,13 @@ function EventsScreen(props) {
               borderTopRightRadius: normalize(24),
               borderTopLeftRadius: normalize(24),
             }}>
-            <View style={{flex: 1, alignItems: 'center'}}>
+            <View style={{ flex: 1, alignItems: 'center' }}>
               <FlatList
                 data={[{}, {}, {}, {}, {}, {}, {}, {}]}
                 renderItem={renderPromotionItem}
                 showsVerticalScrollIndicator={false}
                 ItemSeparatorComponent={() => (
-                  <View style={{width: normalize(8)}} />
+                  <View style={{ width: normalize(8) }} />
                 )}
                 contentContainerStyle={{
                   paddingBottom: normalize(20),

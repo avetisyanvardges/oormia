@@ -1,8 +1,8 @@
 import axios from 'axios';
-import {baseUrlApi} from '../../constants/url';
-import {store} from '../../state/store';
-import {isEmpty} from 'lodash';
-import {deviceInfo} from '../../assets/deviceInfo';
+import { baseUrlApi } from '../../constants/url';
+import { store } from '../../state/store';
+import { isEmpty } from 'lodash';
+import { deviceInfo } from '../../assets/deviceInfo';
 import DeviceInfo from 'react-native-device-info';
 
 const requestConfig = {
@@ -17,8 +17,8 @@ const HttpClient = axios.create(requestConfig);
 
 const handleRequest = config => {
   const {
-    user: {token},
-    intl: {locale},
+    user: { token },
+    intl: { locale },
   } = store.getState();
 
   // if (
@@ -29,7 +29,7 @@ const handleRequest = config => {
   // ) {
   // config.baseURL = config.baseURL + api_version;
   // }
-
+  console.log(token);
   if (config.headers) {
     config.headers['X-localization'] = locale;
     DeviceInfo.getUniqueId().then(res => {

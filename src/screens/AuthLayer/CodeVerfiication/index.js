@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import {View} from 'react-native';
-import {CustomText} from 'components/Text';
-import {styles} from './style';
+import React, { useEffect, useState } from 'react';
+import { View } from 'react-native';
+import { CustomText } from 'components/Text';
+import { styles } from './style';
 import Timer from 'components/timer';
 import CodeVerificationNumber from './CodeVerificationNumber';
 import ScreenMask from 'components/screenMask';
 import Icon from 'components/Svgs';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
-import {routNames} from 'constants/routNames';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { routNames } from 'constants/routNames';
 import BtnGoBack from 'components/BtnGoBack';
 
-function CodeVerification({navigation}) {
+function CodeVerification({ navigation }) {
   const [pin, setPin] = useState([]);
 
   const onClick = text => {
@@ -47,7 +47,7 @@ function CodeVerification({navigation}) {
         />
       </View>
       <View style={styles.containerItem}>
-        {Array.from({length: 4}).map((el, i) => {
+        {Array.from({ length: 4 }).map((el, i) => {
           return (
             <View style={styles.item} key={i}>
               <CustomText
@@ -60,7 +60,7 @@ function CodeVerification({navigation}) {
       </View>
       <Timer />
       <View style={styles.keyboardContainer}>
-        {Array.from({length: 9}).map((el, i) => {
+        {Array.from({ length: 9 }).map((el, i) => {
           return (
             <CodeVerificationNumber
               key={i}

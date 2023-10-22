@@ -1,8 +1,8 @@
 import React from 'react';
-import {Path, Svg} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import { Path, Svg } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-const DurationIcon = ({width, height, size, color}) => {
+const DurationIcon = ({ width, height, size, color }) => {
   return (
     <Svg
       width={width || size || normalize(24)}
@@ -20,4 +20,4 @@ const DurationIcon = ({width, height, size, color}) => {
   );
 };
 
-export {DurationIcon};
+export { DurationIcon };

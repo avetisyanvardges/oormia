@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Svg, {Path, Rect} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import Svg, { Path, Rect } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-function FbIcon({width, height, colors}) {
+function FbIcon({ width, height, colors }) {
   return (
     <Svg
       width={normalize(width) || normalize(35)}
@@ -29,4 +29,4 @@ function FbIcon({width, height, colors}) {
   );
 }
 
-export {FbIcon};
+export { FbIcon };

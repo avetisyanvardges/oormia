@@ -1,14 +1,17 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
-import {navigationRef} from 'services/NavigationService';
-import {routNames} from 'constants/routNames';
-import {checkInitialRoute} from 'utils/checkInitialRoute';
+import { NavigationContainer } from '@react-navigation/native';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
+import { navigationRef } from 'services/NavigationService';
+import { routNames } from 'constants/routNames';
+import { checkInitialRoute } from 'utils/checkInitialRoute';
 import AuthStack from './StackNavigation/AuthStack';
 import AppStack from './StackNavigation/AppStack';
 import Settings from 'screens/AppLayer/Settings';
-import {fullScreen} from 'assets/RootStyles';
-import {deviceInfo} from 'assets/deviceInfo';
+import { fullScreen } from 'assets/RootStyles';
+import { deviceInfo } from 'assets/deviceInfo';
 import ChooseLocation from 'screens/AppLayer/ChooseLocation';
 import EventsScreen from 'screens/AppLayer/Events';
 
@@ -31,7 +34,7 @@ const StackNavigation = () => {
           component={Settings}
           options={{
             presentation: 'modal',
-            cardStyle: {backgroundColor: 'transparent'},
+            cardStyle: { backgroundColor: 'transparent' },
             gestureResponseDistance: fullScreen.height,
             ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
             gestureEnabled: true,
@@ -43,7 +46,7 @@ const StackNavigation = () => {
           component={ChooseLocation}
           options={{
             presentation: 'modal',
-            cardStyle: {backgroundColor: 'transparent'},
+            cardStyle: { backgroundColor: 'transparent' },
             gestureResponseDistance: fullScreen.height,
             ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
             gestureEnabled: true,
@@ -55,7 +58,7 @@ const StackNavigation = () => {
           component={EventsScreen}
           options={{
             presentation: 'modal',
-            cardStyle: {backgroundColor: 'transparent'},
+            cardStyle: { backgroundColor: 'transparent' },
             gestureResponseDistance: fullScreen.height,
             ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
             gestureEnabled: true,

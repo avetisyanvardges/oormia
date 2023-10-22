@@ -1,9 +1,9 @@
 import React from 'react';
-import {Path, Svg} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors} from 'assets/RootStyles';
+import { Path, Svg } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 
-const ArrowLeftIcon = ({width, height, size, color}) => {
+const ArrowLeftIcon = ({ width, height, size, color }) => {
   return (
     <Svg
       width={width || size || normalize(24)}
@@ -22,4 +22,4 @@ const ArrowLeftIcon = ({width, height, size, color}) => {
   );
 };
 
-export {ArrowLeftIcon};
+export { ArrowLeftIcon };

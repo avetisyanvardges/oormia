@@ -1,10 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import Icon from 'components/Svgs';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
-import {normalize} from 'assets/RootStyles/normalize';
-import {CustomText} from 'components/Text';
-import {FontStyle} from 'assets/RootStyles';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { normalize } from 'assets/RootStyles/normalize';
+import { CustomText } from 'components/Text';
+import { FontStyle } from 'assets/RootStyles';
 
 const HomeHeaderComponent = () => {
   return (
@@ -15,7 +15,7 @@ const HomeHeaderComponent = () => {
         justifyContent: 'space-between',
         marginHorizontal: normalize(16),
       }}>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <CustomText
           children={'Find nearby event'}
           globalStyle={{
@@ -31,7 +31,7 @@ const HomeHeaderComponent = () => {
         <View>
           <Icon name={ICON_NAMES.NOTIFICATION} />
         </View>
-        <View style={{marginLeft: normalize(8)}}>
+        <View style={{ marginLeft: normalize(8) }}>
           <Icon name={ICON_NAMES.MESSAGE} />
         </View>
       </View>

@@ -1,8 +1,8 @@
-import {StyleSheet, useWindowDimensions} from 'react-native';
+import { StyleSheet, useWindowDimensions } from 'react-native';
 
 const Styles = theme => {
-  const {width, height} = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   return StyleSheet.create({});
 };
 
-export {Styles};
+export { Styles };

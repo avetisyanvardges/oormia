@@ -1,7 +1,7 @@
-import React, {useCallback} from 'react';
-import {FlatList, Image, Text, View} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors, FontStyle} from 'assets/RootStyles';
+import React, { useCallback } from 'react';
+import { FlatList, Image, Text, View } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors, FontStyle } from 'assets/RootStyles';
 import Underline from 'components/Underline';
 import images from 'assets/images';
 
@@ -39,15 +39,17 @@ const Highlights = () => {
           marginHorizontal: normalize(16),
           margin: normalize(10),
         }}>
-        <Text style={{...FontStyle.text_h4.regular}}>Our Community's Best</Text>
+        <Text style={{ ...FontStyle.text_h4.regular }}>
+          Our Community's Best
+        </Text>
       </View>
       <FlatList
         horizontal
         data={[{}, {}, {}, {}, {}, {}, {}, {}]}
         renderItem={renderHighlightItem}
         showsHorizontalScrollIndicator={false}
-        ItemSeparatorComponent={() => <View style={{width: normalize(8)}} />}
-        contentContainerStyle={{paddingHorizontal: normalize(16)}}
+        ItemSeparatorComponent={() => <View style={{ width: normalize(8) }} />}
+        contentContainerStyle={{ paddingHorizontal: normalize(16) }}
       />
       <View
         style={{

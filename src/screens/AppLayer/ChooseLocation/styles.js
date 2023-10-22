@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors, Shadow} from 'assets/RootStyles';
+import { StyleSheet } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors, Shadow } from 'assets/RootStyles';
 
 const Styles = theme => {
   return StyleSheet.create({
@@ -27,4 +27,4 @@ const Styles = theme => {
   });
 };
 
-export {Styles};
+export { Styles };

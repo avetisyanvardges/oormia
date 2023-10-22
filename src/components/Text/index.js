@@ -1,6 +1,6 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {Styles} from 'components/Text/style';
+import { Text } from 'react-native';
+import { Styles } from 'components/Text/style';
 
 const CustomText = ({
   children,
@@ -23,4 +23,4 @@ const CustomText = ({
   );
 };
 
-export {CustomText};
+export { CustomText };

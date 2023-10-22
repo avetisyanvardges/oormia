@@ -1,9 +1,9 @@
 import React from 'react';
-import {View} from 'react-native';
-import {styles} from './styles';
-import {Colors} from 'assets/RootStyles';
+import { View } from 'react-native';
+import { styles } from './styles';
+import { Colors } from 'assets/RootStyles';
 
-function Index({isChecked = false}) {
+function Index({ isChecked = false }) {
   return (
     <View
       style={{

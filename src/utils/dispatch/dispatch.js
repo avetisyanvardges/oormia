@@ -1,4 +1,4 @@
-import {store} from '../../state/store';
+import { store } from '../../state/store';
 
 export default function dispatch(func) {
   const dispatch = store.dispatch;

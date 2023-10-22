@@ -1,8 +1,8 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 
-const Groups = ({navigation}) => {
+const Groups = ({ navigation }) => {
   return <View />;
 };
 
-export {Groups};
+export { Groups };

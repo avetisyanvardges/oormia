@@ -1,15 +1,15 @@
 import React from 'react';
-import {FlatList, Image, Pressable, View} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
+import { FlatList, Image, Pressable, View } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
 import images from 'assets/images';
-import {Colors, FontStyle} from 'assets/RootStyles';
-import {CustomText} from 'components/Text';
+import { Colors, FontStyle } from 'assets/RootStyles';
+import { CustomText } from 'components/Text';
 import Underline from 'components/Underline';
 
-const ChooseSpeaker = ({categories, setCategories, setScreen}) => {
-  const renderSpeakerItem = ({item}) => {
+const ChooseSpeaker = ({ categories, setCategories, setScreen }) => {
+  const renderSpeakerItem = ({ item }) => {
     return (
-      <Pressable onPress={() => {}} style={{flexDirection: 'row'}}>
+      <Pressable onPress={() => {}} style={{ flexDirection: 'row' }}>
         <Image
           source={images.speakers[item]}
           resizeMode="cover"
@@ -20,10 +20,10 @@ const ChooseSpeaker = ({categories, setCategories, setScreen}) => {
             overflow: 'hidden',
           }}
         />
-        <View style={{flex: 1, marginLeft: normalize(8)}}>
+        <View style={{ flex: 1, marginLeft: normalize(8) }}>
           <CustomText
             children={'Full Name'}
-            globalStyle={{...FontStyle.text_h5.medium}}
+            globalStyle={{ ...FontStyle.text_h5.medium }}
           />
           <CustomText
             children={'Position'}
@@ -34,7 +34,7 @@ const ChooseSpeaker = ({categories, setCategories, setScreen}) => {
           />
           <Underline
             height={normalize(1.5)}
-            style={{marginVertical: normalize(5)}}
+            style={{ marginVertical: normalize(5) }}
           />
           <CustomText
             children={'About info ................'}
@@ -73,7 +73,9 @@ const ChooseSpeaker = ({categories, setCategories, setScreen}) => {
           ...Object.keys(images.speakers),
         ]}
         renderItem={renderSpeakerItem}
-        ItemSeparatorComponent={() => <View style={{height: normalize(16)}} />}
+        ItemSeparatorComponent={() => (
+          <View style={{ height: normalize(16) }} />
+        )}
         contentContainerStyle={{
           marginTop: normalize(18),
           marginHorizontal: normalize(16),
@@ -84,4 +86,4 @@ const ChooseSpeaker = ({categories, setCategories, setScreen}) => {
   );
 };
 
-export {ChooseSpeaker};
+export { ChooseSpeaker };

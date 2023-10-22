@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Svg, {Path} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import Svg, { Path } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-function Checkbox({width, color}) {
+function Checkbox({ width, color }) {
   return (
     <Svg
       width={normalize(width || 12)}
@@ -26,4 +26,4 @@ function Checkbox({width, color}) {
   );
 }
 
-export {Checkbox};
+export { Checkbox };

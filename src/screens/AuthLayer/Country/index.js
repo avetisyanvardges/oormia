@@ -1,23 +1,23 @@
-import React, {useState} from 'react';
-import {FlatList, SafeAreaView, TouchableOpacity, View} from 'react-native';
+import React, { useState } from 'react';
+import { FlatList, SafeAreaView, TouchableOpacity, View } from 'react-native';
 import ScreenMask from 'components/screenMask';
-import {CustomText} from 'components/Text';
-import {country} from './listCountry';
+import { CustomText } from 'components/Text';
+import { country } from './listCountry';
 import BtnGoBack from 'components/BtnGoBack';
-import {styles} from './styles';
+import { styles } from './styles';
 import Input from 'components/Input';
-import {Colors} from 'assets/RootStyles';
+import { Colors } from 'assets/RootStyles';
 import CheckboxCircle from 'components/CheckboxCircle';
-import {normalize} from 'assets/RootStyles/normalize';
+import { normalize } from 'assets/RootStyles/normalize';
 
-function Index({setCountryPageIsOpen, countryActive, setCountryActive}) {
+function Index({ setCountryPageIsOpen, countryActive, setCountryActive }) {
   const [searchValue, setSearchValue] = useState('');
 
   const handlerSelect = country => {
     setCountryPageIsOpen(false), setCountryActive(country);
   };
 
-  const Item = ({item}) => {
+  const Item = ({ item }) => {
     const regExp = new RegExp(searchValue, 'gi');
     if (regExp.test(item.country)) {
       return (
@@ -65,7 +65,7 @@ function Index({setCountryPageIsOpen, countryActive, setCountryActive}) {
       <SafeAreaView>
         <FlatList
           data={country}
-          renderItem={({item}) => <Item item={item} />}
+          renderItem={({ item }) => <Item item={item} />}
           keyExtractor={item => item.id}
         />
       </SafeAreaView>

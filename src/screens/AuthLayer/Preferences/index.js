@@ -1,22 +1,22 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ScreenMask from 'components/screenMask';
-import {FlatList, ImageBackground, Pressable, View} from 'react-native';
-import {CustomText} from 'components/Text';
-import {styles} from './style';
-import {server as faceData} from 'assets/server/server';
+import { FlatList, ImageBackground, Pressable, View } from 'react-native';
+import { CustomText } from 'components/Text';
+import { styles } from './style';
+import { server as faceData } from 'assets/server/server';
 import CheckBox from '@react-native-community/checkbox';
-import {normalize} from 'assets/RootStyles/normalize';
+import { normalize } from 'assets/RootStyles/normalize';
 import BtnGoBack from 'components/BtnGoBack';
-import {Colors, fullScreen} from 'assets/RootStyles';
+import { Colors, fullScreen } from 'assets/RootStyles';
 import LinearGradient from 'react-native-linear-gradient';
 import Button from 'components/Button';
 import dispatch from 'utils/dispatch/dispatch';
-import {userSignUp} from 'state/user/operations/userSignUp';
-import {fetchCategoriesAll} from 'state/categories/operations/fetchCategoriesAll';
+import { userSignUp } from 'state/user/operations/userSignUp';
+import { fetchCategoriesAll } from 'state/categories/operations/fetchCategoriesAll';
 
-function PreferencesScreen({navigation, route}) {
+function PreferencesScreen({ navigation, route }) {
   const [data, setData] = useState(faceData);
-  const {values} = route?.params;
+  const { values } = route?.params;
 
   useEffect(() => {
     dispatch(fetchCategoriesAll());
@@ -26,7 +26,7 @@ function PreferencesScreen({navigation, route}) {
     setData(prevState =>
       prevState.map(el => {
         if (item.id === el.id) {
-          return {...el, checked: !el.checked};
+          return { ...el, checked: !el.checked };
         } else {
           return el;
         }
@@ -37,20 +37,20 @@ function PreferencesScreen({navigation, route}) {
   const onSubmit = () => {
     const body = {
       ...values,
-      preferences: data.filter(pref => pref.checked),
+      preferences: ['art', 'tech'],
     };
 
     dispatch(userSignUp(body));
   };
 
-  const renderPreferencesItem = useCallback(({item, index}) => {
+  const renderPreferencesItem = useCallback(({ item, index }) => {
     const selected = item?.checked;
     return (
       <Pressable
         onPress={() => onChecked(item)}
-        style={{marginHorizontal: normalize(10)}}>
+        style={{ marginHorizontal: normalize(10) }}>
         <ImageBackground
-          source={{uri: item?.img}}
+          source={{ uri: item?.img }}
           resizeMode="cover"
           style={{
             width: (fullScreen.width - normalize(52)) / 2,
@@ -58,7 +58,7 @@ function PreferencesScreen({navigation, route}) {
             borderRadius: normalize(10),
             overflow: 'hidden',
           }}>
-          <View style={{alignItems: 'flex-end', padding: normalize(10)}}>
+          <View style={{ alignItems: 'flex-end', padding: normalize(10) }}>
             <CheckBox
               disabled={true}
               value={selected}
@@ -69,12 +69,12 @@ function PreferencesScreen({navigation, route}) {
               onCheckColor={Colors.white}
               onAnimationType={'one-stroke'}
               offAnimationType={'one-stroke'}
-              style={{borderRadius: normalize(5)}}
+              style={{ borderRadius: normalize(5) }}
             />
           </View>
           <LinearGradient
-            start={{x: 1, y: 0}}
-            end={{x: 1, y: 1}}
+            start={{ x: 1, y: 0 }}
+            end={{ x: 1, y: 1 }}
             locations={[0.5, 0.95]}
             colors={['rgba(0,0,0,.0)', Colors.grey['500']]}
             style={{
@@ -86,7 +86,7 @@ function PreferencesScreen({navigation, route}) {
             }}>
             <CustomText
               children={item.title}
-              globalStyle={{color: Colors.white, padding: normalize(10)}}
+              globalStyle={{ color: Colors.white, padding: normalize(10) }}
             />
           </LinearGradient>
         </ImageBackground>
@@ -107,7 +107,7 @@ function PreferencesScreen({navigation, route}) {
       <View style={styles.container}>
         <CustomText
           values={'Choose your\nfavorite categories'}
-          globalStyle={{...styles.title, textAlign: 'center'}}
+          globalStyle={{ ...styles.title, textAlign: 'center' }}
         />
 
         <FlatList
@@ -116,7 +116,7 @@ function PreferencesScreen({navigation, route}) {
           data={data}
           renderItem={renderPreferencesItem}
           ItemSeparatorComponent={() => (
-            <View style={{height: normalize(10)}} />
+            <View style={{ height: normalize(10) }} />
           )}
           // contentContainerStyle={{paddingBottom: normalize(40)}}
         />
@@ -128,7 +128,7 @@ function PreferencesScreen({navigation, route}) {
           paddingTop: normalize(10),
         }}>
         <Button
-          containerStyle={{paddingVertical: normalize(6)}}
+          containerStyle={{ paddingVertical: normalize(6) }}
           title="Save"
           textStyle={styles.buttonTextStyle}
           onPress={onSubmit}

@@ -1,12 +1,12 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import React from 'react';
 import TabBar from './TabBar/TabBar';
-import {routNames} from 'constants/routNames';
-import {CreateEvent} from 'screens/AppLayer/CreateEvent';
-import {Groups} from 'screens/AppLayer/Groups';
+import { routNames } from 'constants/routNames';
+import { CreateEvent } from 'screens/AppLayer/CreateEvent';
+import { Groups } from 'screens/AppLayer/Groups';
 import Profile from 'screens/AppLayer/Profile';
-import {HomeScreen} from 'screens/AppLayer/HomeScreen';
+import { HomeScreen } from 'screens/AppLayer/HomeScreen';
 import MapScreen from 'screens/AppLayer/MapScreen';
 
 function MainTab() {

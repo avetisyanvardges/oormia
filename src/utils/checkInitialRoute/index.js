@@ -1,9 +1,9 @@
-import {routNames} from '../../constants/routNames';
-import {store} from '../../state/store';
+import { routNames } from '../../constants/routNames';
+import { store } from '../../state/store';
 
 function checkInitialRoute() {
   const {
-    user: {token},
+    user: { token },
   } = store.getState();
   if (token) {
     return routNames.APP_LAYER;
@@ -12,4 +12,4 @@ function checkInitialRoute() {
   }
 }
 
-export {checkInitialRoute};
+export { checkInitialRoute };

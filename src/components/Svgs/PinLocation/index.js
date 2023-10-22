@@ -1,8 +1,8 @@
 import React from 'react';
-import {Path, Svg} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import { Path, Svg } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-const PinLocationIcon = ({width, height, color}) => {
+const PinLocationIcon = ({ width, height, color }) => {
   return (
     <Svg
       width={width || normalize(24)}
@@ -22,4 +22,4 @@ const PinLocationIcon = ({width, height, color}) => {
   );
 };
 
-export {PinLocationIcon};
+export { PinLocationIcon };

@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
-import {CustomText} from 'components/Text';
+import React, { useState } from 'react';
+import { CustomText } from 'components/Text';
 import ScreenMask from 'components/screenMask';
-import {TouchableOpacity, View} from 'react-native';
-import {styles} from './style';
+import { TouchableOpacity, View } from 'react-native';
+import { styles } from './style';
 import Input from 'components/Input';
 import Button from 'components/Button';
-import {normalize} from 'assets/RootStyles/normalize';
-import {routNames} from 'constants/routNames';
+import { normalize } from 'assets/RootStyles/normalize';
+import { routNames } from 'constants/routNames';
 import Checkbox from 'components/Checkbox';
-import {Controller, useForm} from 'react-hook-form';
-import {navigate} from 'services/NavigationService';
+import { Controller, useForm } from 'react-hook-form';
+import { navigate } from 'services/NavigationService';
 import ImagePicker from 'react-native-image-crop-picker';
 
-function SignUpUserData({navigation, route}) {
+function SignUpUserData({ navigation, route }) {
   const [img, setImg] = useState();
   const [git, setGit] = useState(false);
   const [countryActive, setCountryActive] = useState(null);
@@ -31,7 +31,7 @@ function SignUpUserData({navigation, route}) {
     // data.append('guideForCountry', values?.guideForCountry);
     // data.append('role', values?.role);
     // dispatch(userSignUp(values));
-    navigate(routNames.PREFERENCES, {values});
+    navigate(routNames.PREFERENCES, { values });
   };
 
   const {
@@ -40,7 +40,7 @@ function SignUpUserData({navigation, route}) {
     handleSubmit,
     setValue,
     getValues,
-    formState: {errors, isDirty, isValid},
+    formState: { errors, isDirty, isValid },
   } = useForm({
     mode: 'all',
     defaultValues: {
@@ -106,7 +106,7 @@ function SignUpUserData({navigation, route}) {
         <Controller
           name={'firstName'}
           control={control}
-          render={({field: {value, onChange, onBlur}}) => {
+          render={({ field: { value, onChange, onBlur } }) => {
             return (
               <Input
                 label={'First name'}
@@ -121,7 +121,7 @@ function SignUpUserData({navigation, route}) {
         <Controller
           name={'lastName'}
           control={control}
-          render={({field: {value, onChange, onBlur}}) => {
+          render={({ field: { value, onChange, onBlur } }) => {
             return (
               <Input
                 label={'Last name'}
@@ -137,7 +137,7 @@ function SignUpUserData({navigation, route}) {
         <Controller
           name={'phoneNumber'}
           control={control}
-          render={({field: {value, onChange, onBlur}}) => (
+          render={({ field: { value, onChange, onBlur } }) => (
             <Input
               label={'Phone number'}
               placeholder="Phone number"
@@ -162,7 +162,7 @@ function SignUpUserData({navigation, route}) {
         {git ? (
           <TouchableOpacity
             onPress={() => {}}
-            style={{...styles.btn, marginTop: normalize(20)}}>
+            style={{ ...styles.btn, marginTop: normalize(20) }}>
             <CustomText
               globalStyle={styles.btnText}
               children={'Your country'}
@@ -179,9 +179,9 @@ function SignUpUserData({navigation, route}) {
             </View>
           </TouchableOpacity>
         ) : null}
-        <View style={{flex: 1, justifyContent: 'flex-end'}}>
+        <View style={{ flex: 1, justifyContent: 'flex-end' }}>
           <Button
-            containerStyle={{paddingVertical: normalize(6)}}
+            containerStyle={{ paddingVertical: normalize(6) }}
             title="Next"
             textStyle={styles.buttonTextStyle}
             onPress={handleSubmit(onSubmit)}

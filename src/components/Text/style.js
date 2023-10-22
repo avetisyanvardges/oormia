@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {Colors, Fonts} from 'assets/RootStyles';
+import { StyleSheet } from 'react-native';
+import { Colors, Fonts } from 'assets/RootStyles';
 
 const Styles = () => {
   return StyleSheet.create({
@@ -10,4 +10,4 @@ const Styles = () => {
   });
 };
 
-export {Styles};
+export { Styles };

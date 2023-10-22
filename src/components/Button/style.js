@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {Colors, FontStyle, fullScreen} from '../../assets/RootStyles';
-import {normalize} from '../../assets/RootStyles/normalize';
+import { StyleSheet } from 'react-native';
+import { Colors, FontStyle, fullScreen } from '../../assets/RootStyles';
+import { normalize } from '../../assets/RootStyles/normalize';
 
 export const styles = StyleSheet.create({
   buttonDefaultStyle: {

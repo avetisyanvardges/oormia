@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
-import {TouchableOpacity, View} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors} from 'assets/RootStyles';
+import React, { useState } from 'react';
+import { TouchableOpacity, View } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 import Icon from 'components/Svgs';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
-import {navigate} from 'services/NavigationService';
-import {routNames} from 'constants/routNames';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { navigate } from 'services/NavigationService';
+import { routNames } from 'constants/routNames';
 
 function CreateButton(props) {
-  const {theme, buttonColor, styles} = props;
+  const { theme, buttonColor, styles } = props;
   const [pressed, setPressed] = useState(false);
   return (
     <View>
@@ -21,11 +21,11 @@ function CreateButton(props) {
             {
               backgroundColor: Colors.oxford_blue['500'],
               shadowColor: Colors.black,
-              shadowOffset: {width: 2, height: 2},
+              shadowOffset: { width: 2, height: 2 },
               elevation: 8,
             },
           ]}>
-          <View style={{transform: [{rotate: '315deg'}]}}>
+          <View style={{ transform: [{ rotate: '315deg' }] }}>
             <Icon
               name={ICON_NAMES.TAB_BAR.CREATE}
               width={normalize(25)}

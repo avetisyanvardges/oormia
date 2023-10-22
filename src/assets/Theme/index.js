@@ -1,4 +1,4 @@
-import {Colors} from '../RootStyles';
+import { Colors } from '../RootStyles';
 
 export const DarkTheme = {
   PRIMARY_BACKGROUND_COLOR: Colors.black_tint,

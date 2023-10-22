@@ -1,12 +1,12 @@
 import React from 'react';
-import {PermissionsAndroid, Pressable} from 'react-native';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import {CustomText} from 'components/Text';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Gallery} from 'components/Svgs/Gallery/Gallery';
-import {Camera} from 'components/Svgs/Camera/Camera';
+import { PermissionsAndroid, Pressable } from 'react-native';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { CustomText } from 'components/Text';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Gallery } from 'components/Svgs/Gallery/Gallery';
+import { Camera } from 'components/Svgs/Camera/Camera';
 
-const ImagePicker = ({setResponse}) => {
+const ImagePicker = ({ setResponse }) => {
   const requestCameraPermission = async () => {
     try {
       const granted = await PermissionsAndroid.request(
@@ -49,7 +49,7 @@ const ImagePicker = ({setResponse}) => {
         <Camera />
         <CustomText
           children={'Take Photo...'}
-          globalStyle={{fontSize: normalize(18), marginLeft: normalize(5)}}
+          globalStyle={{ fontSize: normalize(18), marginLeft: normalize(5) }}
         />
       </Pressable>
       <Pressable
@@ -71,7 +71,7 @@ const ImagePicker = ({setResponse}) => {
         <Gallery />
         <CustomText
           children={'Choose from Library...'}
-          globalStyle={{fontSize: normalize(18), marginLeft: normalize(5)}}
+          globalStyle={{ fontSize: normalize(18), marginLeft: normalize(5) }}
         />
       </Pressable>
     </>

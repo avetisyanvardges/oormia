@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Svg, {Path} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import Svg, { Path } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-function Clear({width, height, color}) {
+function Clear({ width, height, color }) {
   return (
     <Svg
       width={normalize(width) || normalize(12)}
@@ -21,4 +21,4 @@ function Clear({width, height, color}) {
   );
 }
 
-export {Clear};
+export { Clear };
