@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Svg, {Path} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import Svg, { Path } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-function VkIcon({width, height, colors}) {
+function VkIcon({ width, height, colors }) {
   return (
     <Svg
       width={normalize(width) || normalize(23)}
@@ -18,4 +18,4 @@ function VkIcon({width, height, colors}) {
   );
 }
 
-export {VkIcon};
+export { VkIcon };

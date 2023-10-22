@@ -1,12 +1,12 @@
-import {configureStore} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import theme from '../theme';
 import user from '../user';
 import intl from '../Intl';
 import modal from '../modal';
 import groups from '../groups';
 import pictures from '../picture';
-import {persistReducer} from 'redux-persist';
-import {persistConfig} from 'constants/reduxPersist';
+import { persistReducer } from 'redux-persist';
+import { persistConfig } from 'constants/reduxPersist';
 import categories from '../categories';
 import events from '../events';
 

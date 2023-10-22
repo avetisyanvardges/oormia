@@ -1,9 +1,9 @@
 import React from 'react';
-import {Path, Svg} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors} from 'assets/RootStyles';
+import { Path, Svg } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 
-const CalendarIcon = ({width, height, color}) => {
+const CalendarIcon = ({ width, height, color }) => {
   console.log(width);
   return (
     <Svg
@@ -30,4 +30,4 @@ const CalendarIcon = ({width, height, color}) => {
   );
 };
 
-export {CalendarIcon};
+export { CalendarIcon };

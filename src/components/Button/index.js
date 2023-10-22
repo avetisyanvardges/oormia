@@ -1,7 +1,7 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
-import {CustomText} from '../Text';
-import {styles} from './style';
+import { TouchableOpacity } from 'react-native';
+import { CustomText } from '../Text';
+import { styles } from './style';
 
 function Button({
   title = '',
@@ -11,7 +11,7 @@ function Button({
   textStyle = {},
   disabled = false,
 }) {
-  const validStyle = disabled ? {opacity: 0.7} : {};
+  const validStyle = disabled ? { opacity: 0.7 } : {};
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -24,7 +24,7 @@ function Button({
       {icon}
       <CustomText
         children={title}
-        globalStyle={{...styles.textStyle, ...textStyle}}
+        globalStyle={{ ...styles.textStyle, ...textStyle }}
       />
     </TouchableOpacity>
   );

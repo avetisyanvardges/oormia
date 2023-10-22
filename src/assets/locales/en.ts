@@ -1,4 +1,4 @@
-import {LOCALES} from 'constants/locales';
+import { LOCALES } from 'constants/locales';
 
 export default {
   locale: LOCALES.ENGLISH,

@@ -1,18 +1,18 @@
 import React from 'react';
-import {Image, ImageBackground, View} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors, FontStyle, Shadow} from 'assets/RootStyles';
-import {CustomText} from 'components/Text';
+import { Image, ImageBackground, View } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors, FontStyle, Shadow } from 'assets/RootStyles';
+import { CustomText } from 'components/Text';
 import Button from 'components/Button';
 import Icon from 'components/Svgs';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
-import {navigate} from 'services/NavigationService';
-import {routNames} from 'constants/routNames';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { navigate } from 'services/NavigationService';
+import { routNames } from 'constants/routNames';
 
 const UserInfoSection = () => {
   const currentUser = true;
   return (
-    <View style={{paddingHorizontal: normalize(16)}}>
+    <View style={{ paddingHorizontal: normalize(16) }}>
       <ImageBackground
         source={require('../../../../../assets/images/profile_bg.jpeg')}
         style={{
@@ -48,7 +48,7 @@ const UserInfoSection = () => {
           }}>
           <CustomText
             children={'Name Surname'}
-            globalStyle={{...FontStyle.text_h3.medium}}
+            globalStyle={{ ...FontStyle.text_h3.medium }}
           />
           <View
             style={{
@@ -65,11 +65,11 @@ const UserInfoSection = () => {
               <Icon
                 name={ICON_NAMES.PROFILE.TRIPS}
                 size={normalize(20)}
-                style={{marginRight: normalize(4)}}
+                style={{ marginRight: normalize(4) }}
               />
               <CustomText
                 children={'23'}
-                globalStyle={{...FontStyle.text_h5.regular}}
+                globalStyle={{ ...FontStyle.text_h5.regular }}
               />
             </View>
             <View
@@ -81,11 +81,11 @@ const UserInfoSection = () => {
               <Icon
                 name={ICON_NAMES.PROFILE.EVENTS}
                 size={normalize(20)}
-                style={{marginRight: normalize(4)}}
+                style={{ marginRight: normalize(4) }}
               />
               <CustomText
                 children={'23'}
-                globalStyle={{...FontStyle.text_h5.regular}}
+                globalStyle={{ ...FontStyle.text_h5.regular }}
               />
             </View>
             <View
@@ -97,11 +97,11 @@ const UserInfoSection = () => {
               <Icon
                 name={ICON_NAMES.PROFILE.FRIENDS}
                 size={normalize(20)}
-                style={{marginRight: normalize(4)}}
+                style={{ marginRight: normalize(4) }}
               />
               <CustomText
                 children={'651'}
-                globalStyle={{...FontStyle.text_h5.regular}}
+                globalStyle={{ ...FontStyle.text_h5.regular }}
               />
             </View>
           </View>
@@ -119,7 +119,7 @@ const UserInfoSection = () => {
               marginBottom: normalize(12),
             }}
             title={!currentUser ? 'Follow' : 'Settings'}
-            textStyle={{...FontStyle.text_h5.medium, color: Colors.white}}
+            textStyle={{ ...FontStyle.text_h5.medium, color: Colors.white }}
             onPress={() => {
               if (!currentUser) {
               } else {
@@ -134,7 +134,7 @@ const UserInfoSection = () => {
               backgroundColor: Colors.grey['50'],
             }}
             title={!currentUser ? 'Message' : 'Edit profile'}
-            textStyle={{...FontStyle.text_h5.medium}}
+            textStyle={{ ...FontStyle.text_h5.medium }}
           />
         </View>
       </View>

@@ -1,6 +1,6 @@
-import {createSlice} from '@reduxjs/toolkit';
-import {fetchCategoriesAll} from 'state/categories/operations/fetchCategoriesAll';
-import {fetchSubCategoriesAll} from 'state/categories/operations/fetchSubCategoriesAll';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchCategoriesAll } from 'state/categories/operations/fetchCategoriesAll';
+import { fetchSubCategoriesAll } from 'state/categories/operations/fetchSubCategoriesAll';
 
 const initialState = {
   categories: [],

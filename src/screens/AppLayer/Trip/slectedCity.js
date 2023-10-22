@@ -1,7 +1,7 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 
-function SelectedCity({city, setSelectedCity}) {
+function SelectedCity({ city, setSelectedCity }) {
   return <View />;
 }
 

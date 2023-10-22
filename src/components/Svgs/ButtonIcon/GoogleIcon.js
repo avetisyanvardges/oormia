@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Svg, {Path, Rect} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import Svg, { Path, Rect } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-function GoogleIcon({width, height, colors}) {
+function GoogleIcon({ width, height, colors }) {
   return (
     <Svg
       width={normalize(width) || normalize(35)}
@@ -23,4 +23,4 @@ function GoogleIcon({width, height, colors}) {
   );
 }
 
-export {GoogleIcon};
+export { GoogleIcon };

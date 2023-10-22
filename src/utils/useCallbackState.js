@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function useCallbackState(initialState) {
-  const [state, setState] = useState({val: initialState, callback: null});
+  const [state, setState] = useState({ val: initialState, callback: null });
   useEffect(() => {
-    const {callback} = state;
+    const { callback } = state;
     callback && callback(state.val);
   }, [state]);
 

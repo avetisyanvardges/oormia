@@ -1,9 +1,9 @@
 import React from 'react';
-import {Path, Svg} from 'react-native-svg';
-import {Colors} from 'assets/RootStyles';
-import {normalize} from 'assets/RootStyles/normalize';
+import { Path, Svg } from 'react-native-svg';
+import { Colors } from 'assets/RootStyles';
+import { normalize } from 'assets/RootStyles/normalize';
 
-const Camera = ({width, height, color}) => {
+const Camera = ({ width, height, color }) => {
   return (
     <Svg
       width={width || normalize(24)}
@@ -17,4 +17,4 @@ const Camera = ({width, height, color}) => {
   );
 };
 
-export {Camera};
+export { Camera };

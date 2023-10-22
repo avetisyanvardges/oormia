@@ -1,11 +1,11 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Colors} from 'assets/RootStyles';
+import { View } from 'react-native';
+import { Colors } from 'assets/RootStyles';
 import useContainer from './hook';
-import {normalize} from 'assets/RootStyles/normalize';
+import { normalize } from 'assets/RootStyles/normalize';
 
 const RadioButton = props => {
-  const {styles, size, active_size, active} = useContainer(props);
+  const { styles, size, active_size, active } = useContainer(props);
   return (
     <View
       style={[
@@ -26,4 +26,4 @@ const RadioButton = props => {
   );
 };
 
-export {RadioButton};
+export { RadioButton };

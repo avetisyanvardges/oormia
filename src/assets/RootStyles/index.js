@@ -1,5 +1,5 @@
-import {normalize} from './normalize';
-import {deviceInfo} from '../deviceInfo';
+import { normalize } from './normalize';
+import { deviceInfo } from '../deviceInfo';
 
 export const Colors = {
   white: '#ffffff',

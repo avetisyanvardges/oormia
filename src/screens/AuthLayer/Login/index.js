@@ -1,22 +1,22 @@
-import React, {useState} from 'react';
-import {ScrollView, TouchableOpacity, View} from 'react-native';
-import {CustomText} from 'components/Text';
+import React, { useState } from 'react';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
+import { CustomText } from 'components/Text';
 import Input from 'components/Input';
 import ScreenMask from '../../../components/screenMask';
-import {styles} from 'screens/AuthLayer/Login/styles';
-import {routNames} from 'constants/routNames';
+import { styles } from 'screens/AuthLayer/Login/styles';
+import { routNames } from 'constants/routNames';
 import Icon from 'components/Svgs';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
 import Button from 'components/Button';
-import {useNavigation} from '@react-navigation/native';
-import {navigate} from 'services/NavigationService';
-import {Shadow} from 'assets/RootStyles';
-import {Controller, useForm} from 'react-hook-form';
+import { useNavigation } from '@react-navigation/native';
+import { navigate } from 'services/NavigationService';
+import { Shadow } from 'assets/RootStyles';
+import { Controller, useForm } from 'react-hook-form';
 import dispatch from 'utils/dispatch/dispatch';
-import {userSignIn} from 'state/user/operations/userSignIn';
-import {normalize} from 'assets/RootStyles/normalize';
+import { userSignIn } from 'state/user/operations/userSignIn';
+import { normalize } from 'assets/RootStyles/normalize';
 
-const LoginScreen = ({setPage, page, SIGN_UP, LOGIN}) => {
+const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN }) => {
   const [switchPage, setSwitchPage] = useState(true);
   const navigation = useNavigation();
 
@@ -25,7 +25,7 @@ const LoginScreen = ({setPage, page, SIGN_UP, LOGIN}) => {
     handleSubmit,
     setValue,
     getValues,
-    formState: {errors, isValid, isDirty},
+    formState: { errors, isValid, isDirty },
   } = useForm({
     defaultValues: {
       email: 'vavetisyan.g@gmail.com',
@@ -35,7 +35,7 @@ const LoginScreen = ({setPage, page, SIGN_UP, LOGIN}) => {
   console.log(page);
   const handlerSubmit = values => {
     if (page === SIGN_UP) {
-      navigate(routNames.SIGN_UP_USER_DATA, {values});
+      navigate(routNames.SIGN_UP_USER_DATA, { values });
     } else {
       dispatch(userSignIn(values));
     }
@@ -46,7 +46,7 @@ const LoginScreen = ({setPage, page, SIGN_UP, LOGIN}) => {
       containerStyle={{
         marginTop: '100%',
       }}
-      style={{...Shadow}}>
+      style={{ ...Shadow }}>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <View>
           <CustomText
@@ -62,7 +62,7 @@ const LoginScreen = ({setPage, page, SIGN_UP, LOGIN}) => {
           <Controller
             name={'email'}
             control={control}
-            render={({field: {value, onChange, onBlur}}) => (
+            render={({ field: { value, onChange, onBlur } }) => (
               <Input
                 // label={'Email'}
                 placeholder="Enter mobile or e-mail"
@@ -76,7 +76,7 @@ const LoginScreen = ({setPage, page, SIGN_UP, LOGIN}) => {
           <Controller
             name={'password'}
             control={control}
-            render={({field: {value, onChange, onBlur}}) => (
+            render={({ field: { value, onChange, onBlur } }) => (
               <Input
                 // label={'Password'}
                 placeholder="Password"
@@ -90,7 +90,7 @@ const LoginScreen = ({setPage, page, SIGN_UP, LOGIN}) => {
           />
           {page === SIGN_UP ? (
             <TouchableOpacity
-              style={{marginBottom: normalize(8)}}
+              style={{ marginBottom: normalize(8) }}
               onPress={() => navigation.navigate(routNames.FORGOT)}>
               <CustomText
                 children="Forgot password?"
@@ -102,7 +102,7 @@ const LoginScreen = ({setPage, page, SIGN_UP, LOGIN}) => {
             title={page === SIGN_UP ? 'Create' : 'Login'}
             textStyle={styles.buttonTextStyle}
             onPress={handleSubmit(handlerSubmit)}
-            containerStyle={{marginTop: normalize(16)}}
+            containerStyle={{ marginTop: normalize(16) }}
             // disabled={!(isValid && isDirty)}
           />
         </View>

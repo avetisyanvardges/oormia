@@ -1,7 +1,7 @@
-import {StyleSheet} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors, FontStyle} from 'assets/RootStyles';
-import {deviceInfo} from 'assets/deviceInfo';
+import { StyleSheet } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors, FontStyle } from 'assets/RootStyles';
+import { deviceInfo } from 'assets/deviceInfo';
 
 const styles = StyleSheet.create({
   btnSearch: {

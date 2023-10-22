@@ -1,17 +1,17 @@
-import React, {useRef} from 'react';
-import {Pressable, View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
-import {normalize} from 'assets/RootStyles/normalize';
+import React, { useRef } from 'react';
+import { Pressable, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
+import { normalize } from 'assets/RootStyles/normalize';
 
-const PlaceAutoComplete = ({region, close}) => {
+const PlaceAutoComplete = ({ region, close }) => {
   const ref = useRef();
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const theme = useSelector(store => store?.themes.theme);
   const buttonColor = useSelector(store => store?.themes.buttonColor);
-  const {PRIMARY_BACKGROUND_COLOR, PRIMARY_TEXT_COLOR} = theme;
-  const {PRIMARY_BUTTON_COLOR} = buttonColor;
+  const { PRIMARY_BACKGROUND_COLOR, PRIMARY_TEXT_COLOR } = theme;
+  const { PRIMARY_BUTTON_COLOR } = buttonColor;
 
   return (
     <View

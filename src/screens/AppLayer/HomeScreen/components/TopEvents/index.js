@@ -1,12 +1,12 @@
-import React, {useCallback} from 'react';
-import {FlatList, Image, Text, View} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors, FontStyle, fullScreen} from 'assets/RootStyles';
+import React, { useCallback } from 'react';
+import { FlatList, Image, Text, View } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors, FontStyle, fullScreen } from 'assets/RootStyles';
 import images from 'assets/images';
-import {BlurView} from '@react-native-community/blur';
-import {CustomText} from 'components/Text';
+import { BlurView } from '@react-native-community/blur';
+import { CustomText } from 'components/Text';
 import Icon from 'components/Svgs';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
 import moment from 'moment/moment';
 
 const TopEvents = () => {
@@ -66,7 +66,7 @@ const TopEvents = () => {
                   alignItems: 'center',
                   marginTop: normalize(4),
                 }}>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Icon
                     name={ICON_NAMES.CALENDAR}
                     size={normalize(18)}
@@ -119,7 +119,7 @@ const TopEvents = () => {
           alignItems: 'center',
           justifyContent: 'space-between',
         }}>
-        <Text style={{...FontStyle.text_h4.regular}}>Best of the Week</Text>
+        <Text style={{ ...FontStyle.text_h4.regular }}>Best of the Week</Text>
         <Text
           style={{
             ...FontStyle.text_h5.regular,
@@ -133,8 +133,8 @@ const TopEvents = () => {
         data={[{}, {}, {}, {}, {}, {}, {}, {}]}
         renderItem={renderTopEventItem}
         showsHorizontalScrollIndicator={false}
-        ItemSeparatorComponent={() => <View style={{width: normalize(8)}} />}
-        contentContainerStyle={{paddingHorizontal: normalize(16)}}
+        ItemSeparatorComponent={() => <View style={{ width: normalize(8) }} />}
+        contentContainerStyle={{ paddingHorizontal: normalize(16) }}
       />
     </View>
   );

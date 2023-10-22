@@ -1,5 +1,5 @@
-import {StyleSheet, TouchableWithoutFeedback} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import { StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import Animated, {
   interpolateColor,
   useSharedValue,
@@ -8,9 +8,9 @@ import Animated, {
   withTiming,
   useDerivedValue,
 } from 'react-native-reanimated';
-import {Styles} from './style';
+import { Styles } from './style';
 
-const Switch = ({activeColor, inActiveColor, active = false, setActive}) => {
+const Switch = ({ activeColor, inActiveColor, active = false, setActive }) => {
   const styles = Styles();
   // value for Switch Animation
   const switchTranslate = useSharedValue(0);

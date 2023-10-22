@@ -1,13 +1,13 @@
 import React from 'react';
-import {navigate} from 'services/NavigationService';
+import { navigate } from 'services/NavigationService';
 import useContainer from './hook';
-import {TouchableOpacity, View} from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import Icon from 'components/Svgs';
-import {Colors, FontStyle} from 'assets/RootStyles';
-import {normalize} from 'assets/RootStyles/normalize';
+import { Colors, FontStyle } from 'assets/RootStyles';
+import { normalize } from 'assets/RootStyles/normalize';
 import Underline from 'components/Underline';
-import {CustomText} from 'components/Text';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
+import { CustomText } from 'components/Text';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
 
 const MenuLink = props => {
   const {
@@ -19,7 +19,7 @@ const MenuLink = props => {
     backgroundColor = Colors.oxford_blue['500'],
     disabled,
   } = props;
-  const {styles} = useContainer();
+  const { styles } = useContainer();
   return (
     <TouchableOpacity
       onPress={() => {
@@ -28,7 +28,7 @@ const MenuLink = props => {
         }
 
         if (routeName) {
-          navigate(routeName, {query});
+          navigate(routeName, { query });
         }
       }}
       disabled={!onPress && !routeName}
@@ -54,7 +54,7 @@ const MenuLink = props => {
           <CustomText
             children={title}
             globalStyle={[
-              {...FontStyle.text_h5.regular, color: Colors.grey['500']},
+              { ...FontStyle.text_h5.regular, color: Colors.grey['500'] },
               styles.title,
             ]}
           />
@@ -62,7 +62,7 @@ const MenuLink = props => {
         <Icon name={ICON_NAMES.ARROW.RIGHT} />
       </View>
       <Underline
-        style={{marginTop: normalize(12), marginBottom: normalize(16)}}
+        style={{ marginTop: normalize(12), marginBottom: normalize(16) }}
       />
     </TouchableOpacity>
   );

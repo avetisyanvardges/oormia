@@ -15,7 +15,7 @@ const signInSchema = yup.object().shape({
     .string()
     .min(
       SIGN_UP_VALIDATION.PASSWORD.MIN,
-      ({min}) => `Password must be at least ${min} characters`,
+      ({ min }) => `Password must be at least ${min} characters`,
     )
     .matches(
       PASSWORD_REGEX,

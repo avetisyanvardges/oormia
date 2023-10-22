@@ -1,8 +1,8 @@
 import React from 'react';
-import {Path, Svg} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import { Path, Svg } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-const SearchIcon = ({width, height, size, color}) => {
+const SearchIcon = ({ width, height, size, color }) => {
   console.log(width);
   return (
     <Svg
@@ -21,4 +21,4 @@ const SearchIcon = ({width, height, size, color}) => {
   );
 };
 
-export {SearchIcon};
+export { SearchIcon };

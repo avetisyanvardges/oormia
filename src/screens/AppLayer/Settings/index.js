@@ -6,15 +6,15 @@ import {
   View,
 } from 'react-native';
 import MenuLink from 'components/MenuLink';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors, FontStyle} from 'assets/RootStyles';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors, FontStyle } from 'assets/RootStyles';
 import Header from 'components/Header';
 import Icon from 'components/Svgs';
-import {CustomText} from 'components/Text';
-import {back} from 'services/NavigationService';
-import {deviceInfo} from 'assets/deviceInfo';
-import {userLogAuth} from 'state/user/operations/userLogOut';
+import { CustomText } from 'components/Text';
+import { back } from 'services/NavigationService';
+import { deviceInfo } from 'assets/deviceInfo';
+import { userLogAuth } from 'state/user/operations/userLogOut';
 import dispatch from 'utils/dispatch/dispatch';
 
 const Settings = () => {
@@ -25,7 +25,11 @@ const Settings = () => {
         back();
       }}>
       <View
-        style={{flex: 1, flexDirection: 'column', justifyContent: 'flex-end'}}>
+        style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+        }}>
         <TouchableWithoutFeedback onPress={() => {}}>
           <View
             style={{
@@ -37,7 +41,7 @@ const Settings = () => {
               borderTopLeftRadius: normalize(24),
             }}>
             <View
-              style={{marginTop: normalize(4), marginBottom: normalize(12)}}>
+              style={{ marginTop: normalize(4), marginBottom: normalize(12) }}>
               <Header title={'Settings'} backButtonVisible={false} />
             </View>
             <MenuLink title="Language" iconName={ICON_NAMES.PROFILE.LANGUAGE} />

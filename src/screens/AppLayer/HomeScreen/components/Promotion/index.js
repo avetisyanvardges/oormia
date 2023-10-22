@@ -1,15 +1,15 @@
-import React, {useCallback} from 'react';
-import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors, FontStyle, fullScreen} from 'assets/RootStyles';
+import React, { useCallback } from 'react';
+import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors, FontStyle, fullScreen } from 'assets/RootStyles';
 import Underline from 'components/Underline';
 import images from 'assets/images';
-import {BlurView} from '@react-native-community/blur';
-import {CustomText} from 'components/Text';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
+import { BlurView } from '@react-native-community/blur';
+import { CustomText } from 'components/Text';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
 import Icon from 'components/Svgs';
 import moment from 'moment';
-import {navigate} from 'services/NavigationService';
+import { navigate } from 'services/NavigationService';
 
 const PromotionComponent = () => {
   const renderPromotionItem = useCallback(() => {
@@ -69,7 +69,7 @@ const PromotionComponent = () => {
                   alignItems: 'center',
                   marginTop: normalize(4),
                 }}>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Icon
                     name={ICON_NAMES.CALENDAR}
                     size={normalize(18)}
@@ -121,9 +121,11 @@ const PromotionComponent = () => {
           alignItems: 'center',
           justifyContent: 'space-between',
         }}>
-        <Text style={{...FontStyle.text_h4.regular}}>Your Promotions Hub</Text>
+        <Text style={{ ...FontStyle.text_h4.regular }}>
+          Your Promotions Hub
+        </Text>
         <TouchableOpacity
-          onPress={() => navigate('EventsScreen', {...renderPromotionItem})}>
+          onPress={() => navigate('EventsScreen', { ...renderPromotionItem })}>
           <Text
             style={{
               ...FontStyle.text_h5.regular,
@@ -138,8 +140,8 @@ const PromotionComponent = () => {
         data={[{}, {}, {}, {}, {}, {}, {}, {}]}
         renderItem={renderPromotionItem}
         showsHorizontalScrollIndicator={false}
-        ItemSeparatorComponent={() => <View style={{width: normalize(8)}} />}
-        contentContainerStyle={{paddingHorizontal: normalize(16)}}
+        ItemSeparatorComponent={() => <View style={{ width: normalize(8) }} />}
+        contentContainerStyle={{ paddingHorizontal: normalize(16) }}
       />
       <View
         style={{

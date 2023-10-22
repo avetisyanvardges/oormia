@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Svg, {Circle, Path} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import Svg, { Circle, Path } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-function CropPhoto({width, height, colors}) {
+function CropPhoto({ width, height, colors }) {
   return (
     <Svg
       width={normalize(width || 45)}
@@ -29,4 +29,4 @@ function CropPhoto({width, height, colors}) {
   );
 }
 
-export {CropPhoto};
+export { CropPhoto };

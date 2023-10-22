@@ -1,13 +1,13 @@
 import React from 'react';
-import {TouchableOpacity, View} from 'react-native';
-import {styles} from 'components/Checkbox/styles';
+import { TouchableOpacity, View } from 'react-native';
+import { styles } from 'components/Checkbox/styles';
 import Svg from 'components/Svgs';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors} from 'assets/RootStyles';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 import * as Animatable from 'react-native-animatable';
 
-function CheckBox({size = 20, isChecked = false, setChecked}) {
+function CheckBox({ size = 20, isChecked = false, setChecked }) {
   const animation = isChecked ? 'zoomIn' : 'zoomOut';
   return (
     <TouchableOpacity

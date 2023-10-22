@@ -1,9 +1,9 @@
 import React from 'react';
-import {Path, Svg} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors} from 'assets/RootStyles';
+import { Path, Svg } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 
-const PrivacyPolicyIcon = ({width, height, color}) => {
+const PrivacyPolicyIcon = ({ width, height, color }) => {
   return (
     <Svg
       width={width || normalize(24)}
@@ -21,4 +21,4 @@ const PrivacyPolicyIcon = ({width, height, color}) => {
   );
 };
 
-export {PrivacyPolicyIcon};
+export { PrivacyPolicyIcon };

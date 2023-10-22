@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
   Pressable,
@@ -7,13 +7,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {deviceInfo} from 'assets/deviceInfo';
-import {normalize} from 'assets/RootStyles/normalize';
+import { deviceInfo } from 'assets/deviceInfo';
+import { normalize } from 'assets/RootStyles/normalize';
 import styles from './style';
-import {CustomText} from '../Text';
+import { CustomText } from '../Text';
 import Icon from 'components/Svgs';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
-import {Colors, FontStyle} from 'assets/RootStyles';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { Colors, FontStyle } from 'assets/RootStyles';
 
 function Input({
   label = '',
@@ -72,7 +72,7 @@ function Input({
             paddingBottom: normalize(1.5),
             marginTop: normalize(2),
           }}>
-          <View style={{...styles.container, ...inputContainerStyle}}>
+          <View style={{ ...styles.container, ...inputContainerStyle }}>
             <View
               style={{
                 ...styles.inputContainerDef,
@@ -100,7 +100,7 @@ function Input({
                   multiline={multiline}
                   autoCapitalize={autoCapitalize}
                 />
-                <View style={{alignItems: 'flex-end'}}>
+                <View style={{ alignItems: 'flex-end' }}>
                   {renderRightIcon ? (
                     renderRightIcon()
                   ) : secure ? (

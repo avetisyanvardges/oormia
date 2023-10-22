@@ -10,6 +10,7 @@ import { ICON_NAMES } from 'components/Svgs/icon_names';
 import { navigate } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
 
+
 const tabTypes = {
   EVENTS: 'events',
   TRIPS: 'trips',

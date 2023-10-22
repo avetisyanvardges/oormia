@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import {View} from 'react-native';
-import {CustomText} from 'components/Text';
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import { CustomText } from 'components/Text';
 import styles from './styles';
-import {Colors} from 'assets/RootStyles';
+import { Colors } from 'assets/RootStyles';
 
-function Index({languages}) {
+function Index({ languages }) {
   const [activeLanguage, setActiveLanguage] = useState('AM');
   return (
     <View style={styles.body}>

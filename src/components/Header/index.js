@@ -1,12 +1,12 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import {back} from 'services/NavigationService';
-import {Styles} from './styles';
-import {Colors, FontStyle} from 'assets/RootStyles';
-import {normalize} from 'assets/RootStyles/normalize';
-import {deviceInfo} from 'assets/deviceInfo';
+import { Text, View } from 'react-native';
+import { back } from 'services/NavigationService';
+import { Styles } from './styles';
+import { Colors, FontStyle } from 'assets/RootStyles';
+import { normalize } from 'assets/RootStyles/normalize';
+import { deviceInfo } from 'assets/deviceInfo';
 import Input from 'components/Input';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
 import Icon from 'components/Svgs';
 
 const Header = ({
@@ -42,16 +42,16 @@ const Header = ({
       {renderTitle ? (
         renderTitle(title)
       ) : title ? (
-        <View style={{flex: 1, alignItems: 'center'}}>
+        <View style={{ flex: 1, alignItems: 'center' }}>
           <Text
-            style={{...FontStyle.text_h4.medium, color: Colors.grey['900']}}>
+            style={{ ...FontStyle.text_h4.medium, color: Colors.grey['900'] }}>
             {title}
           </Text>
         </View>
       ) : null}
 
       {searchInput && (
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
           <Input
             value={searchValue}
             onChangeText={onChangeText}

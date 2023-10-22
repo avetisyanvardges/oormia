@@ -1,23 +1,23 @@
-import React, {useEffect} from 'react';
-import {FlatList, useWindowDimensions, View} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
+import React, { useEffect } from 'react';
+import { FlatList, useWindowDimensions, View } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
 import Button from 'components/Button';
-import {Colors} from 'assets/RootStyles';
+import { Colors } from 'assets/RootStyles';
 import useContainer from './hook';
 import Header from 'components/Header';
-import {back} from 'services/NavigationService';
+import { back } from 'services/NavigationService';
 import dispatch from 'utils/dispatch/dispatch';
-import {fetchCategoriesAll} from 'state/categories/operations/fetchCategoriesAll';
-import {useSelector} from 'react-redux';
+import { fetchCategoriesAll } from 'state/categories/operations/fetchCategoriesAll';
+import { useSelector } from 'react-redux';
 
 const ChooseCategories = ({
   selectedCategories,
   setSelectedCategories,
   setScreen,
 }) => {
-  const {renderCategories, insets} = useContainer();
-  const {width} = useWindowDimensions();
-  const {categories} = useSelector(({categories}) => categories);
+  const { renderCategories, insets } = useContainer();
+  const { width } = useWindowDimensions();
+  const { categories } = useSelector(({ categories }) => categories);
 
   const selectCategories = () => {
     console.log(selectedCategories);
@@ -39,10 +39,10 @@ const ChooseCategories = ({
       <FlatList
         numColumns="2"
         data={categories}
-        renderItem={({item}) =>
+        renderItem={({ item }) =>
           renderCategories(item, selectedCategories, setSelectedCategories)
         }
-        ItemSeparatorComponent={() => <View style={{height: 10}} />}
+        ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
         contentContainerStyle={{
           marginTop: normalize(18),
           alignItems: 'center',
@@ -57,7 +57,7 @@ const ChooseCategories = ({
         }}>
         <Button
           title={'Next'}
-          textStyle={{color: Colors.white}}
+          textStyle={{ color: Colors.white }}
           onPress={selectCategories}
           disabled={!selectedCategories}
         />
@@ -66,4 +66,4 @@ const ChooseCategories = ({
   );
 };
 
-export {ChooseCategories};
+export { ChooseCategories };

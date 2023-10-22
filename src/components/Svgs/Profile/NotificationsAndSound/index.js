@@ -1,9 +1,9 @@
 import React from 'react';
-import {Path, Svg} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors} from 'assets/RootStyles';
+import { Path, Svg } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 
-const NotificationAndSoundIcon = ({width, height, color}) => {
+const NotificationAndSoundIcon = ({ width, height, color }) => {
   return (
     <Svg
       width={width || normalize(24)}
@@ -27,4 +27,4 @@ const NotificationAndSoundIcon = ({width, height, color}) => {
   );
 };
 
-export {NotificationAndSoundIcon};
+export { NotificationAndSoundIcon };

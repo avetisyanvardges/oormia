@@ -1,11 +1,11 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import Navigation from '../navigation';
-import {StatusBar} from 'react-native';
-import {useSelector} from 'react-redux';
+import { StatusBar } from 'react-native';
+import { useSelector } from 'react-redux';
 import Modal from 'components/Modal';
 
 function Main() {
-  const {visible: modalVisible} = useSelector(({modal}) => modal);
+  const { visible: modalVisible } = useSelector(({ modal }) => modal);
   return (
     <Fragment>
       <StatusBar

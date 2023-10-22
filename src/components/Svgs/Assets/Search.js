@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Svg, {Path} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import Svg, { Path } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-function Search({width, height, size, colors}) {
+function Search({ width, height, size, colors }) {
   return (
     <Svg
       width={size || width || normalize(24)}
@@ -21,4 +21,4 @@ function Search({width, height, size, colors}) {
   );
 }
 
-export {Search};
+export { Search };

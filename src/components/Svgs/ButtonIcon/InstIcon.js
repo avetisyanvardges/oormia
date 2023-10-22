@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Svg, {Path} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
+import Svg, { Path } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
 
-function InstIcon({width, height, colors}) {
+function InstIcon({ width, height, colors }) {
   return (
     <Svg
       width={normalize(width) || normalize(20)}
@@ -18,4 +18,4 @@ function InstIcon({width, height, colors}) {
   );
 }
 
-export {InstIcon};
+export { InstIcon };

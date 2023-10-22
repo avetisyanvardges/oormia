@@ -1,13 +1,13 @@
 import React from 'react';
-import {Modal, TouchableWithoutFeedback, View} from 'react-native';
+import { Modal, TouchableWithoutFeedback, View } from 'react-native';
 import useContainer from './hook';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors} from 'assets/RootStyles';
-import {hideModal} from 'state/modal';
-import {useDispatch} from 'react-redux';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
+import { hideModal } from 'state/modal';
+import { useDispatch } from 'react-redux';
 
 const CustomModal = () => {
-  const {type, visible, componentTypes, width, height} = useContainer();
+  const { type, visible, componentTypes, width, height } = useContainer();
   const dispatch = useDispatch();
   console.log(type, 'TYPE');
   return (

@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Geocoder from 'react-native-geocoding';
-import {ChooseCategories} from 'screens/AppLayer/Create/components/ChooseCategories';
-import {Pressable, Text, View} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {Colors, FontStyle} from 'assets/RootStyles';
-import {ChooseSpeaker} from 'screens/AppLayer/Create/components/ChooseSpeaker';
+import { ChooseCategories } from 'screens/AppLayer/Create/components/ChooseCategories';
+import { Pressable, Text, View } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Colors, FontStyle } from 'assets/RootStyles';
+import { ChooseSpeaker } from 'screens/AppLayer/Create/components/ChooseSpeaker';
 import SendRequest from 'screens/AppLayer/Create/components/SendRequest';
 import AddEvent from 'screens/AppLayer/Create/components/AddEvent';
 
 Geocoder.init('AIzaSyA3JgEsDXQmVnH6HQOVHzSpta2wKAN2Tf0');
-const CreateEvent = ({navigation, route, goBack}) => {
+const CreateEvent = ({ navigation, route, goBack }) => {
   const [screen, setScreen] = useState('choose_category');
   const [categories, setCategories] = useState('');
   const [speaker, setSpeaker] = useState('');
@@ -58,7 +58,11 @@ const CreateEvent = ({navigation, route, goBack}) => {
 
   return (
     <View
-      style={{flex: 1, paddingTop: insets.top, backgroundColor: Colors.white}}>
+      style={{
+        flex: 1,
+        paddingTop: insets.top,
+        backgroundColor: Colors.white,
+      }}>
       {tabsVisible ? (
         <View
           style={{
@@ -122,4 +126,4 @@ const CreateEvent = ({navigation, route, goBack}) => {
   );
 };
 
-export {CreateEvent};
+export { CreateEvent };

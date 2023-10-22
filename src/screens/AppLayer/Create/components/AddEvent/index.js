@@ -1,14 +1,14 @@
 import React from 'react';
-import {ImageBackground, View} from 'react-native';
+import { ImageBackground, View } from 'react-native';
 import images from 'assets/images';
-import {normalize} from 'assets/RootStyles/normalize';
+import { normalize } from 'assets/RootStyles/normalize';
 
-const AddEvent = ({categories}) => {
+const AddEvent = ({ categories }) => {
   return (
     <View>
       <ImageBackground
         source={images.categories[categories]}
-        style={{height: normalize(170)}}
+        style={{ height: normalize(170) }}
       />
       <View />
     </View>

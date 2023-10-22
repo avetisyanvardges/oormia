@@ -1,5 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit';
-import {INITIAL_LANGUAGE} from 'assets/locales';
+import { createSlice } from '@reduxjs/toolkit';
+import { INITIAL_LANGUAGE } from 'assets/locales';
 
 const initialState = {
   ...INITIAL_LANGUAGE,
@@ -10,7 +10,7 @@ export const intlSlice = createSlice({
   initialState,
   reducers: {
     setIntl: state => {
-      state = {...state.payload};
+      state = { ...state.payload };
     },
   },
 });

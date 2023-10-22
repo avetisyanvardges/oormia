@@ -1,6 +1,6 @@
 import React from 'react';
-import {ICONS} from './hook';
-import {TouchableOpacity} from 'react-native';
+import { ICONS } from './hook';
+import { TouchableOpacity } from 'react-native';
 
 const Icon = ({
   name,
@@ -19,7 +19,7 @@ const Icon = ({
       onPress={onPress}
       activeOpacity={activeOpacity}
       style={style}>
-      {ICONS[name] && ICONS[name]({size, width, height, color})}
+      {ICONS[name] && ICONS[name]({ size, width, height, color })}
     </TouchableOpacity>
   );
 };

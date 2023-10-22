@@ -1,9 +1,9 @@
 import React from 'react';
-import {Path, Svg} from 'react-native-svg';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors} from 'assets/RootStyles';
+import { Path, Svg } from 'react-native-svg';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 
-const CreateIcon = ({width, height, color}) => {
+const CreateIcon = ({ width, height, color }) => {
   return (
     <Svg
       width={width || normalize(24)}
@@ -37,4 +37,4 @@ const CreateIcon = ({width, height, color}) => {
   );
 };
 
-export {CreateIcon};
+export { CreateIcon };
