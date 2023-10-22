@@ -14,6 +14,7 @@ import { fullScreen } from 'assets/RootStyles';
 import { deviceInfo } from 'assets/deviceInfo';
 import ChooseLocation from 'screens/AppLayer/ChooseLocation';
 import EventsScreen from 'screens/AppLayer/Events';
+import CreateGroup from 'screens/AppLayer/CreateGroup';
 
 const StackNavigation = () => {
   const Stack = createStackNavigator();
@@ -62,6 +63,18 @@ const StackNavigation = () => {
             gestureResponseDistance: fullScreen.height,
             ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
             gestureEnabled: true,
+            animationEnabled: true,
+          }}
+        />
+        <Stack.Screen
+          name={routNames.CREATE_GROUP}
+          component={CreateGroup}
+          options={{
+            presentation: 'modal',
+            cardStyle: { backgroundColor: 'transparent' },
+            gestureResponseDistance: fullScreen.height,
+            ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
+            gestureEnabled: false,
             animationEnabled: true,
           }}
         />

@@ -2,6 +2,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import React, { useEffect, useState } from 'react';
 import { ChooseCategories } from 'screens/AppLayer/CreateEvent/components/ChooseCategories';
 import Create from 'screens/AppLayer/CreateEvent/components/Create';
+import CreateGroup from 'screens/AppLayer/CreateGroup';
 
 function useContainer({ route }) {
   const insets = useSafeAreaInsets();

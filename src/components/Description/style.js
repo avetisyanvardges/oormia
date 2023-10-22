@@ -1,7 +1,7 @@
-import {StyleSheet} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
-import {Colors, FontStyle} from 'assets/RootStyles';
-import {deviceInfo} from 'assets/deviceInfo';
+import { StyleSheet } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors, FontStyle } from 'assets/RootStyles';
+import { deviceInfo } from 'assets/deviceInfo';
 
 const styles = StyleSheet.create({
   btnSearch: {
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   inputDefault: {
     flex: 1,
-    height: normalize(42.5),
+    height: normalize(90),
     color: Colors.grey['500'],
     ...FontStyle.text_h5.regular,
     lineHeight: deviceInfo.ios ? 0 : normalize(20),

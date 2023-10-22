@@ -7,6 +7,9 @@ import images from 'assets/images';
 import MasonryList from '@react-native-seoul/masonry-list';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { navigate } from 'services/NavigationService';
+import { routNames } from 'constants/routNames';
+
 
 const tabTypes = {
   EVENTS: 'events',
@@ -202,7 +205,7 @@ const HistorySection = () => {
             renderItem={renderGroups}
             ListHeaderComponent={() => {
               return (
-                <View
+                <TouchableOpacity
                   style={{
                     flexDirection: 'row',
                     padding: normalize(10),
@@ -210,7 +213,8 @@ const HistorySection = () => {
                     borderRadius: normalize(12),
                     marginBottom: normalize(16),
                     ...Shadow,
-                  }}>
+                  }}
+                  onPress={() => navigate(routNames.CREATE_GROUP)}>
                   <View
                     style={{
                       width: normalize(60),
@@ -233,7 +237,7 @@ const HistorySection = () => {
                       marginLeft: normalize(12),
                     }}
                   />
-                </View>
+                </TouchableOpacity>
               );
             }}
             showsVerticalScrollIndicator={false}

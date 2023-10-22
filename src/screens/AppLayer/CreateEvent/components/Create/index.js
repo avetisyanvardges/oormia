@@ -89,6 +89,7 @@ const Create = ({ categories, setScreen, region }) => {
 
   useEffect(() => {
     if (response?.assets?.[0]?.uri) {
+      bottomSheetRef.current.close();
       setValue('image', response?.assets?.[0]?.uri);
     }
   }, [response]);
