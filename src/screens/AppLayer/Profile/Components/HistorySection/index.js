@@ -1,12 +1,14 @@
-import React, {useMemo, useState} from 'react';
-import {FlatList, Image, TouchableOpacity, View} from 'react-native';
-import {normalize} from 'assets/RootStyles/normalize';
-import {CustomText} from 'components/Text';
-import {Colors, FontStyle, Shadow} from 'assets/RootStyles';
+import React, { useMemo, useState } from 'react';
+import { FlatList, Image, TouchableOpacity, View } from 'react-native';
+import { normalize } from 'assets/RootStyles/normalize';
+import { CustomText } from 'components/Text';
+import { Colors, FontStyle, Shadow } from 'assets/RootStyles';
 import images from 'assets/images';
 import MasonryList from '@react-native-seoul/masonry-list';
 import Icon from 'components/Svgs';
-import {ICON_NAMES} from 'components/Svgs/icon_names';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { navigate } from 'services/NavigationService';
+import { routNames } from 'constants/routNames';
 
 const tabTypes = {
   EVENTS: 'events',
@@ -35,7 +37,7 @@ const groups = [
 const HistorySection = () => {
   const [activeTab, setActiveTab] = useState(tabTypes.EVENTS);
 
-  const RenderCard = ({item, i}) => {
+  const RenderCard = ({ item, i }) => {
     const randomBool = useMemo(() => Math.random() < 0.5, [i]);
 
     return (
@@ -59,7 +61,7 @@ const HistorySection = () => {
     );
   };
 
-  const renderGroups = ({item}) => {
+  const renderGroups = ({ item }) => {
     return (
       <View
         style={{
@@ -99,7 +101,7 @@ const HistorySection = () => {
   };
 
   return (
-    <View style={{flex: 1, marginTop: normalize(16)}}>
+    <View style={{ flex: 1, marginTop: normalize(16) }}>
       <View
         style={{
           flexDirection: 'row',
@@ -185,7 +187,7 @@ const HistorySection = () => {
           keyExtractor={item => item.id}
           numColumns={3}
           showsVerticalScrollIndicator={false}
-          renderItem={({item, i}) => <RenderCard item={item} i={i} />}
+          renderItem={({ item, i }) => <RenderCard item={item} i={i} />}
           contentContainerStyle={{
             paddingBottom: normalize(120),
             paddingHorizontal: normalize(16),
@@ -196,13 +198,13 @@ const HistorySection = () => {
           // onEndReached={() => loadNext(ITEM_CNT)}
         />
       ) : (
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
           <FlatList
             data={groups}
             renderItem={renderGroups}
             ListHeaderComponent={() => {
               return (
-                <View
+                <TouchableOpacity
                   style={{
                     flexDirection: 'row',
                     padding: normalize(10),
@@ -210,7 +212,8 @@ const HistorySection = () => {
                     borderRadius: normalize(12),
                     marginBottom: normalize(16),
                     ...Shadow,
-                  }}>
+                  }}
+                  onPress={() => navigate(routNames.CREATE_GROUP)}>
                   <View
                     style={{
                       width: normalize(60),
@@ -233,7 +236,7 @@ const HistorySection = () => {
                       marginLeft: normalize(12),
                     }}
                   />
-                </View>
+                </TouchableOpacity>
               );
             }}
             showsVerticalScrollIndicator={false}
@@ -243,7 +246,7 @@ const HistorySection = () => {
               paddingBottom: normalize(120),
             }}
             ItemSeparatorComponent={() => (
-              <View style={{height: normalize(8)}} />
+              <View style={{ height: normalize(8) }} />
             )}
           />
         </View>

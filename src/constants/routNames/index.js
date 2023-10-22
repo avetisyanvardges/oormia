@@ -14,6 +14,7 @@ export const routNames = {
   TRIP: 'tripScreen',
   CHOOSE_LOCATION: 'chooseLocationScreen',
   CREATE_EVENT: 'createEvent',
+  CREATE_GROUP: 'createGroup',
   GROUPS: 'groupsScreen',
   PROFILE: 'profileScreen',
   UPLOAD_PHOTO: 'UploadPhoto',
