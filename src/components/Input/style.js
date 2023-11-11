@@ -15,8 +15,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.oxford_blue['30'],
     borderRadius: normalize(7),
-    borderWidth: 1.5,
-    borderColor: Colors.oxford_blue['30'],
+    borderColor: Colors.grey['100'],
     paddingHorizontal: normalize(12),
   },
   inputDefault: {

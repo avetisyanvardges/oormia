@@ -7,15 +7,14 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'red',
   },
   time: {
     marginLeft: normalize(10),
     ...FontStyle.display_h6.bold,
-    fontSize: normalize(13),
   },
   timeText: {
     color: Colors.black[200],
     ...FontStyle.display_h6.regular,
-    fontSize: normalize(12),
   },
 });
