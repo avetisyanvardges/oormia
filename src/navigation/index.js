@@ -15,6 +15,7 @@ import { deviceInfo } from 'assets/deviceInfo';
 import ChooseLocation from 'screens/AppLayer/ChooseLocation';
 import EventsScreen from 'screens/AppLayer/Events';
 import CreateGroup from 'screens/AppLayer/CreateGroup';
+import OTPScreen from 'screens/AppLayer/OTP';
 
 const StackNavigation = () => {
   const Stack = createStackNavigator();
@@ -28,8 +29,9 @@ const StackNavigation = () => {
           gestureDirection: 'horizontal',
         }}
         initialRouteName={initialRoute}>
-        <Stack.Screen name={routNames.AUTH_LAYER} component={AuthStack} />
-        <Stack.Screen name={routNames.APP_LAYER} component={AppStack} />
+        {/*<Stack.Screen name={routNames.AUTH_LAYER} component={AuthStack} />*/}
+        {/*<Stack.Screen name={routNames.APP_LAYER} component={AppStack} />*/}
+        <Stack.Screen name={routNames.OTP} component={OTPScreen} />
         <Stack.Screen
           name={routNames.SETTINGS}
           component={Settings}

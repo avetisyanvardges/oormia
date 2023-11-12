@@ -18,6 +18,7 @@ const CreateEvent = ({ navigation, route, goBack }) => {
 
   const tabsVisible =
     screen === 'choose_category' || screen === 'choose_a_speaker';
+  console.log(tabsVisible);
 
   useEffect(() => {
     if (route?.params?.screen) {
@@ -61,7 +62,7 @@ const CreateEvent = ({ navigation, route, goBack }) => {
       style={{
         flex: 1,
         paddingTop: insets.top,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey['50'],
       }}>
       {tabsVisible ? (
         <View
@@ -70,6 +71,7 @@ const CreateEvent = ({ navigation, route, goBack }) => {
             borderWidth: normalize(1.5),
             marginHorizontal: normalize(16),
             borderRadius: normalize(8),
+            backgroundColor: Colors.grey['50'],
           }}>
           <Pressable
             onPress={() => setScreen('choose_category')}
@@ -81,7 +83,7 @@ const CreateEvent = ({ navigation, route, goBack }) => {
               backgroundColor:
                 screen === 'choose_category'
                   ? Colors.oxford_blue['500']
-                  : Colors.white,
+                  : Colors.green['50'],
               paddingVertical: normalize(8),
             }}>
             <Text
@@ -90,7 +92,7 @@ const CreateEvent = ({ navigation, route, goBack }) => {
                 color:
                   screen !== 'choose_category'
                     ? Colors.oxford_blue['500']
-                    : Colors.white,
+                    : Colors.grey['50'],
               }}>
               Choose a category
             </Text>
@@ -105,7 +107,7 @@ const CreateEvent = ({ navigation, route, goBack }) => {
               backgroundColor:
                 screen === 'choose_a_speaker'
                   ? Colors.oxford_blue['500']
-                  : Colors.white,
+                  : Colors.grey['50'],
               paddingVertical: normalize(8),
             }}>
             <Text
@@ -114,7 +116,7 @@ const CreateEvent = ({ navigation, route, goBack }) => {
                 color:
                   screen !== 'choose_a_speaker'
                     ? Colors.oxford_blue['500']
-                    : Colors.white,
+                    : Colors.grey['50'],
               }}>
               Choose a speaker
             </Text>

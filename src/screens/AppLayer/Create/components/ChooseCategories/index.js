@@ -19,6 +19,7 @@ const ChooseCategories = ({ categories, setCategories, setScreen }) => {
       style={{
         flex: 1,
         alignItems: 'center',
+        backgroundColor: Colors.grey['50'],
       }}>
       <FlatList
         numColumns="2"

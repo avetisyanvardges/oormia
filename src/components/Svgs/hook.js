@@ -42,6 +42,7 @@ import { LockIcon } from 'components/Svgs/LockIcon';
 import { UnLockIcon } from 'components/Svgs/UnLockIcon';
 import { DurationIcon } from 'components/Svgs/DurationIcon';
 import { MyLocationIcon } from 'components/Svgs/MyLocation';
+import { TopicIcon } from 'components/Svgs/Topic';
 
 export const ICONS = {
   [ICON_NAMES.ASSETS_SVG.SEARCH]: ({ width, height, size, color }) => (
@@ -99,6 +100,22 @@ export const ICONS = {
   ),
   [ICON_NAMES.CALENDAR]: ({ width, height, size, color }) => (
     <CalendarIcon
+      width={size || width}
+      height={size || height}
+      size={size}
+      color={color}
+    />
+  ),
+  [ICON_NAMES.TOPIC]: ({ width, height, size, color }) => (
+    <TopicIcon
+      width={size || width}
+      height={size || height}
+      size={size}
+      color={color}
+    />
+  ),
+  [ICON_NAMES.LANGUAGE]: ({ width, height, size, color }) => (
+    <LanguageIcon
       width={size || width}
       height={size || height}
       size={size}

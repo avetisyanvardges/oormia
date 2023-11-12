@@ -35,7 +35,6 @@ const ChooseCategories = ({
         paddingTop: insets.top ? insets.top : normalize(16),
         paddingHorizontal: normalize(16),
       }}>
-      <Header title={'Choose a category'} backPress={() => back()} />
       <FlatList
         numColumns="2"
         data={categories}
@@ -52,7 +51,6 @@ const ChooseCategories = ({
       />
       <View
         style={{
-          marginVertical: normalize(20),
           paddingBottom: normalize(16),
         }}>
         <Button

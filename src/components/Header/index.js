@@ -42,7 +42,12 @@ const Header = ({
       {renderTitle ? (
         renderTitle(title)
       ) : title ? (
-        <View style={{ flex: 1, alignItems: 'center' }}>
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            paddingRight: normalize(30),
+          }}>
           <Text
             style={{ ...FontStyle.text_h4.medium, color: Colors.grey['900'] }}>
             {title}
