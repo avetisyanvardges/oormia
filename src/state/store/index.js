@@ -5,12 +5,12 @@ import intl from '../Intl';
 import modal from '../modal';
 import groups from '../groups';
 import pictures from '../picture';
-import { persistReducer } from 'redux-persist';
+import { persistReducer, persistStore } from 'redux-persist';
 import { persistConfig } from 'constants/reduxPersist';
 import categories from '../categories';
 import events from '../events';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     theme: theme,
     user: persistReducer(persistConfig, user),
@@ -22,3 +22,7 @@ export const store = configureStore({
     events: events,
   },
 });
+
+const persistor = persistStore(store);
+
+export { store, persistor };

@@ -68,11 +68,14 @@ const Create = ({ categories, setScreen, region }) => {
   });
 
   const onSubmit = data => {
+    // const body = new FormData();
+    //
+    // body.append('file', data.toString());
+
     const mutationData = {
       ...data,
     };
     console.log(data, 88);
-    // dispatch(showModal({type: 'create_ticket'}));
     dispatch(addEvent({ body: mutationData }));
   };
 
@@ -88,15 +91,21 @@ const Create = ({ categories, setScreen, region }) => {
   }, [type, data]);
 
   useEffect(() => {
-    if (response?.assets?.[0]?.uri) {
+    const [photo] = response?.assets || [];
+    if (photo?.uri) {
       bottomSheetRef.current.close();
-      setValue('image', response?.assets?.[0]?.uri);
+      setValue('image', photo?.uri);
+      setValue('pictures', {
+        name: photo?.fileName,
+        uri: photo?.uri,
+        type: photo?.type,
+      });
     }
   }, [response]);
 
   useEffect(() => {
     if (region?.address) {
-      console.log(region?.address, 999);
+      setValue('address', region?.address);
       setValue('location', region?.address);
       setValue('region', region);
     }
@@ -129,15 +138,13 @@ const Create = ({ categories, setScreen, region }) => {
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
           <View>
             <Controller
-              name={'photos'}
+              name={'image'}
               control={control}
-              render={() => {
+              render={({ field: { value, onChange, onBlur } }) => {
                 return (
                   <ImageBackground
                     source={{
-                      uri:
-                        getValues('image') ||
-                        categories?.picture?.fileDownloadUri,
+                      uri: value || categories?.picture?.fileDownloadUri,
                     }}
                     style={{
                       height: insets.top

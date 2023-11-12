@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { ScrollView } from 'react-native';
 import Highlights from './components/Highlights';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -9,12 +9,11 @@ import PromotionComponent from 'screens/AppLayer/HomeScreen/components/Promotion
 import TopEvents from 'screens/AppLayer/HomeScreen/components/TopEvents';
 import { fetchAllUsers } from 'state/user/operations/fetchAllUsers';
 import dispatch from 'utils/dispatch/dispatch';
+import { getAllEvents } from 'state/events/operations/getAllEvents';
 
 const HomeScreen = ({ navigation, route }) => {
   const insets = useSafeAreaInsets();
-  useEffect(() => {
-    dispatch(fetchAllUsers());
-  }, []);
+
   return (
     <ScrollView
       style={{

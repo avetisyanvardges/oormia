@@ -7,7 +7,12 @@ export const fetchAllUsers = createAsyncThunk(
   async (_, { getState }) => {
     try {
       const { url } = fetchAllUsersEndpoint;
-      const res = await httpClient.get(url);
+      const res = await httpClient.get(url, {
+        params: {
+          page: 0,
+          size: 100,
+        },
+      });
       console.log(res, 'RESPONSE');
     } catch (err) {
       console.log('error', err);

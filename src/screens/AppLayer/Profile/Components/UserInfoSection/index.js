@@ -8,9 +8,11 @@ import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import { navigate } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
+import { useSelector } from 'react-redux';
 
 const UserInfoSection = () => {
-  const currentUser = true;
+  const { currentUser } = useSelector(({ user }) => user);
+  const { firstName, lastName } = currentUser;
   return (
     <View style={{ paddingHorizontal: normalize(16) }}>
       <ImageBackground
@@ -47,7 +49,7 @@ const UserInfoSection = () => {
             marginTop: normalize(50),
           }}>
           <CustomText
-            children={'Name Surname'}
+            children={`${firstName} ${lastName}`}
             globalStyle={{ ...FontStyle.text_h3.medium }}
           />
           <View

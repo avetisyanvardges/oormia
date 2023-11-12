@@ -28,8 +28,8 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN }) => {
     formState: { errors, isValid, isDirty },
   } = useForm({
     defaultValues: {
-      email: 'vavetisyan.g@gmail.com',
-      password: 'Aa1234567!',
+      email: 'admin@mail.com',
+      password: 'ormia',
     },
   });
   console.log(page);

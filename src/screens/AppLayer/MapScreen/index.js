@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import {
   Alert,
   FlatList,
@@ -26,6 +26,9 @@ import Lottie from 'lottie-react-native';
 import Permissions from 'react-native-permissions';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
+import dispatch from 'utils/dispatch/dispatch';
+import { getAllEvents } from 'state/events/operations/getAllEvents';
+import { fetchAllUsers } from 'state/user/operations/fetchAllUsers';
 
 const coordinates = [
   {
@@ -87,6 +90,10 @@ const MapScreen = () => {
       },
     });
   };
+
+  useLayoutEffect(() => {
+    dispatch(fetchAllUsers());
+  }, []);
 
   const viewabilityConfigCallbackPairs = useRef([{ onViewableItemsChanged }]);
 

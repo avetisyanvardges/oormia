@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { userSignIn } from 'state/user/operations/userSignIn';
+import { fetchCurrentUser } from 'state/user/operations/fetchCurrentUser';
 
 const initialState = {
   currentUser: '',
@@ -13,10 +14,12 @@ export const userSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder.addCase(userSignIn.fulfilled, (state, action) => {
-      console.log(action?.payload?.data, state);
       state.currentUser = action?.payload?.data?.userResponse;
       state.refresh_token = action?.payload?.data?.refreshToken;
       state.token = action?.payload?.data?.token;
+    });
+    builder.addCase(fetchCurrentUser.fulfilled, (state, action) => {
+      state.currentUser = action?.payload;
     });
     // builder.addCase(userLogAuth, state => {
     //   state.currentUser = {};

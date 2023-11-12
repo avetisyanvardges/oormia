@@ -2,7 +2,7 @@ import endpoint from 'utils/endpoint';
 
 export const fetchCategoriesEndpoint = endpoint('get', 'categories/all');
 export const addEventEndpoint = endpoint('post', 'event');
-export const fetchEventsEndpoint = endpoint('get', 'event');
+export const fetchEventsEndpoint = endpoint('get', 'event/');
 export const fetchEventByIdEndpoint = id => endpoint('get', `event/${id}`);
 export const approveJoiningEventEndpoint = ({ email, eventId }) =>
   endpoint('get', `event/approve/${email}/${eventId}`);
