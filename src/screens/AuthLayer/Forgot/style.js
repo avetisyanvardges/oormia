@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
+    paddingHorizontal: normalize(16),
   },
   firstText: {
     ...FontStyle.text_h3.regular,

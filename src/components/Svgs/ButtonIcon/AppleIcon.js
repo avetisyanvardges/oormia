@@ -1,24 +1,20 @@
 import * as React from 'react';
-import Svg, { Path, Rect } from 'react-native-svg';
+import Svg, { Path } from 'react-native-svg';
 import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 
-function AppleIcon({ width, height, colors }) {
+function AppleIcon({ width, height, color }) {
   return (
     <Svg
-      width={normalize(width) || normalize(35)}
-      height={normalize(height) || normalize(35)}
-      viewBox="0 0 35 35"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg">
-      <Rect width={35} height={35} rx={10} fill={colors || '#0A2540'} />
+      width={width || normalize(24)}
+      height={height || normalize(24)}
+      viewBox="0 0 24 24"
+      fill="none">
       <Path
+        fillRule="evenodd"
         clipRule="evenodd"
-        d="M21.042 7.083c.208 1.146-.313 2.292-.938 3.125-.625.834-1.77 1.563-2.916 1.459-.209-1.146.312-2.188.937-3.021.73-.833 1.875-1.458 2.917-1.563zm3.333 18.125c.52-.833.833-1.354 1.25-2.291-3.23-1.25-3.75-5.834-.52-7.5-.938-1.25-2.293-1.875-3.647-1.875-.937 0-1.562.208-2.187.416-.521.209-.938.313-1.459.313-.625 0-1.041-.209-1.666-.417s-1.25-.416-1.98-.416c-1.458 0-3.02.833-3.958 2.395-1.354 2.084-1.146 6.146 1.042 9.48.938 1.25 1.98 2.604 3.333 2.604.625 0 .938-.209 1.354-.313.521-.208 1.042-.416 1.876-.416.937 0 1.354.208 1.875.416.416.209.729.313 1.354.313 1.458 0 2.5-1.563 3.333-2.709z"
-        stroke="#fff"
-        strokeWidth={1.5}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M19.1 19.16c.59-.9.81-1.36 1.26-2.37-3.32-1.26-3.85-5.99-.57-7.8-1-1.26-2.41-1.99-3.74-1.99-.96 0-1.62.25-2.21.48-.5.19-.95.36-1.51.36-.6 0-1.13-.19-1.69-.39C10.03 7.23 9.39 7 8.59 7 7.1 7 5.51 7.91 4.5 9.47c-1.42 2.2-1.17 6.32 1.12 9.84.82 1.26 1.92 2.67 3.35 2.69.6.01.99-.17 1.42-.36.49-.22 1.02-.46 1.95-.46.93-.01 1.45.24 1.94.46.42.19.8.37 1.39.36 1.45-.02 2.61-1.58 3.43-2.84zM15.84 2c.16 1.1-.29 2.19-.88 2.95-.63.82-1.73 1.46-2.79 1.42-.19-1.06.3-2.15.9-2.88.67-.8 1.8-1.42 2.77-1.49z"
+        fill={color || Colors.purple['500']}
       />
     </Svg>
   );

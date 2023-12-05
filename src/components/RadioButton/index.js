@@ -18,7 +18,7 @@ const RadioButton = props => {
         {
           borderWidth: active ? normalize(6) : 1.5,
           borderColor: active
-            ? Colors.oxford_blue['500']
+            ? Colors.purple['500']
             : Colors.oxford_blue['100'],
         },
       ]}

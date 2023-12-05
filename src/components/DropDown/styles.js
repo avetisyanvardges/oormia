@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { ITheme } from 'constants/interfaces/themes';
-import { Colors, FontStyle } from 'assets/RootStyles';
+import { FontStyle } from 'assets/RootStyles';
 
 const Styles = theme => {
   return StyleSheet.create({

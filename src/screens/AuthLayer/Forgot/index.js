@@ -5,63 +5,65 @@ import Input from 'components/Input';
 import { View } from 'react-native';
 import Button from 'components/Button';
 import { styles } from './style';
-import { Formik } from 'formik';
-import { validation } from 'constants/validations';
-import * as yup from 'yup';
-import { routNames } from 'constants/routNames';
 import BtnGoBack from 'components/BtnGoBack';
+import { Controller, useForm } from 'react-hook-form';
+import dispatch from 'utils/dispatch/dispatch';
+import { resetPassword } from 'state/user/operations/resetPassword';
 
-function Index({ navigation }) {
+function ForgotScreen({ navigation }) {
+  const {
+    control,
+    handleSubmit,
+    setValue,
+    getValues,
+    formState: { errors, isValid, isDirty },
+  } = useForm({
+    defaultValues: {
+      email: '',
+    },
+  });
+  const onSubmit = values => {
+    dispatch(resetPassword(values));
+  };
+
   return (
     <ScreenMask style={styles.screenMask}>
       <View style={styles.btnBack}>
         <BtnGoBack />
-        <CustomText values="Account Recovery" globalStyle={styles.firstText} />
+        <CustomText
+          children="Account Recovery"
+          globalStyle={styles.firstText}
+        />
       </View>
       <CustomText
-        values="A reset link will be sent your email"
+        children="A reset link will be sent your email"
         globalStyle={styles.secondText}
       />
-      <Formik
-        validationSchema={yup.object().shape({
-          email: validation.email,
-        })}
-        initialValues={{
-          email: '',
-        }}
-        onSubmit={() => navigation.navigate(routNames.CODE_VERIFICATION)}>
-        {({
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          values,
-          errors,
-          touched,
-          isValid,
-          dirty,
-        }) => (
-          <View>
+      <View>
+        <Controller
+          name={'email'}
+          control={control}
+          render={({ field: { value, onChange, onBlur } }) => (
             <Input
-              // title={'Email'}
               placeholder="Enter mobile or e-mail"
-              value={values.email}
-              onChange={handleChange('email')}
-              errorText={values.email && errors.email}
-              onBlur={handleBlur('email')}
+              value={value}
+              onChange={onChange}
+              errorText={value && errors.email}
+              onBlur={onBlur}
             />
-            <View style={styles.line} />
-            <Button
-              textButton="Send"
-              containerStyle={styles.button}
-              textStyle={styles.buttonText}
-              onClick={handleSubmit}
-              disabled={!(isValid && dirty)}
-            />
-          </View>
-        )}
-      </Formik>
+          )}
+        />
+        <View style={styles.line} />
+        <Button
+          title="Send"
+          containerStyle={styles.button}
+          textStyle={styles.buttonText}
+          onPress={handleSubmit(onSubmit)}
+          disabled={!(isValid && isDirty)}
+        />
+      </View>
     </ScreenMask>
   );
 }
 
-export default Index;
+export default ForgotScreen;

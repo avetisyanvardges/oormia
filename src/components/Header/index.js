@@ -25,11 +25,12 @@ const Header = ({
   handleBlur,
   inputError,
   backIconContainer,
+  containerStyle,
   searchBackgroundColor,
 }) => {
   const styles = Styles();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, containerStyle]}>
       {backButtonVisible && (
         <View style={[styles.icon_container, backIconContainer]}>
           <Icon

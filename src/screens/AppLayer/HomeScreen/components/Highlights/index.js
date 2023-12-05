@@ -17,7 +17,7 @@ const Highlights = () => {
             borderWidth: 4,
             alignItems: 'center',
             justifyContent: 'center',
-            borderColor: Colors.oxford_blue['500'],
+            borderColor: Colors.purple['500'],
           }}>
           <Image
             source={images[`profile_${index}`] || images.profile_1}

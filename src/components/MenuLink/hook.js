@@ -1,7 +1,7 @@
 import { Styles } from './styles';
 
 function useContainer() {
-  const styles: any = Styles();
+  const styles = Styles();
   return { styles };
 }
 

@@ -42,7 +42,11 @@ const Settings = () => {
             }}>
             <View
               style={{ marginTop: normalize(4), marginBottom: normalize(12) }}>
-              <Header title={'Settings'} backButtonVisible={false} />
+              <Header
+                title={'Settings'}
+                backButtonVisible={false}
+                containerStyle={{ paddingTop: 0 }}
+              />
             </View>
             <MenuLink title="Language" iconName={ICON_NAMES.PROFILE.LANGUAGE} />
             <MenuLink
@@ -73,17 +77,23 @@ const Settings = () => {
                 style={{
                   width: normalize(36),
                   height: normalize(36),
+                  borderRadius: normalize(18),
+                  backgroundColor: Colors.red['50'],
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>
-                <Icon name={ICON_NAMES.PROFILE.LOGOUT} color={Colors.red} />
+                <Icon
+                  name={ICON_NAMES.PROFILE.LOGOUT}
+                  color={Colors.red['500']}
+                />
               </View>
               <CustomText
                 onPress={() => dispatch(userLogAuth())}
                 children={'Log out'}
                 globalStyle={{
                   ...FontStyle.text_h5.regular,
-                  color: Colors.red,
+                  color: Colors.red['500'],
+                  marginLeft: normalize(8),
                 }}
               />
             </TouchableOpacity>

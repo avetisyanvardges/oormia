@@ -64,7 +64,7 @@ function Description({
         <View
           style={{
             backgroundColor: focused
-              ? Colors.oxford_blue['500']
+              ? Colors.purple['500']
               : validated
               ? Colors.red
               : Colors.oxford_blue['30'],

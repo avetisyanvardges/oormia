@@ -5,8 +5,8 @@ import { Pressable, Text, View } from 'react-native';
 import { normalize } from 'assets/RootStyles/normalize';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, FontStyle } from 'assets/RootStyles';
-import { ChooseSpeaker } from 'screens/AppLayer/Create/components/ChooseSpeaker';
-import SendRequest from 'screens/AppLayer/Create/components/SendRequest';
+import { ChooseSpeaker } from 'screens/AppLayer/Events/Create/components/ChooseSpeaker';
+import SendRequest from 'screens/AppLayer/Events/Create/components/SendRequest';
 import AddEvent from 'screens/AppLayer/Create/components/AddEvent';
 
 Geocoder.init('AIzaSyA3JgEsDXQmVnH6HQOVHzSpta2wKAN2Tf0');

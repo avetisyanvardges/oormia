@@ -26,6 +26,8 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>localhost</key>
@@ -34,17 +36,15 @@
 				<true/>
 			</dict>
 		</dict>
-		<key>NSAllowsArbitraryLoads</key>
-        <true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>YOUR TEXT</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>YOUR TEXT</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>YOUR TEXT</string>
-    <key>NSCameraUsageDescription</key>
-    <string>YOUR TEXT</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>YOUR TEXT</string>
+	<string>To find nearby events or people in your area and receive real-time updates, our app requires access to your location data.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>To find nearby events or people in your area and receive real-time updates, our app requires access to your location data.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To find nearby events or people in your area and receive real-time updates, our app requires access to your location data.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Black.otf</string>

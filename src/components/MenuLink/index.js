@@ -16,7 +16,7 @@ const MenuLink = props => {
     query,
     title,
     iconName,
-    backgroundColor = Colors.oxford_blue['500'],
+    backgroundColor = Colors.purple['200'],
     disabled,
   } = props;
   const { styles } = useContainer();
@@ -48,7 +48,11 @@ const MenuLink = props => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <Icon name={iconName} size={normalize(24)} color={Colors.white} />
+              <Icon
+                name={iconName}
+                size={normalize(24)}
+                color={Colors.purple['500']}
+              />
             </View>
           )}
           <CustomText

@@ -1,9 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import {
-  createStackNavigator,
-  TransitionPresets,
-} from '@react-navigation/stack';
+import { TransitionPresets } from '@react-navigation/stack';
 import { navigationRef } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
 import { checkInitialRoute } from 'utils/checkInitialRoute';
@@ -12,13 +9,19 @@ import AppStack from './StackNavigation/AppStack';
 import Settings from 'screens/AppLayer/Settings';
 import { fullScreen } from 'assets/RootStyles';
 import { deviceInfo } from 'assets/deviceInfo';
-import ChooseLocation from 'screens/AppLayer/ChooseLocation';
-import EventsScreen from 'screens/AppLayer/Events';
-import CreateGroup from 'screens/AppLayer/CreateGroup';
-import OTPScreen from 'screens/AppLayer/OTP';
+import ChooseLocation from 'screens/AppLayer/Events/ChooseLocation';
+import CreateGroup from 'screens/AppLayer/Groups/Create';
+import EventDetail from 'screens/AppLayer/Events/Details';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
+import MoreState from 'screens/AppLayer/Events/MoreState';
+import BuyTicketScreen from 'screens/AppLayer/Events/BuyTicket';
+import FiltersScreen from 'screens/AppLayer/MapScreen/Filters';
+import EditProfile from 'screens/AppLayer/EditProfile';
+import InviteMembersScreen from 'screens/AppLayer/Groups/InviteMembers';
 
+const Stack = createSharedElementStackNavigator();
 const StackNavigation = () => {
-  const Stack = createStackNavigator();
   const initialRoute = checkInitialRoute();
   return (
     <NavigationContainer ref={navigationRef}>
@@ -29,9 +32,8 @@ const StackNavigation = () => {
           gestureDirection: 'horizontal',
         }}
         initialRouteName={initialRoute}>
-        {/*<Stack.Screen name={routNames.AUTH_LAYER} component={AuthStack} />*/}
-        {/*<Stack.Screen name={routNames.APP_LAYER} component={AppStack} />*/}
-        <Stack.Screen name={routNames.OTP} component={OTPScreen} />
+        <Stack.Screen name={routNames.AUTH_LAYER} component={AuthStack} />
+        <Stack.Screen name={routNames.APP_LAYER} component={AppStack} />
         <Stack.Screen
           name={routNames.SETTINGS}
           component={Settings}
@@ -57,20 +59,101 @@ const StackNavigation = () => {
           }}
         />
         <Stack.Screen
-          name={routNames.EVENTS}
-          component={EventsScreen}
+          name={routNames.CREATE_GROUP}
+          component={CreateGroup}
           options={{
             presentation: 'modal',
             cardStyle: { backgroundColor: 'transparent' },
             gestureResponseDistance: fullScreen.height,
             ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
-            gestureEnabled: true,
+            gestureEnabled: false,
             animationEnabled: true,
           }}
         />
         <Stack.Screen
-          name={routNames.CREATE_GROUP}
-          component={CreateGroup}
+          name={routNames.INVITE_MEMBERS}
+          component={InviteMembersScreen}
+          options={{
+            presentation: 'modal',
+            cardStyle: { backgroundColor: 'transparent' },
+            gestureResponseDistance: fullScreen.height,
+            ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
+            gestureEnabled: false,
+            animationEnabled: true,
+          }}
+        />
+        <Stack.Screen
+          name={routNames.EVENT_DETAIL}
+          component={EventDetail}
+          initialParams={{ id: 0, event: 'unknown' }}
+          sharedElements={(route, otherRoute, showing) => {
+            const { event } = route.params;
+            console.log(otherRoute, showing);
+            if (
+              otherRoute?.route?.name === routNames.MORE_STATE ||
+              otherRoute?.route?.name === routNames.MAP ||
+              otherRoute?.route?.name === routNames.BUY_TICKET
+            ) {
+              return;
+            }
+
+            return [
+              {
+                id: `item.${event.id}.photo`,
+                animation: 'move',
+                resize: 'clip',
+              },
+              {
+                id: `item.${event.id}.info`,
+                animation: 'fade-out',
+                resize: 'clip',
+              },
+            ];
+          }}
+        />
+        <Stack.Screen
+          name={routNames.MORE_STATE}
+          component={MoreState}
+          initialParams={{ event: 'unknown' }}
+          options={{
+            presentation: 'modal',
+            cardStyle: { backgroundColor: 'transparent' },
+            gestureResponseDistance: fullScreen.height,
+            ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
+            gestureEnabled: false,
+            animationEnabled: true,
+          }}
+        />
+        <Stack.Screen
+          name={routNames.BUY_TICKET}
+          component={BuyTicketScreen}
+          initialParams={{ event: 'unknown' }}
+          options={{
+            presentation: 'modal',
+            cardStyle: { backgroundColor: 'transparent' },
+            gestureResponseDistance: fullScreen.height,
+            ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
+            gestureEnabled: false,
+            animationEnabled: true,
+          }}
+        />
+        <Stack.Screen
+          name={routNames.FILTERS}
+          component={FiltersScreen}
+          initialParams={{ event: 'unknown' }}
+          options={{
+            presentation: 'modal',
+            cardStyle: { backgroundColor: 'transparent' },
+            gestureResponseDistance: fullScreen.height,
+            ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
+            gestureEnabled: false,
+            animationEnabled: true,
+          }}
+        />
+        <Stack.Screen
+          name={routNames.EDIT_PROFILE}
+          component={EditProfile}
+          initialParams={{ event: 'unknown' }}
           options={{
             presentation: 'modal',
             cardStyle: { backgroundColor: 'transparent' },

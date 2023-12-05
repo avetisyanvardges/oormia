@@ -43,6 +43,16 @@ import { UnLockIcon } from 'components/Svgs/UnLockIcon';
 import { DurationIcon } from 'components/Svgs/DurationIcon';
 import { MyLocationIcon } from 'components/Svgs/MyLocation';
 import { TopicIcon } from 'components/Svgs/Topic';
+import { SaveLinearIcon } from 'components/Svgs/SaveIcon/Linear';
+import { MoreIcon } from 'components/Svgs/More';
+import { CompassIcon } from 'components/Svgs/Compass';
+import { TicketBoldIcon } from 'components/Svgs/TicketBold';
+import { EditIcon } from 'components/Svgs/EditIcon';
+import { RemoveIcon } from 'components/Svgs/RemoveIcon';
+import { PlusIcon } from 'components/Svgs/Plus';
+import { MinusIcon } from 'components/Svgs/Minus';
+import { FilterIcon } from 'components/Svgs/FilterIcon';
+import { ShareIcon } from 'components/Svgs/ShareIcon';
 
 export const ICONS = {
   [ICON_NAMES.ASSETS_SVG.SEARCH]: ({ width, height, size, color }) => (
@@ -77,14 +87,57 @@ export const ICONS = {
   [ICON_NAMES.SEARCH]: ({ width, height, size, color }) => (
     <SearchIcon width={width} height={height} size={size} color={color} />
   ),
+  [ICON_NAMES.SAVE]: ({ width, height, size, color, backgroundColor }) => (
+    <SaveLinearIcon
+      width={width}
+      height={height}
+      size={size}
+      color={color}
+      backgroundColor={backgroundColor}
+    />
+  ),
+  [ICON_NAMES.MORE_ICON]: ({ width, height, size, color, backgroundColor }) => (
+    <MoreIcon
+      width={width}
+      height={height}
+      size={size}
+      color={color}
+      backgroundColor={backgroundColor}
+    />
+  ),
   [ICON_NAMES.LIST]: ({ width, height, size, color }) => (
     <ListIcon width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.LOCK]: ({ width, height, size, color }) => (
     <LockIcon width={width} height={height} size={size} color={color} />
   ),
+  [ICON_NAMES.COMPASS]: ({ width, height, size, color }) => (
+    <CompassIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.EDIT]: ({ width, height, size, color }) => (
+    <EditIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.REMOVE]: ({ width, height, size, color }) => (
+    <RemoveIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.MINUS]: ({ width, height, size, color }) => (
+    <MinusIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.PLUS]: ({ width, height, size, color }) => (
+    <PlusIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.FILTER]: ({ width, height, size, color }) => (
+    <FilterIcon width={width} height={height} size={size} color={color} />
+  ),
+
+  [ICON_NAMES.TICKET]: ({ width, height, size, color }) => (
+    <TicketBoldIcon width={width} height={height} size={size} color={color} />
+  ),
   [ICON_NAMES.UNLOCK]: ({ width, height, size, color }) => (
     <UnLockIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.SHARE]: ({ width, height, size, color }) => (
+    <ShareIcon width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.DURATION]: ({ width, height, size, color }) => (
     <DurationIcon width={width} height={height} size={size} color={color} />

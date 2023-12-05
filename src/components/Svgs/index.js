@@ -8,6 +8,7 @@ const Icon = ({
   width,
   height,
   color,
+  backgroundColor,
   onPress,
   disabled,
   activeOpacity,
@@ -19,7 +20,8 @@ const Icon = ({
       onPress={onPress}
       activeOpacity={activeOpacity}
       style={style}>
-      {ICONS[name] && ICONS[name]({ size, width, height, color })}
+      {ICONS[name] &&
+        ICONS[name]({ size, width, height, color, backgroundColor })}
     </TouchableOpacity>
   );
 };

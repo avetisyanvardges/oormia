@@ -1,12 +1,12 @@
-import { StyleSheet, TouchableWithoutFeedback } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import { TouchableWithoutFeedback } from 'react-native';
+import React, { useEffect } from 'react';
 import Animated, {
   interpolateColor,
-  useSharedValue,
   useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
   withSpring,
   withTiming,
-  useDerivedValue,
 } from 'react-native-reanimated';
 import { Styles } from './style';
 
@@ -23,7 +23,7 @@ const Switch = ({ activeColor, inActiveColor, active = false, setActive }) => {
   // useEffect for change the switchTranslate Value
   useEffect(() => {
     if (active) {
-      switchTranslate.value = 26;
+      switchTranslate.value = 24;
     } else {
       switchTranslate.value = 4;
     }

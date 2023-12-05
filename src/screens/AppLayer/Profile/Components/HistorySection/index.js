@@ -9,7 +9,9 @@ import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import { navigate } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
-
+import { useSelector } from 'react-redux';
+import dispatch from 'utils/dispatch/dispatch';
+import { getAllGroups } from 'state/groups/operations/getAllGroups';
 
 const tabTypes = {
   EVENTS: 'events',
@@ -37,7 +39,7 @@ const groups = [
 
 const HistorySection = () => {
   const [activeTab, setActiveTab] = useState(tabTypes.EVENTS);
-
+  const { event_history } = useSelector(({ events }) => events);
   const RenderCard = ({ item, i }) => {
     const randomBool = useMemo(() => Math.random() < 0.5, [i]);
 
@@ -111,7 +113,10 @@ const HistorySection = () => {
         }}>
         <TouchableOpacity
           activeOpacity={0.7}
-          onPress={() => setActiveTab(tabTypes.EVENTS)}
+          onPress={() => {
+            setActiveTab(tabTypes.EVENTS);
+            dispatch(getAllGroups());
+          }}
           style={{
             flex: 1,
             alignItems: 'center',
@@ -119,7 +124,7 @@ const HistorySection = () => {
             borderBottomWidth: 1.5,
             borderColor:
               activeTab === tabTypes.EVENTS
-                ? Colors.oxford_blue['500']
+                ? Colors.purple['500']
                 : Colors.white,
           }}>
           <CustomText
@@ -127,36 +132,36 @@ const HistorySection = () => {
               ...FontStyle.text_h5.regular,
               color:
                 activeTab === tabTypes.EVENTS
-                  ? Colors.oxford_blue['500']
+                  ? Colors.purple['500']
                   : Colors.oxford_blue['100'],
             }}
             children={'Events'}
           />
         </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => setActiveTab(tabTypes.TRIPS)}
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            paddingVertical: normalize(10),
-            borderBottomWidth: 1.5,
-            borderColor:
-              activeTab === tabTypes.TRIPS
-                ? Colors.oxford_blue['500']
-                : Colors.white,
-          }}>
-          <CustomText
-            globalStyle={{
-              ...FontStyle.text_h5.regular,
-              color:
-                activeTab === tabTypes.TRIPS
-                  ? Colors.oxford_blue['500']
-                  : Colors.oxford_blue['100'],
-            }}
-            children={'Trips'}
-          />
-        </TouchableOpacity>
+        {/*<TouchableOpacity*/}
+        {/*  activeOpacity={0.7}*/}
+        {/*  onPress={() => setActiveTab(tabTypes.TRIPS)}*/}
+        {/*  style={{*/}
+        {/*    flex: 1,*/}
+        {/*    alignItems: 'center',*/}
+        {/*    paddingVertical: normalize(10),*/}
+        {/*    borderBottomWidth: 1.5,*/}
+        {/*    borderColor:*/}
+        {/*      activeTab === tabTypes.TRIPS*/}
+        {/*        ? Colors.purple['500']*/}
+        {/*        : Colors.white,*/}
+        {/*  }}>*/}
+        {/*  <CustomText*/}
+        {/*    globalStyle={{*/}
+        {/*      ...FontStyle.text_h5.regular,*/}
+        {/*      color:*/}
+        {/*        activeTab === tabTypes.TRIPS*/}
+        {/*          ? Colors.purple['500']*/}
+        {/*          : Colors.oxford_blue['100'],*/}
+        {/*    }}*/}
+        {/*    children={'Trips'}*/}
+        {/*  />*/}
+        {/*</TouchableOpacity>*/}
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => setActiveTab(tabTypes.GROUP)}
@@ -167,7 +172,7 @@ const HistorySection = () => {
             borderBottomWidth: 1.5,
             borderColor:
               activeTab === tabTypes.GROUP
-                ? Colors.oxford_blue['500']
+                ? Colors.purple['500']
                 : Colors.white,
           }}>
           <CustomText
@@ -175,7 +180,7 @@ const HistorySection = () => {
               ...FontStyle.text_h5.regular,
               color:
                 activeTab === tabTypes.GROUP
-                  ? Colors.oxford_blue['500']
+                  ? Colors.purple['500']
                   : Colors.oxford_blue['100'],
             }}
             children={'Groups'}
@@ -221,13 +226,13 @@ const HistorySection = () => {
                       height: normalize(60),
                       borderRadius: normalize(12),
                       borderWidth: 1,
-                      borderColor: Colors.oxford_blue['500'],
+                      borderColor: Colors.purple['500'],
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
                     <Icon
                       name={ICON_NAMES.GALLERY_ADD}
-                      color={Colors.oxford_blue['500']}
+                      color={Colors.purple['500']}
                     />
                   </View>
                   <CustomText

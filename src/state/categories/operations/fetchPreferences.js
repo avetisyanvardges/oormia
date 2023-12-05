@@ -1,9 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import httpClient from '../../../services/HttpClient';
-import {
-  fetchPreferencesEndpoint,
-  fetchSubCategoriesAllEndpoint,
-} from 'state/categories/endpoints';
+import { fetchPreferencesEndpoint } from 'state/categories/endpoints';
 
 export const fetchPreferences = createAsyncThunk(
   'categories/fetchPreferences',

@@ -1,118 +1,172 @@
-import React, { useCallback } from 'react';
-import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import {
+  FlatList,
+  Image,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { normalize } from 'assets/RootStyles/normalize';
-import { Colors, FontStyle, fullScreen } from 'assets/RootStyles';
+import {
+  Colors,
+  Fonts,
+  FontStyle,
+  fullScreen,
+  Shadow,
+} from 'assets/RootStyles';
 import Underline from 'components/Underline';
 import images from 'assets/images';
-import { BlurView } from '@react-native-community/blur';
 import { CustomText } from 'components/Text';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import Icon from 'components/Svgs';
 import moment from 'moment';
 import { navigate } from 'services/NavigationService';
+import { SharedElement } from 'react-navigation-shared-element';
+import { routNames } from 'constants/routNames';
+import { useSelector } from 'react-redux';
 
 const PromotionComponent = () => {
-  const renderPromotionItem = useCallback(() => {
-    return (
-      <View>
-        <View
-          style={{
-            width: fullScreen.width * 0.8,
-            height: normalize(150),
-            borderRadius: normalize(24),
-            backgroundColor: Colors.oxford_blue['500'],
+  const { promotion_events } = useSelector(({ events }) => events);
+  const [selected, setSelected] = useState(false);
+  const renderPromotionItem = useCallback(
+    ({ item, index }) => {
+      return (
+        <Pressable
+          onPress={() => {
+            navigate(routNames.EVENT_DETAIL, {
+              event: item,
+            });
           }}>
-          <Image
-            source={images.event}
-            style={{
-              width: fullScreen.width * 0.8,
-              height: normalize(150),
-              justifyContent: 'flex-end',
-            }}
-            borderRadius={normalize(24)}
-          />
           <View
             style={{
+              width: fullScreen.width * 0.6,
               borderRadius: normalize(24),
-              borderTopRightRadius: 0,
-              borderTopLeftRadius: 0,
-              overflow: 'hidden',
-              flex: 1,
-              width: '100%',
-              backgroundColor: 'transparent',
-              position: 'absolute',
-              bottom: 0,
+              ...Shadow,
             }}>
-            <BlurView
-              blurType={'dark'}
-              blurAmount={1}
-              reducedTransparencyFallbackColor="rgba(37,42,54,.25)"
-              style={[
-                {
-                  width: '100%',
-                  height: normalize(60),
-                  paddingHorizontal: normalize(8),
-                },
-              ]}>
-              <View>
-                <CustomText
-                  children={'Event name'}
-                  globalStyle={{
-                    ...FontStyle.text_h5.medium,
-                    color: Colors.white,
-                  }}
-                />
-              </View>
+            <SharedElement id={`item.${item?.id}.photo`}>
+              <Image
+                source={{
+                  uri:
+                    item?.pictures?.[0]?.fileDownloadUri ||
+                    item?.preferences?.[0]?.picture?.fileDownloadUri,
+                }}
+                style={{
+                  width: fullScreen.width * 0.6,
+                  height: normalize(100),
+                  justifyContent: 'flex-end',
+                }}
+                borderTopRightRadius={normalize(24)}
+                borderTopLeftRadius={normalize(24)}
+              />
+            </SharedElement>
+
+            <SharedElement id={`item.${item?.id}.info`}>
               <View
                 style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  marginTop: normalize(4),
+                  height: normalize(100),
+                  borderBottomRightRadius: normalize(24),
+                  borderBottomLeftRadius: normalize(24),
+                  backgroundColor: Colors.white,
                 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Icon
-                    name={ICON_NAMES.CALENDAR}
-                    size={normalize(18)}
-                    color={Colors.white}
+                <View
+                  style={{
+                    width: normalize(55),
+                    height: normalize(47),
+                    borderRadius: normalize(8),
+                    position: 'absolute',
+                    backgroundColor: Colors.white,
+                    top: -normalize(35),
+                    left: normalize(16),
+                    zIndex: 999,
+                    ...Shadow,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                  <CustomText
+                    children={moment(item?.startDate).format('DD')}
+                    globalStyle={{
+                      ...FontStyle.text_h2.bold,
+                      color: Colors.purple['500'],
+                    }}
                   />
                   <CustomText
-                    children={`${moment().format('DD MMM YYYY')}`}
+                    children={moment(item?.startDate).format('MMM')}
                     globalStyle={{
                       ...FontStyle.text_h6.regular,
-                      color: Colors.white,
-                      marginLeft: normalize(8),
                     }}
                   />
                 </View>
                 <View
                   style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    marginLeft: normalize(16),
+                    marginTop: normalize(20),
+                    marginHorizontal: normalize(16),
                   }}>
-                  <Icon
-                    name={ICON_NAMES.TIME}
-                    size={normalize(18)}
-                    color={Colors.white}
-                  />
-                  <CustomText
-                    children={`${moment().format('HH:mm')}`}
-                    globalStyle={{
-                      ...FontStyle.text_h6.regular,
-                      color: Colors.white,
-                      marginLeft: normalize(8),
-                    }}
-                  />
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'flex-end',
+                      justifyContent: 'space-between',
+                      marginTop: normalize(4),
+                    }}>
+                    <View style={{ flex: 1 }}>
+                      <CustomText
+                        children={item.name}
+                        ellipsizeMode={'tail'}
+                        numberOfLines={1}
+                        globalStyle={{
+                          ...FontStyle.text_h4.bold,
+                        }}
+                      />
+                      <CustomText
+                        children={item.address}
+                        ellipsizeMode={'tail'}
+                        numberOfLines={1}
+                        globalStyle={{
+                          ...FontStyle.text_h6.regular,
+                          color: Colors.oxford_blue['200'],
+                        }}
+                      />
+                      <CustomText
+                        children={`${moment(item.startDate).format(
+                          'h:mm A',
+                        )} - ${moment(item.endDate).format('h:mm A')}`}
+                        globalStyle={{
+                          ...FontStyle.text_h6.regular,
+                          color: Colors.oxford_blue['200'],
+                        }}
+                      />
+                    </View>
+                    <TouchableOpacity
+                      activeOpacity={0.9}
+                      onPress={() => setSelected(!selected)}
+                      style={{
+                        padding: normalize(10),
+                        backgroundColor: selected
+                          ? Colors.purple['200']
+                          : undefined,
+                        borderRadius: normalize(100),
+                      }}>
+                      <Icon
+                        name={ICON_NAMES.SAVE}
+                        backgroundColor={
+                          selected ? Colors.purple['500'] : undefined
+                        }
+                        color={Colors.purple['500']}
+                      />
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
-            </BlurView>
+            </SharedElement>
           </View>
-        </View>
-      </View>
-    );
-  }, []);
+        </Pressable>
+      );
+    },
+    [selected],
+  );
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <View
         style={{
           marginHorizontal: normalize(16),
@@ -137,11 +191,14 @@ const PromotionComponent = () => {
       </View>
       <FlatList
         horizontal
-        data={[{}, {}, {}, {}, {}, {}, {}, {}]}
+        data={promotion_events}
         renderItem={renderPromotionItem}
         showsHorizontalScrollIndicator={false}
         ItemSeparatorComponent={() => <View style={{ width: normalize(8) }} />}
-        contentContainerStyle={{ paddingHorizontal: normalize(16) }}
+        contentContainerStyle={{
+          paddingHorizontal: normalize(16),
+          paddingBottom: normalize(10),
+        }}
       />
       <View
         style={{

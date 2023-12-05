@@ -28,9 +28,11 @@ import asocacia from './eventImg/asocacia.jpg';
 import sali from './eventImg/sali.png';
 import mushurba from './eventImg/mushurba.jpg';
 import qr from './QR/qrcode.png';
-import samvel from './spekaers/SamvelGevorgyan.jpg';
-import vardan from './spekaers/VardanPapikyan.jpg';
-import rem from './spekaers/RemDarbinyan.jpg';
+import olivia from './spekaers/olivia_turner.jpg';
+import andre from './spekaers/andre_robinson.jpg';
+import elena from './spekaers/elena_martinez.jpg';
+import marcus from './spekaers/marcus_harris.jpg';
+import sophia from './spekaers/sophia_nguyen.webp';
 import Milan from './cities/Milan.png';
 import Amsterdam from './cities/Amsterdam.jpg';
 import Gyumri from './cities/Gyumri.jpg';
@@ -63,9 +65,11 @@ const images = {
   profile_1,
   profile_2,
   speakers: {
-    samvel,
-    vardan,
-    rem,
+    olivia,
+    andre,
+    elena,
+    marcus,
+    sophia,
   },
   cities: {
     Gyumri,

@@ -7,7 +7,6 @@ import { normalize } from 'assets/RootStyles/normalize';
 import { FormattedMessage } from 'react-intl';
 import { CustomText } from 'components/Text';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
-import { deviceInfo } from 'assets/deviceInfo';
 
 const DropDown = ({
   placeholder,

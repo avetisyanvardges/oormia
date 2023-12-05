@@ -12,7 +12,7 @@ const ArrowRightIcon = ({ width, height, color }) => {
       fill="none">
       <Path
         d="M8.91 19.92l6.52-6.52c.77-.77.77-2.03 0-2.8L8.91 4.08"
-        stroke={color || Colors.oxford_blue['500']}
+        stroke={color || Colors.purple['500']}
         strokeWidth={1.5}
         strokeMiterlimit={10}
         strokeLinecap="round"

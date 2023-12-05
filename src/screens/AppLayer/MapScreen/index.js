@@ -1,22 +1,25 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import {
   Alert,
   FlatList,
   Image,
   Linking,
-  PermissionsAndroid,
   Pressable,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import images from 'assets/images';
-import { eventData } from 'assets/data';
 import { normalize } from 'assets/RootStyles/normalize';
 import { CustomText } from 'components/Text';
 import { Colors, FontStyle, Shadow } from 'assets/RootStyles';
 import { deviceInfo } from 'assets/deviceInfo';
-import MapView, { Marker } from 'react-native-maps';
+import { Marker } from 'react-native-maps';
 import { MAP_DEFAULT_THEME } from 'assets/Theme/MapTheme';
 import Geolocation from 'react-native-geolocation-service';
 import RNAndroidLocationEnabler from 'react-native-android-location-enabler';
@@ -29,42 +32,21 @@ import { ICON_NAMES } from 'components/Svgs/icon_names';
 import dispatch from 'utils/dispatch/dispatch';
 import { getAllEvents } from 'state/events/operations/getAllEvents';
 import { fetchAllUsers } from 'state/user/operations/fetchAllUsers';
+import { useSelector } from 'react-redux';
+import moment from 'moment';
+import { SharedElement } from 'react-navigation-shared-element';
+import { routNames } from 'constants/routNames';
+import FastImage from 'react-native-fast-image';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import MapView from 'react-native-map-clustering';
 
-const coordinates = [
-  {
-    location: { lat: 40.779327, lon: 43.855692 },
-    image: images.event,
-    title: 'Entertainment',
-    id: 0,
-  },
-  {
-    location: { lat: 40.780498, lon: 43.851679 },
-    image: images.eventImg_2,
-    title: 'Entertainment',
-    id: 1,
-  },
-  {
-    location: { lat: 40.786246, lon: 43.845812 },
-    image: images.eventImg_1,
-    title: 'Entertainment',
-    id: 2,
-  },
-  {
-    location: { lat: 40.790281, lon: 43.846065 },
-    image: images.eventImg_3,
-    title: 'Entertainment',
-    id: 3,
-  },
-  {
-    location: { lat: 40.779368, lon: 43.859312 },
-    image: images.eventImg_4,
-    title: 'Entertainment',
-    id: 4,
-  },
-];
-
-const MapScreen = () => {
+const MapScreen = ({ navigation }) => {
   const mapRef = useRef();
+  const listRef = useRef();
+  const insets = useSafeAreaInsets();
+  const { events } = useSelector(({ events }) => events);
+  const [showEvent, setShowEvent] = useState(false);
+  const [selectedEventId, setSelectedEventId] = useState('');
   const [region, setRegion] = useCallbackState({
     latitude: 40.7929026,
     longitude: 43.84649710000001,
@@ -78,14 +60,21 @@ const MapScreen = () => {
     latitudeDelta: 0.015,
     longitudeDelta: 0.015,
   });
+
   const onViewableItemsChanged = ({ viewableItems }) => {
     setMarker({
       val: {
-        ...viewableItems[viewableItems.length - 1].item.location,
+        latitude: viewableItems[viewableItems.length - 1].item.lat,
+        longitude: viewableItems[viewableItems.length - 1].item.lon,
+        latitudeDelta: 0.015,
+        longitudeDelta: 0.015,
       },
       callback: () => {
         mapRef.current.animateToRegion({
-          ...viewableItems[viewableItems.length - 1].item.location,
+          latitude: viewableItems[viewableItems.length - 1].item.lat,
+          longitude: viewableItems[viewableItems.length - 1].item.lon,
+          latitudeDelta: 0.001,
+          longitudeDelta: 0.001,
         });
       },
     });
@@ -195,27 +184,126 @@ const MapScreen = () => {
         val: {
           latitude: location.latitude,
           longitude: location.longitude,
-          latitudeDelta: 0.015,
-          longitudeDelta: 0.015,
+          latitudeDelta: 0.001,
+          longitudeDelta: 0.001,
         },
         callback: () => {
           mapRef.current.animateToRegion({
             latitude: location.latitude,
             longitude: location.longitude,
-            latitudeDelta: 0.005,
-            longitudeDelta: 0.005,
+            latitudeDelta: 0.001,
+            longitudeDelta: 0.001,
           });
         },
       });
     }
     // this.props.makeAction(UPDATE_USER_LOCATION, {location: location});
   };
-  // useEffect(() => {
-  //   MapboxGL.setTelemetryEnabled(false);
-  // }, []);
+
+  useEffect(() => {
+    const subscribe = navigation.addListener('focus', () => {
+      dispatch(getAllEvents({ page: 0, size: 100 }));
+    });
+
+    return () => {
+      subscribe();
+    };
+  }, []);
+
+  const renderEvents = useMemo(() => {
+    return events?.map((item, index) => {
+      const focused =
+        marker.val.latitude === item.lat && marker.val.longitude === item.lon;
+      return (
+        <Marker
+          key={`${item.id}`}
+          identifier={`${item.id}`}
+          coordinate={{
+            latitude: item.lat,
+            longitude: item.lon,
+            latitudeDelta: 0.015,
+            longitudeDelta: 0.015,
+          }}
+          onPress={() => {
+            navigate(routNames.EVENT_DETAIL, {
+              event: item,
+            });
+          }}>
+          <View style={{ alignItems: 'center' }}>
+            <View
+              style={{
+                width: normalize(60),
+                height: normalize(60),
+                borderRadius: normalize(30),
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: Colors.purple['200'],
+              }}>
+              <SharedElement id={`item.${item?.id}.photo`}>
+                <FastImage
+                  source={{
+                    uri:
+                      item?.pictures?.[0]?.fileDownloadUri ||
+                      item?.preferences?.[0]?.picture?.fileDownloadUri,
+                  }}
+                  style={{
+                    width: normalize(50),
+                    height: normalize(50),
+                    borderRadius: normalize(25),
+                  }}
+                />
+              </SharedElement>
+            </View>
+            {focused ? (
+              <View
+                style={{
+                  width: normalize(10),
+                  height: normalize(10),
+                  borderRadius: normalize(5),
+                  marginTop: normalize(10),
+                  backgroundColor: Colors.purple['500'],
+                }}
+              />
+            ) : null}
+          </View>
+          {/*<Lottie*/}
+          {/*  source={require('../../../assets/lottie/location.json')}*/}
+          {/*  autoPlay*/}
+          {/*  loop*/}
+          {/*  style={{*/}
+          {/*    width: normalize(60),*/}
+          {/*    height: normalize(60),*/}
+          {/*  }}*/}
+          {/*  resizeMode={'cover'}*/}
+          {/*/>*/}
+        </Marker>
+      );
+    });
+  });
 
   return (
     <View style={{ flex: 1 }}>
+      <View
+        style={{
+          position: 'absolute',
+          top: insets.top + normalize(16),
+          right: normalize(8),
+          zIndex: 999,
+        }}>
+        <TouchableOpacity
+          onPress={() => navigate(routNames.FILTERS)}
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: normalize(8),
+            backgroundColor: Colors.white,
+            borderRadius: normalize(50),
+            paddingHorizontal: normalize(8),
+            ...Shadow,
+          }}>
+          <Icon name={ICON_NAMES.FILTER} />
+        </TouchableOpacity>
+      </View>
       <View
         style={{
           position: 'absolute',
@@ -238,11 +326,12 @@ const MapScreen = () => {
           <Icon
             name={ICON_NAMES.LIST}
             size={normalize(22)}
-            color={Colors.oxford_blue['500']}
+            color={Colors.purple['500']}
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigate('EventsScreen')}
+          activeOpacity={0.9}
+          onPress={() => {}}
           style={{
             alignItems: 'center',
             flexDirection: 'row',
@@ -258,7 +347,7 @@ const MapScreen = () => {
             <Icon
               name={ICON_NAMES.MY_LOCATION}
               size={normalize(22)}
-              color={Colors.oxford_blue['500']}
+              color={Colors.purple['500']}
             />
           </View>
         </TouchableOpacity>
@@ -283,110 +372,11 @@ const MapScreen = () => {
         onRegionChangeComplete={onRegionChange}
         maxZoomLevel={19}
         minZoomLevel={3}
-        customMapStyle={MAP_DEFAULT_THEME}>
-        <Marker coordinate={marker.val}>
-          <Lottie
-            source={require('../../../assets/lottie/location.json')}
-            autoPlay
-            loop
-            style={{
-              width: normalize(60),
-              height: normalize(60),
-            }}
-            // resizeMode={'cover'}
-          />
-        </Marker>
-
-        {/*{eventData.map(item => {*/}
-        {/*  const location = {*/}
-        {/*    longitude: parseFloat(item.location.longitude),*/}
-        {/*    latitude: parseFloat(item.location.latitude),*/}
-        {/*  };*/}
-        {/*  return (*/}
-        {/*   */}
-        {/*  );*/}
-        {/*})}*/}
+        customMapStyle={MAP_DEFAULT_THEME}
+        clusterColor={Colors.purple['500']}
+        animationEnabled>
+        {renderEvents}
       </MapView>
-      <View
-        style={{
-          position: 'absolute',
-          bottom: normalize(50),
-        }}>
-        <FlatList
-          horizontal
-          data={eventData}
-          keyExtractor={item => item.id}
-          renderItem={({ item, index }) => {
-            return (
-              <View style={{ paddingTop: normalize(70) }}>
-                {/*<TouchableOpacity onPress={() => navigate('EventsScreen')}>*/}
-                {/*<Text*/}
-                {/*  style={{*/}
-                {/*    ...FontStyle.text_h5.regular,*/}
-                {/*    color: Colors.oxford_blue['200'],*/}
-                {/*    alignSelf: 'flex-end',*/}
-                {/*    margin: normalize(10),*/}
-                {/*  }}>*/}
-                {/*  View list*/}
-                {/*</Text>*/}
-                {/*</TouchableOpacity>*/}
-                <Pressable
-                  key={index.toString()}
-                  style={{
-                    width: deviceInfo.deviceWidth - normalize(20),
-                    backgroundColor: Colors.white,
-                    borderRadius: normalize(20),
-                    alignItems: 'center',
-                    paddingHorizontal: normalize(10),
-                    flexDirection: 'row',
-                    padding: normalize(16),
-                    ...Shadow,
-                    zIndex: 0,
-                  }}>
-                  <Image
-                    source={item.photo}
-                    style={{
-                      width: normalize(100),
-                      height: normalize(100),
-                      borderRadius: normalize(12),
-                      resizeMode: 'cover',
-                      overflow: 'hidden',
-                      zIndex: 999,
-                      ...Shadow,
-                    }}
-                  />
-                  <View
-                    style={{
-                      flex: 1,
-                      marginLeft: normalize(10),
-                    }}>
-                    <CustomText
-                      children={item.name.slice(0, 30)}
-                      globalStyle={{
-                        fontWeight: 'bold',
-                        marginBottom: normalize(15),
-                      }}
-                    />
-                    <CustomText children={item.description.slice(0, 30)} />
-                  </View>
-                </Pressable>
-              </View>
-            );
-          }}
-          pagingEnabled
-          ItemSeparatorComponent={() => (
-            <View style={{ width: normalize(20) }} />
-          )}
-          contentContainerStyle={{
-            paddingHorizontal: normalize(10),
-            paddingBottom: normalize(70),
-          }}
-          showsHorizontalScrollIndicator={false}
-          viewabilityConfigCallbackPairs={
-            viewabilityConfigCallbackPairs.current
-          }
-        />
-      </View>
     </View>
   );
 };

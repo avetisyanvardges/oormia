@@ -12,11 +12,9 @@ const ArrowLeftIcon = ({ width, height, size, color }) => {
       fill="none">
       <Path
         d="M15 19.92L8.48 13.4c-.77-.77-.77-2.03 0-2.8L15 4.08"
-        stroke={color || Colors.oxford_blue['500']}
+        stroke={color || Colors.purple['500']}
         strokeWidth={1.5}
         strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
       />
     </Svg>
   );

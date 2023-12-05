@@ -1,29 +1,18 @@
 import * as React from 'react';
-import Svg, { Path, Rect } from 'react-native-svg';
+import Svg, { Path } from 'react-native-svg';
 import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 
-function FbIcon({ width, height, colors }) {
+function FbIcon({ width, height, color }) {
   return (
     <Svg
-      width={normalize(width) || normalize(35)}
-      height={normalize(height) || normalize(35)}
-      viewBox="0 0 35 35"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg">
-      <Rect width={35} height={35} rx={10} fill={colors || '#0A2540'} />
+      width={width || normalize(24)}
+      height={height || normalize(24)}
+      viewBox="0 0 24 24"
+      fill="none">
       <Path
-        d="M19.583 14.688v3.02h2.709c.208 0 .312.209.312.417l-.416 1.98c0 .103-.209.207-.313.207h-2.292v7.605h-3.125v-7.5h-1.77c-.209 0-.313-.105-.313-.313v-1.979c0-.208.104-.313.313-.313h1.77v-3.437c0-1.77 1.355-3.125 3.125-3.125h2.813c.208 0 .312.104.312.313v2.5c0 .208-.104.312-.312.312h-2.5c-.209 0-.313.104-.313.313z"
-        stroke="#fff"
-        strokeWidth={1.5}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-      />
-      <Path
-        d="M20.625 27.917h-6.25c-5.208 0-7.292-2.084-7.292-7.292v-6.25c0-5.208 2.084-7.292 7.292-7.292h6.25c5.208 0 7.292 2.084 7.292 7.292v6.25c0 5.208-2.084 7.292-7.292 7.292z"
-        stroke="#fff"
-        strokeWidth={1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M22 16.19c0 3.64-2.17 5.81-5.81 5.81H15c-.55 0-1-.45-1-1v-5.77c0-.27.22-.5.49-.5l1.76-.03c.14-.01.26-.11.29-.25l.35-1.91a.303.303 0 00-.3-.35l-2.13.03c-.28 0-.5-.22-.51-.49l-.04-2.45c0-.16.13-.3.3-.3l2.4-.04c.17 0 .3-.13.3-.3l-.04-2.4c0-.17-.13-.3-.3-.3l-2.7.04a2.996 2.996 0 00-2.95 3.05l.05 2.75c.01.28-.21.5-.49.51l-1.2.02c-.17 0-.3.13-.3.3l.03 1.9c0 .17.13.3.3.3l1.2-.02c.28 0 .5.22.51.49l.09 5.7c.01.56-.44 1.02-1 1.02h-2.3C4.17 22 2 19.83 2 16.18V7.81C2 4.17 4.17 2 7.81 2h8.38C19.83 2 22 4.17 22 7.81v8.38z"
+        fill={color || Colors.purple['500']}
       />
     </Svg>
   );

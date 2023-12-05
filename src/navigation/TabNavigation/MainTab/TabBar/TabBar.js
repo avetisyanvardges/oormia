@@ -61,13 +61,19 @@ const TabBar = ({ state, descriptors, navigation }) => {
                       name={ICON_NAMES.TAB_BAR.HOME}
                       width={normalize(24)}
                       height={normalize(24)}
-                      color={Colors.oxford_blue[isFocused ? '500' : '100']}
+                      color={
+                        isFocused
+                          ? Colors.purple['500']
+                          : Colors.oxford_blue['100']
+                      }
                     />
                     <CustomText
                       children={'Home'}
                       globalStyle={{
                         ...FontStyle.text_h6.regular,
-                        color: Colors.oxford_blue[isFocused ? '500' : '100'],
+                        color: isFocused
+                          ? Colors.purple['500']
+                          : Colors.oxford_blue['100'],
                       }}
                     />
                   </>
@@ -78,13 +84,19 @@ const TabBar = ({ state, descriptors, navigation }) => {
                       name={ICON_NAMES.TAB_BAR.MAP}
                       width={normalize(24)}
                       height={normalize(24)}
-                      color={Colors.oxford_blue[isFocused ? '500' : '100']}
+                      color={
+                        isFocused
+                          ? Colors.purple['500']
+                          : Colors.oxford_blue['100']
+                      }
                     />
                     <CustomText
                       children={'Map'}
                       globalStyle={{
                         ...FontStyle.text_h6.regular,
-                        color: Colors.oxford_blue[isFocused ? '500' : '100'],
+                        color: isFocused
+                          ? Colors.purple['500']
+                          : Colors.oxford_blue['100'],
                       }}
                     />
                   </>
@@ -102,13 +114,19 @@ const TabBar = ({ state, descriptors, navigation }) => {
                       name={ICON_NAMES.TAB_BAR.TICKET}
                       width={normalize(24)}
                       height={normalize(24)}
-                      color={Colors.oxford_blue[isFocused ? '500' : '100']}
+                      color={
+                        isFocused
+                          ? Colors.purple['500']
+                          : Colors.oxford_blue['100']
+                      }
                     />
                     <CustomText
                       children={'Tickets'}
                       globalStyle={{
                         ...FontStyle.text_h6.regular,
-                        color: Colors.oxford_blue[isFocused ? '500' : '100'],
+                        color: isFocused
+                          ? Colors.purple['500']
+                          : Colors.oxford_blue['100'],
                       }}
                     />
                   </>
@@ -119,13 +137,19 @@ const TabBar = ({ state, descriptors, navigation }) => {
                       name={ICON_NAMES.TAB_BAR.PROFILE}
                       width={normalize(24)}
                       height={normalize(24)}
-                      color={Colors.oxford_blue[isFocused ? '500' : '100']}
+                      color={
+                        isFocused
+                          ? Colors.purple['500']
+                          : Colors.oxford_blue['100']
+                      }
                     />
                     <CustomText
                       children={'Profile'}
                       globalStyle={{
                         ...FontStyle.text_h6.regular,
-                        color: Colors.oxford_blue[isFocused ? '500' : '100'],
+                        color: isFocused
+                          ? Colors.purple['500']
+                          : Colors.oxford_blue['100'],
                       }}
                     />
                   </>

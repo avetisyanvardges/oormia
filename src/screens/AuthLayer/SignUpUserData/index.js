@@ -19,18 +19,6 @@ function SignUpUserData({ navigation, route }) {
   const data = route?.params;
 
   const onSubmit = values => {
-    console.log(values);
-    // const data = new FormData();
-    // data.append('email', values?.email);
-    // data.append('password', values?.password);
-    // data.append('avatar', img);
-    // data.append('firstName', values?.firstName);
-    // data.append('lastName', values?.lastName);
-    // data.append('phoneNumber', values?.phoneNumber);
-    // data.append('guide', values?.guide);
-    // data.append('guideForCountry', values?.guideForCountry);
-    // data.append('role', values?.role);
-    // dispatch(userSignUp(values));
     navigate(routNames.PREFERENCES, { values });
   };
 
@@ -55,23 +43,6 @@ function SignUpUserData({ navigation, route }) {
     },
     // resolver: signUpSchema,
   });
-  const onUpload = async () => {
-    try {
-      ImagePicker.openCamera({
-        width: 300,
-        height: 400,
-        cropping: true,
-        multiple: true,
-      }).then(image => {
-        console.log(image);
-        setImg(image);
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  console.log(errors);
 
   return (
     <ScreenMask
@@ -112,7 +83,8 @@ function SignUpUserData({ navigation, route }) {
                 label={'First name'}
                 placeholder="First name"
                 value={value}
-                {...register('firstName')}
+                onChange={onChange}
+                onBlur={onBlur}
                 errorText={value && errors.firstName}
               />
             );
@@ -127,7 +99,8 @@ function SignUpUserData({ navigation, route }) {
                 label={'Last name'}
                 placeholder="Last name"
                 value={value}
-                {...register('lastName')}
+                onChange={onChange}
+                onBlur={onBlur}
                 errorText={value && errors.lastName}
               />
             );

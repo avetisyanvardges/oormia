@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 function CountDownTimer(props) {
   const [time, setTime] = React.useState(props.initialValue || 60);

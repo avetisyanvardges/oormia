@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import httpClient from '../../../services/HttpClient';
 import { signUpEndpoint } from 'state/user/endpoints';
+import { navigate } from 'services/NavigationService';
+import { routNames } from 'constants/routNames';
 
 export const userSignUp = createAsyncThunk(
   'user/userSignUp',
@@ -8,8 +10,8 @@ export const userSignUp = createAsyncThunk(
     try {
       console.log(payload);
       const { url } = signUpEndpoint;
-      const res = await httpClient.post(url, payload);
-      console.log(res, 'RESPONSE');
+      const { data } = await httpClient.post(url, payload);
+      return data;
     } catch (err) {
       console.log('error', err);
       //

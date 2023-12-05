@@ -12,15 +12,22 @@ import LinearGradient from 'react-native-linear-gradient';
 import Button from 'components/Button';
 import dispatch from 'utils/dispatch/dispatch';
 import { userSignUp } from 'state/user/operations/userSignUp';
-import { fetchCategoriesAll } from 'state/categories/operations/fetchCategoriesAll';
+import { useSelector } from 'react-redux';
+import { navigate } from 'services/NavigationService';
+import { routNames } from 'constants/routNames';
 
 function PreferencesScreen({ navigation, route }) {
   const [data, setData] = useState(faceData);
   const { values } = route?.params;
-
+  const { verification_token } = useSelector(({ user }) => user);
   useEffect(() => {
-    dispatch(fetchCategoriesAll());
-  }, []);
+    if (verification_token) {
+      navigation.navigate(routNames.OTP, { email: values.email });
+    }
+  }, [verification_token]);
+  // useEffect(() => {
+  //   dispatch(fetchCategoriesAll());
+  // }, []);
 
   const onChecked = item => {
     setData(prevState =>
@@ -64,8 +71,8 @@ function PreferencesScreen({ navigation, route }) {
               value={selected}
               onValueChange={() => onChecked(item)}
               tintColor={Colors.white}
-              onFillColor={Colors.oxford_blue['500']}
-              onTintColor={Colors.oxford_blue['500']}
+              onFillColor={Colors.purple['500']}
+              onTintColor={Colors.purple['500']}
               onCheckColor={Colors.white}
               onAnimationType={'one-stroke'}
               offAnimationType={'one-stroke'}

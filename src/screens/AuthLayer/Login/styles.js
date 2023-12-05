@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { normalize } from 'assets/RootStyles/normalize';
-import { Colors, FontStyle } from 'assets/RootStyles';
+import { Colors, FontStyle, Shadow } from 'assets/RootStyles';
 
 export const styles = StyleSheet.create({
   lineBody: {
@@ -10,16 +10,22 @@ export const styles = StyleSheet.create({
     marginLeft: normalize(5),
   },
   socialItems: {
-    marginHorizontal: normalize(5),
+    padding: normalize(10),
+    backgroundColor: Colors.white,
+    marginHorizontal: normalize(10),
+    borderRadius: normalize(24),
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...Shadow,
   },
   social: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
     alignSelf: 'center',
     marginBottom: normalize(10),
-    color: Colors.oxford_blue['500'],
   },
   container: {
     padding: normalize(16),
@@ -32,7 +38,6 @@ export const styles = StyleSheet.create({
     ...FontStyle.display_h4.medium,
     fontSize: normalize(20),
     lineHeight: normalize(20),
-    color: Colors.oxford_blue['500'],
   },
   inputContainer: {
     marginBottom: normalize(10),

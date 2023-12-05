@@ -19,7 +19,7 @@ function CreateButton(props) {
           style={[
             styles.middleIcon,
             {
-              backgroundColor: Colors.oxford_blue['500'],
+              backgroundColor: Colors.purple['500'],
               shadowColor: Colors.black,
               shadowOffset: { width: 2, height: 2 },
               elevation: 8,

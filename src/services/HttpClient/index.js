@@ -1,9 +1,13 @@
 import axios from 'axios';
-import { baseUrlApi } from '../../constants/url';
+import { baseUrlApi, eventControllerApi } from '../../constants/url';
 import { store } from '../../state/store';
 import { isEmpty } from 'lodash';
 import { deviceInfo } from '../../assets/deviceInfo';
 import DeviceInfo from 'react-native-device-info';
+import dispatch from 'utils/dispatch/dispatch';
+import { userLogAuth } from 'state/user/operations/userLogOut';
+import { getAllEvents } from 'state/events/operations/getAllEvents';
+import { fetchEventsEndpoint } from 'state/events/endpoints';
 
 const requestConfig = {
   baseURL: baseUrlApi,
@@ -21,15 +25,6 @@ const handleRequest = config => {
     intl: { locale },
   } = store.getState();
 
-  // if (
-  // api_version &&
-  // !isEmpty(api_version) &&
-  // config.url !== ENDPOINTS.GET_VERSION &&
-  // config.url !== ENDPOINTS.LOGIN
-  // ) {
-  // config.baseURL = config.baseURL + api_version;
-  // }
-  console.log(token);
   if (config.headers) {
     config.headers['X-localization'] = locale;
     DeviceInfo.getUniqueId().then(res => {
@@ -62,6 +57,7 @@ const handleResponse = response => {
 const handleError = error => {
   console.log(error.response?.data, 999);
   if (error.response && error.response.status === 401) {
+    dispatch(userLogAuth());
   }
 
   if (error.response && error.response.data && error.response.status !== 401) {

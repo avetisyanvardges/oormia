@@ -3,17 +3,17 @@ import Navigation from '../navigation';
 import { StatusBar } from 'react-native';
 import { useSelector } from 'react-redux';
 import Modal from 'components/Modal';
-import { isEmpty } from 'lodash';
 import { fetchCurrentUser } from 'state/user/operations/fetchCurrentUser';
 import dispatch from 'utils/dispatch/dispatch';
+import Socket from 'services/Socket';
 
 function Main() {
   const { visible: modalVisible } = useSelector(({ modal }) => modal);
   const { token } = useSelector(({ user }) => user);
-  console.log(token);
   useEffect(() => {
-    if (!isEmpty(token)) {
+    if (token) {
       dispatch(fetchCurrentUser());
+      Socket.start(token);
     }
   }, []);
   return (
