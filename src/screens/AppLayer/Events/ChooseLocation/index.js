@@ -16,7 +16,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, FontStyle } from 'assets/RootStyles';
 import { back, navigate } from 'services/NavigationService';
 import { deviceInfo } from 'assets/deviceInfo';
-// import Geocoder from 'react-native-geocoding';
+import Geocoder from 'react-native-geocoding';
 import { routNames } from 'constants/routNames';
 import Lottie from 'lottie-react-native';
 import { CustomText } from 'components/Text';
@@ -27,12 +27,11 @@ import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import Permissions from 'react-native-permissions';
 
-// Geocoder.init('AIzaSyBdStOT9aHzvGXGWzR39CUsOX199NEHJ7M');
-import YaMap, { Geocoder } from 'react-native-yamap';
+Geocoder.init('AIzaSyBdStOT9aHzvGXGWzR39CUsOX199NEHJ7M');
 
 Geocoder.init('7e736f2e-7054-4f53-a8ba-e543301d6a0e');
 const ChooseLocation = ({ route }) => {
-  YaMap.setLocale('en_US');
+  // YaMap.setLocale('en_US');
   const { address } = route?.params;
   const styles = Styles();
   const insets = useSafeAreaInsets();

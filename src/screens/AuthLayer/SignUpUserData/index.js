@@ -10,7 +10,6 @@ import { routNames } from 'constants/routNames';
 import Checkbox from 'components/Checkbox';
 import { Controller, useForm } from 'react-hook-form';
 import { navigate } from 'services/NavigationService';
-import ImagePicker from 'react-native-image-crop-picker';
 
 function SignUpUserData({ navigation, route }) {
   const [img, setImg] = useState();

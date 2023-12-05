@@ -6,7 +6,6 @@ module.exports = {
     },
   },
   plugins: [
-    'react-native-reanimated/plugin',
     [
       'module-resolver',
       {
@@ -24,5 +23,7 @@ module.exports = {
         extensions: ['.svg'],
       },
     ],
+    '@babel/plugin-proposal-export-namespace-from',
+    'react-native-reanimated/plugin',
   ],
 };
