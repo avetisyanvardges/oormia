@@ -31,8 +31,8 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
     formState: { errors, isValid, isDirty },
   } = useForm({
     defaultValues: {
-      email: 'admin@mail.com',
-      password: 'ormia',
+      email: '',
+      password: '',
     },
   });
 
@@ -120,27 +120,27 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
           </View>
         </View>
         <Fragment>
-          <View style={styles.orContainer}>
-            <View style={styles.or} />
-            <CustomText
-              children={`Sign ${page === SIGN_UP ? 'Up' : 'In'} With`}
-              globalStyle={styles.orText}
-            />
-            <View style={styles.or} />
-          </View>
-          <View style={styles.social}>
-            {deviceInfo?.ios ? (
-              <TouchableOpacity style={styles.socialItems}>
-                <Icon name={ICON_NAMES.BUTTON_ICON.APPLE} />
-              </TouchableOpacity>
-            ) : null}
-            <TouchableOpacity style={styles.socialItems}>
-              <Icon name={ICON_NAMES.BUTTON_ICON.GOOGLE} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.socialItems}>
-              <Icon name={ICON_NAMES.BUTTON_ICON.FB} />
-            </TouchableOpacity>
-          </View>
+          {/*<View style={styles.orContainer}>*/}
+          {/*  <View style={styles.or} />*/}
+          {/*  <CustomText*/}
+          {/*    children={`Sign ${page === SIGN_UP ? 'Up' : 'In'} With`}*/}
+          {/*    globalStyle={styles.orText}*/}
+          {/*  />*/}
+          {/*  <View style={styles.or} />*/}
+          {/*</View>*/}
+          {/*<View style={styles.social}>*/}
+          {/*  {deviceInfo?.ios ? (*/}
+          {/*    <TouchableOpacity style={styles.socialItems}>*/}
+          {/*      <Icon name={ICON_NAMES.BUTTON_ICON.APPLE} />*/}
+          {/*    </TouchableOpacity>*/}
+          {/*  ) : null}*/}
+          {/*  <TouchableOpacity style={styles.socialItems}>*/}
+          {/*    <Icon name={ICON_NAMES.BUTTON_ICON.GOOGLE} />*/}
+          {/*  </TouchableOpacity>*/}
+          {/*  <TouchableOpacity style={styles.socialItems}>*/}
+          {/*    <Icon name={ICON_NAMES.BUTTON_ICON.FB} />*/}
+          {/*  </TouchableOpacity>*/}
+          {/*</View>*/}
           <View style={styles.signInTextContainer}>
             <CustomText
               children="Don’t have an account ?"

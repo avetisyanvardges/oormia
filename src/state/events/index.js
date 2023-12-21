@@ -5,6 +5,8 @@ import { getPromotionEvents } from 'state/events/operations/getPromotionEvents';
 import { getEventById } from 'state/events/operations/getEventById';
 import { getEventHistory } from 'state/events/operations/getEventHistory';
 import { userSlice } from 'state/user';
+import { getUpcomingEventHistory } from 'state/events/operations/getUpcomingEventHistory';
+import { getAllNotModeratedEvents } from 'state/events/operations/getAllNotModeratedEvents';
 
 const initialState = {
   loader: false,
@@ -13,6 +15,7 @@ const initialState = {
   promotion_events: [],
   selected_event: {},
   event_history: [],
+  not_moderated: [],
 };
 
 export const eventsSlice = createSlice({
@@ -20,22 +23,31 @@ export const eventsSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder.addCase(getAllEvents.fulfilled, (state, action) => {
-      state.events = action?.payload;
+      state.events = action?.payload.filter(ev => ev.moderated);
     });
     builder.addCase(getWeekTopEvents.fulfilled, (state, action) => {
-      state.week_top_events = action?.payload;
+      state.week_top_events = action?.payload.filter(ev => ev.moderated);
     });
     builder.addCase(getPromotionEvents.fulfilled, (state, action) => {
-      state.promotion_events = action?.payload;
+      state.promotion_events = action?.payload.filter(ev => ev.moderated);
     });
     builder.addCase(getEventById.fulfilled, (state, action) => {
       state.selected_event = action?.payload;
     });
     builder.addCase(getEventHistory.fulfilled, (state, action) => {
+      console.log(action.payload, 'PastTickets payload');
       state.event_history = action?.payload;
     });
-  },
+    builder.addCase(getUpcomingEventHistory.fulfilled, (state, action) => {
+      state.upcoming = action?.payload;
+    });
 
+    builder.addCase(getAllNotModeratedEvents.fulfilled, (state, action) => {
+      state.not_moderated = action?.payload?.filter(
+        ev => ev.eventType !== 'REQUESTED',
+      );
+    });
+  },
   reducers: {
     clean_selected_event: state => ({
       ...state,

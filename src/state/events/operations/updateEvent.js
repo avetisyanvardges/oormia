@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import httpClient from '../../../services/HttpClient';
-import { addEventEndpoint, updateEventEndpoint } from 'state/events/endpoints';
+import { updateEventEndpoint } from 'state/events/endpoints';
 import { back } from 'services/NavigationService';
 
 export const updateEvent = createAsyncThunk(

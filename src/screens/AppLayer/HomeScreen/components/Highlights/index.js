@@ -37,7 +37,7 @@ const Highlights = () => {
       <View
         style={{
           marginHorizontal: normalize(16),
-          margin: normalize(10),
+          marginBottom: normalize(10),
         }}>
         <Text style={{ ...FontStyle.text_h4.regular }}>
           Our Community's Best

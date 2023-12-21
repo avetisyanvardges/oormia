@@ -7,7 +7,7 @@ import { CreateEvent } from 'screens/AppLayer/Events/Create';
 import Profile from 'screens/AppLayer/Profile';
 import { HomeScreen } from 'screens/AppLayer/HomeScreen';
 import MapScreen from 'screens/AppLayer/MapScreen';
-import { TicketsScreen } from 'screens/AppLayer/Tickets';
+import { TicketsScreen } from 'screens/AppLayer/Tickets/List';
 
 function MainTab() {
   const Tab = createBottomTabNavigator();

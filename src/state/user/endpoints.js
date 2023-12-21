@@ -6,7 +6,13 @@ export const signUpEndpoint = endpoint('post', 'auth/sign-up');
 export const fetchAllUsersEndpoint = endpoint('get', 'api/v1/users/');
 export const verifyCodeEndpoint = endpoint('get', 'auth/verify/email/');
 export const currentUserEndpoint = endpoint('get', 'api/v1/users/current');
+export const addFreeDaysEndpoint = endpoint(
+  'post',
+  '/api/v1/users/add-free-day',
+);
 export const editProfileEndpoint = endpoint('get', 'api/v1/users');
+export const deleteProfileEndpoint = id =>
+  endpoint('delete', `api/v1/users/${id}`);
 export const userFollowEndpoint = id =>
   endpoint('post', `/api/v1/users/follow/${id}`);
 

@@ -32,7 +32,6 @@ import YaMap, { Geocoder } from 'react-native-yamap';
 
 Geocoder.init('7e736f2e-7054-4f53-a8ba-e543301d6a0e');
 const ChooseLocation = ({ route }) => {
-  YaMap.setLocale('en_US');
   const { address } = route?.params;
   const styles = Styles();
   const insets = useSafeAreaInsets();
@@ -44,6 +43,19 @@ const ChooseLocation = ({ route }) => {
     latitudeDelta: 0.015,
     longitudeDelta: 0.015,
   });
+
+  function goBack() {
+    Geolocation.getCurrentPosition(pos => {
+      const { coords } = pos;
+
+      // dispatch(userTypes.SET_USER_LOCATION, coords);
+      mapRef.current?.animateToRegion({
+        ...coords,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
+      });
+    });
+  }
 
   const checkPermission = async () => {
     const permission = deviceInfo.ios
@@ -65,7 +77,7 @@ const ChooseLocation = ({ route }) => {
     try {
       const status = await checkPermission();
       if (status === 'granted') {
-        currrentLocation();
+        goBack();
       } else if (status === 'blocked') {
         // Prompt user to go to Settings app
         Alert.alert(
@@ -85,7 +97,7 @@ const ChooseLocation = ({ route }) => {
       } else {
         const newStatus = await requestPermission();
         if (newStatus === 'granted') {
-          currrentLocation();
+          goBack();
         } else {
         }
       }
@@ -94,6 +106,9 @@ const ChooseLocation = ({ route }) => {
     }
   }
 
+  useEffect(() => {
+    requestGeolocationPermission();
+  }, []);
   const onRegionChange = region => {
     region.latitudeDelta = region.latitudeDelta ? region.latitudeDelta : 0.005;
     region.longitudeDelta = region.longitudeDelta
@@ -129,35 +144,6 @@ const ChooseLocation = ({ route }) => {
     }
   }, [address]);
 
-  const currrentLocation = async () => {
-    const dataLocation =
-      await RNAndroidLocationEnabler.promptForEnableLocationIfNeeded({
-        interval: 10000,
-        fastInterval: 10000,
-      });
-    if (dataLocation === 'enabled' || dataLocation === 'already-enabled') {
-      try {
-        Geolocation.getCurrentPosition(position => {
-          console.log(dataLocation, 'position');
-          mapRef.current.animateToRegion({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            latitudeDelta: 0.005,
-            longitudeDelta: 0.005,
-          });
-          setRegion({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            longitudeDelta: 0.001,
-            latitudeDelta: 0.001,
-          });
-        });
-      } catch (e) {
-        console.log(e, 'Error');
-      }
-    }
-  };
-
   return (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -173,7 +159,7 @@ const ChooseLocation = ({ route }) => {
         <TouchableWithoutFeedback onPress={() => {}}>
           <View
             style={{
-              height: deviceInfo?.small_screen ? '100%' : '90%',
+              height: '90%',
               backgroundColor: Colors.white,
               borderTopRightRadius: normalize(24),
               borderTopLeftRadius: normalize(24),
@@ -232,48 +218,44 @@ const ChooseLocation = ({ route }) => {
                     },
                   }}
                   onPress={(data, details = null) => {
-                    Geocoder.from(
-                      details.geometry.location.lat,
-                      details.geometry.location.lng,
-                    )
-                      .then(json => {
-                        console.log(json, 'LOCATION');
-                        const addressComponent =
-                          json.results[0].address_components[0];
-                        const location = {
-                          latitude: details.geometry.location.lat,
-                          longitude: details.geometry.location.lng,
-                          longitudeDelta: 0.001,
-                          latitudeDelta: 0.001,
-                          address:
-                            addressComponent.long_name ||
-                            addressComponent.short_name,
-                        };
-                        setLoc(
-                          addressComponent.long_name ||
-                            addressComponent.short_name,
-                        );
-                        setRegion({
-                          latitude: details.geometry.location.lat,
-                          longitude: details.geometry.location.lng,
-                          longitudeDelta: 0.001,
-                          latitudeDelta: 0.001,
-                        });
-                        mapRef.current.animateToRegion({
-                          latitude: details.geometry.location.lat,
-                          longitude: details.geometry.location.lng,
-                          longitudeDelta: 0.015,
-                          latitudeDelta: 0.015,
-                        });
-                      })
-                      .catch(error => console.warn(error));
+                    Geocoder.geocode(
+                      { lat: region.latitude, lon: region.longitude },
+                      'house',
+                      1,
+                      0,
+                      'en_US',
+                    ).then(json => {
+                      console.log(json, 'LOCATION');
+                      let formatted_address;
+                      const { name, description } =
+                        json?.response?.GeoObjectCollection?.featureMember?.[0]
+                          ?.GeoObject;
+                      if (name && description) {
+                        formatted_address = `${name}, ${description}`;
+                        setLoc(formatted_address);
+                      }
 
-                    // this.map.animateToRegion({
-                    //   latitude: details.geometry.location.lat,
-                    //   longitude: details.geometry.location.lng,
-                    //   latitudeDelta: 0.001,
-                    //   longitudeDelta: 0.001,
-                    // });
+                      const location = {
+                        latitude: details.geometry.location.lat,
+                        longitude: details.geometry.location.lng,
+                        longitudeDelta: 0.001,
+                        latitudeDelta: 0.001,
+                        address: formatted_address,
+                      };
+
+                      setRegion({
+                        latitude: details.geometry.location.lat,
+                        longitude: details.geometry.location.lng,
+                        longitudeDelta: 0.001,
+                        latitudeDelta: 0.001,
+                      });
+                      mapRef.current.animateToRegion({
+                        latitude: details.geometry.location.lat,
+                        longitude: details.geometry.location.lng,
+                        longitudeDelta: 0.015,
+                        latitudeDelta: 0.015,
+                      });
+                    });
                   }}
                   renderRow={rowData => {
                     const title = rowData.structured_formatting.main_text;
@@ -319,14 +301,16 @@ const ChooseLocation = ({ route }) => {
               </View>
               <TouchableOpacity
                 activeOpacity={0.6}
-                onPress={requestGeolocationPermission}
+                onPress={goBack}
                 style={{
                   backgroundColor: Colors.white,
                   padding: normalize(10),
                   borderRadius: normalize(12),
                   marginLeft: normalize(10),
                 }}>
-                <Icon name={ICON_NAMES.CURRENT_LOCATION} />
+                <View style={{ transform: [{ rotate: '-45deg' }] }}>
+                  <Icon name={ICON_NAMES.MY_LOCATION} />
+                </View>
               </TouchableOpacity>
             </View>
             <View
@@ -345,7 +329,7 @@ const ChooseLocation = ({ route }) => {
                 ref={mapRef}
                 style={styles.mapStyle}
                 provider="google"
-                showsUserLocation={true}
+                showsUserLocation={false}
                 showsMyLocationButton={false}
                 loadingEnabled={true}
                 initialRegion={region}

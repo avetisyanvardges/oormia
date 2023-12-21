@@ -1,9 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import httpClient from '../../../services/HttpClient';
-import {
-  fetchEventsEndpoint,
-  fetchWeekTopEventsEndpoint,
-} from 'state/events/endpoints';
+import { fetchWeekTopEventsEndpoint } from 'state/events/endpoints';
 
 export const getWeekTopEvents = createAsyncThunk(
   'events/weekTops',

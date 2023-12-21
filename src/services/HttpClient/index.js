@@ -6,8 +6,9 @@ import { deviceInfo } from '../../assets/deviceInfo';
 import DeviceInfo from 'react-native-device-info';
 import dispatch from 'utils/dispatch/dispatch';
 import { userLogAuth } from 'state/user/operations/userLogOut';
-import { getAllEvents } from 'state/events/operations/getAllEvents';
-import { fetchEventsEndpoint } from 'state/events/endpoints';
+import { fetchSubCategoriesAllEndpoint } from 'state/categories/endpoints';
+import { show_toast } from 'state/snackbars';
+import { toastMessageTypes } from 'state/snackbars/types';
 
 const requestConfig = {
   baseURL: baseUrlApi,
@@ -24,7 +25,7 @@ const handleRequest = config => {
     user: { token },
     intl: { locale },
   } = store.getState();
-
+  const { url: subCategoriesUrl } = fetchSubCategoriesAllEndpoint;
   if (config.headers) {
     config.headers['X-localization'] = locale;
     DeviceInfo.getUniqueId().then(res => {
@@ -46,6 +47,10 @@ const handleRequest = config => {
     }
   }
 
+  if (config.url === subCategoriesUrl) {
+    config.baseURL = eventControllerApi;
+  }
+
   return config;
 };
 
@@ -56,6 +61,21 @@ const handleResponse = response => {
 
 const handleError = error => {
   console.log(error.response?.data, 999);
+  dispatch(
+    show_toast({
+      message: 'Ops, something went wrong',
+      type: toastMessageTypes.ERROR,
+    }),
+  );
+  if (error.response && error.response.status === 500) {
+    dispatch(
+      show_toast({
+        message: 'Ops, something went wrong',
+        type: toastMessageTypes.ERROR,
+      }),
+    );
+  }
+
   if (error.response && error.response.status === 401) {
     dispatch(userLogAuth());
   }

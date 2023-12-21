@@ -1,9 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import httpClient from '../../../services/HttpClient';
-import {
-  fetchEventHistoryEndpoint,
-  fetchEventsEndpoint,
-} from 'state/events/endpoints';
+import { fetchEventHistoryEndpoint } from 'state/events/endpoints';
 
 export const getEventHistory = createAsyncThunk(
   'events/history',

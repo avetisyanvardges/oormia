@@ -8,7 +8,7 @@ export const getAllGroups = createAsyncThunk(
     try {
       const { url } = getAllGroupsEndpoint;
       const { data } = await httpClient.get(url);
-      console.log(data, 'DATA');
+      return data;
     } catch {
       //
     }

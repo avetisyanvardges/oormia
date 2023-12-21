@@ -53,8 +53,36 @@ import { PlusIcon } from 'components/Svgs/Plus';
 import { MinusIcon } from 'components/Svgs/Minus';
 import { FilterIcon } from 'components/Svgs/FilterIcon';
 import { ShareIcon } from 'components/Svgs/ShareIcon';
+import { WarningIcon } from 'components/Svgs/WarningIcon';
+import { EmptyChooseSpeakerIcon } from 'components/Svgs/EmptyStates/EmptyChooseSpeakerIcon';
+import { SettingsIcon } from 'components/Svgs/SettingsIcon';
+import { UserIcon } from 'components/Svgs/UserIcon';
+import { PremiumIcon } from 'components/Svgs/PremiumIcon';
+import { EditProfileIcon } from 'components/Svgs/EditProfileIcon';
+import { toastMessageTypes } from 'state/snackbars/types';
+import { ToastInfoIcon } from 'components/Svgs/Toast/InfoIcon';
+import { ToastErrorIcon } from 'components/Svgs/Toast/ErrorIcon';
+import { ToastWarningIcon } from 'components/Svgs/Toast/WarningIcon';
+import { ToastSuccessIcon } from 'components/Svgs/Toast/SuccessIcon';
+import { TicketEmptyIcon } from 'components/Svgs/TicketEmpty';
+import { EventWarning } from 'components/Svgs/EventWarning';
+import { EmptyNotificationsIcon } from 'components/Svgs/EmptyStates/EmptyNotifications';
+import { EmptyGroupsIcon } from 'components/Svgs/EmptyStates/EmptyGroups';
+import { NotModeratedEventIcon } from 'components/Svgs/Admin/NotModeratedEvent';
+import { CategoriesIcon } from 'components/Svgs/Admin/Categories';
 
 export const ICONS = {
+  [ICON_NAMES.ADMIN.NOT_MODERATED_EVENT]: ({ width, height, size, color }) => (
+    <NotModeratedEventIcon
+      width={width}
+      height={height}
+      size={size}
+      color={color}
+    />
+  ),
+  [ICON_NAMES.ADMIN.CATEGORIES]: ({ width, height, size, color }) => (
+    <CategoriesIcon width={width} height={height} size={size} color={color} />
+  ),
   [ICON_NAMES.ASSETS_SVG.SEARCH]: ({ width, height, size, color }) => (
     <Search width={width} height={height} size={size} color={color} />
   ),
@@ -114,8 +142,85 @@ export const ICONS = {
   [ICON_NAMES.COMPASS]: ({ width, height, size, color }) => (
     <CompassIcon width={width} height={height} size={size} color={color} />
   ),
+  [ICON_NAMES.EVENT_WARNING]: ({ width, height, size, color }) => (
+    <EventWarning width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.TICKET_EMPTY]: ({ width, height, size, color }) => (
+    <TicketEmptyIcon width={width} height={height} size={size} color={color} />
+  ),
   [ICON_NAMES.EDIT]: ({ width, height, size, color }) => (
     <EditIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.EDIT_PROFILE]: ({ width, height, size, color }) => (
+    <EditProfileIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.WARNING]: ({ width, height, size, color }) => (
+    <WarningIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.SETTINGS]: ({ width, height, size, color }) => (
+    <SettingsIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.USER]: ({ width, height, size, color }) => (
+    <UserIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.TOAST[toastMessageTypes.INFO]]: ({
+    width,
+    height,
+    size,
+    color,
+  }) => (
+    <ToastInfoIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.TOAST[toastMessageTypes.WARNING]]: ({
+    width,
+    height,
+    size,
+    color,
+  }) => (
+    <ToastWarningIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.TOAST[toastMessageTypes.ERROR]]: ({
+    width,
+    height,
+    size,
+    color,
+  }) => (
+    <ToastErrorIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.TOAST[toastMessageTypes.SUCCESS]]: ({
+    width,
+    height,
+    size,
+    color,
+  }) => (
+    <ToastSuccessIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.PREMIUM]: ({ width, height, size, color }) => (
+    <PremiumIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.EMPTY_STATES.CHOOSE_SPEAKER]: ({
+    width,
+    height,
+    size,
+    color,
+  }) => (
+    <EmptyChooseSpeakerIcon
+      width={width}
+      height={height}
+      size={size}
+      color={color}
+    />
+  ),
+  [ICON_NAMES.EMPTY_STATES.NOTIFICATION]: ({ width, height, size, color }) => (
+    <EmptyNotificationsIcon
+      width={width}
+      height={height}
+      size={size}
+      color={color}
+    />
+  ),
+  [ICON_NAMES.EMPTY_STATES.GROUPS]: ({ width, height, size, color }) => (
+    <EmptyGroupsIcon width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.REMOVE]: ({ width, height, size, color }) => (
     <RemoveIcon width={width} height={height} size={size} color={color} />

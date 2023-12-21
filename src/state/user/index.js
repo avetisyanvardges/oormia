@@ -8,6 +8,7 @@ import { refreshToken } from 'state/user/operations/refreshToken';
 
 const initialState = {
   currentUser: '',
+  speakers: {},
   token: '',
   refresh_token: '',
   verification_token: '',
@@ -35,7 +36,11 @@ export const userSlice = createSlice({
       state.verification_token = action?.payload;
     });
     builder.addCase(fetchAllUsers.fulfilled, (state, action) => {
-      state.users = action?.payload;
+      if (action?.payload?.params?.calendar) {
+        state.speakers = action?.payload?.data;
+      } else {
+        state.users = action?.payload?.data;
+      }
     });
     builder.addCase(refreshToken.fulfilled, (state, action) => {
       state.token = action?.payload;

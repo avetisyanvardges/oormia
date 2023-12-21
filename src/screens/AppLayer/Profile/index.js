@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { View } from 'react-native';
 import UserInfoSection from 'screens/AppLayer/Profile/Components/UserInfoSection';
 import { normalize } from 'assets/RootStyles/normalize';
@@ -7,12 +7,25 @@ import { Colors } from 'assets/RootStyles';
 import HistorySection from 'screens/AppLayer/Profile/Components/HistorySection';
 import dispatch from 'utils/dispatch/dispatch';
 import { getEventHistory } from 'state/events/operations/getEventHistory';
+import { getAllGroups } from 'state/groups/operations/getAllGroups';
+import { findNotificationByFrom } from 'state/notifications/operations/findNotificationByFrom';
+import { useSelector } from 'react-redux';
 
 const Profile = ({ navigation }) => {
+  const { currentUser } = useSelector(({ user }) => user);
+
   const insets = useSafeAreaInsets();
-  useEffect(() => {
+  const handleFocus = useCallback(() => {
     dispatch(getEventHistory());
-  }, []);
+    dispatch(getAllGroups());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const unsubscribe = navigation?.addListener('focus', handleFocus);
+
+    return unsubscribe;
+  }, [navigation]);
+
   return (
     <View
       style={{

@@ -17,6 +17,7 @@ import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import { useSelector } from 'react-redux';
 import Header from 'components/Header';
+import { BlurView } from '@react-native-community/blur';
 
 const EventList = () => {
   const { events } = useSelector(({ events }) => events);
@@ -61,7 +62,7 @@ const EventList = () => {
                 borderBottomLeftRadius: normalize(24),
                 backgroundColor: Colors.white,
               }}>
-              <View
+              <BlurView
                 style={{
                   width: normalize(55),
                   height: normalize(47),
@@ -74,7 +75,10 @@ const EventList = () => {
                   ...Shadow,
                   alignItems: 'center',
                   justifyContent: 'center',
-                }}>
+                }}
+                blurType="light"
+                blurAmount={10}
+                reducedTransparencyFallbackColor="white">
                 <CustomText
                   children={moment(item?.startDate).format('DD')}
                   globalStyle={{
@@ -88,7 +92,7 @@ const EventList = () => {
                     ...FontStyle.text_h6.regular,
                   }}
                 />
-              </View>
+              </BlurView>
               <View
                 style={{
                   marginTop: normalize(20),

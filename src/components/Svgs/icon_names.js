@@ -1,4 +1,11 @@
+import { toastMessageTypes } from 'state/snackbars/types';
+
 export const ICON_NAMES = {
+  ADMIN: {
+    NOT_MODERATED_EVENT: 'notModeratedEventIcon',
+    CATEGORIES: 'categoriesIcon',
+    SUB_CATEGORIES: 'subCategoriesIcon',
+  },
   TAB_BAR: {
     HOME: 'homeTabIcon',
     MAP: 'mapTabIcon',
@@ -7,6 +14,8 @@ export const ICON_NAMES = {
     PROFILE: 'profileTabIcon',
   },
   TICKET: 'ticketBoldIcon',
+  TICKET_EMPTY: 'ticketEmptyIcon',
+  EVENT_WARNING: 'eventWarningIcon',
   ARROW: {
     LEFT: 'arrowLeftIcon',
     RIGHT: 'arrowRightIcon',
@@ -49,9 +58,19 @@ export const ICON_NAMES = {
   LOCK: 'lockIcon',
   COMPASS: 'compassIcon',
   EDIT: 'editIcon',
+  EDIT_PROFILE: 'editProfileIcon',
   REMOVE: 'removeIcon',
   UNLOCK: 'unlockIcon',
   SHARE: 'shareIcon',
+  WARNING: 'warningIcon',
+  SETTINGS: 'settingIcon',
+  USER: 'userIcon',
+  PREMIUM: 'premiumIcon',
+  EMPTY_STATES: {
+    CHOOSE_SPEAKER: 'EmptyChooseSpeakerIcon',
+    NOTIFICATION: 'EmptyNotificationIcon',
+    GROUPS: 'EmptyGroupsIcon',
+  },
   BUTTON_ICON: {
     FB: 'FB',
     VK: 'VK',
@@ -65,5 +84,11 @@ export const ICON_NAMES = {
     ARROW_LEFT: 'ArrowLeft',
     CROP_PHOTO: 'CropPhoto',
     SEARCH: 'Search',
+  },
+  TOAST: {
+    [toastMessageTypes.ERROR]: 'toastErrorIcon',
+    [toastMessageTypes.INFO]: 'toastInfoIcon',
+    [toastMessageTypes.WARNING]: 'toastWarningIcon',
+    [toastMessageTypes.SUCCESS]: 'toastSuccessIcon',
   },
 };

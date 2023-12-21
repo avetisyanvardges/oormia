@@ -7,6 +7,11 @@ const Styles = () => {
     container: {
       flexDirection: 'row',
       alignItems: 'center',
+      backgroundColor: Colors.white,
+      paddingVertical: normalize(8),
+      paddingHorizontal: normalize(8),
+      borderRadius: normalize(12),
+      marginBottom: normalize(16),
     },
     titleContainer: {
       flex: 1,

@@ -18,7 +18,7 @@ const FORGOT = 'forgotPassword';
 
 const { width: screenWidth } = Dimensions.get('window');
 
-const Carousel = ({ autoScrollInterval = 5000 }) => {
+const Home = ({ navigation, route }) => {
   const [page, setPage] = useState(null);
   const [keyboardOpened, setKeyboardOpened] = useState(false);
 
@@ -26,6 +26,11 @@ const Carousel = ({ autoScrollInterval = 5000 }) => {
     [LOGIN]: <Login />,
   };
 
+  useEffect(() => {
+    if (route?.params?.page) {
+      setPage(LOGIN);
+    }
+  }, [route]);
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
       deviceInfo.ios ? 'keyboardWillShow' : 'keyboardDidShow',
@@ -79,4 +84,4 @@ const Carousel = ({ autoScrollInterval = 5000 }) => {
   );
 };
 
-export default Carousel;
+export default Home;

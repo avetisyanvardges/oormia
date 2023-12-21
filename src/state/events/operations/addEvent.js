@@ -2,6 +2,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import httpClient from '../../../services/HttpClient';
 import { addEventEndpoint } from 'state/events/endpoints';
 import { back } from 'services/NavigationService';
+import dispatch from 'utils/dispatch/dispatch';
+import { show_toast } from 'state/snackbars';
+import { toastMessageTypes } from 'state/snackbars/types';
+import { showModal } from 'state/modal';
 
 export const addEvent = createAsyncThunk(
   'events/add',
@@ -13,6 +17,7 @@ export const addEvent = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
+      dispatch(showModal({ type: 'event_created' }));
       callback && callback();
       back();
       console.log(response, 'RES');

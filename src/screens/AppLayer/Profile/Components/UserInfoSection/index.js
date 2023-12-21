@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, ImageBackground, View } from 'react-native';
+import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import { normalize } from 'assets/RootStyles/normalize';
 import { Colors, FontStyle, Shadow } from 'assets/RootStyles';
 import { CustomText } from 'components/Text';
@@ -9,9 +9,7 @@ import { ICON_NAMES } from 'components/Svgs/icon_names';
 import { navigate } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
 import { useSelector } from 'react-redux';
-import FastImage from 'react-native-fast-image';
-import dispatch from 'utils/dispatch/dispatch';
-import { userFollow } from 'state/user/operations/follow';
+import MImage from 'components/MImage';
 
 const UserInfoSection = () => {
   const { currentUser } = useSelector(({ user }) => user);
@@ -30,6 +28,20 @@ const UserInfoSection = () => {
           ...Shadow,
         }}
         borderRadius={normalize(12)}>
+        <TouchableOpacity
+          onPress={() => navigate(routNames.SETTINGS)}
+          onLongPress={() => {
+            if (currentUser.role === 'ADMIN') {
+              navigate(routNames.ADMIN_SETTINGS);
+            }
+          }}
+          style={{
+            top: normalize(16),
+            right: normalize(16),
+            position: 'absolute',
+          }}>
+          <Icon name={ICON_NAMES.SETTINGS} color={Colors.white} />
+        </TouchableOpacity>
         <View
           style={{
             position: 'absolute',
@@ -55,21 +67,25 @@ const UserInfoSection = () => {
               />
             </View>
           ) : (
-            <FastImage
-              source={{
-                uri: mutatedImage,
-              }}
+            <MImage
+              source={{ uri: mutatedImage }}
               style={{
                 width: normalize(80),
                 height: normalize(80),
                 borderRadius: normalize(40),
                 resizeMode: 'cover',
               }}
-              fallback={true}
+              loaderStyle={{
+                width: normalize(130),
+                height: normalize(130),
+              }}
+              // fallback={true}
+              loader={true}
               onError={() => {
                 console.log('ERROR');
                 setImageError(true);
               }}
+              type={'profile'}
             />
           )}
         </View>
@@ -105,7 +121,7 @@ const UserInfoSection = () => {
                 style={{ marginRight: normalize(4) }}
               />
               <CustomText
-                children={'23'}
+                children={'0'}
                 globalStyle={{ ...FontStyle.text_h5.regular }}
               />
             </View>
@@ -121,7 +137,7 @@ const UserInfoSection = () => {
                 style={{ marginRight: normalize(4) }}
               />
               <CustomText
-                children={'23'}
+                children={'0'}
                 globalStyle={{ ...FontStyle.text_h5.regular }}
               />
             </View>
@@ -137,7 +153,7 @@ const UserInfoSection = () => {
                 style={{ marginRight: normalize(4) }}
               />
               <CustomText
-                children={'651'}
+                children={'0'}
                 globalStyle={{ ...FontStyle.text_h5.regular }}
               />
             </View>
@@ -154,13 +170,30 @@ const UserInfoSection = () => {
               width: '100%',
               paddingVertical: normalize(6),
               marginBottom: normalize(12),
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
             }}
-            title={!currentUser ? 'Follow' : 'Settings'}
-            textStyle={{ ...FontStyle.text_h5.regular, color: Colors.white }}
+            icon={
+              currentUser ? (
+                <Icon
+                  name={ICON_NAMES.CALENDAR}
+                  color={Colors.white}
+                  size={normalize(20)}
+                />
+              ) : null
+            }
+            title={!currentUser ? 'Follow' : 'Calendar'}
+            textStyle={{
+              flex: 1,
+              textAlign: 'center',
+              ...FontStyle.text_h5.regular,
+              color: Colors.white,
+            }}
             onPress={() => {
               if (!currentUser) {
               } else {
-                navigate(routNames.SETTINGS);
+                navigate(routNames.FREE_DAYS_CALENDAR);
               }
             }}
           />
@@ -169,9 +202,21 @@ const UserInfoSection = () => {
               width: '100%',
               paddingVertical: normalize(6),
               backgroundColor: Colors.grey['50'],
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
             }}
+            icon={
+              currentUser ? (
+                <Icon name={ICON_NAMES.EDIT_PROFILE} size={normalize(20)} />
+              ) : null
+            }
             title={!currentUser ? 'Message' : 'Edit profile'}
-            textStyle={{ ...FontStyle.text_h5.regular }}
+            textStyle={{
+              flex: 1,
+              textAlign: 'center',
+              ...FontStyle.text_h5.regular,
+            }}
             onPress={() => {
               if (!currentUser) {
               } else {

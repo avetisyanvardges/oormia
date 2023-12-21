@@ -30,7 +30,7 @@ const CustomModal = () => {
             top: 0,
             backgroundColor: 'rgba(77,77,77,.4)',
             zIndex: 999,
-            justifyContent: 'center',
+            justifyContent: 'flex-end',
             paddingBottom: normalize(32),
           }}>
           <TouchableWithoutFeedback onPress={() => {}}>

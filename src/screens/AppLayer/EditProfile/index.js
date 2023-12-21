@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
   Image,
   Keyboard,
+  Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
@@ -13,14 +14,13 @@ import { CustomText } from 'components/Text';
 import { useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 import Input from 'components/Input';
-import { styles } from 'screens/AuthLayer/SignUpUserData/style';
-import Button from 'components/Button';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ImagePicker from 'screens/AppLayer/Create/components/ImagePicker';
 import BottomSheet from 'react-native-gesture-bottom-sheet';
 import dispatch from 'utils/dispatch/dispatch';
 import { editProfile } from 'state/user/operations/editProfile';
 import { isEmpty } from 'lodash';
+import MImage from 'components/MImage';
 
 const EditProfile = ({ route }) => {
   const insets = useSafeAreaInsets();
@@ -123,7 +123,7 @@ const EditProfile = ({ route }) => {
           }}>
           <View
             style={{
-              height: `${normalize(80)}%`,
+              height: `${normalize(75)}%`,
               paddingHorizontal: normalize(16),
               paddingTop: normalize(24),
               backgroundColor: Colors.white,
@@ -131,12 +131,31 @@ const EditProfile = ({ route }) => {
               borderTopLeftRadius: normalize(24),
             }}>
             <View style={{ flex: 1 }}>
-              <CustomText
-                children={'Edit Profile'}
-                globalStyle={{
-                  ...FontStyle.text_h3.medium,
-                }}
-              />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}>
+                <CustomText
+                  children={'Edit Profile'}
+                  globalStyle={{
+                    ...FontStyle.text_h3.medium,
+                  }}
+                />
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  onPress={handleSubmit(onSubmit)}
+                  style={{ paddingHorizontal: normalize(10) }}>
+                  <Text
+                    style={{
+                      ...FontStyle.text_h5.medium,
+                      color: Colors.purple['500'],
+                    }}>
+                    Save
+                  </Text>
+                </TouchableOpacity>
+              </View>
               <View>
                 <View
                   style={{
@@ -156,7 +175,7 @@ const EditProfile = ({ route }) => {
                       control={control}
                       render={({ field: { value, onChange, onBlur } }) => {
                         return (
-                          <Image
+                          <MImage
                             source={{ uri: value || mutatedImage }}
                             style={{
                               width: normalize(60),
@@ -164,6 +183,7 @@ const EditProfile = ({ route }) => {
                               borderRadius: normalize(30),
                               resizeMode: 'cover',
                             }}
+                            type={'profile'}
                           />
                         );
                       }}
@@ -260,19 +280,35 @@ const EditProfile = ({ route }) => {
                   )}
                 />
               </View>
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: 'flex-end',
-                  marginBottom: insets.bottom ? insets?.bottom : normalize(16),
-                }}>
-                <Button
-                  title="Update"
-                  textStyle={styles.buttonTextStyle}
-                  onPress={handleSubmit(onSubmit)}
-                  // disabled={!(isValid && dirty && img)}
-                />
-              </View>
+              {/*<View*/}
+              {/*  style={{*/}
+              {/*    flex: 1,*/}
+              {/*    justifyContent: 'flex-end',*/}
+              {/*    marginBottom: insets.bottom ? insets?.bottom : normalize(16),*/}
+              {/*  }}>*/}
+              {/*  <TouchableOpacity*/}
+              {/*    activeOpacity={0.8}*/}
+              {/*    onPress={() =>*/}
+              {/*      dispatch(showModal({ type: 'delete_account' }))*/}
+              {/*    }*/}
+              {/*    style={{*/}
+              {/*      alignItems: 'center',*/}
+              {/*      backgroundColor: Colors.red['500'],*/}
+              {/*      paddingVertical: normalize(12),*/}
+              {/*      paddingHorizontal: normalize(8),*/}
+              {/*      borderRadius: normalize(12),*/}
+              {/*      marginBottom: normalize(16),*/}
+              {/*      ...Shadow,*/}
+              {/*    }}>*/}
+              {/*    <CustomText*/}
+              {/*      children="Delete Account"*/}
+              {/*      globalStyle={{*/}
+              {/*        ...FontStyle.text_h5.regular,*/}
+              {/*        color: Colors.white,*/}
+              {/*      }}*/}
+              {/*    />*/}
+              {/*  </TouchableOpacity>*/}
+              {/*</View>*/}
             </View>
           </View>
         </TouchableWithoutFeedback>

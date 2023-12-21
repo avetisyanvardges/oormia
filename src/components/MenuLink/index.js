@@ -5,20 +5,21 @@ import { TouchableOpacity, View } from 'react-native';
 import Icon from 'components/Svgs';
 import { Colors, FontStyle } from 'assets/RootStyles';
 import { normalize } from 'assets/RootStyles/normalize';
-import Underline from 'components/Underline';
 import { CustomText } from 'components/Text';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 
-const MenuLink = props => {
-  const {
-    onPress,
-    routeName,
-    query,
-    title,
-    iconName,
-    backgroundColor = Colors.purple['200'],
-    disabled,
-  } = props;
+const MenuLink = ({
+  onPress,
+  routeName,
+  query,
+  title,
+  iconName,
+  backgroundColor = Colors.purple['200'],
+  color = Colors.purple['500'],
+  textColor = Colors.grey['500'],
+  arrowRight = true,
+  disabled,
+}) => {
   const { styles } = useContainer();
   return (
     <TouchableOpacity
@@ -48,26 +49,19 @@ const MenuLink = props => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <Icon
-                name={iconName}
-                size={normalize(24)}
-                color={Colors.purple['500']}
-              />
+              <Icon name={iconName} size={normalize(24)} color={color} />
             </View>
           )}
           <CustomText
             children={title}
             globalStyle={[
-              { ...FontStyle.text_h5.regular, color: Colors.grey['500'] },
+              { ...FontStyle.text_h5.regular, color: textColor },
               styles.title,
             ]}
           />
         </View>
-        <Icon name={ICON_NAMES.ARROW.RIGHT} />
+        {arrowRight ? <Icon name={ICON_NAMES.ARROW.RIGHT} /> : null}
       </View>
-      <Underline
-        style={{ marginTop: normalize(12), marginBottom: normalize(16) }}
-      />
     </TouchableOpacity>
   );
 };

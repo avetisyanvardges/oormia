@@ -31,7 +31,7 @@ function Input({
   renderRightIcon,
   onPress,
   editable,
-  multiline,
+  multiline = false,
   autoCapitalize = 'none',
   backgroundColor = Colors.oxford_blue['30'],
 }) {
@@ -116,7 +116,10 @@ function Input({
                       }
                     </Pressable>
                   ) : value && focused ? (
-                    <TouchableOpacity onPress={() => onChange('')}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        onChange('');
+                      }}>
                       {<Icon name={ICON_NAMES.INPUT_BTN.CLEAR} />}
                     </TouchableOpacity>
                   ) : null}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { routNames } from 'constants/routNames';
 import LoginScreen from '../../screens/AuthLayer/Login';
 import ForgotScreen from '../../screens/AuthLayer/Forgot';
@@ -18,13 +17,13 @@ const AuthStack = () => {
         headerShown: false,
         animationEnabled: true,
         gestureDirection: 'horizontal',
-      }}
-      children={routNames.CODE_VERIFICATION}>
+      }}>
       <Stack.Screen name={routNames.START} component={Home} />
       <Stack.Screen name={routNames.LOGIN} component={LoginScreen} />
       <Stack.Screen name={routNames.FORGOT} component={ForgotScreen} />
       <Stack.Screen
         name={routNames.PREFERENCES}
+        initialParams={{ values: {} }}
         component={PreferencesScreen}
       />
       <Stack.Screen name={routNames.OTP} component={OTPScreen} />

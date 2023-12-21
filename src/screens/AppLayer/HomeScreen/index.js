@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useLayoutEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { ScrollView } from 'react-native';
-import Highlights from './components/Highlights';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { normalize } from 'assets/RootStyles/normalize';
 import { Colors } from 'assets/RootStyles';
@@ -12,7 +11,8 @@ import { getPromotionEvents } from 'state/events/operations/getPromotionEvents';
 import { getWeekTopEvents } from 'state/events/operations/getWeekTopEvents';
 import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
-import { getAllEvents } from 'state/events/operations/getAllEvents';
+import { findNotificationByFrom } from 'state/notifications/operations/findNotificationByFrom';
+import { showModal } from 'state/modal';
 
 const HomeScreen = ({ navigation, route }) => {
   const { week_top_events, promotion_events } = useSelector(
@@ -42,7 +42,7 @@ const HomeScreen = ({ navigation, route }) => {
       {/* Header component*/}
       <HomeHeaderComponent />
       {/* Highlights component */}
-      <Highlights />
+      {/*<Highlights />*/}
 
       {/* Promotion component */}
       {!isEmpty(promotion_events) ? <PromotionComponent /> : null}

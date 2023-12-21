@@ -9,7 +9,6 @@ import {
   View,
 } from 'react-native';
 import { normalize } from 'assets/RootStyles/normalize';
-import Header from 'components/Header';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, FontStyle, Shadow } from 'assets/RootStyles';
 import Input from 'components/Input';
@@ -32,6 +31,7 @@ import { CustomText } from 'components/Text';
 import CustomSwitch from 'components/CustomSwitch';
 import { isEmpty } from 'lodash';
 import { updateEvent } from 'state/events/operations/updateEvent';
+import { useNavigation } from '@react-navigation/native';
 
 const Create = ({
   categories,
@@ -48,6 +48,8 @@ const Create = ({
   const [openDate, setOpenDate] = useState(false);
   const [response, setResponse] = useState(null);
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation();
+
   const { control, handleSubmit, watch, setValue, getValues, reset } = useForm({
     defaultValues: {
       data: {
@@ -217,7 +219,7 @@ const Create = ({
       setScreen('choose_category');
       reset({});
     };
-  }, []);
+  }, [navigation]);
 
   useEffect(() => {
     const [photo] = response?.assets || [];
@@ -368,30 +370,37 @@ const Create = ({
               <Controller
                 name={'data.location'}
                 control={control}
-                render={({ field: { value, onChange, onBlur } }) => (
-                  <Input
-                    label={'Location'}
-                    placeholder={'Location'}
-                    value={value}
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    onPress={() =>
-                      navigate(routNames.CHOOSE_LOCATION, {
-                        address: getValues('data.region'),
-                      })
-                    }
-                    editable={false}
-                    multiline={false}
-                    ellipsizeMode={'clip'}
-                    numberOfLines={1}
-                    renderRightIcon={() => (
-                      <Icon
-                        name={ICON_NAMES.LOCATION}
-                        color={Colors.oxford_blue['200']}
-                      />
-                    )}
-                  />
-                )}
+                render={({ field: { value, onChange, onBlur } }) => {
+                  const [first, second, third] = value?.split(', ') || [];
+                  return (
+                    <Input
+                      label={'Location'}
+                      placeholder={'Location'}
+                      value={
+                        first && second
+                          ? `${first}, ${second}, ${third} ...`
+                          : value
+                      }
+                      onChange={onChange}
+                      onBlur={onBlur}
+                      onPress={() =>
+                        navigate(routNames.CHOOSE_LOCATION, {
+                          address: getValues('data.region'),
+                        })
+                      }
+                      editable={false}
+                      multiline={false}
+                      ellipsizeMode={'tail'}
+                      numberOfLines={1}
+                      renderRightIcon={() => (
+                        <Icon
+                          name={ICON_NAMES.LOCATION}
+                          color={Colors.oxford_blue['200']}
+                        />
+                      )}
+                    />
+                  );
+                }}
               />
               <View style={{ flexDirection: 'row' }}>
                 <View style={{ flex: 1, marginRight: normalize(8) }}>

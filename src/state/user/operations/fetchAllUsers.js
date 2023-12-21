@@ -4,16 +4,13 @@ import { fetchAllUsersEndpoint } from 'state/user/endpoints';
 
 export const fetchAllUsers = createAsyncThunk(
   'user/all',
-  async (_, { getState }) => {
+  async ({ params }, { getState }) => {
     try {
       const { url } = fetchAllUsersEndpoint;
       const { data } = await httpClient.get(url, {
-        params: {
-          page: 0,
-          size: 100,
-        },
+        params: params,
       });
-      return data;
+      return { data, params };
     } catch (err) {
       console.log('error', err);
       //

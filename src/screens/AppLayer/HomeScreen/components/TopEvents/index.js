@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import { normalize } from 'assets/RootStyles/normalize';
 import { Colors, FontStyle, fullScreen, Shadow } from 'assets/RootStyles';
-import images from 'assets/images';
 import { CustomText } from 'components/Text';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
@@ -170,13 +169,13 @@ const TopEvents = () => {
           justifyContent: 'space-between',
         }}>
         <Text style={{ ...FontStyle.text_h4.regular }}>Best of the Week</Text>
-        <Text
-          style={{
-            ...FontStyle.text_h5.regular,
-            color: Colors.oxford_blue['200'],
-          }}>
-          See all
-        </Text>
+        {/*<Text*/}
+        {/*  style={{*/}
+        {/*    ...FontStyle.text_h5.regular,*/}
+        {/*    color: Colors.oxford_blue['200'],*/}
+        {/*  }}>*/}
+        {/*  See all*/}
+        {/*</Text>*/}
       </View>
       <FlatList
         horizontal

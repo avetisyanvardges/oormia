@@ -7,19 +7,17 @@ const initialState = {
   sub_categories: [],
 };
 
-export const locationsSlice = createSlice({
-  name: 'locations',
+export const categoriesSlice = createSlice({
+  name: 'categories',
   initialState,
   extraReducers: builder => {
     builder.addCase(fetchCategoriesAll.fulfilled, (state, action) => {
-      console.log(action?.payload.data, state);
       state.categories = action?.payload?.data;
     });
     builder.addCase(fetchSubCategoriesAll.fulfilled, (state, action) => {
-      console.log(action?.payload.data, state);
       state.sub_categories = action?.payload?.data;
     });
   },
 });
 
-export default locationsSlice.reducer;
+export default categoriesSlice.reducer;

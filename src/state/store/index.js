@@ -9,18 +9,39 @@ import { persistReducer, persistStore } from 'redux-persist';
 import { persistConfig } from 'constants/reduxPersist';
 import categories from '../categories';
 import events from '../events';
-
+import toast from '../snackbars';
+import notification from '../notifications';
+import HttpClient from 'services/HttpClient';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist/es/constants';
 const store = configureStore({
   reducer: {
-    theme: theme,
+    theme,
     user: persistReducer(persistConfig, user),
-    intl: intl,
-    modal: modal,
-    pictures: pictures,
-    groups: groups,
-    categories: categories,
-    events: events,
+    intl,
+    modal,
+    pictures,
+    groups,
+    categories,
+    events,
+    toast,
+    notification,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      thunk: {
+        extraArgument: HttpClient,
+      },
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 const persistor = persistStore(store);

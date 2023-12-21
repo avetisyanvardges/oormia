@@ -5,18 +5,14 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { back, navigate } from 'services/NavigationService';
+import { back } from 'services/NavigationService';
 import { normalize } from 'assets/RootStyles/normalize';
 import { Colors, FontStyle, Shadow } from 'assets/RootStyles';
 import { CustomText } from 'components/Text';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
-import Underline from 'components/Underline';
 import { useSelector } from 'react-redux';
-import { routNames } from 'constants/routNames';
 import dispatch from 'utils/dispatch/dispatch';
-import { deleteEvent } from 'state/events/operations/deleteEvent';
-import CustomSwitch from 'components/CustomSwitch';
 import Button from 'components/Button';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { joinEvent } from 'state/events/operations/joinEvent';

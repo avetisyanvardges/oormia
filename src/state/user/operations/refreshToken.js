@@ -1,8 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import httpClient from '../../../services/HttpClient';
-import { refreshEndpoint, signUpEndpoint } from 'state/user/endpoints';
-import { navigate } from 'services/NavigationService';
-import { routNames } from 'constants/routNames';
+import { refreshEndpoint } from 'state/user/endpoints';
 
 export const refreshToken = createAsyncThunk(
   'user/refreshToken',

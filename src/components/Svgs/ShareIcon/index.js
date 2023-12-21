@@ -1,5 +1,5 @@
 import React from 'react';
-import { ClipPath, Defs, G, Path, Svg } from 'react-native-svg';
+import { Path, Svg } from 'react-native-svg';
 import { normalize } from 'assets/RootStyles/normalize';
 import { Colors } from 'assets/RootStyles';
 

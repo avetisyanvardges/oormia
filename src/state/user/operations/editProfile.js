@@ -1,17 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { back, replace } from 'services/NavigationService';
-import { routNames } from 'constants/routNames';
+import { back } from 'services/NavigationService';
 import dispatch from 'utils/dispatch/dispatch';
-import { logout } from 'state/user';
-import {
-  editProfileEndpoint,
-  followEndpoint,
-  signInEndpoint,
-  userFollowEndpoint,
-} from 'state/user/endpoints';
+import { editProfileEndpoint } from 'state/user/endpoints';
 import httpClient from 'services/HttpClient';
 import { fetchCurrentUser } from 'state/user/operations/fetchCurrentUser';
-import { refreshToken } from 'state/user/operations/refreshToken';
+import { show_toast } from 'state/snackbars';
+import { toastMessageTypes } from 'state/snackbars/types';
 
 export const editProfile = createAsyncThunk(
   'user/edit',
@@ -24,6 +18,13 @@ export const editProfile = createAsyncThunk(
         },
       });
       dispatch(fetchCurrentUser());
+      dispatch(
+        show_toast({
+          message: 'Profile updated successfully',
+          type: toastMessageTypes.SUCCESS,
+          duration: 400,
+        }),
+      );
       back();
     } catch {
       //

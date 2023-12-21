@@ -7,25 +7,19 @@ import React, {
 } from 'react';
 import {
   Alert,
-  FlatList,
-  Image,
   Linking,
   Pressable,
   TouchableOpacity,
   View,
 } from 'react-native';
-import images from 'assets/images';
 import { normalize } from 'assets/RootStyles/normalize';
-import { CustomText } from 'components/Text';
 import { Colors, FontStyle, Shadow } from 'assets/RootStyles';
 import { deviceInfo } from 'assets/deviceInfo';
 import { Marker } from 'react-native-maps';
 import { MAP_DEFAULT_THEME } from 'assets/Theme/MapTheme';
 import Geolocation from 'react-native-geolocation-service';
-import RNAndroidLocationEnabler from 'react-native-android-location-enabler';
 import useCallbackState from 'utils/useCallbackState';
 import { navigate } from 'services/NavigationService';
-import Lottie from 'lottie-react-native';
 import Permissions from 'react-native-permissions';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
@@ -33,20 +27,37 @@ import dispatch from 'utils/dispatch/dispatch';
 import { getAllEvents } from 'state/events/operations/getAllEvents';
 import { fetchAllUsers } from 'state/user/operations/fetchAllUsers';
 import { useSelector } from 'react-redux';
-import moment from 'moment';
 import { SharedElement } from 'react-navigation-shared-element';
 import { routNames } from 'constants/routNames';
-import FastImage from 'react-native-fast-image';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MapView from 'react-native-map-clustering';
+import MImage from 'components/MImage';
+import { isEmpty } from 'lodash';
+import Lottie from 'lottie-react-native';
+import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
+import { CustomText } from 'components/Text';
+import moment from 'moment/moment';
+import Underline from 'components/Underline';
+import { FlatList } from 'react-native-gesture-handler';
 
 const MapScreen = ({ navigation }) => {
   const mapRef = useRef();
   const listRef = useRef();
+  const bottomSheetRef = useRef();
   const insets = useSafeAreaInsets();
   const { events } = useSelector(({ events }) => events);
   const [showEvent, setShowEvent] = useState(false);
   const [selectedEventId, setSelectedEventId] = useState('');
+  const [snapPoints] = useState(['1%', '30%', '90%']);
+  const [snapIndex, setSnapIndex] = useState();
+
+  const [currentLocation, setCurrentLocation] = useState({
+    latitude: 40.7929026,
+    longitude: 43.84649710000001,
+    latitudeDelta: 0.015,
+    longitudeDelta: 0.015,
+  });
+
   const [region, setRegion] = useCallbackState({
     latitude: 40.7929026,
     longitude: 43.84649710000001,
@@ -86,6 +97,23 @@ const MapScreen = ({ navigation }) => {
 
   const viewabilityConfigCallbackPairs = useRef([{ onViewableItemsChanged }]);
 
+  function goBack() {
+    Geolocation.getCurrentPosition(pos => {
+      const { coords } = pos;
+      setCurrentLocation({
+        ...coords,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
+      });
+      // dispatch(userTypes.SET_USER_LOCATION, coords);
+      mapRef.current?.animateToRegion({
+        ...coords,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
+      });
+    });
+  }
+
   const checkPermission = async () => {
     const permission = deviceInfo.ios
       ? Permissions.PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
@@ -106,7 +134,7 @@ const MapScreen = ({ navigation }) => {
     try {
       const status = await checkPermission();
       if (status === 'granted') {
-        currrentLocation();
+        goBack();
       } else if (status === 'blocked') {
         // Prompt user to go to Settings app
         Alert.alert(
@@ -126,7 +154,7 @@ const MapScreen = ({ navigation }) => {
       } else {
         const newStatus = await requestPermission();
         if (newStatus === 'granted') {
-          currrentLocation();
+          goBack();
         } else {
         }
       }
@@ -139,43 +167,16 @@ const MapScreen = ({ navigation }) => {
     requestGeolocationPermission();
   }, []);
 
-  const currrentLocation = async () => {
-    const dataLocation =
-      await RNAndroidLocationEnabler.promptForEnableLocationIfNeeded({
-        interval: 10000,
-        fastInterval: 10000,
-      });
-    if (dataLocation === 'enabled' || dataLocation === 'already-enabled') {
-      try {
-        Geolocation.getCurrentPosition(position => {
-          console.log(dataLocation, 'position');
-          mapRef.current.animateToRegion({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            latitudeDelta: 0.005,
-            longitudeDelta: 0.005,
-          });
-          setRegion({
-            val: {
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-              longitudeDelta: 0.001,
-              latitudeDelta: 0.001,
-            },
-          });
-        });
-      } catch (e) {
-        console.log(e, 'Error');
-      }
-    }
-  };
-
-  const onRegionChange = region => {
+  const onRegionChangeComplete = region => {
     region.latitudeDelta = region.latitudeDelta ? region.latitudeDelta : 0.005;
     region.longitudeDelta = region.longitudeDelta
       ? region.longitudeDelta
       : 0.005;
     setRegion({ val: region });
+  };
+
+  const onRegionChange = region => {
+    setSnapIndex(0);
   };
 
   const getCoordinate = location => {
@@ -225,9 +226,19 @@ const MapScreen = ({ navigation }) => {
             longitudeDelta: 0.015,
           }}
           onPress={() => {
-            navigate(routNames.EVENT_DETAIL, {
-              event: item,
-            });
+            setSnapIndex(1);
+            console.log(index);
+            const idx = events.findIndex(it => it.id === item.id);
+            setTimeout(() => {
+              listRef?.current?.scrollToIndex({
+                animated: true,
+                index: idx,
+                viewPosition: 0.5,
+              });
+            }, 500);
+            // navigate(routNames.EVENT_DETAIL, {
+            //   event: item,
+            // });
           }}>
           <View style={{ alignItems: 'center' }}>
             <View
@@ -240,7 +251,7 @@ const MapScreen = ({ navigation }) => {
                 backgroundColor: Colors.purple['200'],
               }}>
               <SharedElement id={`item.${item?.id}.photo`}>
-                <FastImage
+                <MImage
                   source={{
                     uri:
                       item?.pictures?.[0]?.fileDownloadUri ||
@@ -251,6 +262,7 @@ const MapScreen = ({ navigation }) => {
                     height: normalize(50),
                     borderRadius: normalize(25),
                   }}
+                  type={'image'}
                 />
               </SharedElement>
             </View>
@@ -266,20 +278,85 @@ const MapScreen = ({ navigation }) => {
               />
             ) : null}
           </View>
-          {/*<Lottie*/}
-          {/*  source={require('../../../assets/lottie/location.json')}*/}
-          {/*  autoPlay*/}
-          {/*  loop*/}
-          {/*  style={{*/}
-          {/*    width: normalize(60),*/}
-          {/*    height: normalize(60),*/}
-          {/*  }}*/}
-          {/*  resizeMode={'cover'}*/}
-          {/*/>*/}
         </Marker>
       );
     });
   });
+
+  const renderList = ({ item, index }) => {
+    return (
+      <Pressable
+        onPress={() => {
+          navigate(routNames.TICKET_DETAILS, {
+            event: item,
+          });
+        }}
+        style={{ flexDirection: 'row', minHeight: '20%' }}>
+        <SharedElement id={`item.${item?.id}.photo`}>
+          <MImage
+            source={{
+              uri:
+                item?.pictures?.[0]?.fileDownloadUri ||
+                item?.preferences?.[0]?.picture?.fileDownloadUri,
+            }}
+            style={{
+              width: normalize(60),
+              height: normalize(60),
+              borderRadius: normalize(12),
+            }}
+          />
+        </SharedElement>
+        <View style={{ flex: 1, marginLeft: normalize(16) }}>
+          <SharedElement id={`item.${item?.id}.info`}>
+            <CustomText
+              children={item.name}
+              globalStyle={{ ...FontStyle.text_h5.medium }}
+            />
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: normalize(8),
+              }}>
+              <View>
+                <CustomText
+                  children={'Date'}
+                  globalStyle={{
+                    ...FontStyle.text_h6.regular,
+                    color: Colors.oxford_blue['100'],
+                  }}
+                />
+                <CustomText
+                  children={moment(item.startDate).format('ddd, MMM D, YYYY')}
+                  globalStyle={{
+                    ...FontStyle.text_h5.regular,
+                  }}
+                />
+              </View>
+              <View style={{ marginLeft: normalize(20) }}>
+                <CustomText
+                  children={'Time'}
+                  globalStyle={{
+                    ...FontStyle.text_h6.regular,
+                    color: Colors.oxford_blue['100'],
+                  }}
+                />
+                <CustomText
+                  children={moment(item.startDate).format('HH:mm')}
+                  globalStyle={{
+                    ...FontStyle.text_h5.regular,
+                  }}
+                />
+              </View>
+            </View>
+          </SharedElement>
+        </View>
+        {events[index + 1] ? (
+          <Underline style={{ marginVertical: normalize(16) }} />
+        ) : null}
+      </Pressable>
+    );
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -287,7 +364,7 @@ const MapScreen = ({ navigation }) => {
         style={{
           position: 'absolute',
           top: insets.top + normalize(16),
-          right: normalize(8),
+          right: normalize(16),
           zIndex: 999,
         }}>
         <TouchableOpacity
@@ -301,37 +378,39 @@ const MapScreen = ({ navigation }) => {
             paddingHorizontal: normalize(8),
             ...Shadow,
           }}>
-          <Icon name={ICON_NAMES.FILTER} />
+          <Icon name={ICON_NAMES.FILTER} size={normalize(26)} />
         </TouchableOpacity>
       </View>
       <View
         style={{
           position: 'absolute',
-          bottom: normalize(270),
-          right: normalize(8),
+          bottom: normalize(150),
+          right: normalize(16),
           zIndex: 999,
         }}>
-        <TouchableOpacity
-          onPress={() => navigate('EventsScreen')}
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: normalize(8),
-            backgroundColor: Colors.white,
-            borderRadius: normalize(50),
-            paddingHorizontal: normalize(8),
-            ...Shadow,
-          }}>
-          <Icon
-            name={ICON_NAMES.LIST}
-            size={normalize(22)}
-            color={Colors.purple['500']}
-          />
-        </TouchableOpacity>
+        {!isEmpty(events) ? (
+          <TouchableOpacity
+            onPress={() => navigate('EventsScreen')}
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: normalize(8),
+              backgroundColor: Colors.white,
+              borderRadius: normalize(50),
+              paddingHorizontal: normalize(8),
+              ...Shadow,
+            }}>
+            <Icon
+              name={ICON_NAMES.LIST}
+              size={normalize(26)}
+              color={Colors.purple['500']}
+            />
+          </TouchableOpacity>
+        ) : null}
         <TouchableOpacity
           activeOpacity={0.9}
-          onPress={() => {}}
+          onPress={() => goBack()}
           style={{
             alignItems: 'center',
             flexDirection: 'row',
@@ -346,7 +425,7 @@ const MapScreen = ({ navigation }) => {
           <View style={{ transform: [{ rotate: '-45deg' }] }}>
             <Icon
               name={ICON_NAMES.MY_LOCATION}
-              size={normalize(22)}
+              size={normalize(26)}
               color={Colors.purple['500']}
             />
           </View>
@@ -364,19 +443,56 @@ const MapScreen = ({ navigation }) => {
           bottom: 0,
         }}
         provider="google"
-        showsUserLocation={true}
+        showsUserLocation={false}
         showsMyLocationButton={false}
         loadingEnabled={true}
         initialRegion={region.val}
-        // onRegionChange={onRegionChange}
-        onRegionChangeComplete={onRegionChange}
+        onRegionChange={onRegionChange}
+        onRegionChangeComplete={onRegionChangeComplete}
         maxZoomLevel={19}
         minZoomLevel={3}
         customMapStyle={MAP_DEFAULT_THEME}
         clusterColor={Colors.purple['500']}
         animationEnabled>
         {renderEvents}
+        {currentLocation && (
+          <Marker
+            coordinate={{
+              ...currentLocation,
+            }}>
+            <Lottie
+              source={require('../../../assets/lottie/location.json')}
+              autoPlay
+              loop
+              style={{
+                width: normalize(60),
+                height: normalize(60),
+              }}
+              resizeMode={'cover'}
+            />
+          </Marker>
+        )}
       </MapView>
+      <BottomSheet
+        ref={bottomSheetRef}
+        snapPoints={snapPoints}
+        index={snapIndex}
+        onChange={index => setSnapIndex(index)}
+        style={{
+          borderTopLeftRadius: normalize(24),
+          borderTopRightRadius: normalize(24),
+          overflow: 'hidden',
+        }}
+        backgroundStyle={{
+          backgroundColor: Colors.white,
+        }}>
+        <BottomSheetFlatList
+          keyExtractor={item => item.id}
+          ref={listRef}
+          data={events}
+          renderItem={renderList}
+        />
+      </BottomSheet>
     </View>
   );
 };

@@ -38,13 +38,15 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>YOUR TEXT</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>To find nearby events or people in your area and receive real-time updates, our app requires access to your location data.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>To find nearby events or people in your area and receive real-time updates, our app requires access to your location data.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>To find nearby events or people in your area and receive real-time updates, our app requires access to your location data.</string>
+    <string>We need access to your camera to capture photos and videos for creating memorable moments in the app.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>We require access to your photo library to upload and share photos, ensuring you can personalize your experience.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>We need continuous access to your location to provide personalized event recommendations and improve your overall app experience.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>We require constant access to your location for optimal app functionality, ensuring you receive the best event suggestions and updates.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We need access to your location while the app is in use to offer you location-specific event recommendations and enhance your user experience.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Black.otf</string>
@@ -93,6 +95,8 @@
 		<string>Montserratarm2-SemiBold.ttf</string>
 		<string>Montserratarm2-Thin.ttf</string>
 	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

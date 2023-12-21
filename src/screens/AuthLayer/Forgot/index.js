@@ -9,8 +9,13 @@ import BtnGoBack from 'components/BtnGoBack';
 import { Controller, useForm } from 'react-hook-form';
 import dispatch from 'utils/dispatch/dispatch';
 import { resetPassword } from 'state/user/operations/resetPassword';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { normalize } from 'assets/RootStyles/normalize';
+import Header from 'components/Header';
+import { Colors } from 'assets/RootStyles';
 
 function ForgotScreen({ navigation }) {
+  const insets = useSafeAreaInsets();
   const {
     control,
     handleSubmit,
@@ -27,19 +32,19 @@ function ForgotScreen({ navigation }) {
   };
 
   return (
-    <ScreenMask style={styles.screenMask}>
-      <View style={styles.btnBack}>
-        <BtnGoBack />
-        <CustomText
-          children="Account Recovery"
-          globalStyle={styles.firstText}
-        />
-      </View>
-      <CustomText
-        children="A reset link will be sent your email"
-        globalStyle={styles.secondText}
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: Colors.white,
+      }}>
+      <Header
+        title={'Forgot password'}
+        backIconContainer={{
+          shadowOpacity: 0,
+          backgroundColor: Colors.purple['200'],
+        }}
       />
-      <View>
+      <View style={{ flex: 1, paddingHorizontal: normalize(16) }}>
         <Controller
           name={'email'}
           control={control}
@@ -53,16 +58,21 @@ function ForgotScreen({ navigation }) {
             />
           )}
         />
-        <View style={styles.line} />
-        <Button
-          title="Send"
-          containerStyle={styles.button}
-          textStyle={styles.buttonText}
-          onPress={handleSubmit(onSubmit)}
-          disabled={!(isValid && isDirty)}
-        />
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'flex-end',
+            paddingBottom: insets.bottom + normalize(30),
+          }}>
+          <Button
+            title="Send"
+            textStyle={styles.buttonText}
+            onPress={handleSubmit(onSubmit)}
+            disabled={!(isValid && isDirty)}
+          />
+        </View>
       </View>
-    </ScreenMask>
+    </View>
   );
 }
 

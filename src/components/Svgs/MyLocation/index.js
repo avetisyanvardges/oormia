@@ -3,11 +3,11 @@ import { Path, Svg } from 'react-native-svg';
 import { normalize } from 'assets/RootStyles/normalize';
 import { Colors } from 'assets/RootStyles';
 
-const MyLocationIcon = ({ width, height, color }) => {
+const MyLocationIcon = ({ width, height, size, color }) => {
   return (
     <Svg
-      width={width || normalize(24)}
-      height={height || normalize(24)}
+      width={size || width || normalize(24)}
+      height={size || height || normalize(24)}
       viewBox="0 0 24 24"
       fill="none">
       <Path

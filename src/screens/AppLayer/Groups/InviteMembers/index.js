@@ -13,7 +13,6 @@ import { useSelector } from 'react-redux';
 import dispatch from 'utils/dispatch/dispatch';
 import { fetchAllUsers } from 'state/user/operations/fetchAllUsers';
 import { FlatList } from 'react-native-gesture-handler';
-import { userFollow } from 'state/user/operations/follow';
 import Button from 'components/Button';
 import { inviteMember } from 'state/groups';
 
@@ -21,7 +20,14 @@ const InviteMembersScreen = ({ route }) => {
   const { users } = useSelector(({ user }) => user);
   const { invited_members } = useSelector(({ groups }) => groups);
   useLayoutEffect(() => {
-    dispatch(fetchAllUsers());
+    dispatch(
+      fetchAllUsers({
+        params: {
+          page: 0,
+          size: 100,
+        },
+      }),
+    );
   }, []);
   console.log(users);
 
@@ -65,14 +71,14 @@ const InviteMembersScreen = ({ route }) => {
           containerStyle={{
             flex: 0.3,
             paddingVertical: normalize(6),
-            backgroundColor: invited ? undefined : Colors.purple['500'],
+            backgroundColor: invited ? undefined : Colors.purple['200'],
             borderWidth: invited ? 1 : 0,
             borderColor: Colors.oxford_blue['50'],
           }}
           title={invited ? 'Invited' : 'Invite'}
           textStyle={{
             ...FontStyle.text_h5.medium,
-            color: invited ? Colors.purple['500'] : Colors.white,
+            color: Colors.purple['500'],
           }}
           onPress={() => {
             dispatch(inviteMember({ id: item.id }));
@@ -100,7 +106,7 @@ const InviteMembersScreen = ({ route }) => {
           }}>
           <View
             style={{
-              height: `${normalize(90)}%`,
+              height: `${normalize(85)}%`,
               paddingHorizontal: normalize(16),
               paddingTop: normalize(24),
               backgroundColor: Colors.white,

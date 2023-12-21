@@ -12,13 +12,14 @@ import { deviceInfo } from 'assets/deviceInfo';
 import ChooseLocation from 'screens/AppLayer/Events/ChooseLocation';
 import CreateGroup from 'screens/AppLayer/Groups/Create';
 import EventDetail from 'screens/AppLayer/Events/Details';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 import MoreState from 'screens/AppLayer/Events/MoreState';
 import BuyTicketScreen from 'screens/AppLayer/Events/BuyTicket';
 import FiltersScreen from 'screens/AppLayer/MapScreen/Filters';
 import EditProfile from 'screens/AppLayer/EditProfile';
 import InviteMembersScreen from 'screens/AppLayer/Groups/InviteMembers';
+import AdminSettings from 'screens/AppLayer/AdminSettings';
+import AdminStack from 'navigation/StackNavigation/AdminStack';
 
 const Stack = createSharedElementStackNavigator();
 const StackNavigation = () => {
@@ -34,9 +35,22 @@ const StackNavigation = () => {
         initialRouteName={initialRoute}>
         <Stack.Screen name={routNames.AUTH_LAYER} component={AuthStack} />
         <Stack.Screen name={routNames.APP_LAYER} component={AppStack} />
+        <Stack.Screen name={routNames.ADMIN_LAYER} component={AdminStack} />
         <Stack.Screen
           name={routNames.SETTINGS}
           component={Settings}
+          options={{
+            presentation: 'modal',
+            cardStyle: { backgroundColor: 'transparent' },
+            gestureResponseDistance: fullScreen.height,
+            ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
+            gestureEnabled: true,
+            animationEnabled: true,
+          }}
+        />
+        <Stack.Screen
+          name={routNames.ADMIN_SETTINGS}
+          component={AdminSettings}
           options={{
             presentation: 'modal',
             cardStyle: { backgroundColor: 'transparent' },
@@ -78,7 +92,7 @@ const StackNavigation = () => {
             cardStyle: { backgroundColor: 'transparent' },
             gestureResponseDistance: fullScreen.height,
             ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
-            gestureEnabled: false,
+            gestureEnabled: true,
             animationEnabled: true,
           }}
         />

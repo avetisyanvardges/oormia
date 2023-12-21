@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   FlatList,
   Image,
@@ -8,15 +8,8 @@ import {
   View,
 } from 'react-native';
 import { normalize } from 'assets/RootStyles/normalize';
-import {
-  Colors,
-  Fonts,
-  FontStyle,
-  fullScreen,
-  Shadow,
-} from 'assets/RootStyles';
+import { Colors, FontStyle, fullScreen, Shadow } from 'assets/RootStyles';
 import Underline from 'components/Underline';
-import images from 'assets/images';
 import { CustomText } from 'components/Text';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import Icon from 'components/Svgs';
@@ -178,16 +171,16 @@ const PromotionComponent = () => {
         <Text style={{ ...FontStyle.text_h4.regular }}>
           Your Promotions Hub
         </Text>
-        <TouchableOpacity
-          onPress={() => navigate('EventsScreen', { ...renderPromotionItem })}>
-          <Text
-            style={{
-              ...FontStyle.text_h5.regular,
-              color: Colors.oxford_blue['200'],
-            }}>
-            See all
-          </Text>
-        </TouchableOpacity>
+        {/*<TouchableOpacity*/}
+        {/*  onPress={() => navigate('EventsScreen', { ...renderPromotionItem })}>*/}
+        {/*  <Text*/}
+        {/*    style={{*/}
+        {/*      ...FontStyle.text_h5.regular,*/}
+        {/*      color: Colors.oxford_blue['200'],*/}
+        {/*    }}>*/}
+        {/*    See all*/}
+        {/*  </Text>*/}
+        {/*</TouchableOpacity>*/}
       </View>
       <FlatList
         horizontal

@@ -20,12 +20,8 @@ import { fetchCategoriesAll } from 'state/categories/operations/fetchCategoriesA
 import Button from 'components/Button';
 import Input from 'components/Input';
 import Description from 'components/Description';
-import Icon from 'components/Svgs';
-import { ICON_NAMES } from 'components/Svgs/icon_names';
-import Underline from 'components/Underline';
 import { FlatList } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { userFollow } from 'state/user/operations/follow';
 import { routNames } from 'constants/routNames';
 import { createGroupAction } from 'state/groups/operations/addGroup';
 

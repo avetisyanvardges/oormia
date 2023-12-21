@@ -1,10 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
-import Icon from 'components/Svgs';
-import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { TouchableOpacity, View } from 'react-native';
 import { normalize } from 'assets/RootStyles/normalize';
 import { CustomText } from 'components/Text';
 import { FontStyle } from 'assets/RootStyles';
+import Icon from 'components/Svgs';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import { routNames } from 'constants/routNames';
+import { navigate } from 'services/NavigationService';
 
 const HomeHeaderComponent = () => {
   return (
@@ -14,6 +16,7 @@ const HomeHeaderComponent = () => {
         alignItems: 'center',
         justifyContent: 'space-between',
         marginHorizontal: normalize(16),
+        marginBottom: normalize(16),
       }}>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <CustomText
@@ -28,12 +31,12 @@ const HomeHeaderComponent = () => {
           flexDirection: 'row',
           alignItems: 'center',
         }}>
-        <View>
+        <TouchableOpacity onPress={() => navigate(routNames.NOTIFICATIONS)}>
           <Icon name={ICON_NAMES.NOTIFICATION} />
-        </View>
-        <View style={{ marginLeft: normalize(8) }}>
-          <Icon name={ICON_NAMES.MESSAGE} />
-        </View>
+        </TouchableOpacity>
+        {/*<View style={{ marginLeft: normalize(8) }}>*/}
+        {/*  <Icon name={ICON_NAMES.MESSAGE} />*/}
+        {/*</View>*/}
       </View>
     </View>
   );

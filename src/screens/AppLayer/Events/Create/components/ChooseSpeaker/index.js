@@ -1,11 +1,16 @@
-import React from 'react';
-import { FlatList, Image, TouchableOpacity, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { FlatList, TouchableOpacity, View } from 'react-native';
 import { normalize } from 'assets/RootStyles/normalize';
-import images from 'assets/images';
 import { Colors, FontStyle, Shadow } from 'assets/RootStyles';
 import { CustomText } from 'components/Text';
 import Underline from 'components/Underline';
 import SelectIcon from 'components/Svgs/Select';
+import Icon from 'components/Svgs';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
+import dispatch from 'utils/dispatch/dispatch';
+import { fetchAllUsers } from 'state/user/operations/fetchAllUsers';
+import { useSelector } from 'react-redux';
+import MImage from 'components/MImage';
 
 const usersData = [
   {
@@ -56,8 +61,22 @@ const usersData = [
 ];
 
 const ChooseSpeaker = ({ setScreen, speaker, setSpeaker }) => {
+  const { speakers } = useSelector(({ user }) => user);
+  useEffect(() => {
+    dispatch(
+      fetchAllUsers({
+        params: {
+          page: 0,
+          size: 100,
+          calendar: true,
+        },
+      }),
+    );
+  }, []);
   const renderSpeakerItem = ({ item }) => {
-    const [imageName] = item.name.split(' ');
+    const mutatedImage = item?.pictures?.[
+      item?.pictures.length - 1
+    ]?.fileDownloadUri?.replace(':8085', ':8086');
     return (
       <TouchableOpacity
         onPress={() => {
@@ -72,22 +91,34 @@ const ChooseSpeaker = ({ setScreen, speaker, setSpeaker }) => {
           alignItems: 'center',
           ...Shadow,
         }}>
-        <Image
-          source={images.speakers[imageName.toLowerCase()]}
-          resizeMode="cover"
+        <MImage
+          source={{ uri: mutatedImage }}
           style={{
             width: normalize(88),
             height: normalize(116),
             borderTopLeftRadius: normalize(10),
             borderBottomLeftRadius: normalize(10),
+            backgroundColor: Colors.white,
             overflow: 'hidden',
           }}
+          type={'profile'}
         />
+        {/*<Image*/}
+        {/*  source={images.speakers[imageName.toLowerCase()]}*/}
+        {/*  resizeMode="cover"*/}
+        {/*  style={{*/}
+        {/*    width: normalize(88),*/}
+        {/*    height: normalize(116),*/}
+        {/*    borderTopLeftRadius: normalize(10),*/}
+        {/*    borderBottomLeftRadius: normalize(10),*/}
+        {/*    overflow: 'hidden',*/}
+        {/*  }}*/}
+        {/*/>*/}
         <View style={{ flex: 1, marginLeft: normalize(15) }}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <View>
               <CustomText
-                children={item.name}
+                children={`${item.firstName} ${item?.lastName}`}
                 globalStyle={{
                   ...FontStyle.text_h5.medium,
                   marginTop: normalize(3),
@@ -151,11 +182,40 @@ const ChooseSpeaker = ({ setScreen, speaker, setSpeaker }) => {
         paddingBottom: normalize(50),
       }}>
       <FlatList
-        data={usersData}
+        data={speakers}
         renderItem={renderSpeakerItem}
         ItemSeparatorComponent={() => (
           <View style={{ height: normalize(16) }} />
         )}
+        ListEmptyComponent={() => {
+          return (
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Icon name={ICON_NAMES.EMPTY_STATES.CHOOSE_SPEAKER} />
+              <CustomText
+                children={'No Speakers Found'}
+                globalStyle={{
+                  ...FontStyle.text_h2.medium,
+                  color: Colors.grey['500'],
+                  marginTop: normalize(4),
+                }}
+              />
+              <CustomText
+                children={
+                  'It seems like there are no speakers available at the moment. '
+                }
+                globalStyle={{
+                  ...FontStyle.text_h5.regular,
+                  color: Colors.oxford_blue['200'],
+                  textAlign: 'center',
+                }}
+              />
+            </View>
+          );
+        }}
         contentContainerStyle={{
           marginHorizontal: normalize(16),
           paddingBottom: normalize(100),

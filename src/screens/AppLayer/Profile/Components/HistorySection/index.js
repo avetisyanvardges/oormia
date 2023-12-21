@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { FlatList, Image, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import { normalize } from 'assets/RootStyles/normalize';
 import { CustomText } from 'components/Text';
 import { Colors, FontStyle, Shadow } from 'assets/RootStyles';
@@ -19,27 +19,12 @@ const tabTypes = {
   GROUP: 'groups',
 };
 
-const groups = [
-  {
-    title: 'Army friends',
-    image: images.preferences.ecotourism,
-    members: 7,
-  },
-  {
-    title: 'IT Colleagues',
-    image: images.preferences.it,
-    members: 15,
-  },
-  {
-    title: 'Friends',
-    image: images.preferences.art,
-    members: 10,
-  },
-];
-
 const HistorySection = () => {
   const [activeTab, setActiveTab] = useState(tabTypes.EVENTS);
   const { event_history } = useSelector(({ events }) => events);
+  const { groups } = useSelector(({ groups }) => groups);
+
+  console.log(groups, 'groups');
   const RenderCard = ({ item, i }) => {
     const randomBool = useMemo(() => Math.random() < 0.5, [i]);
 
@@ -189,7 +174,7 @@ const HistorySection = () => {
       </View>
       {activeTab !== tabTypes.GROUP ? (
         <MasonryList
-          data={Object.keys(images.preferences)}
+          data={[]}
           keyExtractor={item => item.id}
           numColumns={3}
           showsVerticalScrollIndicator={false}
@@ -243,6 +228,25 @@ const HistorySection = () => {
                     }}
                   />
                 </TouchableOpacity>
+              );
+            }}
+            ListEmptyComponent={() => {
+              return (
+                <View
+                  style={{
+                    alignItems: 'center',
+                    marginHorizontal: normalize(48),
+                  }}>
+                  <Icon name={ICON_NAMES.EMPTY_STATES.GROUPS} />
+                  <Text
+                    style={{
+                      ...FontStyle.text_h2.medium,
+                      color: Colors.grey['500'],
+                      marginTop: normalize(10),
+                    }}>
+                    No groups yet
+                  </Text>
+                </View>
               );
             }}
             showsVerticalScrollIndicator={false}

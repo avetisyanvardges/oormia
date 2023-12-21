@@ -13,21 +13,30 @@ import Button from 'components/Button';
 import dispatch from 'utils/dispatch/dispatch';
 import { userSignUp } from 'state/user/operations/userSignUp';
 import { useSelector } from 'react-redux';
-import { navigate } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
+import { fetchSubCategoriesAll } from 'state/categories/operations/fetchSubCategoriesAll';
+import { isEmpty } from 'lodash';
 
 function PreferencesScreen({ navigation, route }) {
   const [data, setData] = useState(faceData);
   const { values } = route?.params;
   const { verification_token } = useSelector(({ user }) => user);
+  const { sub_categories } = useSelector(({ categories }) => categories);
   useEffect(() => {
     if (verification_token) {
       navigation.navigate(routNames.OTP, { email: values.email });
     }
   }, [verification_token]);
-  // useEffect(() => {
-  //   dispatch(fetchCategoriesAll());
-  // }, []);
+
+  useEffect(() => {
+    dispatch(fetchSubCategoriesAll());
+  }, []);
+
+  useEffect(() => {
+    if (!isEmpty(sub_categories)) {
+      setData(sub_categories);
+    }
+  }, [sub_categories]);
 
   const onChecked = item => {
     setData(prevState =>
@@ -42,9 +51,16 @@ function PreferencesScreen({ navigation, route }) {
   };
 
   const onSubmit = () => {
+    const mutationPref = data.reduce((acc, item) => {
+      if (item.checked) {
+        acc.push(item.name);
+      }
+
+      return acc;
+    }, []);
     const body = {
       ...values,
-      preferences: ['art', 'tech'],
+      preferences: mutationPref,
     };
 
     dispatch(userSignUp(body));
@@ -57,7 +73,7 @@ function PreferencesScreen({ navigation, route }) {
         onPress={() => onChecked(item)}
         style={{ marginHorizontal: normalize(10) }}>
         <ImageBackground
-          source={{ uri: item?.img }}
+          source={{ uri: item?.picture?.fileDownloadUri }}
           resizeMode="cover"
           style={{
             width: (fullScreen.width - normalize(52)) / 2,
@@ -92,7 +108,7 @@ function PreferencesScreen({ navigation, route }) {
               justifyContent: 'space-between',
             }}>
             <CustomText
-              children={item.title}
+              children={item.name}
               globalStyle={{ color: Colors.white, padding: normalize(10) }}
             />
           </LinearGradient>
@@ -135,7 +151,6 @@ function PreferencesScreen({ navigation, route }) {
           paddingTop: normalize(10),
         }}>
         <Button
-          containerStyle={{ paddingVertical: normalize(6) }}
           title="Save"
           textStyle={styles.buttonTextStyle}
           onPress={onSubmit}

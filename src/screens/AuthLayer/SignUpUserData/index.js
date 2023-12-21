@@ -10,7 +10,6 @@ import { routNames } from 'constants/routNames';
 import Checkbox from 'components/Checkbox';
 import { Controller, useForm } from 'react-hook-form';
 import { navigate } from 'services/NavigationService';
-import ImagePicker from 'react-native-image-crop-picker';
 
 function SignUpUserData({ navigation, route }) {
   const [img, setImg] = useState();
@@ -34,9 +33,9 @@ function SignUpUserData({ navigation, route }) {
     defaultValues: {
       ...data?.values,
       avatar: '',
-      firstName: 'Vardges',
-      lastName: 'Avetisyan',
-      phoneNumber: '+37477314814',
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
       guide: false,
       guideForCountry: '',
       role: 'USER',
@@ -122,39 +121,38 @@ function SignUpUserData({ navigation, route }) {
           )}
         />
 
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => setGit(!git)}
-          style={styles.btn}>
-          <CustomText
-            globalStyle={styles.btnText}
-            children={'Local guide field'}
-          />
-          <Checkbox isChecked={git} setChecked={setGit} />
-        </TouchableOpacity>
-        {git ? (
-          <TouchableOpacity
-            onPress={() => {}}
-            style={{ ...styles.btn, marginTop: normalize(20) }}>
-            <CustomText
-              globalStyle={styles.btnText}
-              children={'Your country'}
-            />
-            <View style={styles.activeCountryBlock}>
-              <CustomText
-                globalStyle={{
-                  ...styles.btnText,
-                  marginRight: normalize(10),
-                }}
-                children={countryActive ? countryActive.country : ''}
-              />
-              <CustomText globalStyle={styles.btnCountry} values={'>'} />
-            </View>
-          </TouchableOpacity>
-        ) : null}
+        {/*<TouchableOpacity*/}
+        {/*  activeOpacity={0.8}*/}
+        {/*  onPress={() => setGit(!git)}*/}
+        {/*  style={styles.btn}>*/}
+        {/*  <CustomText*/}
+        {/*    globalStyle={styles.btnText}*/}
+        {/*    children={'Local guide field'}*/}
+        {/*  />*/}
+        {/*  <Checkbox isChecked={git} setChecked={setGit} />*/}
+        {/*</TouchableOpacity>*/}
+        {/*{git ? (*/}
+        {/*  <TouchableOpacity*/}
+        {/*    onPress={() => {}}*/}
+        {/*    style={{ ...styles.btn, marginTop: normalize(20) }}>*/}
+        {/*    <CustomText*/}
+        {/*      globalStyle={styles.btnText}*/}
+        {/*      children={'Your country'}*/}
+        {/*    />*/}
+        {/*    <View style={styles.activeCountryBlock}>*/}
+        {/*      <CustomText*/}
+        {/*        globalStyle={{*/}
+        {/*          ...styles.btnText,*/}
+        {/*          marginRight: normalize(10),*/}
+        {/*        }}*/}
+        {/*        children={countryActive ? countryActive.country : ''}*/}
+        {/*      />*/}
+        {/*      <CustomText globalStyle={styles.btnCountry} values={'>'} />*/}
+        {/*    </View>*/}
+        {/*  </TouchableOpacity>*/}
+        {/*) : null}*/}
         <View style={{ flex: 1, justifyContent: 'flex-end' }}>
           <Button
-            containerStyle={{ paddingVertical: normalize(6) }}
             title="Next"
             textStyle={styles.buttonTextStyle}
             onPress={handleSubmit(onSubmit)}

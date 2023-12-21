@@ -1,9 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import httpClient from '../../../services/HttpClient';
-import {
-  fetchEventsEndpoint,
-  fetchPromotionEventsEndpoint,
-} from 'state/events/endpoints';
+import { fetchPromotionEventsEndpoint } from 'state/events/endpoints';
 
 export const getPromotionEvents = createAsyncThunk(
   'events/promotion',

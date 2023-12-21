@@ -1,11 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import httpClient from '../../../services/HttpClient';
-import {
-  addEventEndpoint,
-  deleteEventEndpoint,
-  updateEventEndpoint,
-} from 'state/events/endpoints';
-import { back, navigate } from 'services/NavigationService';
+import { deleteEventEndpoint } from 'state/events/endpoints';
+import { navigate } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
 
 export const deleteEvent = createAsyncThunk(

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Path, Svg } from 'react-native-svg';
 import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 
 const LockIcon = ({ width, height, size, color }) => {
   return (
@@ -10,18 +11,12 @@ const LockIcon = ({ width, height, size, color }) => {
       viewBox="0 0 24 24"
       fill="none">
       <Path
-        d="M6 10V8c0-3.31 1-6 6-6s6 2.69 6 6v2M12 18.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"
-        stroke={color || '#292D32'}
-        strokeWidth={1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M12.001 17.35a1.63 1.63 0 100-3.26 1.63 1.63 0 000 3.26z"
+        fill={color || Colors.purple['500']}
       />
       <Path
-        d="M17 22H7c-4 0-5-1-5-5v-2c0-4 1-5 5-5h10c4 0 5 1 5 5v2c0 4-1 5-5 5z"
-        stroke={color || '#292D32'}
-        strokeWidth={1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M18.28 9.53V8.28C18.28 5.58 17.63 2 12 2S5.72 5.58 5.72 8.28v1.25C2.92 9.88 2 11.3 2 14.79v1.86C2 20.75 3.25 22 7.35 22h9.3c4.1 0 5.35-1.25 5.35-5.35v-1.86c0-3.49-.92-4.91-3.72-5.26zM12 18.74c-1.67 0-3.02-1.36-3.02-3.02 0-1.67 1.36-3.02 3.02-3.02a3.03 3.03 0 013.02 3.02c0 1.67-1.35 3.02-3.02 3.02zm-4.65-9.3h-.23V8.28c0-2.93.83-4.88 4.88-4.88s4.88 1.95 4.88 4.88v1.17H7.35v-.01z"
+        fill={color || Colors.purple['500']}
       />
     </Svg>
   );

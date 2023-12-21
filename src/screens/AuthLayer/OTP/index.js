@@ -7,7 +7,6 @@ import { Styles } from './style';
 import { normalize } from 'assets/RootStyles/normalize';
 import { Colors, FontStyle } from 'assets/RootStyles';
 import { CustomText } from 'components/Text';
-import CountDownTimer from 'components/CountDown';
 import dispatch from 'utils/dispatch/dispatch';
 import { verifyCode } from 'state/user/operations/verifyCode';
 import { clean_verification_token } from 'state/user';
@@ -62,6 +61,8 @@ function OTPScreen({ navigation, route }) {
     },
     [code],
   );
+
+  console.log(email);
   return (
     <View
       style={{
