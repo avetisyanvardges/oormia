@@ -11,54 +11,7 @@ import dispatch from 'utils/dispatch/dispatch';
 import { fetchAllUsers } from 'state/user/operations/fetchAllUsers';
 import { useSelector } from 'react-redux';
 import MImage from 'components/MImage';
-
-const usersData = [
-  {
-    id: 1,
-    name: 'Olivia Turner',
-    position: 'Financial Analyst',
-    about:
-      'Detail-oriented finance professional with expertise in financial modeling and analysis.',
-    phoneNumber: '+1 (555) 123-4567',
-    email: 'olivia.turner@email.com',
-  },
-  {
-    id: 2,
-    name: 'Marcus Harris',
-    position: 'Human Resources Manager',
-    about:
-      'HR specialist fostering a positive workplace culture and implementing talent development programs.',
-    phoneNumber: '+1 (555) 234-5678',
-    email: 'marcus.harris@email.com',
-  },
-  {
-    id: 3,
-    name: 'Elena Martinez',
-    position: 'Marketing Coordinator',
-    about:
-      'Creative marketer with a passion for developing and executing engaging marketing campaigns.',
-    phoneNumber: '+1 (555) 345-6789',
-    email: 'elena.martinez@email.com',
-  },
-  {
-    id: 4,
-    name: 'Andre Robinson',
-    position: 'Operations Manager',
-    about:
-      'Results-driven operations expert optimizing processes and ensuring efficient workflow.',
-    phoneNumber: '+1 (555) 456-7890',
-    email: 'andre.robinson@email.com',
-  },
-  {
-    id: 5,
-    name: 'Sophia Nguyen',
-    position: 'Sales Representative',
-    about:
-      'Dynamic sales professional skilled in building strong client relationships and exceeding sales targets.',
-    phoneNumber: '+1 (555) 567-8901',
-    email: 'sophia.nguyen@email.com',
-  },
-];
+import { isEmpty } from 'lodash';
 
 const ChooseSpeaker = ({ setScreen, speaker, setSpeaker }) => {
   const { speakers } = useSelector(({ user }) => user);
@@ -178,6 +131,7 @@ const ChooseSpeaker = ({ setScreen, speaker, setSpeaker }) => {
   return (
     <View
       style={{
+        flex: 1,
         backgroundColor: Colors.grey['50'],
         paddingBottom: normalize(50),
       }}>
@@ -191,10 +145,17 @@ const ChooseSpeaker = ({ setScreen, speaker, setSpeaker }) => {
           return (
             <View
               style={{
+                flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <Icon name={ICON_NAMES.EMPTY_STATES.CHOOSE_SPEAKER} />
+              <View
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Icon name={ICON_NAMES.EMPTY_STATES.CHOOSE_SPEAKER} />
+              </View>
               <CustomText
                 children={'No Speakers Found'}
                 globalStyle={{
@@ -216,10 +177,19 @@ const ChooseSpeaker = ({ setScreen, speaker, setSpeaker }) => {
             </View>
           );
         }}
-        contentContainerStyle={{
-          marginHorizontal: normalize(16),
-          paddingBottom: normalize(100),
-        }}
+        contentContainerStyle={[
+          {
+            marginHorizontal: normalize(16),
+            paddingBottom: normalize(100),
+          },
+          isEmpty(speakers)
+            ? {
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }
+            : null,
+        ]}
       />
     </View>
   );

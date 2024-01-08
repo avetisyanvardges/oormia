@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Svg, { Ellipse, Path } from 'react-native-svg';
 import { normalize } from 'assets/RootStyles/normalize';
-import { Colors } from 'assets/RootStyles';
 
 const EventWarning = ({ width, height, size, color }) => {
   return (

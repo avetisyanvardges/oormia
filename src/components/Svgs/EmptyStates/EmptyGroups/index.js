@@ -1,15 +1,6 @@
 import React from 'react';
-import {
-  Defs,
-  Ellipse,
-  G,
-  LinearGradient,
-  Path,
-  Stop,
-  Svg,
-} from 'react-native-svg';
+import { Defs, G, LinearGradient, Path, Stop, Svg } from 'react-native-svg';
 import { normalize } from 'assets/RootStyles/normalize';
-import { Colors } from 'assets/RootStyles';
 
 const EmptyGroupsIcon = ({ width, height, color }) => {
   return (

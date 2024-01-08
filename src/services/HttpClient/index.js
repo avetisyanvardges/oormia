@@ -9,6 +9,7 @@ import { userLogAuth } from 'state/user/operations/userLogOut';
 import { fetchSubCategoriesAllEndpoint } from 'state/categories/endpoints';
 import { show_toast } from 'state/snackbars';
 import { toastMessageTypes } from 'state/snackbars/types';
+import i18n from 'i18next';
 
 const requestConfig = {
   baseURL: baseUrlApi,
@@ -23,8 +24,8 @@ const HttpClient = axios.create(requestConfig);
 const handleRequest = config => {
   const {
     user: { token },
-    intl: { locale },
   } = store.getState();
+  const locale = i18n.language;
   const { url: subCategoriesUrl } = fetchSubCategoriesAllEndpoint;
   if (config.headers) {
     config.headers['X-localization'] = locale;

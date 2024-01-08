@@ -66,6 +66,15 @@ function PreferencesScreen({ navigation, route }) {
     dispatch(userSignUp(body));
   };
 
+  const skipAndSubmit = () => {
+    const body = {
+      ...values,
+      preferences: [],
+    };
+
+    dispatch(userSignUp(body));
+  };
+
   const renderPreferencesItem = useCallback(({ item, index }) => {
     const selected = item?.checked;
     return (
@@ -123,9 +132,10 @@ function PreferencesScreen({ navigation, route }) {
         <BtnGoBack />
         <CustomText
           globalStyle={styles.title}
-          children={`Hi ${values?.firstName}!`}
+          children={'user_information.hi'}
+          values={{ name: values?.firstName }}
         />
-        <CustomText children={'Skip'} />
+        <CustomText children={'btn.skip'} onPress={() => skipAndSubmit()} />
       </View>
       <View style={styles.container}>
         <CustomText
@@ -151,7 +161,7 @@ function PreferencesScreen({ navigation, route }) {
           paddingTop: normalize(10),
         }}>
         <Button
-          title="Save"
+          title="save"
           textStyle={styles.buttonTextStyle}
           onPress={onSubmit}
           // disabled={!(isValid && dirty && img)}

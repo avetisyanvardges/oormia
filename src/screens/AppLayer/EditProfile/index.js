@@ -138,7 +138,7 @@ const EditProfile = ({ route }) => {
                   justifyContent: 'space-between',
                 }}>
                 <CustomText
-                  children={'Edit Profile'}
+                  children={'edit_profile'}
                   globalStyle={{
                     ...FontStyle.text_h3.medium,
                   }}
@@ -147,13 +147,13 @@ const EditProfile = ({ route }) => {
                   activeOpacity={0.8}
                   onPress={handleSubmit(onSubmit)}
                   style={{ paddingHorizontal: normalize(10) }}>
-                  <Text
-                    style={{
+                  <CustomText
+                    children={'btn.save'}
+                    globalStyle={{
                       ...FontStyle.text_h5.medium,
                       color: Colors.purple['500'],
-                    }}>
-                    Save
-                  </Text>
+                    }}
+                  />
                 </TouchableOpacity>
               </View>
               <View>
@@ -238,8 +238,8 @@ const EditProfile = ({ route }) => {
                   render={({ field: { value, onChange, onBlur } }) => {
                     return (
                       <Input
-                        label={'First name'}
-                        placeholder="First name"
+                        label={'first_name'}
+                        placeholder="first_name"
                         value={value}
                         onBlur={onBlur}
                         onChange={onChange}
@@ -254,8 +254,8 @@ const EditProfile = ({ route }) => {
                   render={({ field: { value, onChange, onBlur } }) => {
                     return (
                       <Input
-                        label={'Last name'}
-                        placeholder="Last name"
+                        label={'last_name'}
+                        placeholder="last_name"
                         value={value}
                         onChange={onChange}
                         onBlur={onBlur}
@@ -270,8 +270,8 @@ const EditProfile = ({ route }) => {
                   control={control}
                   render={({ field: { value, onChange, onBlur } }) => (
                     <Input
-                      label={'Phone number'}
-                      placeholder="Phone number"
+                      label="phone_number"
+                      placeholder="phone_number"
                       value={value}
                       onChange={onChange}
                       errorText={value && errors.phoneNumber}

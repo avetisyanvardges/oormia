@@ -8,7 +8,6 @@ import HistorySection from 'screens/AppLayer/Profile/Components/HistorySection';
 import dispatch from 'utils/dispatch/dispatch';
 import { getEventHistory } from 'state/events/operations/getEventHistory';
 import { getAllGroups } from 'state/groups/operations/getAllGroups';
-import { findNotificationByFrom } from 'state/notifications/operations/findNotificationByFrom';
 import { useSelector } from 'react-redux';
 
 const Profile = ({ navigation }) => {

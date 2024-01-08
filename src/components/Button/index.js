@@ -23,7 +23,7 @@ function Button({
       disabled={disabled}>
       {icon}
       <CustomText
-        children={title}
+        children={`btn.${title}`}
         globalStyle={{ ...styles.textStyle, ...textStyle }}
       />
     </TouchableOpacity>

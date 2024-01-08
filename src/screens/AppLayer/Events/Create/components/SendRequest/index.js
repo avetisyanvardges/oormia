@@ -20,8 +20,6 @@ import Input from 'components/Input';
 import { Controller, useForm } from 'react-hook-form';
 import moment from 'moment/moment';
 import DatePicker from 'react-native-date-picker';
-import Icon from 'components/Svgs';
-import { ICON_NAMES } from 'components/Svgs/icon_names';
 import Button from 'components/Button';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MImage from 'components/MImage';
@@ -30,8 +28,9 @@ import { sendMeetingRequest } from 'state/events/operations/sendMeetingRequest';
 import { isEmpty } from 'lodash';
 import { Calendar } from 'react-native-calendars';
 import { useNavigation } from '@react-navigation/native';
+import { back } from 'services/NavigationService';
 
-function SendRequest({ speaker, setScreen }) {
+function SendRequest({ speaker, setScreen, route }) {
   const insets = useSafeAreaInsets();
   const scrollRef = useRef(null);
   const [selected, setSelected] = useState();
@@ -96,7 +95,7 @@ function SendRequest({ speaker, setScreen }) {
   }, [speaker, selected]);
 
   const onDayPress = useCallback(day => {
-    scrollRef?.current?.scrollToEnd();
+    scrollRef?.current?.scrollToEnd({ animated: true });
     setSelected(day.dateString);
   }, []);
   return (
@@ -107,11 +106,23 @@ function SendRequest({ speaker, setScreen }) {
           flex: 1,
           marginHorizontal: normalize(16),
         }}
-        showsVerticalScrollIndicator={false}>
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingBottom: insets.bottom + normalize(40),
+        }}>
         <Header
           title={'Send Request'}
-          backPress={() => setScreen('choose_a_speaker')}
-          containerStyle={{ paddingHorizontal: 0 }}
+          backPress={() => {
+            console.log(route);
+            if (route?.params?.screen) {
+              back();
+            } else {
+              setScreen('choose_a_speaker');
+            }
+          }}
+          containerStyle={{
+            paddingHorizontal: 0,
+          }}
         />
         <View
           style={{
@@ -237,7 +248,7 @@ function SendRequest({ speaker, setScreen }) {
             alignItems: 'center',
             justifyContent: 'flex-end',
             marginTop: normalize(20),
-            marginBottom: insets.bottom + normalize(8),
+            marginBottom: normalize(8),
           }}>
           <Button
             title={'Send'}

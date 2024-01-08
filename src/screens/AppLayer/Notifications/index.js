@@ -4,7 +4,6 @@ import {
   FlatList,
   RefreshControl,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { Colors, FontStyle, fullScreen } from 'assets/RootStyles';
@@ -17,6 +16,8 @@ import { findNotificationByFrom } from 'state/notifications/operations/findNotif
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import { useSelector } from 'react-redux';
 import Header from 'components/Header';
+import { getRequestedEvents } from 'state/events/operations/getRequestedEvents';
+import { CustomText } from 'components/Text';
 
 const NotificationScreen = ({ navigation }) => {
   const { currentUser } = useSelector(({ user }) => user);
@@ -73,6 +74,7 @@ const NotificationScreen = ({ navigation }) => {
     }
 
     dispatch(findNotificationByFrom({ from: currentUser?.email }));
+    dispatch(getRequestedEvents());
   };
 
   const onRefresh = throttle(async () => {
@@ -115,7 +117,7 @@ const NotificationScreen = ({ navigation }) => {
         }}>
         <View>
           <Header
-            title={'Notifications'}
+            title={'notifications'}
             backIconContainer={{
               shadowOpacity: 0,
               backgroundColor: Colors.purple['200'],
@@ -168,23 +170,23 @@ const NotificationScreen = ({ navigation }) => {
                     marginHorizontal: normalize(48),
                   }}>
                   <Icon name={ICON_NAMES.EMPTY_STATES.NOTIFICATION} />
-                  <Text
-                    style={{
+                  <CustomText
+                    children={'no_notifications_yet'}
+                    globalStyle={{
                       ...FontStyle.text_h2.medium,
                       color: Colors.grey['500'],
                       marginTop: normalize(10),
-                    }}>
-                    No Notifications Yet
-                  </Text>
-                  <Text
-                    style={{
+                      textAlign: 'center',
+                    }}
+                  />
+                  <CustomText
+                    children={'stay_tuned_for_updates'}
+                    globalStyle={{
                       ...FontStyle.text_h5.regular,
                       color: Colors.oxford_blue['200'],
                       textAlign: 'center',
-                    }}>
-                    Stay tuned for updates and important messages. We'll notify
-                    you when there's something new or noteworthy.
-                  </Text>
+                    }}
+                  />
                 </View>
               );
             }}

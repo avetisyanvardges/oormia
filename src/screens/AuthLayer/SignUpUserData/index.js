@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { CustomText } from 'components/Text';
 import ScreenMask from 'components/screenMask';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import { styles } from './style';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import { normalize } from 'assets/RootStyles/normalize';
 import { routNames } from 'constants/routNames';
-import Checkbox from 'components/Checkbox';
 import { Controller, useForm } from 'react-hook-form';
 import { navigate } from 'services/NavigationService';
 
@@ -51,13 +50,21 @@ function SignUpUserData({ navigation, route }) {
         paddingHorizontal: normalize(16),
       }}>
       <View style={styles.titleBlock}>
-        <CustomText children="Finish" globalStyle={styles.title} />
+        <CustomText
+          children={'user_information.title'}
+          globalStyle={styles.title}
+        />
+
         {/*<CustomText*/}
         {/*  children="Skip"*/}
         {/*  globalStyle={styles.titleSkip}*/}
         {/*  onPress={() => navigate(routNames.APP_LAYER)}*/}
         {/*/>*/}
       </View>
+      <CustomText
+        children={'user_information.description'}
+        globalStyle={styles.description}
+      />
       {/*<TouchableOpacity onPress={onUpload} style={styles.imgContainer}>*/}
       {/*  {img ? (*/}
       {/*    <Image*/}
@@ -79,8 +86,8 @@ function SignUpUserData({ navigation, route }) {
           render={({ field: { value, onChange, onBlur } }) => {
             return (
               <Input
-                label={'First name'}
-                placeholder="First name"
+                label={'first_name'}
+                placeholder={'first_name'}
                 value={value}
                 onChange={onChange}
                 onBlur={onBlur}
@@ -95,8 +102,8 @@ function SignUpUserData({ navigation, route }) {
           render={({ field: { value, onChange, onBlur } }) => {
             return (
               <Input
-                label={'Last name'}
-                placeholder="Last name"
+                label={'last_name'}
+                placeholder={'last_name'}
                 value={value}
                 onChange={onChange}
                 onBlur={onBlur}
@@ -111,8 +118,8 @@ function SignUpUserData({ navigation, route }) {
           control={control}
           render={({ field: { value, onChange, onBlur } }) => (
             <Input
-              label={'Phone number'}
-              placeholder="Phone number"
+              label={'phone_number'}
+              placeholder={'phone_number'}
               value={value}
               onChange={onChange}
               errorText={value && errors.phoneNumber}
@@ -153,7 +160,7 @@ function SignUpUserData({ navigation, route }) {
         {/*) : null}*/}
         <View style={{ flex: 1, justifyContent: 'flex-end' }}>
           <Button
-            title="Next"
+            title={'next'}
             textStyle={styles.buttonTextStyle}
             onPress={handleSubmit(onSubmit)}
             // disabled={!(isValid && dirty && img)}

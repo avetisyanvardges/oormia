@@ -1,11 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import {
-  FlatList,
-  Image,
-  Pressable,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { FlatList, Pressable, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import dispatch from 'utils/dispatch/dispatch';
 import { getAllNotModeratedEvents } from 'state/events/operations/getAllNotModeratedEvents';
@@ -14,11 +8,8 @@ import { navigate } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
 import { Colors, FontStyle, fullScreen, Shadow } from 'assets/RootStyles';
 import { normalize } from 'assets/RootStyles/normalize';
-import { SharedElement } from 'react-navigation-shared-element';
 import { CustomText } from 'components/Text';
 import moment from 'moment/moment';
-import Icon from 'components/Svgs';
-import { ICON_NAMES } from 'components/Svgs/icon_names';
 import MImage from 'components/MImage';
 
 const NotModeratedEvents = ({ navigation }) => {

@@ -68,7 +68,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
                       }
                     />
                     <CustomText
-                      children={'Home'}
+                      children={'menu.home'}
                       globalStyle={{
                         ...FontStyle.text_h6.regular,
                         color: isFocused
@@ -91,7 +91,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
                       }
                     />
                     <CustomText
-                      children={'Map'}
+                      children={'menu.map'}
                       globalStyle={{
                         ...FontStyle.text_h6.regular,
                         color: isFocused
@@ -121,7 +121,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
                       }
                     />
                     <CustomText
-                      children={'Tickets'}
+                      children={'menu.tickets'}
                       globalStyle={{
                         ...FontStyle.text_h6.regular,
                         color: isFocused
@@ -144,7 +144,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
                       }
                     />
                     <CustomText
-                      children={'Profile'}
+                      children={'menu.profile'}
                       globalStyle={{
                         ...FontStyle.text_h6.regular,
                         color: isFocused

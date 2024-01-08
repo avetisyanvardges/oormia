@@ -1,9 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import httpClient from '../../../services/HttpClient';
-import {
-  fetchEventsEndpoint,
-  fetchNotModeratedEventsEndpoint,
-} from 'state/events/endpoints';
+import { fetchNotModeratedEventsEndpoint } from 'state/events/endpoints';
 
 export const getAllNotModeratedEvents = createAsyncThunk(
   'events/notModerated',

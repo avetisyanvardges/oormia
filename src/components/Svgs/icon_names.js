@@ -70,6 +70,18 @@ export const ICON_NAMES = {
     CHOOSE_SPEAKER: 'EmptyChooseSpeakerIcon',
     NOTIFICATION: 'EmptyNotificationIcon',
     GROUPS: 'EmptyGroupsIcon',
+    EVENTS: 'EmptyEventsIcon',
+  },
+  FLAGS: {
+    RU: 'ru',
+    AM: 'am',
+    EN: 'en',
+  },
+  CHECKBOX: {
+    RECTANGLE: 'rectangle_checkbox',
+    CIRCLE: 'circle_checkbox',
+    ON: 'checkbox_onIcon',
+    OFF: 'checkbox_off',
   },
   BUTTON_ICON: {
     FB: 'FB',

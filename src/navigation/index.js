@@ -20,6 +20,7 @@ import EditProfile from 'screens/AppLayer/EditProfile';
 import InviteMembersScreen from 'screens/AppLayer/Groups/InviteMembers';
 import AdminSettings from 'screens/AppLayer/AdminSettings';
 import AdminStack from 'navigation/StackNavigation/AdminStack';
+import LanguageScreen from 'screens/LanguageScreen';
 
 const Stack = createSharedElementStackNavigator();
 const StackNavigation = () => {
@@ -174,6 +175,18 @@ const StackNavigation = () => {
             gestureResponseDistance: fullScreen.height,
             ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
             gestureEnabled: false,
+            animationEnabled: true,
+          }}
+        />
+        <Stack.Screen
+          name={routNames.LANGUAGE}
+          component={LanguageScreen}
+          options={{
+            presentation: 'modal',
+            cardStyle: { backgroundColor: 'transparent' },
+            gestureResponseDistance: fullScreen.height,
+            ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
+            gestureEnabled: true,
             animationEnabled: true,
           }}
         />

@@ -40,4 +40,5 @@ export const routNames = {
   PREFERENCES: 'PreferencesScreen',
   RESET: 'Reset',
   SIGN_UP_USER_DATA: 'SignUpUserData',
+  LANGUAGE: 'languageScreen',
 };

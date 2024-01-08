@@ -12,7 +12,7 @@ export const userSignIn = createAsyncThunk(
       const { data } = await httpClient.post(url, payload);
       return { data };
     } catch (err) {
-      console.log(err, 'ERROR');
+      console.log(err.message, 'ERROR');
     }
   },
 );

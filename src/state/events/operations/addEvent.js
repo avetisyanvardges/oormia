@@ -3,8 +3,6 @@ import httpClient from '../../../services/HttpClient';
 import { addEventEndpoint } from 'state/events/endpoints';
 import { back } from 'services/NavigationService';
 import dispatch from 'utils/dispatch/dispatch';
-import { show_toast } from 'state/snackbars';
-import { toastMessageTypes } from 'state/snackbars/types';
 import { showModal } from 'state/modal';
 
 export const addEvent = createAsyncThunk(

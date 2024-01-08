@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import theme from '../theme';
 import user from '../user';
-import intl from '../Intl';
 import modal from '../modal';
 import groups from '../groups';
 import pictures from '../picture';
@@ -20,11 +19,11 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist/es/constants';
+
 const store = configureStore({
   reducer: {
     theme,
     user: persistReducer(persistConfig, user),
-    intl,
     modal,
     pictures,
     groups,

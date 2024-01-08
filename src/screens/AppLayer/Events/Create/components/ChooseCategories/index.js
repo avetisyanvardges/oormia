@@ -51,7 +51,7 @@ const ChooseCategories = ({
           paddingBottom: normalize(16),
         }}>
         <Button
-          title={'Next'}
+          title={'next'}
           textStyle={{ color: Colors.white }}
           onPress={selectCategories}
           disabled={!selectedCategories}

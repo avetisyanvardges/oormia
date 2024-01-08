@@ -54,8 +54,10 @@ const MenuLink = ({
           )}
           <CustomText
             children={title}
+            ellipsizeMode={'tail'}
+            numberOfLines={1}
             globalStyle={[
-              { ...FontStyle.text_h5.regular, color: textColor },
+              { ...FontStyle.text_h5.regular, color: textColor, flex: 1 },
               styles.title,
             ]}
           />

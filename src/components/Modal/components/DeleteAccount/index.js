@@ -66,16 +66,14 @@ const DeleteAccount = () => {
         </View>
         <View style={{ marginTop: normalize(10) }}>
           <CustomText
-            children={'Delete your account'}
+            children={'delete_your_account'}
             globalStyle={{
               ...FontStyle.text_h5.semi_bold,
               textAlign: 'center',
             }}
           />
           <CustomText
-            children={
-              'You will lose all your data by deleting your account. This action cannot  be undone'
-            }
+            children={'warning_delete_account'}
             globalStyle={{
               ...FontStyle.text_h5.regular,
               marginTop: normalize(16),
@@ -86,7 +84,7 @@ const DeleteAccount = () => {
       </View>
       <View style={{ marginTop: normalize(16) }}>
         <Button
-          title={'Delete Account'}
+          title={'delete_account'}
           textStyle={{ color: Colors.white }}
           containerStyle={{
             width: '100%',

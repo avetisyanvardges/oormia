@@ -36,7 +36,7 @@ const Settings = () => {
         <TouchableWithoutFeedback onPress={() => {}}>
           <View
             style={{
-              height: deviceInfo?.small_screen ? '50%' : '40%',
+              height: deviceInfo?.small_screen ? '60%' : '50%',
               paddingHorizontal: normalize(16),
               paddingTop: normalize(16),
               backgroundColor: Colors.oxford_blue['30'],
@@ -46,7 +46,7 @@ const Settings = () => {
             <View
               style={{ marginTop: normalize(4), marginBottom: normalize(12) }}>
               <Header
-                title={'Settings'}
+                title={'profile.settings'}
                 backButtonVisible={false}
                 containerStyle={{ paddingTop: 0 }}
               />
@@ -61,14 +61,18 @@ const Settings = () => {
             {/*  title="Preferences"*/}
             {/*  iconName={ICON_NAMES.PROFILE.PREFERENCES}*/}
             {/*/>*/}
-            {/*<MenuLink title="Language" iconName={ICON_NAMES.PROFILE.LANGUAGE} />*/}
+            <MenuLink
+              title="profile.language"
+              iconName={ICON_NAMES.PROFILE.LANGUAGE}
+              onPress={() => navigate(routNames.LANGUAGE)}
+            />
             {/*<MenuLink*/}
             {/*  title="Change password"*/}
             {/*  iconName={ICON_NAMES.LOCK}*/}
             {/*  onPress={() => navigate(routNames.ACCOUNT_SETTINGS)}*/}
             {/*/>*/}
             <MenuLink
-              title="Privacy Policy"
+              title="profile.privacy_policy"
               iconName={ICON_NAMES.PROFILE.PRIVACY_POLICY}
               onPress={() =>
                 navigate(routNames.WEB_VIEW, {
@@ -77,7 +81,7 @@ const Settings = () => {
               }
             />
             <MenuLink
-              title="Delete Account"
+              title="profile.delete_account"
               iconName={ICON_NAMES.REMOVE}
               onPress={() => dispatch(showModal({ type: 'delete_account' }))}
             />
@@ -105,7 +109,7 @@ const Settings = () => {
               </View>
               <CustomText
                 onPress={() => dispatch(userLogAuth())}
-                children={'Log out'}
+                children={'btn.log_out'}
                 globalStyle={{
                   ...FontStyle.text_h5.regular,
                   color: Colors.red['500'],
@@ -120,17 +124,12 @@ const Settings = () => {
               }}>
               <Text style={{ ...FontStyle.text_h6.regular }}>
                 <CustomText
-                  children={'App version'}
+                  children={'app_version'}
+                  values={{ version: deviceInfo.appVersion }}
                   globalStyle={{
                     color: Colors.oxford_blue['200'],
                   }}
                 />
-                <Text
-                  style={{
-                    color: Colors.oxford_blue['100'],
-                  }}>
-                  {' ' + deviceInfo.appVersion}
-                </Text>
               </Text>
             </View>
           </View>

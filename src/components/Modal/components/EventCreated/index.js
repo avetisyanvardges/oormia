@@ -9,11 +9,7 @@ import { normalize } from 'assets/RootStyles/normalize';
 import Button from 'components/Button';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
-import { deleteUser } from 'state/user/operations/deleteUser';
 import { useSelector } from 'react-redux';
-import { logout } from 'state/user';
-import { replace } from 'services/NavigationService';
-import { routNames } from 'constants/routNames';
 
 const EventCreated = () => {
   const { currentUser } = useSelector(({ user }) => user);

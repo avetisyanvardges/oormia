@@ -50,6 +50,7 @@ const HistorySection = () => {
   };
 
   const renderGroups = ({ item }) => {
+    console.log(item, 'ITEM');
     return (
       <View
         style={{
@@ -69,14 +70,14 @@ const HistorySection = () => {
         />
         <View>
           <CustomText
-            children={item.title}
+            children={item?.groupName}
             globalStyle={{
               ...FontStyle.text_h5.medium,
               marginLeft: normalize(12),
             }}
           />
           <CustomText
-            children={`Members: ${item.members}`}
+            children={`Members: ${item?.userId?.length}`}
             globalStyle={{
               ...FontStyle.text_h6.regular,
               marginTop: normalize(16),
@@ -120,7 +121,7 @@ const HistorySection = () => {
                   ? Colors.purple['500']
                   : Colors.oxford_blue['100'],
             }}
-            children={'Events'}
+            children={'profile.events'}
           />
         </TouchableOpacity>
         {/*<TouchableOpacity*/}
@@ -168,7 +169,7 @@ const HistorySection = () => {
                   ? Colors.purple['500']
                   : Colors.oxford_blue['100'],
             }}
-            children={'Groups'}
+            children={'profile.groups'}
           />
         </TouchableOpacity>
       </View>
@@ -221,7 +222,7 @@ const HistorySection = () => {
                     />
                   </View>
                   <CustomText
-                    children={'Create new group'}
+                    children={'create_new_group'}
                     globalStyle={{
                       ...FontStyle.text_h5.medium,
                       marginLeft: normalize(12),

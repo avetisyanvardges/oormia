@@ -7,13 +7,18 @@ import React, {
 } from 'react';
 import {
   Alert,
+  ImageBackground,
   Linking,
-  Pressable,
   TouchableOpacity,
   View,
 } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from 'react-native-reanimated';
 import { normalize } from 'assets/RootStyles/normalize';
-import { Colors, FontStyle, Shadow } from 'assets/RootStyles';
+import { Colors, FontStyle, fullScreen, Shadow } from 'assets/RootStyles';
 import { deviceInfo } from 'assets/deviceInfo';
 import { Marker } from 'react-native-maps';
 import { MAP_DEFAULT_THEME } from 'assets/Theme/MapTheme';
@@ -34,11 +39,15 @@ import MapView from 'react-native-map-clustering';
 import MImage from 'components/MImage';
 import { isEmpty } from 'lodash';
 import Lottie from 'lottie-react-native';
-import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { CustomText } from 'components/Text';
 import moment from 'moment/moment';
-import Underline from 'components/Underline';
-import { FlatList } from 'react-native-gesture-handler';
+
+const SPACING = normalize(16);
+const ITEM_SIZE = deviceInfo.ios
+  ? fullScreen.width * 0.85
+  : fullScreen.width * 0.89;
+const ITEM_HEIGHT = normalize(116);
+const SPACER_ITEM_SIZE = (fullScreen.width - ITEM_SIZE) / 2;
 
 const MapScreen = ({ navigation }) => {
   const mapRef = useRef();
@@ -47,9 +56,23 @@ const MapScreen = ({ navigation }) => {
   const insets = useSafeAreaInsets();
   const { events } = useSelector(({ events }) => events);
   const [showEvent, setShowEvent] = useState(false);
-  const [selectedEventId, setSelectedEventId] = useState('');
-  const [snapPoints] = useState(['1%', '30%', '90%']);
+  const [selectedEvent, setSelectedEvent] = useState('');
+  const [snapPoints] = useState(['1%', '30%']);
   const [snapIndex, setSnapIndex] = useState();
+  const translateY = useSharedValue(fullScreen.height);
+  const btnTranslateY = useSharedValue(fullScreen.height - normalize(30));
+  const scrollX = useRef(new Animated.Value(0)).current;
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateY: translateY.value }],
+    };
+  });
+
+  const btnAnimatedStyles = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateY: btnTranslateY.value }],
+    };
+  });
 
   const [currentLocation, setCurrentLocation] = useState({
     latitude: 40.7929026,
@@ -75,15 +98,15 @@ const MapScreen = ({ navigation }) => {
   const onViewableItemsChanged = ({ viewableItems }) => {
     setMarker({
       val: {
-        latitude: viewableItems[viewableItems.length - 1].item.lat,
-        longitude: viewableItems[viewableItems.length - 1].item.lon,
+        latitude: viewableItems?.[viewableItems.length - 2]?.item?.lat,
+        longitude: viewableItems?.[viewableItems.length - 2]?.item?.lon,
         latitudeDelta: 0.015,
         longitudeDelta: 0.015,
       },
       callback: () => {
         mapRef.current.animateToRegion({
-          latitude: viewableItems[viewableItems.length - 1].item.lat,
-          longitude: viewableItems[viewableItems.length - 1].item.lon,
+          latitude: viewableItems?.[viewableItems.length - 2]?.item?.lat,
+          longitude: viewableItems?.[viewableItems.length - 2]?.item?.lon,
           latitudeDelta: 0.001,
           longitudeDelta: 0.001,
         });
@@ -173,10 +196,9 @@ const MapScreen = ({ navigation }) => {
       ? region.longitudeDelta
       : 0.005;
     setRegion({ val: region });
-  };
-
-  const onRegionChange = region => {
-    setSnapIndex(0);
+    if (selectedEvent.id && !snapIndex) {
+      setSnapIndex(1);
+    }
   };
 
   const getCoordinate = location => {
@@ -211,6 +233,29 @@ const MapScreen = ({ navigation }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (snapIndex) {
+      btnTranslateY.value = withSpring(fullScreen.height - normalize(270), {
+        mass: 1,
+        damping: 50,
+        stiffness: 100,
+        overshootClamping: false,
+        restDisplacementThreshold: 0.01,
+        restSpeedThreshold: 0.01,
+      });
+      translateY.value = withSpring(
+        fullScreen.height -
+          ITEM_HEIGHT -
+          insets.bottom -
+          (deviceInfo.ios ? normalize(80) : normalize(60)) -
+          normalize(25),
+      );
+    } else {
+      btnTranslateY.value = withSpring(fullScreen.height - normalize(30));
+      translateY.value = withSpring(fullScreen.height);
+    }
+  }, [snapIndex]);
+
   const renderEvents = useMemo(() => {
     return events?.map((item, index) => {
       const focused =
@@ -226,19 +271,16 @@ const MapScreen = ({ navigation }) => {
             longitudeDelta: 0.015,
           }}
           onPress={() => {
+            setSelectedEvent(item);
             setSnapIndex(1);
-            console.log(index);
             const idx = events.findIndex(it => it.id === item.id);
             setTimeout(() => {
               listRef?.current?.scrollToIndex({
                 animated: true,
                 index: idx,
-                viewPosition: 0.5,
+                viewPosition: 0.6,
               });
             }, 500);
-            // navigate(routNames.EVENT_DETAIL, {
-            //   event: item,
-            // });
           }}>
           <View style={{ alignItems: 'center' }}>
             <View
@@ -266,97 +308,11 @@ const MapScreen = ({ navigation }) => {
                 />
               </SharedElement>
             </View>
-            {focused ? (
-              <View
-                style={{
-                  width: normalize(10),
-                  height: normalize(10),
-                  borderRadius: normalize(5),
-                  marginTop: normalize(10),
-                  backgroundColor: Colors.purple['500'],
-                }}
-              />
-            ) : null}
           </View>
         </Marker>
       );
     });
   });
-
-  const renderList = ({ item, index }) => {
-    return (
-      <Pressable
-        onPress={() => {
-          navigate(routNames.TICKET_DETAILS, {
-            event: item,
-          });
-        }}
-        style={{ flexDirection: 'row', minHeight: '20%' }}>
-        <SharedElement id={`item.${item?.id}.photo`}>
-          <MImage
-            source={{
-              uri:
-                item?.pictures?.[0]?.fileDownloadUri ||
-                item?.preferences?.[0]?.picture?.fileDownloadUri,
-            }}
-            style={{
-              width: normalize(60),
-              height: normalize(60),
-              borderRadius: normalize(12),
-            }}
-          />
-        </SharedElement>
-        <View style={{ flex: 1, marginLeft: normalize(16) }}>
-          <SharedElement id={`item.${item?.id}.info`}>
-            <CustomText
-              children={item.name}
-              globalStyle={{ ...FontStyle.text_h5.medium }}
-            />
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginTop: normalize(8),
-              }}>
-              <View>
-                <CustomText
-                  children={'Date'}
-                  globalStyle={{
-                    ...FontStyle.text_h6.regular,
-                    color: Colors.oxford_blue['100'],
-                  }}
-                />
-                <CustomText
-                  children={moment(item.startDate).format('ddd, MMM D, YYYY')}
-                  globalStyle={{
-                    ...FontStyle.text_h5.regular,
-                  }}
-                />
-              </View>
-              <View style={{ marginLeft: normalize(20) }}>
-                <CustomText
-                  children={'Time'}
-                  globalStyle={{
-                    ...FontStyle.text_h6.regular,
-                    color: Colors.oxford_blue['100'],
-                  }}
-                />
-                <CustomText
-                  children={moment(item.startDate).format('HH:mm')}
-                  globalStyle={{
-                    ...FontStyle.text_h5.regular,
-                  }}
-                />
-              </View>
-            </View>
-          </SharedElement>
-        </View>
-        {events[index + 1] ? (
-          <Underline style={{ marginVertical: normalize(16) }} />
-        ) : null}
-      </Pressable>
-    );
-  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -381,13 +337,15 @@ const MapScreen = ({ navigation }) => {
           <Icon name={ICON_NAMES.FILTER} size={normalize(26)} />
         </TouchableOpacity>
       </View>
-      <View
-        style={{
-          position: 'absolute',
-          bottom: normalize(150),
-          right: normalize(16),
-          zIndex: 999,
-        }}>
+      <Animated.View
+        style={[
+          {
+            position: 'absolute',
+            bottom: normalize(270),
+            right: normalize(16),
+            zIndex: 999,
+          },
+        ]}>
         {!isEmpty(events) ? (
           <TouchableOpacity
             onPress={() => navigate('EventsScreen')}
@@ -430,7 +388,7 @@ const MapScreen = ({ navigation }) => {
             />
           </View>
         </TouchableOpacity>
-      </View>
+      </Animated.View>
       <MapView
         ref={mapRef}
         style={{
@@ -447,7 +405,7 @@ const MapScreen = ({ navigation }) => {
         showsMyLocationButton={false}
         loadingEnabled={true}
         initialRegion={region.val}
-        onRegionChange={onRegionChange}
+        onTouchStart={() => setSnapIndex(0)}
         onRegionChangeComplete={onRegionChangeComplete}
         maxZoomLevel={19}
         minZoomLevel={3}
@@ -473,26 +431,175 @@ const MapScreen = ({ navigation }) => {
           </Marker>
         )}
       </MapView>
-      <BottomSheet
-        ref={bottomSheetRef}
-        snapPoints={snapPoints}
-        index={snapIndex}
-        onChange={index => setSnapIndex(index)}
-        style={{
-          borderTopLeftRadius: normalize(24),
-          borderTopRightRadius: normalize(24),
-          overflow: 'hidden',
-        }}
-        backgroundStyle={{
-          backgroundColor: Colors.white,
-        }}>
-        <BottomSheetFlatList
-          keyExtractor={item => item.id}
+      <Animated.View style={[animatedStyles]}>
+        <Animated.FlatList
+          horizontal
           ref={listRef}
-          data={events}
-          renderItem={renderList}
+          data={[{ id: 'left-spacer' }, ...events, { id: 'right-spacer' }]}
+          keyExtractor={item => item.id}
+          bounces={false}
+          decelerationRate={deviceInfo.ios ? 0 : 0.99}
+          renderToHardwareTextureAndroid
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+            { useNativeDriver: false },
+          )}
+          snapToInterval={ITEM_SIZE}
+          scrollEventThrottle={16}
+          snapToAlignment="start"
+          contentContainerStyle={{
+            paddingHorizontal: normalize(10),
+            paddingVertical: normalize(10),
+            alignItems: 'center',
+          }}
+          showsHorizontalScrollIndicator={false}
+          viewabilityConfigCallbackPairs={
+            viewabilityConfigCallbackPairs.current
+          }
+          renderItem={({ item, index }) => {
+            if (!item.eventType) {
+              return <View style={{ width: SPACER_ITEM_SIZE }} />;
+            }
+
+            const inputRange = [
+              (index - 2) * ITEM_SIZE,
+              (index - 1) * ITEM_SIZE,
+              index * ITEM_SIZE,
+            ];
+
+            const translateY = scrollX.interpolate({
+              inputRange,
+              outputRange: [0, -10, 0],
+              extrapolate: 'clamp',
+            });
+            return (
+              <View style={{ width: ITEM_SIZE }}>
+                <Animated.View
+                  style={{
+                    marginRight: SPACING,
+                    transform: [{ translateY }],
+                  }}>
+                  <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={() => {
+                      navigate(routNames.EVENT_DETAIL, {
+                        event: item,
+                      });
+                    }}
+                    key={index.toString()}
+                    style={{
+                      backgroundColor: Colors.white,
+                      borderRadius: normalize(20),
+                      paddingHorizontal: normalize(10),
+                      padding: normalize(16),
+                      ...Shadow,
+                      zIndex: 0,
+                    }}>
+                    <View style={{ flexDirection: 'row' }}>
+                      <ImageBackground
+                        source={{
+                          uri:
+                            item?.pictures?.[0]?.fileDownloadUri ||
+                            item?.preferences?.[0]?.picture?.fileDownloadUri,
+                        }}
+                        resizeMode="cover"
+                        style={{
+                          width: normalize(100),
+                          height: normalize(100),
+                          borderRadius: normalize(12),
+                          resizeMode: 'cover',
+                          overflow: 'hidden',
+                          backgroundColor: Colors.white,
+                          zIndex: 999,
+                          ...Shadow,
+                        }}>
+                        <View
+                          style={{
+                            width: normalize(100),
+                            height: normalize(100),
+                            borderRadius: normalize(12),
+                            backgroundColor: 'rgba(0,0,0, .3)',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                          }}>
+                          <CustomText
+                            children={moment(item.startDate).format('D')}
+                            globalStyle={{
+                              ...FontStyle.display_h3.medium,
+                              color: Colors.white,
+                            }}
+                          />
+                          <CustomText
+                            children={moment(item.startDate).format('MMM')}
+                            globalStyle={{
+                              ...FontStyle.text_h3.medium,
+                              color: Colors.white,
+                            }}
+                          />
+                        </View>
+                      </ImageBackground>
+                      <View style={{ flex: 1, marginHorizontal: 8 }}>
+                        <View style={{ flex: 1 }}>
+                          <CustomText
+                            children={item?.name?.slice(0, 30)}
+                            globalStyle={{
+                              fontWeight: 'bold',
+                              marginBottom: normalize(8),
+                            }}
+                          />
+                          <CustomText
+                            children={item?.description?.slice(0, 30)}
+                          />
+                        </View>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            marginTop: normalize(8),
+                          }}>
+                          <View>
+                            <CustomText
+                              children={'Time'}
+                              globalStyle={{
+                                ...FontStyle.text_h6.regular,
+                                color: Colors.oxford_blue['100'],
+                              }}
+                            />
+                            <CustomText
+                              children={moment(item.startDate).format('HH:mm')}
+                              globalStyle={{
+                                ...FontStyle.text_h5.regular,
+                              }}
+                            />
+                          </View>
+                          <View
+                            style={{
+                              paddingHorizontal: normalize(12),
+                              paddingVertical: normalize(5),
+                              borderRadius: normalize(12),
+                              backgroundColor: item.price
+                                ? Colors.yellow['500']
+                                : Colors.green['500'],
+                            }}>
+                            <CustomText
+                              children={item.price ? `${item.price} Դ` : 'Free'}
+                              globalStyle={{
+                                ...FontStyle.text_h5.regular,
+                                color: Colors.white,
+                              }}
+                            />
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                </Animated.View>
+              </View>
+            );
+          }}
         />
-      </BottomSheet>
+      </Animated.View>
     </View>
   );
 };

@@ -34,6 +34,9 @@ const styles = StyleSheet.create({
     bottom: 0,
     height: normalize(3),
   },
+  validation_example: {
+    minWidth: normalize(30),
+  },
   labelStyle: {
     // width: RW(330),
     // paddingVertical: 0,

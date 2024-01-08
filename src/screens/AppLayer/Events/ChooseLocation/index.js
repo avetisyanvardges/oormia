@@ -22,13 +22,12 @@ import Lottie from 'lottie-react-native';
 import { CustomText } from 'components/Text';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import Geolocation from 'react-native-geolocation-service';
-import RNAndroidLocationEnabler from 'react-native-android-location-enabler';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import Permissions from 'react-native-permissions';
 
 // Geocoder.init('AIzaSyBdStOT9aHzvGXGWzR39CUsOX199NEHJ7M');
-import YaMap, { Geocoder } from 'react-native-yamap';
+import { Geocoder } from 'react-native-yamap';
 
 Geocoder.init('7e736f2e-7054-4f53-a8ba-e543301d6a0e');
 const ChooseLocation = ({ route }) => {

@@ -72,7 +72,7 @@ function OTPScreen({ navigation, route }) {
         backgroundColor: Colors.white,
       }}>
       <Header
-        title={'Code Verification'}
+        title={'code_verification'}
         backPress={() => {
           console.log('OTPScreen back');
 
@@ -80,7 +80,7 @@ function OTPScreen({ navigation, route }) {
         }}
       />
       <CustomText
-        children={'Enter verification code here'}
+        children={'enter_verification_code'}
         globalStyle={{
           ...FontStyle.text_h5.regular,
           color: Colors.grey['100'],
@@ -104,7 +104,7 @@ function OTPScreen({ navigation, route }) {
         }}
         style={{ flexDirection: 'row' }}>
         <CustomText
-          children={'Send message again'}
+          children={'send_message_again'}
           globalStyle={{
             ...FontStyle.text_h5.regular,
             color: Colors.grey['100'],

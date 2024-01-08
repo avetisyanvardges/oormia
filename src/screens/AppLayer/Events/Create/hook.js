@@ -33,6 +33,7 @@ function useContainer({ route }) {
         speaker={speaker}
         setSpeaker={setSpeaker}
         setScreen={setScreen}
+        route={route}
       />
     ),
     create: (
@@ -56,6 +57,10 @@ function useContainer({ route }) {
       }
 
       setScreen(route.params.screen);
+    }
+
+    if (route?.params?.speaker) {
+      setSpeaker(route?.params?.speaker);
     }
   }, [route]);
 

@@ -47,9 +47,12 @@ export const styles = StyleSheet.create({
     borderRadius: 50,
   },
   title: {
-    ...FontStyle.display_h6.regular,
+    ...FontStyle.text_h3.regular,
     marginLeft: 'auto',
     marginRight: 'auto',
+  },
+  description: {
+    ...FontStyle.text_h5.regular,
   },
   btn: {
     flexDirection: 'row',

@@ -13,7 +13,7 @@ import MImage from 'components/MImage';
 
 const UserInfoSection = () => {
   const { currentUser } = useSelector(({ user }) => user);
-  const { firstName, lastName } = currentUser;
+  const { firstName, lastName } = currentUser || {};
   const [imageError, setImageError] = useState(false);
   const mutatedImage = currentUser?.pictures?.[
     currentUser?.pictures.length - 1
@@ -211,7 +211,7 @@ const UserInfoSection = () => {
                 <Icon name={ICON_NAMES.EDIT_PROFILE} size={normalize(20)} />
               ) : null
             }
-            title={!currentUser ? 'Message' : 'Edit profile'}
+            title={!currentUser ? 'Message' : 'edit_profile'}
             textStyle={{
               flex: 1,
               textAlign: 'center',

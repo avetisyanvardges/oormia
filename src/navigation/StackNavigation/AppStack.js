@@ -6,7 +6,6 @@ import { createSharedElementStackNavigator } from 'react-navigation-shared-eleme
 import WebViewScreen from 'screens/AppLayer/WebView';
 import AddFreeDays from 'screens/AppLayer/Profile/AddFreeDays';
 import TicketDetails from 'screens/AppLayer/Tickets/Details';
-import { TransitionPresets } from '@react-navigation/stack';
 import NotificationScreen from 'screens/AppLayer/Notifications';
 
 const Stack = createSharedElementStackNavigator();

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { back } from 'services/NavigationService';
 import { Styles } from './styles';
 import { Colors, FontStyle } from 'assets/RootStyles';
@@ -8,6 +8,7 @@ import { deviceInfo } from 'assets/deviceInfo';
 import Input from 'components/Input';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import Icon from 'components/Svgs';
+import { CustomText } from 'components/Text';
 
 const Header = ({
   backPress = () => back(),
@@ -32,13 +33,12 @@ const Header = ({
   return (
     <View style={[styles.container, containerStyle]}>
       {backButtonVisible && (
-        <View style={[styles.icon_container, backIconContainer]}>
-          <Icon
-            onPress={backPress}
-            name={ICON_NAMES.ARROW.LEFT}
-            color={backIconColor}
-          />
-        </View>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={backPress}
+          style={[styles.icon_container, backIconContainer]}>
+          <Icon name={ICON_NAMES.ARROW.LEFT} color={backIconColor} />
+        </TouchableOpacity>
       )}
       {renderTitle ? (
         renderTitle(title)
@@ -47,12 +47,14 @@ const Header = ({
           style={{
             flex: 1,
             alignItems: 'center',
-            paddingRight: normalize(30),
           }}>
-          <Text
-            style={{ ...FontStyle.text_h4.medium, color: Colors.grey['900'] }}>
-            {title}
-          </Text>
+          <CustomText
+            children={title}
+            globalStyle={{
+              ...FontStyle.text_h4.medium,
+              color: Colors.grey['900'],
+            }}
+          />
         </View>
       ) : null}
 

@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 import { SharedElement } from 'react-navigation-shared-element';
 import { navigate } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
+import { isEmpty } from 'lodash';
 
 const TopEvents = () => {
   const { week_top_events } = useSelector(({ events }) => events);
@@ -159,7 +160,7 @@ const TopEvents = () => {
   );
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <View
         style={{
           marginHorizontal: normalize(16),
@@ -168,7 +169,12 @@ const TopEvents = () => {
           alignItems: 'center',
           justifyContent: 'space-between',
         }}>
-        <Text style={{ ...FontStyle.text_h4.regular }}>Best of the Week</Text>
+        <CustomText
+          children={'best_of_the_week'}
+          globalStyle={{
+            ...FontStyle.text_h4.regular,
+          }}
+        />
         {/*<Text*/}
         {/*  style={{*/}
         {/*    ...FontStyle.text_h5.regular,*/}
@@ -182,11 +188,38 @@ const TopEvents = () => {
         data={week_top_events}
         renderItem={renderTopEventItem}
         showsHorizontalScrollIndicator={false}
-        ItemSeparatorComponent={() => <View style={{ width: normalize(8) }} />}
-        contentContainerStyle={{
-          paddingHorizontal: normalize(16),
-          paddingBottom: normalize(10),
+        ListEmptyComponent={() => {
+          return (
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: 10,
+              }}>
+              <Icon
+                name={ICON_NAMES.EMPTY_STATES.EVENTS}
+                size={normalize(70)}
+              />
+              <CustomText
+                children={'no_events_found'}
+                globalStyle={{
+                  ...FontStyle.text_h5.medium,
+                  color: Colors.grey['500'],
+                  marginTop: normalize(4),
+                }}
+              />
+            </View>
+          );
         }}
+        ItemSeparatorComponent={() => <View style={{ width: normalize(8) }} />}
+        contentContainerStyle={[
+          {
+            paddingHorizontal: normalize(16),
+            paddingBottom: normalize(10),
+          },
+          isEmpty(week_top_events) ? { flex: 1 } : null,
+        ]}
       />
     </View>
   );

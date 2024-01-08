@@ -70,6 +70,11 @@ import { EmptyNotificationsIcon } from 'components/Svgs/EmptyStates/EmptyNotific
 import { EmptyGroupsIcon } from 'components/Svgs/EmptyStates/EmptyGroups';
 import { NotModeratedEventIcon } from 'components/Svgs/Admin/NotModeratedEvent';
 import { CategoriesIcon } from 'components/Svgs/Admin/Categories';
+import { EmptyEventIcon } from 'components/Svgs/EmptyStates/EmptyEvent';
+import { AmFlagIcon } from 'components/Svgs/Flag/Am';
+import { RuFlagIcon } from 'components/Svgs/Flag/Ru';
+import { EnFlagIcon } from 'components/Svgs/Flag/En';
+import { CheckboxOnIcon } from 'components/Svgs/CheckboxOn';
 
 export const ICONS = {
   [ICON_NAMES.ADMIN.NOT_MODERATED_EVENT]: ({ width, height, size, color }) => (
@@ -97,6 +102,18 @@ export const ICONS = {
   ),
   [ICON_NAMES.BUTTON_ICON.LINKEDIN]: ({ width, height, size, color }) => (
     <Linkedin width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.CHECKBOX.ON]: (size, width, height, color) => (
+    <CheckboxOnIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.FLAGS.AM]: ({ width, height, size, color }) => (
+    <AmFlagIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.FLAGS.RU]: ({ width, height, size, color }) => (
+    <RuFlagIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.FLAGS.EN]: ({ width, height, size, color }) => (
+    <EnFlagIcon width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.ASSETS_SVG.CHECKBOX]: ({ width, height, size, color }) => (
     <Checkbox width={width} height={height} size={size} color={color} />
@@ -221,6 +238,9 @@ export const ICONS = {
   ),
   [ICON_NAMES.EMPTY_STATES.GROUPS]: ({ width, height, size, color }) => (
     <EmptyGroupsIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.EMPTY_STATES.EVENTS]: ({ width, height, size, color }) => (
+    <EmptyEventIcon width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.REMOVE]: ({ width, height, size, color }) => (
     <RemoveIcon width={width} height={height} size={size} color={color} />

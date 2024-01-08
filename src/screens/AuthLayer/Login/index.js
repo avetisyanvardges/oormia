@@ -5,8 +5,6 @@ import Input from 'components/Input';
 import ScreenMask from '../../../components/screenMask';
 import { styles } from 'screens/AuthLayer/Login/styles';
 import { routNames } from 'constants/routNames';
-import Icon from 'components/Svgs';
-import { ICON_NAMES } from 'components/Svgs/icon_names';
 import Button from 'components/Button';
 import { useNavigation } from '@react-navigation/native';
 import { navigate, replace } from 'services/NavigationService';
@@ -18,6 +16,8 @@ import { normalize } from 'assets/RootStyles/normalize';
 import { deviceInfo } from 'assets/deviceInfo';
 import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
+import { yupResolver } from '@hookform/resolvers/yup';
+import signUpSchema from 'utils/validations/signup';
 
 const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
   const [switchPage, setSwitchPage] = useState(true);
@@ -30,10 +30,12 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
     getValues,
     formState: { errors, isValid, isDirty },
   } = useForm({
+    mode: 'all',
     defaultValues: {
       email: '',
       password: '',
     },
+    resolver: page === SIGN_UP ? yupResolver(signUpSchema) : null,
   });
 
   useEffect(() => {
@@ -58,23 +60,24 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <View style={{ flex: 1 }}>
           <CustomText
-            children={page === SIGN_UP ? 'Sign Up' : 'Log In'}
+            children={page === SIGN_UP ? 'sign_up.title' : 'login.title'}
             globalStyle={styles.textStyle}
           />
-          <CustomText
-            children={'Enter your email and password'}
-            globalStyle={styles.title}
-          />
+          <CustomText children={'login.subtitle'} globalStyle={styles.title} />
           <Controller
             name={'email'}
             control={control}
-            render={({ field: { value, onChange, onBlur } }) => (
+            render={({
+              field: { value, onChange, onBlur },
+              fieldState: { error },
+            }) => (
               <Input
                 // label={'Email'}
-                placeholder="Enter mobile or e-mail"
+                placeholder={'email'}
                 value={value}
                 onChange={onChange}
-                errorText={value && errors.email}
+                errorText={error?.message}
+                validated={error?.message}
                 onBlur={onBlur}
               />
             )}
@@ -82,22 +85,30 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
           <Controller
             name={'password'}
             control={control}
-            render={({ field: { value, onChange, onBlur } }) => (
-              <Input
-                // label={'Password'}
-                placeholder="Password"
-                value={value}
-                onChange={onChange}
-                errorText={value && errors.password}
-                onBlur={onBlur}
-                secure={true}
-              />
-            )}
+            render={({
+              field: { value, onChange, onBlur },
+              fieldState: { error },
+            }) => {
+              console.log(error, 'messs');
+              return (
+                <Input
+                  // label={'Password'}
+                  placeholder={'password'}
+                  value={value}
+                  onChange={onChange}
+                  errorText={error?.message}
+                  validated={error?.message}
+                  onBlur={onBlur}
+                  secure={true}
+                  showValidation={page === SIGN_UP}
+                />
+              );
+            }}
           />
           {page !== SIGN_UP ? (
             <TouchableOpacity onPress={() => navigate(routNames.FORGOT)}>
               <CustomText
-                children="Forgot password?"
+                children={'forgot_password'}
                 globalStyle={styles.signInText}
               />
             </TouchableOpacity>
@@ -109,13 +120,13 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
                 page === FORGOT
                   ? 'Reset'
                   : page === SIGN_UP
-                  ? 'Create'
-                  : 'Login'
+                  ? 'sign_up'
+                  : 'login'
               }
               textStyle={styles.buttonTextStyle}
               onPress={handleSubmit(handlerSubmit)}
               containerStyle={{ marginTop: normalize(16) }}
-              // disabled={!(isValid && isDirty)}
+              disabled={page === SIGN_UP ? !isValid || !isDirty : false}
             />
           </View>
         </View>
@@ -143,14 +154,18 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
           {/*</View>*/}
           <View style={styles.signInTextContainer}>
             <CustomText
-              children="Don’t have an account ?"
+              children={
+                page === SIGN_UP
+                  ? 'already_have_an_account'
+                  : 'dont_have_an_account'
+              }
               globalStyle={styles.textButtonText}
             />
             <TouchableOpacity
               style={styles.lineBody}
               onPress={() => setPage(page === SIGN_UP ? LOGIN : SIGN_UP)}>
               <CustomText
-                children={page === SIGN_UP ? 'Log In' : 'Sign Up'}
+                children={page === SIGN_UP ? 'btn.login' : 'btn.sign_up'}
                 globalStyle={styles.signInText}
               />
             </TouchableOpacity>

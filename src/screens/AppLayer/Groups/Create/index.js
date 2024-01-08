@@ -54,6 +54,7 @@ function CreateGroup(props) {
   }, []);
 
   const onSubmit = values => {
+    console.log(invited_members, 'INVIYEdd');
     const body = {
       ...values,
       groupName: values.name,

@@ -8,7 +8,7 @@ import { refreshToken } from 'state/user/operations/refreshToken';
 
 const initialState = {
   currentUser: '',
-  speakers: {},
+  speakers: [],
   token: '',
   refresh_token: '',
   verification_token: '',

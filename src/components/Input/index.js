@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
   Pressable,
-  Text,
   TextInput,
   TouchableOpacity,
   View,
@@ -12,8 +11,10 @@ import { normalize } from 'assets/RootStyles/normalize';
 import styles from './style';
 import { CustomText } from '../Text';
 import Icon from 'components/Svgs';
-import { ICON_NAMES } from 'components/Svgs/icon_names';
 import { Colors, FontStyle } from 'assets/RootStyles';
+import i18n from 'i18next';
+import * as Animatable from 'react-native-animatable';
+import { ICON_NAMES } from 'components/Svgs/icon_names';
 
 function Input({
   label = '',
@@ -34,9 +35,28 @@ function Input({
   multiline = false,
   autoCapitalize = 'none',
   backgroundColor = Colors.oxford_blue['30'],
+  values,
+  showValidation,
 }) {
+  const { t } = i18n;
   const [focused, setFocused] = useState(false);
   const [viewPassword, setViewPassword] = useState(true);
+  const translatedPlaceholder = placeholder
+    ? t(`placeholder.${placeholder}`, values)
+    : t('label.empty', values);
+
+  function validate(password, type) {
+    const reg = {
+      char: new RegExp(/^[\s\S]{8,32}$/),
+      upper: new RegExp(/[A-Z]/),
+      lower: new RegExp(/[a-z]/),
+      number: new RegExp(/[0-9]/),
+      symbol: new RegExp(/(?=(.*[!@#$%^&*()\-__+.])+)/),
+    };
+    const key = reg[type];
+    return password.match(key);
+  }
+
   return (
     <KeyboardAvoidingView
       {...(deviceInfo.ios
@@ -54,7 +74,7 @@ function Input({
         onPress={onPress}>
         {label ? (
           <CustomText
-            children={label}
+            children={`label.${label}`}
             globalStyle={{
               ...styles.label,
               ...labelStyle,
@@ -63,10 +83,10 @@ function Input({
         ) : null}
         <View
           style={{
-            backgroundColor: focused
+            backgroundColor: validated
+              ? Colors.red['500']
+              : focused
               ? Colors.purple['500']
-              : validated
-              ? Colors.red
               : Colors.oxford_blue['30'],
             borderRadius: normalize(8),
             paddingBottom: normalize(1.5),
@@ -87,7 +107,7 @@ function Input({
                   style={styles.inputDefault}
                   onPressIn={onPress}
                   placeholderTextColor={Colors.oxford_blue['200']}
-                  placeholder={placeholder}
+                  placeholder={translatedPlaceholder}
                   value={value}
                   onChangeText={onChange}
                   onBlur={() => {
@@ -128,22 +148,24 @@ function Input({
             </View>
           </View>
         </View>
-        {validated ? (
+        {validated && errorText !== 'label.empty' ? (
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
               marginTop: normalize(2),
             }}>
-            <Text
-              numberOfLines={1}
-              ellipsizeMode="tail"
-              style={{
-                ...FontStyle.text_h6.regular,
-                color: Colors.red['500'],
-              }}>
-              {errorText ? <CustomText children={errorText} /> : null}
-            </Text>
+            {errorText ? (
+              <CustomText
+                children={errorText}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                globalStyle={{
+                  ...FontStyle.text_h6.regular,
+                  color: Colors.red['500'],
+                }}
+              />
+            ) : null}
           </View>
         ) : null}
 
@@ -154,6 +176,265 @@ function Input({
               color: errorText ? Colors.red : Colors.gray,
             }}
           />
+        ) : null}
+        {(value || validated) && showValidation ? (
+          <View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: normalize(5),
+              }}>
+              {validate(value, 'lower') ? (
+                <Animatable.View
+                  animation={'pulse'}
+                  easing={'ease-out'}
+                  useNativeDriver
+                  style={{
+                    marginRight: normalize(8),
+                  }}>
+                  <Icon name={ICON_NAMES.CHECKBOX.ON} />
+                </Animatable.View>
+              ) : (
+                <Animatable.View
+                  animation={'tada'}
+                  easing={'ease-out'}
+                  useNativeDriver
+                  style={{
+                    width: normalize(24),
+                    height: normalize(24),
+                    backgroundColor: Colors.red['50'],
+                    borderRadius: normalize(12),
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginRight: normalize(5),
+                  }}>
+                  <Icon
+                    name={ICON_NAMES.INPUT_BTN.CLEAR}
+                    color={Colors.red['500']}
+                  />
+                </Animatable.View>
+              )}
+              <CustomText
+                children={'password.validation.lower'}
+                ellipsizeMode={'tail'}
+                numberOfLines={1}
+                globalStyle={[
+                  {
+                    color: validate(value, 'lower')
+                      ? Colors.green['500']
+                      : !validate(value, 'lower') && validated
+                      ? Colors.red['500']
+                      : Colors.oxford_blue['100'],
+                  },
+                ]}
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: normalize(5),
+              }}>
+              {validate(value, 'upper') ? (
+                <Animatable.View
+                  animation={'pulse'}
+                  easing={'ease-out'}
+                  useNativeDriver
+                  style={{
+                    marginRight: normalize(8),
+                  }}>
+                  <Icon name={ICON_NAMES.CHECKBOX.ON} />
+                </Animatable.View>
+              ) : (
+                <Animatable.View
+                  animation={'tada'}
+                  useNativeDriver
+                  style={{
+                    width: normalize(24),
+                    height: normalize(24),
+                    backgroundColor: Colors.red['50'],
+                    borderRadius: normalize(12),
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginRight: normalize(5),
+                  }}>
+                  <Icon
+                    name={ICON_NAMES.INPUT_BTN.CLEAR}
+                    color={Colors.red['500']}
+                  />
+                </Animatable.View>
+              )}
+              <CustomText
+                children={'password.validation.upper'}
+                ellipsizeMode={'tail'}
+                numberOfLines={1}
+                globalStyle={[
+                  styles.validation_description,
+                  {
+                    color: validate(value, 'upper')
+                      ? Colors.green['500']
+                      : !validate(value, 'upper') && validated
+                      ? Colors.red['500']
+                      : Colors.oxford_blue['100'],
+                  },
+                ]}
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: normalize(5),
+              }}>
+              {validate(value, 'symbol') ? (
+                <Animatable.View
+                  animation={'pulse'}
+                  easing={'ease-out'}
+                  useNativeDriver
+                  style={{
+                    marginRight: normalize(8),
+                  }}>
+                  <Icon name={ICON_NAMES.CHECKBOX.ON} />
+                </Animatable.View>
+              ) : (
+                <Animatable.View
+                  animation={'tada'}
+                  useNativeDriver
+                  style={{
+                    width: normalize(24),
+                    height: normalize(24),
+                    backgroundColor: Colors.red['50'],
+                    borderRadius: normalize(12),
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginRight: normalize(5),
+                  }}>
+                  <Icon
+                    name={ICON_NAMES.INPUT_BTN.CLEAR}
+                    color={Colors.red['500']}
+                  />
+                </Animatable.View>
+              )}
+              <CustomText
+                children={'password.validation.symbol'}
+                ellipsizeMode={'tail'}
+                numberOfLines={1}
+                globalStyle={[
+                  styles.validation_description,
+                  {
+                    color: validate(value, 'symbol')
+                      ? Colors.green['500']
+                      : !validate(value, 'symbol') && validated
+                      ? Colors.red['500']
+                      : Colors.oxford_blue['100'],
+                  },
+                ]}
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: normalize(5),
+              }}>
+              {validate(value, 'number') ? (
+                <Animatable.View
+                  animation={'pulse'}
+                  easing={'ease-out'}
+                  useNativeDriver
+                  style={{
+                    marginRight: normalize(8),
+                  }}>
+                  <Icon name={ICON_NAMES.CHECKBOX.ON} />
+                </Animatable.View>
+              ) : (
+                <Animatable.View
+                  animation={'tada'}
+                  useNativeDriver
+                  style={{
+                    width: normalize(24),
+                    height: normalize(24),
+                    backgroundColor: Colors.red['50'],
+                    borderRadius: normalize(12),
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginRight: normalize(5),
+                  }}>
+                  <Icon
+                    name={ICON_NAMES.INPUT_BTN.CLEAR}
+                    color={Colors.red['500']}
+                  />
+                </Animatable.View>
+              )}
+              <CustomText
+                children={'password.validation.number'}
+                ellipsizeMode={'tail'}
+                numberOfLines={1}
+                globalStyle={[
+                  styles.validation_description,
+                  {
+                    color: validate(value, 'number')
+                      ? Colors.green['500']
+                      : !validate(value, 'number') && validated
+                      ? Colors.red['500']
+                      : Colors.oxford_blue['100'],
+                  },
+                ]}
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: normalize(5),
+              }}>
+              {validate(value, 'char') ? (
+                <Animatable.View
+                  animation={'pulse'}
+                  easing={'ease-out'}
+                  useNativeDriver
+                  style={{
+                    marginRight: normalize(8),
+                  }}>
+                  <Icon name={ICON_NAMES.CHECKBOX.ON} />
+                </Animatable.View>
+              ) : (
+                <Animatable.View
+                  animation={'tada'}
+                  useNativeDriver
+                  style={{
+                    width: normalize(24),
+                    height: normalize(24),
+                    backgroundColor: Colors.red['50'],
+                    borderRadius: normalize(12),
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginRight: normalize(5),
+                  }}>
+                  <Icon
+                    name={ICON_NAMES.INPUT_BTN.CLEAR}
+                    color={Colors.red['500']}
+                  />
+                </Animatable.View>
+              )}
+              <CustomText
+                children={'password.validation.char'}
+                ellipsizeMode={'tail'}
+                numberOfLines={1}
+                globalStyle={[
+                  styles.validation_description,
+                  {
+                    color: validate(value, 'char')
+                      ? Colors.green['500']
+                      : !validate(value, 'char') && validated
+                      ? Colors.red['500']
+                      : Colors.oxford_blue['100'],
+                  },
+                ]}
+              />
+            </View>
+          </View>
         ) : null}
       </TouchableOpacity>
     </KeyboardAvoidingView>

@@ -6,6 +6,12 @@ export const updateEventEndpoint = id => endpoint('put', `event/${id}`);
 export const deleteEventEndpoint = id => endpoint('delete', `event/${id}`);
 export const fetchEventsEndpoint = endpoint('get', 'event/');
 export const fetchEventByIdEndpoint = id => endpoint('get', `event/${id}`);
+export const fetchRequestedEventsEndpoint = endpoint(
+  'get',
+  'event/requested-events',
+);
+
+export const generateQrEndpoint = endpoint('get', 'event/payForEvent');
 export const fetchNotModeratedEventsEndpoint = endpoint(
   'get',
   'event/not-moderated',

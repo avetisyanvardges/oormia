@@ -12,20 +12,22 @@ const HomeHeaderComponent = () => {
   return (
     <View
       style={{
+        flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginHorizontal: normalize(16),
         marginBottom: normalize(16),
       }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <CustomText
-          children={'Find nearby event'}
-          globalStyle={{
-            ...FontStyle.text_h3.medium,
-          }}
-        />
-      </View>
+      <CustomText
+        children={'find_nearby_event'}
+        ellipsizeMode={'tail'}
+        numberOfLines={1}
+        globalStyle={{
+          flex: 1,
+          ...FontStyle.text_h3.medium,
+        }}
+      />
       <View
         style={{
           flexDirection: 'row',

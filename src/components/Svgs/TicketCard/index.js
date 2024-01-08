@@ -1,18 +1,7 @@
 import * as React from 'react';
-import Svg, {
-  Defs,
-  LinearGradient,
-  Path,
-  Pattern,
-  Stop,
-  Use,
-  Image,
-  G,
-  ClipPath,
-} from 'react-native-svg';
+import Svg, { ClipPath, Defs, G, Path } from 'react-native-svg';
 
 import { normalize } from 'assets/RootStyles/normalize';
-import { View } from 'react-native';
 import { Colors } from 'assets/RootStyles';
 
 const TicketCard = ({ width, height, color, imagePath }) => {

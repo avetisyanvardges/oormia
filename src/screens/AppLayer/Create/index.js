@@ -53,6 +53,7 @@ const CreateEvent = ({ navigation, route, goBack }) => {
         speaker={speaker}
         setSpeaker={setSpeaker}
         setScreen={setScreen}
+        route={route}
       />
     ),
   };

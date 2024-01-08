@@ -7,6 +7,7 @@ import { getEventHistory } from 'state/events/operations/getEventHistory';
 import { userSlice } from 'state/user';
 import { getUpcomingEventHistory } from 'state/events/operations/getUpcomingEventHistory';
 import { getAllNotModeratedEvents } from 'state/events/operations/getAllNotModeratedEvents';
+import { getRequestedEvents } from 'state/events/operations/getRequestedEvents';
 
 const initialState = {
   loader: false,
@@ -16,6 +17,7 @@ const initialState = {
   selected_event: {},
   event_history: [],
   not_moderated: [],
+  requested_events: [],
 };
 
 export const eventsSlice = createSlice({
@@ -41,7 +43,9 @@ export const eventsSlice = createSlice({
     builder.addCase(getUpcomingEventHistory.fulfilled, (state, action) => {
       state.upcoming = action?.payload;
     });
-
+    builder.addCase(getRequestedEvents.fulfilled, (state, action) => {
+      state.requested_events = action?.payload;
+    });
     builder.addCase(getAllNotModeratedEvents.fulfilled, (state, action) => {
       state.not_moderated = action?.payload?.filter(
         ev => ev.eventType !== 'REQUESTED',

@@ -7,6 +7,8 @@ import { deviceInfo } from 'assets/deviceInfo';
 import { back } from 'services/NavigationService';
 import Header from 'components/Header';
 import { Colors } from 'assets/RootStyles';
+import dispatch from 'utils/dispatch/dispatch';
+import { generateQr } from 'state/events/operations/generateQr';
 
 let canGoBack = false;
 
@@ -29,6 +31,28 @@ const WebViewScreen = ({ route }) => {
 
   const handleNavigationStateChange = navState => {
     canGoBack = navState.canGoBack;
+
+    const { url } = navState;
+    console.log(url, 'URL');
+
+    // Check if the URL contains the desired parameter (responseCode)
+    if (url.includes('resposneCode=00') || url.includes('responseCode=00')) {
+      setLoad(true);
+      const { eventId, ticketCount } = route.params;
+      dispatch(
+        generateQr({
+          params: { eventId, ticketCount },
+          callback: () => {
+            back();
+            setTimeout(() => {
+              setLoad(false);
+            }, 400);
+          },
+        }),
+      );
+      // Success logic here
+      console.log('Success');
+    }
   };
 
   return (
@@ -54,7 +78,7 @@ const WebViewScreen = ({ route }) => {
         onError={error => console.error('WebView Error:', error)}
         onHttpError={e => {
           console.log(e, 'onHttpError');
-          navigation.goBack();
+          // navigation.goBack();
         }}
         onNavigationStateChange={handleNavigationStateChange}
         setSupportMultipleWindows

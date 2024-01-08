@@ -6,6 +6,7 @@ import { Colors, FontStyle, Shadow } from 'assets/RootStyles';
 import useContainer from 'screens/AppLayer/Events/Create/hook';
 import Header from 'components/Header';
 import { back } from 'services/NavigationService';
+import { CustomText } from 'components/Text';
 
 Geocoder.init('AIzaSyBdStOT9aHzvGXGWzR39CUsOX199NEHJ7M');
 const CreateEvent = ({ navigation, route, goBack }) => {
@@ -44,16 +45,18 @@ const CreateEvent = ({ navigation, route, goBack }) => {
                 paddingVertical: normalize(8),
                 ...Shadow,
               }}>
-              <Text
-                style={{
+              <CustomText
+                children={'create_event'}
+                ellipsizeMode={'tail'}
+                numberOfLines={1}
+                globalStyle={{
                   ...FontStyle.text_h5.regular,
                   color:
                     screen !== 'choose_category'
                       ? Colors.purple['500']
                       : Colors.white,
-                }}>
-                Create event
-              </Text>
+                }}
+              />
             </Pressable>
             <Pressable
               onPress={() => setScreen('choose_a_speaker')}
@@ -70,16 +73,18 @@ const CreateEvent = ({ navigation, route, goBack }) => {
                 paddingVertical: normalize(8),
                 ...Shadow,
               }}>
-              <Text
-                style={{
+              <CustomText
+                children={'send_request'}
+                ellipsizeMode={'tail'}
+                numberOfLines={1}
+                globalStyle={{
                   ...FontStyle.text_h5.regular,
                   color:
                     screen !== 'choose_a_speaker'
                       ? Colors.purple['500']
                       : Colors.white,
-                }}>
-                Send a request
-              </Text>
+                }}
+              />
             </Pressable>
           </View>
         </View>

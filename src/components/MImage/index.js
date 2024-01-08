@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import LottieView from 'lottie-react-native';

@@ -1,24 +1,13 @@
 import React from 'react';
-import {
-  Keyboard,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
+import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 import MenuLink from 'components/MenuLink';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import { normalize } from 'assets/RootStyles/normalize';
-import { Colors, FontStyle } from 'assets/RootStyles';
+import { Colors } from 'assets/RootStyles';
 import Header from 'components/Header';
-import Icon from 'components/Svgs';
-import { CustomText } from 'components/Text';
 import { back, navigate } from 'services/NavigationService';
 import { deviceInfo } from 'assets/deviceInfo';
-import { userLogAuth } from 'state/user/operations/userLogOut';
-import dispatch from 'utils/dispatch/dispatch';
 import { routNames } from 'constants/routNames';
-import { showModal } from 'state/modal';
 
 const AdminSettings = ({ navigation }) => {
   return (

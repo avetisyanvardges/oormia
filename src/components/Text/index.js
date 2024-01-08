@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { Styles } from 'components/Text/style';
+import i18n from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const CustomText = ({
   children,
@@ -9,7 +11,9 @@ const CustomText = ({
   numberOfLines,
   onPress,
   values,
+  translate = true,
 }) => {
+  const { t } = useTranslation();
   const styles = Styles();
   return (
     <Text
@@ -18,7 +22,7 @@ const CustomText = ({
       ellipsizeMode={ellipsizeMode}
       numberOfLines={numberOfLines}>
       {/*<FormattedMessage id={children} values={values} />*/}
-      {children}
+      {translate ? t(children, values) : children}
     </Text>
   );
 };
