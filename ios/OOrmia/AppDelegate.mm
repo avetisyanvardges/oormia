@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import <Firebase.h>
 #import <React/RCTBundleURLProvider.h>
 #import <YandexMapsMobile/YMKMapKitFactory.h>
 
@@ -7,6 +8,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [FIRApp configure];
   self.moduleName = @"OOrmia";
   [GMSServices provideAPIKey:@"AIzaSyA3JgEsDXQmVnH6HQOVHzSpta2wKAN2Tf0"];
   [YMKMapKit setLocale:@"en_US"];
