@@ -1,11 +1,12 @@
 import { enLoginScreen } from 'assets/locales/screens/Auth/en';
+import { enEventScreen } from 'assets/locales/screens/Event/en';
 
 export default {
   ...enLoginScreen,
-
+  ...enEventScreen,
   // LANGUAGES
   'locales.select_language': 'Select a language',
-  'locales.am': 'Հայերեն',
+  'locales.hy': 'Հայերեն',
   'locales.en': 'English',
   'locales.ru': 'Русский',
 
@@ -67,6 +68,23 @@ export default {
   'btn.Cancel': 'Cancel',
   'btn.log_out': 'Log Out',
   app_version: 'App Version {{version}}',
+
+  'btn.follow': 'Follow',
+  'btn.invite': 'Invite',
+
+  // GROUPS
+  on_weekends: 'On weekends',
+  monthly: 'Monthly',
+  yearly: 'Yearly',
+  upload_an_image: 'Upload an image',
+  'label.group_name': 'Set a Unique Group Name',
+  'label.group_description': 'Craft a Compelling Description',
+  'placeholder.group_name': 'Name',
+  'placeholder.group_description': 'Description',
+  members: 'Members',
+  event_frequency: 'Event Frequency',
+  categories: 'Categories',
+  choose_up_to_3_categories: 'Choose up to 3 categories',
 
   'label.empty': '',
 };

@@ -20,7 +20,7 @@ const Highlights = () => {
             borderColor: Colors.purple['500'],
           }}>
           <Image
-            source={images[`profile_${index}`] || images.profile_1}
+            source={images[`profile_${index}`]}
             style={{
               width: normalize(66),
               height: normalize(66),

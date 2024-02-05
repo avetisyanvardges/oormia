@@ -10,6 +10,7 @@ import categories from '../categories';
 import events from '../events';
 import toast from '../snackbars';
 import notification from '../notifications';
+import locations from '../locations';
 import HttpClient from 'services/HttpClient';
 import {
   FLUSH,
@@ -31,6 +32,7 @@ const store = configureStore({
     events,
     toast,
     notification,
+    locations,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

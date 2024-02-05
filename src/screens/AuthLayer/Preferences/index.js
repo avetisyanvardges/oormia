@@ -16,17 +16,15 @@ import { useSelector } from 'react-redux';
 import { routNames } from 'constants/routNames';
 import { fetchSubCategoriesAll } from 'state/categories/operations/fetchSubCategoriesAll';
 import { isEmpty } from 'lodash';
+import FastImage from 'react-native-fast-image';
+import { editProfile } from 'state/user/operations/editProfile';
+import { navigate } from 'services/NavigationService';
 
 function PreferencesScreen({ navigation, route }) {
   const [data, setData] = useState(faceData);
   const { values } = route?.params;
-  const { verification_token } = useSelector(({ user }) => user);
   const { sub_categories } = useSelector(({ categories }) => categories);
-  useEffect(() => {
-    if (verification_token) {
-      navigation.navigate(routNames.OTP, { email: values.email });
-    }
-  }, [verification_token]);
+  const { currentUser } = useSelector(({ user }) => user);
 
   useEffect(() => {
     dispatch(fetchSubCategoriesAll());
@@ -51,6 +49,8 @@ function PreferencesScreen({ navigation, route }) {
   };
 
   const onSubmit = () => {
+    const body = new FormData();
+
     const mutationPref = data.reduce((acc, item) => {
       if (item.checked) {
         acc.push(item.name);
@@ -58,21 +58,49 @@ function PreferencesScreen({ navigation, route }) {
 
       return acc;
     }, []);
-    const body = {
+    const mutatedBody = {
       ...values,
       preferences: mutationPref,
     };
 
-    dispatch(userSignUp(body));
+    body.append('request', {
+      string: JSON.stringify(mutatedBody),
+      type: 'application/json',
+    });
+
+    dispatch(
+      editProfile({
+        body,
+        id: currentUser?.id,
+        callback: () => {
+          navigate(routNames.APP_LAYER);
+        },
+      }),
+    );
   };
 
   const skipAndSubmit = () => {
-    const body = {
+    const body = new FormData();
+
+    const mutatedBody = {
       ...values,
       preferences: [],
     };
 
-    dispatch(userSignUp(body));
+    body.append('request', {
+      string: JSON.stringify(mutatedBody),
+      type: 'application/json',
+    });
+
+    dispatch(
+      editProfile({
+        body,
+        id: currentUser?.id,
+        callback: () => {
+          navigate(routNames.APP_LAYER);
+        },
+      }),
+    );
   };
 
   const renderPreferencesItem = useCallback(({ item, index }) => {
@@ -81,7 +109,7 @@ function PreferencesScreen({ navigation, route }) {
       <Pressable
         onPress={() => onChecked(item)}
         style={{ marginHorizontal: normalize(10) }}>
-        <ImageBackground
+        <FastImage
           source={{ uri: item?.picture?.fileDownloadUri }}
           resizeMode="cover"
           style={{
@@ -121,7 +149,7 @@ function PreferencesScreen({ navigation, route }) {
               globalStyle={{ color: Colors.white, padding: normalize(10) }}
             />
           </LinearGradient>
-        </ImageBackground>
+        </FastImage>
       </Pressable>
     );
   }, []);

@@ -5,6 +5,7 @@ import { Colors, fullScreen } from 'assets/RootStyles';
 import CheckBox from '@react-native-community/checkbox';
 import { CustomText } from 'components/Text';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import FastImage from 'react-native-fast-image';
 
 function useContainer() {
   const insets = useSafeAreaInsets();
@@ -16,7 +17,7 @@ function useContainer() {
       <Pressable
         onPress={() => setCategories(item)}
         style={{ marginHorizontal: normalize(10) }}>
-        <ImageBackground
+        <FastImage
           source={{ uri: item?.picture?.fileDownloadUri }}
           resizeMode="cover"
           style={{
@@ -61,7 +62,7 @@ function useContainer() {
               globalStyle={{ color: Colors.white, padding: normalize(10) }}
             />
           </LinearGradient>
-        </ImageBackground>
+        </FastImage>
       </Pressable>
     );
   };

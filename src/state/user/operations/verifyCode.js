@@ -6,7 +6,7 @@ import httpClient from 'services/HttpClient';
 
 export const verifyCode = createAsyncThunk(
   'user/verifyCode',
-  async ({ code }, { getState }) => {
+  async ({ code, callback }, { getState }) => {
     try {
       const {
         user: { verification_token },
@@ -16,8 +16,8 @@ export const verifyCode = createAsyncThunk(
       const { data } = await httpClient.get(url, {
         params: { code, token: verification_token },
       });
+      callback && callback();
       console.log(data, 'DATA');
-      navigate(routNames.START);
     } catch {
       //
     }

@@ -1,11 +1,12 @@
 import { ruLoginScreen } from 'assets/locales/screens/Auth/ru';
+import { ruEventScreen } from 'assets/locales/screens/Event/ru';
 
 export default {
   ...ruLoginScreen,
-
+  ...ruEventScreen,
   // LANGUAGES
   'locales.select_language': 'Выберите язык',
-  'locales.am': 'Հայերեն',
+  'locales.hy': 'Հայերեն',
   'locales.en': 'English',
   'locales.ru': 'Русский',
 
@@ -66,6 +67,23 @@ export default {
   'btn.Cancel': 'Отмена',
   'btn.log_out': 'Выйти',
   app_version: 'Версия приложения {{version}}',
+
+  'btn.follow': 'Подписаться',
+  'btn.invite': 'Пригласить',
+
+  // GROUPS
+  on_weekends: 'В выходные',
+  monthly: 'Ежемесячно',
+  yearly: 'Ежегодно',
+  upload_an_image: 'Загрузить изображение',
+  'label.group_name': 'Задать уникальное название группы',
+  'label.group_description': 'Создать захватывающее описание',
+  'placeholder.group_name': 'Имя',
+  'placeholder.group_description': 'Описание',
+  members: 'Участники',
+  event_frequency: 'Частота событий',
+  categories: 'Категории',
+  choose_up_to_3_categories: 'Выберите до 3 категорий',
 
   'label.empty': '',
 };

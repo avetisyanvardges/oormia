@@ -52,25 +52,21 @@ const SPACER_ITEM_SIZE = (fullScreen.width - ITEM_SIZE) / 2;
 const MapScreen = ({ navigation }) => {
   const mapRef = useRef();
   const listRef = useRef();
-  const bottomSheetRef = useRef();
   const insets = useSafeAreaInsets();
   const { events } = useSelector(({ events }) => events);
-  const [showEvent, setShowEvent] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState('');
-  const [snapPoints] = useState(['1%', '30%']);
-  const [snapIndex, setSnapIndex] = useState();
-  const translateY = useSharedValue(fullScreen.height);
-  const btnTranslateY = useSharedValue(fullScreen.height - normalize(30));
+  const [snapIndex, setSnapIndex] = useState(1);
+  const translateY = useSharedValue(
+    fullScreen.height -
+      ITEM_HEIGHT -
+      insets.bottom -
+      (deviceInfo.ios ? normalize(80) : normalize(60)) -
+      normalize(25),
+  );
   const scrollX = useRef(new Animated.Value(0)).current;
   const animatedStyles = useAnimatedStyle(() => {
     return {
       transform: [{ translateY: translateY.value }],
-    };
-  });
-
-  const btnAnimatedStyles = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateY: btnTranslateY.value }],
     };
   });
 
@@ -201,28 +197,6 @@ const MapScreen = ({ navigation }) => {
     }
   };
 
-  const getCoordinate = location => {
-    if (location?.latitude) {
-      setRegion({
-        val: {
-          latitude: location.latitude,
-          longitude: location.longitude,
-          latitudeDelta: 0.001,
-          longitudeDelta: 0.001,
-        },
-        callback: () => {
-          mapRef.current.animateToRegion({
-            latitude: location.latitude,
-            longitude: location.longitude,
-            latitudeDelta: 0.001,
-            longitudeDelta: 0.001,
-          });
-        },
-      });
-    }
-    // this.props.makeAction(UPDATE_USER_LOCATION, {location: location});
-  };
-
   useEffect(() => {
     const subscribe = navigation.addListener('focus', () => {
       dispatch(getAllEvents({ page: 0, size: 100 }));
@@ -235,14 +209,6 @@ const MapScreen = ({ navigation }) => {
 
   useEffect(() => {
     if (snapIndex) {
-      btnTranslateY.value = withSpring(fullScreen.height - normalize(270), {
-        mass: 1,
-        damping: 50,
-        stiffness: 100,
-        overshootClamping: false,
-        restDisplacementThreshold: 0.01,
-        restSpeedThreshold: 0.01,
-      });
       translateY.value = withSpring(
         fullScreen.height -
           ITEM_HEIGHT -
@@ -251,7 +217,6 @@ const MapScreen = ({ navigation }) => {
           normalize(25),
       );
     } else {
-      btnTranslateY.value = withSpring(fullScreen.height - normalize(30));
       translateY.value = withSpring(fullScreen.height);
     }
   }, [snapIndex]);
@@ -274,6 +239,7 @@ const MapScreen = ({ navigation }) => {
             setSelectedEvent(item);
             setSnapIndex(1);
             const idx = events.findIndex(it => it.id === item.id);
+            console.log(index, idx);
             setTimeout(() => {
               listRef?.current?.scrollToIndex({
                 animated: true,
@@ -568,6 +534,7 @@ const MapScreen = ({ navigation }) => {
                             />
                             <CustomText
                               children={moment(item.startDate).format('HH:mm')}
+                              translate={false}
                               globalStyle={{
                                 ...FontStyle.text_h5.regular,
                               }}

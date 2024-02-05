@@ -16,7 +16,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, FontStyle } from 'assets/RootStyles';
 import { back, navigate } from 'services/NavigationService';
 import { deviceInfo } from 'assets/deviceInfo';
-// import Geocoder from 'react-native-geocoding';
 import { routNames } from 'constants/routNames';
 import Lottie from 'lottie-react-native';
 import { CustomText } from 'components/Text';
@@ -25,15 +24,15 @@ import Geolocation from 'react-native-geolocation-service';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import Permissions from 'react-native-permissions';
+import dispatch from 'utils/dispatch/dispatch';
+import { getCoordinatesAddress } from 'state/locations/operations/getCoordinatesAddress';
+import { useSelector } from 'react-redux';
+import { clean_formatted_address } from 'state/locations';
 
-// Geocoder.init('AIzaSyBdStOT9aHzvGXGWzR39CUsOX199NEHJ7M');
-import { Geocoder } from 'react-native-yamap';
-
-Geocoder.init('7e736f2e-7054-4f53-a8ba-e543301d6a0e');
 const ChooseLocation = ({ route }) => {
   const { address } = route?.params;
+  const { formatted_address } = useSelector(({ locations }) => locations);
   const styles = Styles();
-  const insets = useSafeAreaInsets();
   const mapRef = useRef(null);
   const [loc, setLoc] = useState('');
   const [region, setRegion] = useState({
@@ -42,6 +41,12 @@ const ChooseLocation = ({ route }) => {
     latitudeDelta: 0.015,
     longitudeDelta: 0.015,
   });
+
+  useEffect(() => {
+    if (formatted_address) {
+      setLoc(formatted_address);
+    }
+  }, [formatted_address]);
 
   function goBack() {
     Geolocation.getCurrentPosition(pos => {
@@ -107,6 +112,10 @@ const ChooseLocation = ({ route }) => {
 
   useEffect(() => {
     requestGeolocationPermission();
+
+    return () => {
+      dispatch(clean_formatted_address());
+    };
   }, []);
   const onRegionChange = region => {
     region.latitudeDelta = region.latitudeDelta ? region.latitudeDelta : 0.005;
@@ -114,23 +123,12 @@ const ChooseLocation = ({ route }) => {
       ? region.longitudeDelta
       : 0.005;
 
-    // Geocoder.from(region.latitude, region.longitude).then(json => {
-    Geocoder.geocode(
-      { lat: region.latitude, lon: region.longitude },
-      'house',
-      1,
-      0,
-      'en_US',
-    ).then(json => {
-      const { name, description } =
-        json?.response?.GeoObjectCollection?.featureMember?.[0]?.GeoObject;
-      console.log(json, 'LOCATION  onRegionChange', name, description);
-      // const [{ formatted_address }] = json.results;
-      if (name && description) {
-        const formatted_address = `${name}, ${description}`;
-        setLoc(formatted_address);
-      }
-    });
+    dispatch(
+      getCoordinatesAddress({
+        longitude: region.longitude,
+        latitude: region.latitude,
+      }),
+    );
 
     setRegion(region);
   };
@@ -217,44 +215,44 @@ const ChooseLocation = ({ route }) => {
                     },
                   }}
                   onPress={(data, details = null) => {
-                    Geocoder.geocode(
-                      { lat: region.latitude, lon: region.longitude },
-                      'house',
-                      1,
-                      0,
-                      'en_US',
-                    ).then(json => {
-                      console.log(json, 'LOCATION');
-                      let formatted_address;
-                      const { name, description } =
-                        json?.response?.GeoObjectCollection?.featureMember?.[0]
-                          ?.GeoObject;
-                      if (name && description) {
-                        formatted_address = `${name}, ${description}`;
-                        setLoc(formatted_address);
-                      }
+                    dispatch(
+                      getCoordinatesAddress({
+                        longitude: region.longitude,
+                        latitude: region.latitude,
+                        callback: json => {
+                          console.log(json, 'LOCATION');
+                          let formatted_address;
+                          const { name, description } =
+                            json?.response?.GeoObjectCollection
+                              ?.featureMember?.[0]?.GeoObject;
+                          if (name && description) {
+                            formatted_address = `${name}, ${description}`;
+                            setLoc(formatted_address);
+                          }
 
-                      const location = {
-                        latitude: details.geometry.location.lat,
-                        longitude: details.geometry.location.lng,
-                        longitudeDelta: 0.001,
-                        latitudeDelta: 0.001,
-                        address: formatted_address,
-                      };
+                          const location = {
+                            latitude: details.geometry.location.lat,
+                            longitude: details.geometry.location.lng,
+                            longitudeDelta: 0.001,
+                            latitudeDelta: 0.001,
+                            address: formatted_address,
+                          };
 
-                      setRegion({
-                        latitude: details.geometry.location.lat,
-                        longitude: details.geometry.location.lng,
-                        longitudeDelta: 0.001,
-                        latitudeDelta: 0.001,
-                      });
-                      mapRef.current.animateToRegion({
-                        latitude: details.geometry.location.lat,
-                        longitude: details.geometry.location.lng,
-                        longitudeDelta: 0.015,
-                        latitudeDelta: 0.015,
-                      });
-                    });
+                          setRegion({
+                            latitude: details.geometry.location.lat,
+                            longitude: details.geometry.location.lng,
+                            longitudeDelta: 0.001,
+                            latitudeDelta: 0.001,
+                          });
+                          mapRef.current.animateToRegion({
+                            latitude: details.geometry.location.lat,
+                            longitude: details.geometry.location.lng,
+                            longitudeDelta: 0.015,
+                            latitudeDelta: 0.015,
+                          });
+                        },
+                      }),
+                    );
                   }}
                   renderRow={rowData => {
                     const title = rowData.structured_formatting.main_text;

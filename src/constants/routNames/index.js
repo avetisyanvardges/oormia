@@ -19,6 +19,8 @@ export const routNames = {
   FREE_DAYS_CALENDAR: 'freeDaysCalendarScreen',
   TICKET_DETAILS: 'ticketDetailsScreen',
   NOTIFICATIONS: 'notificationsScreen',
+  ADD_BANK_ACCOUNT: 'addBankAccountScreen',
+  SELECT_BANK: 'selectBankScreen',
   COMPASS: 'Compass',
   HOME: 'homeScreen',
   MAP: 'mapScreen',

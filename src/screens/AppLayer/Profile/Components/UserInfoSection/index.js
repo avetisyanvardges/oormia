@@ -183,7 +183,7 @@ const UserInfoSection = () => {
                 />
               ) : null
             }
-            title={!currentUser ? 'Follow' : 'Calendar'}
+            title={!currentUser ? 'follow' : 'Calendar'}
             textStyle={{
               flex: 1,
               textAlign: 'center',

@@ -21,6 +21,7 @@ import InviteMembersScreen from 'screens/AppLayer/Groups/InviteMembers';
 import AdminSettings from 'screens/AppLayer/AdminSettings';
 import AdminStack from 'navigation/StackNavigation/AdminStack';
 import LanguageScreen from 'screens/LanguageScreen';
+import SelectBankScreen from 'screens/AppLayer/Events/SelectBank';
 
 const Stack = createSharedElementStackNavigator();
 const StackNavigation = () => {
@@ -40,6 +41,18 @@ const StackNavigation = () => {
         <Stack.Screen
           name={routNames.SETTINGS}
           component={Settings}
+          options={{
+            presentation: 'modal',
+            cardStyle: { backgroundColor: 'transparent' },
+            gestureResponseDistance: fullScreen.height,
+            ...(deviceInfo.android && TransitionPresets.ModalPresentationIOS),
+            gestureEnabled: true,
+            animationEnabled: true,
+          }}
+        />
+        <Stack.Screen
+          name={routNames.SELECT_BANK}
+          component={SelectBankScreen}
           options={{
             presentation: 'modal',
             cardStyle: { backgroundColor: 'transparent' },

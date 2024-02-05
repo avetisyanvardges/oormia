@@ -1,21 +1,32 @@
 import { StyleSheet } from 'react-native';
 import { normalize } from 'assets/RootStyles/normalize';
+import { Colors } from 'assets/RootStyles';
 
 const Styles = () => {
   return StyleSheet.create({
     middleIcon: {
       width: normalize(50),
       height: normalize(50),
-      borderRadius: 14,
+      borderRadius: normalize(12),
       transform: [{ rotate: '45deg' }],
       justifyContent: 'center',
       alignItems: 'center',
       bottom: normalize(30),
-      // backgroundColor: Colors.gradientStart,
-      // shadowColor: Colors.black,
-      // shadowOffset: {width: 2, height: 2},
-      // elevation: 8,
       zIndex: 999,
+    },
+    buttons: {
+      width: 0,
+      height: 0,
+      top: -normalize(25),
+      bottom: -normalize(25),
+      left: 25,
+      right: 25,
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: Colors.purple['500'],
+      borderRadius: normalize(8),
+      padding: normalize(8),
+      position: 'absolute',
     },
   });
 };

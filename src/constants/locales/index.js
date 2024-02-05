@@ -1,5 +1,5 @@
 export const LOCALES = {
   ENGLISH: 'en',
-  ARMENIAN: 'am',
+  ARMENIAN: 'hy',
   RUSSIAN: 'ru',
 };

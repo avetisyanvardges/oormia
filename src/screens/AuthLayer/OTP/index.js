@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { back } from 'services/NavigationService';
+import { back, navigate } from 'services/NavigationService';
 import Header from 'components/Header';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import { Styles } from './style';
@@ -12,6 +12,7 @@ import { verifyCode } from 'state/user/operations/verifyCode';
 import { clean_verification_token } from 'state/user';
 import moment from 'moment';
 import { resendCode } from 'state/user/operations/resendCode';
+import { routNames } from 'constants/routNames';
 
 function OTPScreen({ navigation, route }) {
   const [code, setCode] = useState('');
@@ -35,7 +36,14 @@ function OTPScreen({ navigation, route }) {
   }, [code]);
 
   const handleCodeFill = () => {
-    dispatch(verifyCode({ code }));
+    dispatch(
+      verifyCode({
+        code,
+        callback: () => {
+          navigate(routNames.SIGN_UP_USER_DATA);
+        },
+      }),
+    );
   };
 
   useEffect(() => {

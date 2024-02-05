@@ -12,6 +12,7 @@ import { routNames } from 'constants/routNames';
 import { useSelector } from 'react-redux';
 import dispatch from 'utils/dispatch/dispatch';
 import { getAllGroups } from 'state/groups/operations/getAllGroups';
+import MImage from 'components/MImage';
 
 const tabTypes = {
   EVENTS: 'events',
@@ -50,7 +51,6 @@ const HistorySection = () => {
   };
 
   const renderGroups = ({ item }) => {
-    console.log(item, 'ITEM');
     return (
       <View
         style={{
@@ -60,8 +60,13 @@ const HistorySection = () => {
           borderRadius: normalize(12),
           ...Shadow,
         }}>
-        <Image
-          source={item.image}
+        <MImage
+          source={{
+            uri: item?.pictures?.[0]?.fileDownloadUri?.replace(
+              ':8085',
+              ':8086',
+            ),
+          }}
           style={{
             width: normalize(60),
             height: normalize(60),
@@ -194,43 +199,6 @@ const HistorySection = () => {
           <FlatList
             data={groups}
             renderItem={renderGroups}
-            ListHeaderComponent={() => {
-              return (
-                <TouchableOpacity
-                  style={{
-                    flexDirection: 'row',
-                    padding: normalize(10),
-                    backgroundColor: Colors.white,
-                    borderRadius: normalize(12),
-                    marginBottom: normalize(16),
-                    ...Shadow,
-                  }}
-                  onPress={() => navigate(routNames.CREATE_GROUP)}>
-                  <View
-                    style={{
-                      width: normalize(60),
-                      height: normalize(60),
-                      borderRadius: normalize(12),
-                      borderWidth: 1,
-                      borderColor: Colors.purple['500'],
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                    <Icon
-                      name={ICON_NAMES.GALLERY_ADD}
-                      color={Colors.purple['500']}
-                    />
-                  </View>
-                  <CustomText
-                    children={'create_new_group'}
-                    globalStyle={{
-                      ...FontStyle.text_h5.medium,
-                      marginLeft: normalize(12),
-                    }}
-                  />
-                </TouchableOpacity>
-              );
-            }}
             ListEmptyComponent={() => {
               return (
                 <View

@@ -10,11 +10,13 @@ export const ICON_NAMES = {
     HOME: 'homeTabIcon',
     MAP: 'mapTabIcon',
     CREATE: 'createTabIcon',
+    REQUEST: 'RequestIcon',
     TICKET: 'tickeTabIcon',
     PROFILE: 'profileTabIcon',
   },
   TICKET: 'ticketBoldIcon',
   TICKET_EMPTY: 'ticketEmptyIcon',
+  TRIP: 'tripIcon',
   EVENT_WARNING: 'eventWarningIcon',
   ARROW: {
     LEFT: 'arrowLeftIcon',
@@ -25,6 +27,7 @@ export const ICON_NAMES = {
   PROFILE: {
     FRIENDS: 'friendsIcon',
     EVENTS: 'eventsIcon',
+    GROUPS: 'groupIcon',
     TRIPS: 'tripsIcon',
     PREFERENCES: 'preferencesIcon',
     LANGUAGE: 'languageIcon',
@@ -74,7 +77,7 @@ export const ICON_NAMES = {
   },
   FLAGS: {
     RU: 'ru',
-    AM: 'am',
+    AM: 'hy',
     EN: 'en',
   },
   CHECKBOX: {

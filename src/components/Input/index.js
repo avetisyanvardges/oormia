@@ -22,6 +22,8 @@ function Input({
   secure = false,
   onBlur,
   errorText,
+  keyboardType,
+
   placeholder = '',
   value = '',
   inputContainerStyle = {},
@@ -108,6 +110,7 @@ function Input({
                   onPressIn={onPress}
                   placeholderTextColor={Colors.oxford_blue['200']}
                   placeholder={translatedPlaceholder}
+                  keyboardType={keyboardType}
                   value={value}
                   onChangeText={onChange}
                   onBlur={() => {
@@ -178,260 +181,174 @@ function Input({
           />
         ) : null}
         {(value || validated) && showValidation ? (
-          <View>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginTop: normalize(5),
+            }}>
             <View
               style={{
-                flexDirection: 'row',
+                flex: 1,
                 alignItems: 'center',
                 marginTop: normalize(5),
+                marginRight: normalize(8),
               }}>
-              {validate(value, 'lower') ? (
-                <Animatable.View
-                  animation={'pulse'}
-                  easing={'ease-out'}
-                  useNativeDriver
-                  style={{
-                    marginRight: normalize(8),
-                  }}>
-                  <Icon name={ICON_NAMES.CHECKBOX.ON} />
-                </Animatable.View>
-              ) : (
-                <Animatable.View
-                  animation={'tada'}
-                  easing={'ease-out'}
-                  useNativeDriver
-                  style={{
-                    width: normalize(24),
-                    height: normalize(24),
-                    backgroundColor: Colors.red['50'],
-                    borderRadius: normalize(12),
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginRight: normalize(5),
-                  }}>
-                  <Icon
-                    name={ICON_NAMES.INPUT_BTN.CLEAR}
-                    color={Colors.red['500']}
-                  />
-                </Animatable.View>
-              )}
               <CustomText
-                children={'password.validation.lower'}
-                ellipsizeMode={'tail'}
-                numberOfLines={1}
-                globalStyle={[
-                  {
-                    color: validate(value, 'lower')
-                      ? Colors.green['500']
-                      : !validate(value, 'lower') && validated
-                      ? Colors.red['500']
-                      : Colors.oxford_blue['100'],
-                  },
-                ]}
+                children={'a'}
+                translate={false}
+                globalStyle={{
+                  ...FontStyle.text_h3.medium,
+                  color: validate(value, 'lower')
+                    ? Colors.green['500']
+                    : !validate(value, 'lower') && validated
+                    ? Colors.red['500']
+                    : Colors.oxford_blue['100'],
+                }}
+              />
+              <View
+                style={{
+                  width: '100%',
+                  height: normalize(4),
+                  borderRadius: normalize(12),
+                  marginTop: normalize(4),
+                  backgroundColor: validate(value, 'lower')
+                    ? Colors.green['500']
+                    : !validate(value, 'lower') && validated
+                    ? Colors.red['500']
+                    : Colors.oxford_blue['100'],
+                }}
               />
             </View>
             <View
               style={{
-                flexDirection: 'row',
+                flex: 1,
                 alignItems: 'center',
                 marginTop: normalize(5),
+                marginRight: normalize(8),
               }}>
-              {validate(value, 'upper') ? (
-                <Animatable.View
-                  animation={'pulse'}
-                  easing={'ease-out'}
-                  useNativeDriver
-                  style={{
-                    marginRight: normalize(8),
-                  }}>
-                  <Icon name={ICON_NAMES.CHECKBOX.ON} />
-                </Animatable.View>
-              ) : (
-                <Animatable.View
-                  animation={'tada'}
-                  useNativeDriver
-                  style={{
-                    width: normalize(24),
-                    height: normalize(24),
-                    backgroundColor: Colors.red['50'],
-                    borderRadius: normalize(12),
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginRight: normalize(5),
-                  }}>
-                  <Icon
-                    name={ICON_NAMES.INPUT_BTN.CLEAR}
-                    color={Colors.red['500']}
-                  />
-                </Animatable.View>
-              )}
               <CustomText
-                children={'password.validation.upper'}
-                ellipsizeMode={'tail'}
-                numberOfLines={1}
-                globalStyle={[
-                  styles.validation_description,
-                  {
-                    color: validate(value, 'upper')
-                      ? Colors.green['500']
-                      : !validate(value, 'upper') && validated
-                      ? Colors.red['500']
-                      : Colors.oxford_blue['100'],
-                  },
-                ]}
+                children={'A'}
+                translate={false}
+                globalStyle={{
+                  ...FontStyle.text_h3.medium,
+                  color: validate(value, 'upper')
+                    ? Colors.green['500']
+                    : !validate(value, 'upper') && validated
+                    ? Colors.red['500']
+                    : Colors.oxford_blue['100'],
+                }}
+              />
+              <View
+                style={{
+                  width: '100%',
+                  height: normalize(4),
+                  borderRadius: normalize(12),
+                  marginTop: normalize(4),
+                  backgroundColor: validate(value, 'upper')
+                    ? Colors.green['500']
+                    : !validate(value, 'upper') && validated
+                    ? Colors.red['500']
+                    : Colors.oxford_blue['100'],
+                }}
               />
             </View>
             <View
               style={{
-                flexDirection: 'row',
+                flex: 1,
                 alignItems: 'center',
                 marginTop: normalize(5),
+                marginRight: normalize(8),
               }}>
-              {validate(value, 'symbol') ? (
-                <Animatable.View
-                  animation={'pulse'}
-                  easing={'ease-out'}
-                  useNativeDriver
-                  style={{
-                    marginRight: normalize(8),
-                  }}>
-                  <Icon name={ICON_NAMES.CHECKBOX.ON} />
-                </Animatable.View>
-              ) : (
-                <Animatable.View
-                  animation={'tada'}
-                  useNativeDriver
-                  style={{
-                    width: normalize(24),
-                    height: normalize(24),
-                    backgroundColor: Colors.red['50'],
-                    borderRadius: normalize(12),
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginRight: normalize(5),
-                  }}>
-                  <Icon
-                    name={ICON_NAMES.INPUT_BTN.CLEAR}
-                    color={Colors.red['500']}
-                  />
-                </Animatable.View>
-              )}
               <CustomText
-                children={'password.validation.symbol'}
-                ellipsizeMode={'tail'}
-                numberOfLines={1}
-                globalStyle={[
-                  styles.validation_description,
-                  {
-                    color: validate(value, 'symbol')
-                      ? Colors.green['500']
-                      : !validate(value, 'symbol') && validated
-                      ? Colors.red['500']
-                      : Colors.oxford_blue['100'],
-                  },
-                ]}
+                children={'%'}
+                translate={false}
+                globalStyle={{
+                  ...FontStyle.text_h3.medium,
+                  color: validate(value, 'symbol')
+                    ? Colors.green['500']
+                    : !validate(value, 'symbol') && validated
+                    ? Colors.red['500']
+                    : Colors.oxford_blue['100'],
+                }}
+              />
+              <View
+                style={{
+                  width: '100%',
+                  height: normalize(4),
+                  borderRadius: normalize(12),
+                  marginTop: normalize(4),
+                  backgroundColor: validate(value, 'symbol')
+                    ? Colors.green['500']
+                    : !validate(value, 'symbol') && validated
+                    ? Colors.red['500']
+                    : Colors.oxford_blue['100'],
+                }}
               />
             </View>
             <View
               style={{
-                flexDirection: 'row',
+                flex: 1,
                 alignItems: 'center',
                 marginTop: normalize(5),
+                marginRight: normalize(8),
               }}>
-              {validate(value, 'number') ? (
-                <Animatable.View
-                  animation={'pulse'}
-                  easing={'ease-out'}
-                  useNativeDriver
-                  style={{
-                    marginRight: normalize(8),
-                  }}>
-                  <Icon name={ICON_NAMES.CHECKBOX.ON} />
-                </Animatable.View>
-              ) : (
-                <Animatable.View
-                  animation={'tada'}
-                  useNativeDriver
-                  style={{
-                    width: normalize(24),
-                    height: normalize(24),
-                    backgroundColor: Colors.red['50'],
-                    borderRadius: normalize(12),
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginRight: normalize(5),
-                  }}>
-                  <Icon
-                    name={ICON_NAMES.INPUT_BTN.CLEAR}
-                    color={Colors.red['500']}
-                  />
-                </Animatable.View>
-              )}
               <CustomText
-                children={'password.validation.number'}
-                ellipsizeMode={'tail'}
-                numberOfLines={1}
-                globalStyle={[
-                  styles.validation_description,
-                  {
-                    color: validate(value, 'number')
-                      ? Colors.green['500']
-                      : !validate(value, 'number') && validated
-                      ? Colors.red['500']
-                      : Colors.oxford_blue['100'],
-                  },
-                ]}
+                children={'123'}
+                translate={false}
+                globalStyle={{
+                  ...FontStyle.text_h3.medium,
+                  color: validate(value, 'number')
+                    ? Colors.green['500']
+                    : !validate(value, 'number') && validated
+                    ? Colors.red['500']
+                    : Colors.oxford_blue['100'],
+                }}
+              />
+              <View
+                style={{
+                  width: '100%',
+                  height: normalize(4),
+                  borderRadius: normalize(12),
+                  marginTop: normalize(4),
+                  backgroundColor: validate(value, 'number')
+                    ? Colors.green['500']
+                    : !validate(value, 'number') && validated
+                    ? Colors.red['500']
+                    : Colors.oxford_blue['100'],
+                }}
               />
             </View>
             <View
               style={{
-                flexDirection: 'row',
+                flex: 1,
                 alignItems: 'center',
                 marginTop: normalize(5),
               }}>
-              {validate(value, 'char') ? (
-                <Animatable.View
-                  animation={'pulse'}
-                  easing={'ease-out'}
-                  useNativeDriver
-                  style={{
-                    marginRight: normalize(8),
-                  }}>
-                  <Icon name={ICON_NAMES.CHECKBOX.ON} />
-                </Animatable.View>
-              ) : (
-                <Animatable.View
-                  animation={'tada'}
-                  useNativeDriver
-                  style={{
-                    width: normalize(24),
-                    height: normalize(24),
-                    backgroundColor: Colors.red['50'],
-                    borderRadius: normalize(12),
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginRight: normalize(5),
-                  }}>
-                  <Icon
-                    name={ICON_NAMES.INPUT_BTN.CLEAR}
-                    color={Colors.red['500']}
-                  />
-                </Animatable.View>
-              )}
               <CustomText
-                children={'password.validation.char'}
-                ellipsizeMode={'tail'}
-                numberOfLines={1}
-                globalStyle={[
-                  styles.validation_description,
-                  {
-                    color: validate(value, 'char')
-                      ? Colors.green['500']
-                      : !validate(value, 'char') && validated
-                      ? Colors.red['500']
-                      : Colors.oxford_blue['100'],
-                  },
-                ]}
+                children={'8+'}
+                translate={false}
+                globalStyle={{
+                  ...FontStyle.text_h3.medium,
+                  color: validate(value, 'char')
+                    ? Colors.green['500']
+                    : !validate(value, 'char') && validated
+                    ? Colors.red['500']
+                    : Colors.oxford_blue['100'],
+                }}
+              />
+              <View
+                style={{
+                  width: '100%',
+                  height: normalize(4),
+                  borderRadius: normalize(12),
+                  marginTop: normalize(4),
+                  backgroundColor: validate(value, 'char')
+                    ? Colors.green['500']
+                    : !validate(value, 'char') && validated
+                    ? Colors.red['500']
+                    : Colors.oxford_blue['100'],
+                }}
               />
             </View>
           </View>

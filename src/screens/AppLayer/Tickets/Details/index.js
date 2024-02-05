@@ -87,6 +87,7 @@ const TicketDetails = ({ navigation, route }) => {
                 />
                 <CustomText
                   children={moment(event.startDate).format('HH:mm')}
+                  translate={false}
                   globalStyle={{
                     ...FontStyle.text_h4.regular,
                   }}

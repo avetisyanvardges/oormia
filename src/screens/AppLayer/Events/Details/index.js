@@ -151,7 +151,6 @@ const EventDetail = ({ navigation, route }) => {
                 <CustomText
                   children={moment(item?.startDate).format('MMM')}
                   globalStyle={{
-                    fontFamily: Fonts.arm.regular,
                     fontWeight: '400',
                     fontSize: normalize(11),
                   }}
@@ -540,14 +539,14 @@ const EventDetail = ({ navigation, route }) => {
                       borderRadius: normalize(25),
                       backgroundColor: Colors.oxford_blue['200'],
                     }}>
-                    <Image
-                      source={require('../../../../assets/images/profile_1.jpg')}
-                      style={{
-                        width: normalize(50),
-                        height: normalize(50),
-                        borderRadius: normalize(25),
-                      }}
-                    />
+                    {/*<Image*/}
+                    {/*  source={require('../../../../assets/images/profile_1.jpg')}*/}
+                    {/*  style={{*/}
+                    {/*    width: normalize(50),*/}
+                    {/*    height: normalize(50),*/}
+                    {/*    borderRadius: normalize(25),*/}
+                    {/*  }}*/}
+                    {/*/>*/}
                   </View>
                   <View style={{ marginLeft: normalize(8) }}>
                     <CustomText
@@ -572,7 +571,7 @@ const EventDetail = ({ navigation, route }) => {
                       paddingVertical: normalize(6),
                       backgroundColor: Colors.purple['200'],
                     }}
-                    title={'Follow'}
+                    title={'follow'}
                     textStyle={{
                       ...FontStyle.text_h5.medium,
                       color: Colors.purple['500'],

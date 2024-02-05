@@ -18,6 +18,7 @@ const initialState = {
   event_history: [],
   not_moderated: [],
   requested_events: [],
+  selected_bank: {},
 };
 
 export const eventsSlice = createSlice({
@@ -57,9 +58,13 @@ export const eventsSlice = createSlice({
       ...state,
       selected_event: '',
     }),
+    set_selected_bank: (state = initialState, { payload }) => ({
+      ...state,
+      selected_bank: payload,
+    }),
   },
 });
 
-export const { clean_selected_event } = userSlice.actions;
+export const { clean_selected_event, set_selected_bank } = eventsSlice.actions;
 
 export default eventsSlice.reducer;

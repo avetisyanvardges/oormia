@@ -196,6 +196,7 @@ const AddFreeDays = () => {
               <View>
                 <CustomText
                   children={item}
+                  translate={false}
                   globalStyle={{
                     ...FontStyle.text_h5.regular,
                     color: selectedItem ? Colors.white : Colors.grey['500'],

@@ -1,67 +1,228 @@
-import React, { useState } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {
+  Modal,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import { normalize } from 'assets/RootStyles/normalize';
 import { Colors } from 'assets/RootStyles';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
+import Animated, {
+  interpolate,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from 'react-native-reanimated';
+import { CustomText } from 'components/Text';
 import { navigate } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
-import { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+
+const BTN_WIDTH = normalize(200);
+const BTN_HEIGHT = normalize(50);
+const CREATE_BTN_WIDTH = normalize(50);
+const PADDING = normalize(8);
+const BTN_COUNT = 3;
 
 function CreateButton(props) {
   const { theme, buttonColor, styles } = props;
   const [pressed, setPressed] = useState(false);
-  const top1 = useSharedValue(-33);
-  const top2 = useSharedValue(-33);
-  const left1 = useSharedValue(0);
-  const left2 = useSharedValue(0);
+  const rotateAnim = useSharedValue(0);
+  const [actionHeight, setActionHeight] = useState(0);
+  useEffect(() => {
+    if (pressed) {
+      rotateAnim.value = withSpring(1);
+    } else {
+      rotateAnim.value = withSpring(0);
+    }
+  }, [pressed]);
 
-  const animatedStylesSend = useAnimatedStyle(() => {
+  const rotation = useAnimatedStyle(() => {
     return {
-      top: top1.value,
-      left: left1.value,
+      transform: [
+        {
+          rotate: `${interpolate(rotateAnim.value, [0, 1], [45, 90])}deg`,
+        },
+      ],
     };
   });
-  const animatedStylesCreate = useAnimatedStyle(() => {
+
+  const buttonStyle = useAnimatedStyle(() => {
     return {
-      top: top2.value,
-      left: left2.value,
+      width: interpolate(rotateAnim.value, [0, 1], [0, BTN_WIDTH]),
+      height: interpolate(rotateAnim.value, [0, 1], [1, BTN_HEIGHT]),
+      left: interpolate(
+        rotateAnim.value,
+        [0, 1],
+        [0, -((BTN_WIDTH - CREATE_BTN_WIDTH) / 2)],
+      ),
+      opacity: interpolate(rotateAnim.value, [0, 1], [0, 1]),
     };
   });
+
+  const eventStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateY: interpolate(
+            rotateAnim.value,
+            [0, 1],
+            [
+              0,
+              -(actionHeight * BTN_COUNT + PADDING * 3 + CREATE_BTN_WIDTH / 2),
+            ],
+          ),
+        },
+      ],
+    };
+  }, [actionHeight]);
+
+  const requestStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateY: interpolate(
+            rotateAnim.value,
+            [0, 1],
+            [
+              0,
+              -(
+                actionHeight * (BTN_COUNT - 1) +
+                PADDING * 2 +
+                CREATE_BTN_WIDTH / 2
+              ),
+            ],
+          ),
+        },
+      ],
+    };
+  }, [actionHeight]);
+
+  const groupStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateY: interpolate(
+            rotateAnim.value,
+            [0, 1],
+            [0, -(actionHeight + PADDING + CREATE_BTN_WIDTH / 2)],
+          ),
+        },
+      ],
+    };
+  }, [actionHeight]);
+
+  const tripStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateY: interpolate(
+            rotateAnim.value,
+            [0, 1],
+            [0, -(actionHeight + CREATE_BTN_WIDTH / 2)],
+          ),
+        },
+      ],
+    };
+  }, [actionHeight]);
 
   return (
     <View>
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => {
-          // setPressed(true);
-          navigate(routNames.CREATE_EVENT);
+      <Modal
+        animationType="fade"
+        transparent
+        visible={pressed}
+        onRequestClose={() => {
+          setPressed(false);
         }}>
-        {/*<Animated.View*/}
-        {/*  style={[*/}
-        {/*    {*/}
-        {/*      width: normalize(50),*/}
-        {/*      height: normalize(50),*/}
-        {/*      borderRadius: normalize(25),*/}
-        {/*      backgroundColor: Colors.purple['500'],*/}
-        {/*      position: 'absolute',*/}
-        {/*    },*/}
-        {/*    animatedStylesSend,*/}
-        {/*  ]}*/}
-        {/*/>*/}
-        {/*<Animated.View*/}
-        {/*  style={[*/}
-        {/*    {*/}
-        {/*      width: normalize(50),*/}
-        {/*      height: normalize(50),*/}
-        {/*      borderRadius: normalize(25),*/}
-        {/*      backgroundColor: Colors.purple['500'],*/}
-        {/*      position: 'absolute',*/}
-        {/*    },*/}
-        {/*    animatedStylesCreate,*/}
-        {/*  ]}*/}
-        {/*/>*/}
-
+        <TouchableWithoutFeedback onPress={() => setPressed(false)}>
+          <View
+            style={{
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+              left: -(CREATE_BTN_WIDTH / 2),
+              paddingBottom: CREATE_BTN_WIDTH + normalize(16),
+            }}>
+            <TouchableWithoutFeedback onPress={() => {}}>
+              <View>
+                <Animated.View
+                  onLayout={e => setActionHeight(e.nativeEvent.layout.height)}
+                  onTouchStart={() => {
+                    setPressed(false);
+                    if (false) {
+                      navigate(routNames.CREATE_EVENT, {
+                        screen: 'choose_category',
+                      });
+                    } else {
+                      navigate(routNames.ADD_BANK_ACCOUNT);
+                    }
+                  }}
+                  style={[styles.buttons, buttonStyle, eventStyle]}>
+                  <Icon name={ICON_NAMES.PROFILE.EVENTS} color={Colors.white} />
+                  <CustomText
+                    children={'Create Event'}
+                    globalStyle={{
+                      marginLeft: normalize(8),
+                      color: Colors.white,
+                    }}
+                  />
+                </Animated.View>
+                <Animated.View
+                  onTouchStart={() => {
+                    setPressed(false);
+                    navigate(routNames.CREATE_EVENT, {
+                      screen: 'choose_a_speaker',
+                    });
+                  }}
+                  style={[styles.buttons, buttonStyle, requestStyle]}>
+                  <Icon
+                    name={ICON_NAMES.TAB_BAR.REQUEST}
+                    color={Colors.white}
+                  />
+                  <CustomText
+                    children={'Send Request'}
+                    globalStyle={{
+                      marginLeft: normalize(8),
+                      color: Colors.white,
+                    }}
+                  />
+                </Animated.View>
+                <Animated.View
+                  onTouchStart={() => {
+                    setPressed(false);
+                    navigate(routNames.CREATE_GROUP);
+                  }}
+                  style={[styles.buttons, buttonStyle, groupStyle]}>
+                  <Icon name={ICON_NAMES.PROFILE.GROUPS} color={Colors.white} />
+                  <CustomText
+                    children={'Create Group'}
+                    globalStyle={{
+                      marginLeft: normalize(8),
+                      color: Colors.white,
+                    }}
+                  />
+                </Animated.View>
+                {/*<Animated.View style={[styles.buttons, buttonStyle, tripStyle]}>*/}
+                {/*  <Icon name={ICON_NAMES.PROFILE.GROUPS} color={Colors.white} />*/}
+                {/*  <CustomText*/}
+                {/*    children={'Plan your trip'}*/}
+                {/*    globalStyle={{ marginLeft: normalize(8), color: Colors.white }}*/}
+                {/*  />*/}
+                {/*</Animated.View>*/}
+              </View>
+            </TouchableWithoutFeedback>
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>
+      <TouchableOpacity
+        activeOpacity={1}
+        onPress={() => {
+          setPressed(!pressed);
+        }}>
         <View
           style={[
             styles.middleIcon,
@@ -72,14 +233,14 @@ function CreateButton(props) {
               elevation: 8,
             },
           ]}>
-          <View style={{ transform: [{ rotate: '315deg' }] }}>
+          <Animated.View style={rotation}>
             <Icon
-              name={ICON_NAMES.TAB_BAR.CREATE}
+              name={ICON_NAMES.PLUS}
               width={normalize(25)}
               height={normalize(25)}
               color={theme?.PRIMARY_BACKGROUND_COLOR}
             />
-          </View>
+          </Animated.View>
         </View>
       </TouchableOpacity>
     </View>

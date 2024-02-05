@@ -135,13 +135,9 @@ export const Fonts = {
   arm: {
     black: 'Montserratarm2-Black',
     bold: 'Montserratarm2-Bold',
-    extraBold: 'Montserratarm2-ExtraBold',
-    extraLight: 'Montserratarm2-ExtraLight',
-    light: 'Montserratarm2-Light',
     medium: 'Montserratarm2-Medium',
     regular: 'Montserratarm2-Regular',
     semi_bold: 'Montserratarm2-SemiBold',
-    thin: 'Montserratarm2-Thin',
   },
 };
 

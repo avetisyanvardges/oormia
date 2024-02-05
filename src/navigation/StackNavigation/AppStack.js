@@ -7,6 +7,7 @@ import WebViewScreen from 'screens/AppLayer/WebView';
 import AddFreeDays from 'screens/AppLayer/Profile/AddFreeDays';
 import TicketDetails from 'screens/AppLayer/Tickets/Details';
 import NotificationScreen from 'screens/AppLayer/Notifications';
+import AddBankAccountScreen from 'screens/AppLayer/Events/AddBankAccount';
 
 const Stack = createSharedElementStackNavigator();
 const AppStack = () => {
@@ -18,6 +19,10 @@ const AppStack = () => {
       <Stack.Screen name={routNames.MAIN_TAB} component={MainTab} />
       <Stack.Screen name={routNames.EVENTS} component={EventList} />
       <Stack.Screen name={routNames.WEB_VIEW} component={WebViewScreen} />
+      <Stack.Screen
+        name={routNames.ADD_BANK_ACCOUNT}
+        component={AddBankAccountScreen}
+      />
       <Stack.Screen
         name={routNames.FREE_DAYS_CALENDAR}
         component={AddFreeDays}

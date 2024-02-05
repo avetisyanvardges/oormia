@@ -24,6 +24,9 @@ export const userSlice = createSlice({
       state.currentUser = action?.payload?.data?.userResponse;
       state.refresh_token = action?.payload?.data?.refreshToken;
       state.token = action?.payload?.data?.token;
+      if (!action?.payload?.data?.notVerified?.verify) {
+        state.verification_token = action?.payload?.data?.notVerified?.token;
+      }
     });
     builder.addCase(fetchCurrentUser.fulfilled, (state, action) => {
       state.currentUser = action?.payload;

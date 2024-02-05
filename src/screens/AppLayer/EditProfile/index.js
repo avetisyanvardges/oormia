@@ -21,6 +21,8 @@ import dispatch from 'utils/dispatch/dispatch';
 import { editProfile } from 'state/user/operations/editProfile';
 import { isEmpty } from 'lodash';
 import MImage from 'components/MImage';
+import { show_toast } from 'state/snackbars';
+import { toastMessageTypes } from 'state/snackbars/types';
 
 const EditProfile = ({ route }) => {
   const insets = useSafeAreaInsets();
@@ -102,7 +104,22 @@ const EditProfile = ({ route }) => {
       }
     }
 
-    dispatch(editProfile({ body: body, id: currentUser?.id }));
+    dispatch(
+      editProfile({
+        body: body,
+        id: currentUser?.id,
+        callback: () => {
+          dispatch(
+            show_toast({
+              message: 'Profile updated successfully',
+              type: toastMessageTypes.SUCCESS,
+              duration: 400,
+            }),
+          );
+          back();
+        },
+      }),
+    );
   };
 
   return (

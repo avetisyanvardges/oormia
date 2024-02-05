@@ -27,11 +27,6 @@ const MImage = ({
       resizeMode={resizeMode}
       style={style}
       onError={() => {
-        if (type === 'profile') {
-          setLoading(true);
-          return;
-        }
-
         onError && onError();
       }}>
       {loading ? (

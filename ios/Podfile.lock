@@ -566,7 +566,8 @@ PODS:
     - RCTTypeSafety
     - React-Core
     - ReactCommon/turbomodule/core
-  - react-native-webview (13.6.3):
+  - react-native-webview (13.6.4):
+    - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - React-perflogger (0.71.2)
   - React-RCTActionSheet (0.71.2):
@@ -695,6 +696,8 @@ PODS:
   - RNGoogleSignin (11.0.0):
     - GoogleSignIn (~> 7.0)
     - React-Core
+  - RNIap (12.12.2):
+    - React-Core
   - RNImageCropPicker (0.40.0):
     - React-Core
     - React-RCTImage
@@ -740,9 +743,6 @@ PODS:
     - React-Core
   - RNSVG (13.8.0):
     - React-Core
-  - RNYamap (4.1.18):
-    - React
-    - YandexMapsMobile (= 4.2.2-full)
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
@@ -751,7 +751,6 @@ PODS:
     - SDWebImage/Core (~> 5.10)
   - SocketRocket (0.6.1)
   - TOCropViewController (2.6.1)
-  - YandexMapsMobile (4.2.2-full)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -855,13 +854,13 @@ DEPENDENCIES:
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
+  - RNIap (from `../node_modules/react-native-iap`)
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSharedElement (from `../node_modules/react-native-shared-element`)
   - RNSVG (from `../node_modules/react-native-svg`)
-  - RNYamap (from `../node_modules/react-native-yamap`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -908,7 +907,6 @@ SPEC REPOS:
     - SDWebImageWebPCoder
     - SocketRocket
     - TOCropViewController
-    - YandexMapsMobile
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -1041,6 +1039,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
     :path: "../node_modules/@react-native-google-signin/google-signin"
+  RNIap:
+    :path: "../node_modules/react-native-iap"
   RNImageCropPicker:
     :path: "../node_modules/react-native-image-crop-picker"
   RNPermissions:
@@ -1053,8 +1053,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-shared-element"
   RNSVG:
     :path: "../node_modules/react-native-svg"
-  RNYamap:
-    :path: "../node_modules/react-native-yamap"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1138,7 +1136,7 @@ SPEC CHECKSUMS:
   react-native-pager-view: e26d35e382d86950c936f8917e3beb9188115ccc
   react-native-render-html: 984dfe2294163d04bf5fe25d7c9f122e60e05ebe
   react-native-safe-area-context: 39c2d8be3328df5d437ac1700f4f3a4f75716acc
-  react-native-webview: 88293a0f23eca8465c0433c023ec632930e644d0
+  react-native-webview: 107961c73db53d66549c867a3b64eaa20d34c41f
   React-perflogger: c7ccda3d1d1da837f7ff4e54e816022a6803ee87
   React-RCTActionSheet: 01c125aebbad462a24228f68c584c7a921d6c28e
   React-RCTAnimation: 5277a9440acffc4a5b7baa6ae3880fe467277ae6
@@ -1166,21 +1164,20 @@ SPEC CHECKSUMS:
   RNFBMessaging: e52a76a97ec5ff75e186c150e2bfab86c9e655d1
   RNGestureHandler: 32a01c29ecc9bb0b5bf7bc0a33547f61b4dc2741
   RNGoogleSignin: fc408799f1990a12497a32f64280c0fe353ffcc1
+  RNIap: 123a98c6187f09ce0ed5897569abf01d9db416b0
   RNImageCropPicker: 486e2f7e2b0461ce24321f751410dce1b3b49e6d
   RNPermissions: b7fa7b57aabdf1a67ebfa2acb41772d6cf0b9fcb
   RNReanimated: cc5e3aa479cb9170bcccf8204291a6950a3be128
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   RNSharedElement: 3fd05877bd6bc95f71b332801bf4356ca69ab7f6
   RNSVG: c1e76b81c76cdcd34b4e1188852892dc280eb902
-  RNYamap: 3466eba02ad952b7521d77672fc758cf612bb6b8
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
-  YandexMapsMobile: 1fd5f86bc368ad6ba528b199f9477e4a26796567
   Yoga: 5b0304b3dbef2b52e078052138e23a19c7dacaef
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 075435e39f559721fecb4ec0d8ed1b385cba7d66
+PODFILE CHECKSUM: 89ec39d4e5ea4060fd2127b84702ce42e29f889c
 
 COCOAPODS: 1.12.1

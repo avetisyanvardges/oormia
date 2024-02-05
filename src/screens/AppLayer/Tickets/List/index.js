@@ -89,6 +89,7 @@ export const UpcomingTickets = () => {
                         />
                         <CustomText
                           children={moment(item.startDate).format('HH:mm')}
+                          translate={false}
                           globalStyle={{
                             ...FontStyle.text_h5.regular,
                           }}
@@ -229,7 +230,8 @@ export const PastTickets = () => {
                           }}
                         />
                         <CustomText
-                          children={moment(item?.startDate).format('HH:mm A')}
+                          children={moment(item?.startDate).format('HH:mm')}
+                          translate={false}
                           globalStyle={{
                             ...FontStyle.text_h5.regular,
                           }}

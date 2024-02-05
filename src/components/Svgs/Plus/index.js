@@ -13,7 +13,7 @@ const PlusIcon = ({ width, height, color }) => {
       <Path
         d="M4 12h16M12 4v16"
         stroke={color || Colors.purple['500']}
-        strokeWidth={1.5}
+        strokeWidth={normalize(1.5)}
         strokeLinecap="round"
       />
     </Svg>

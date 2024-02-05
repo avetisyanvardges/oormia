@@ -6,7 +6,10 @@ import { deviceInfo } from '../../assets/deviceInfo';
 import DeviceInfo from 'react-native-device-info';
 import dispatch from 'utils/dispatch/dispatch';
 import { userLogAuth } from 'state/user/operations/userLogOut';
-import { fetchSubCategoriesAllEndpoint } from 'state/categories/endpoints';
+import {
+  fetchCategoriesAllEndpoint,
+  fetchSubCategoriesAllEndpoint,
+} from 'state/categories/endpoints';
 import { show_toast } from 'state/snackbars';
 import { toastMessageTypes } from 'state/snackbars/types';
 import i18n from 'i18next';
@@ -27,6 +30,7 @@ const handleRequest = config => {
   } = store.getState();
   const locale = i18n.language;
   const { url: subCategoriesUrl } = fetchSubCategoriesAllEndpoint;
+  const { url: categoriesUrl } = fetchCategoriesAllEndpoint;
   if (config.headers) {
     config.headers['X-localization'] = locale;
     DeviceInfo.getUniqueId().then(res => {
@@ -48,7 +52,7 @@ const handleRequest = config => {
     }
   }
 
-  if (config.url === subCategoriesUrl) {
+  if (config.url === subCategoriesUrl || config.url === categoriesUrl) {
     config.baseURL = eventControllerApi;
   }
 

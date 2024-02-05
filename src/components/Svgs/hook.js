@@ -75,6 +75,9 @@ import { AmFlagIcon } from 'components/Svgs/Flag/Am';
 import { RuFlagIcon } from 'components/Svgs/Flag/Ru';
 import { EnFlagIcon } from 'components/Svgs/Flag/En';
 import { CheckboxOnIcon } from 'components/Svgs/CheckboxOn';
+import { GroupIcon } from 'components/Svgs/Group';
+import { RequestIcon } from 'components/Svgs/TabBar/RequestIcon';
+import { TripIcon } from 'components/Svgs/TripIcon';
 
 export const ICONS = {
   [ICON_NAMES.ADMIN.NOT_MODERATED_EVENT]: ({ width, height, size, color }) => (
@@ -351,6 +354,15 @@ export const ICONS = {
   ),
   [ICON_NAMES.TAB_BAR.PROFILE]: ({ width, height, size, color }) => (
     <ProfileIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.PROFILE.GROUPS]: ({ width, height, size, color }) => (
+    <GroupIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.TAB_BAR.REQUEST]: ({ width, height, size, color }) => (
+    <RequestIcon width={width} height={height} size={size} color={color} />
+  ),
+  [ICON_NAMES.TRIP]: ({ width, height, size, color }) => (
+    <TripIcon width={width} height={height} size={size} color={color} />
   ),
   [ICON_NAMES.PROFILE.FRIENDS]: ({ width, height, size, color }) => (
     <FriendsIcon

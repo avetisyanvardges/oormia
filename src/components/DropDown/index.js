@@ -7,6 +7,7 @@ import { normalize } from 'assets/RootStyles/normalize';
 import { FormattedMessage } from 'react-intl';
 import { CustomText } from 'components/Text';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
+import i18n from 'i18next';
 
 const DropDown = ({
   placeholder,
@@ -23,7 +24,14 @@ const DropDown = ({
   supportMessage,
   showSupportMessage,
   loader,
+  containerStyle,
+  values,
 }) => {
+  const { t } = i18n;
+
+  const translatedPlaceholder = placeholder
+    ? t(`placeholder.${placeholder}`, values)
+    : t('label.empty', values);
   const styles = Styles();
   return (
     <TouchableOpacity
@@ -33,7 +41,7 @@ const DropDown = ({
       style={{ ...style, marginTop: normalize(10) }}>
       {label && (
         <CustomText
-          children={label}
+          children={`label.${label}`}
           globalStyle={{
             ...FontStyle.text_h6.regular,
             color: Colors.grey['300'],
@@ -58,6 +66,7 @@ const DropDown = ({
               paddingHorizontal: normalize(12),
             },
             validated && { borderColor: Colors.red['500'], borderWidth: 1.5 },
+            containerStyle,
           ]}>
           {renderIcon ? renderIcon() : null}
           {value || placeholder ? (
@@ -72,7 +81,12 @@ const DropDown = ({
                 <Text style={styles.valueText}>{value}</Text>
               ) : placeholder ? (
                 <Text style={styles.placeholderText}>
-                  <CustomText children={placeholder} />
+                  <CustomText
+                    children={translatedPlaceholder}
+                    globalStyle={{
+                      color: Colors.oxford_blue['200'],
+                    }}
+                  />
                 </Text>
               ) : null}
             </View>

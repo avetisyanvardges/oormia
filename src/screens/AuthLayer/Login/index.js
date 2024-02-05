@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { ScrollView, TouchableOpacity, View } from 'react-native';
+import { Keyboard, ScrollView, TouchableOpacity, View } from 'react-native';
 import { CustomText } from 'components/Text';
 import Input from 'components/Input';
 import ScreenMask from '../../../components/screenMask';
@@ -18,11 +18,18 @@ import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { yupResolver } from '@hookform/resolvers/yup';
 import signUpSchema from 'utils/validations/signup';
+import AppleAuthButton from 'components/AppleAuthButton';
+import GoogleAuthButton from 'components/GoogleAuthButton';
+import { userSignUp } from 'state/user/operations/userSignUp';
 
 const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
   const [switchPage, setSwitchPage] = useState(true);
+  const [keyboardOpened, setKeyboardOpened] = useState(false);
+
   const navigation = useNavigation();
-  const { token } = useSelector(({ user }) => user);
+  const { token, currentUser } = useSelector(({ user }) => user);
+  const { verification_token } = useSelector(({ user }) => user);
+
   const {
     control,
     handleSubmit,
@@ -34,18 +41,52 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
     defaultValues: {
       email: '',
       password: '',
+      role: 'USER',
     },
     resolver: page === SIGN_UP ? yupResolver(signUpSchema) : null,
   });
 
   useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      deviceInfo.ios ? 'keyboardWillShow' : 'keyboardDidShow',
+      () => {
+        setKeyboardOpened(true);
+      },
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      deviceInfo.ios ? 'keyboardWillHide' : 'keyboardDidHide',
+      () => {
+        setKeyboardOpened(false);
+      },
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (verification_token) {
+      console.log(getValues('email'));
+      navigation.navigate(routNames.OTP, { email: getValues('email') });
+    }
+  }, [verification_token]);
+
+  useEffect(() => {
     if (!isEmpty(token)) {
+      if (!currentUser?.firstName || !currentUser?.lastName) {
+        navigate(routNames.SIGN_UP_USER_DATA);
+        return;
+      }
+
       replace(routNames.APP_LAYER);
     }
   }, [token]);
   const handlerSubmit = values => {
     if (page === SIGN_UP) {
-      navigate(routNames.SIGN_UP_USER_DATA, { values });
+      // navigate(routNames.SIGN_UP_USER_DATA, { values });
+      dispatch(userSignUp(values));
     } else {
       dispatch(userSignIn(values));
     }
@@ -54,7 +95,13 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
   return (
     <ScreenMask
       containerStyle={{
-        marginTop: deviceInfo?.small_screen ? '60%' : '100%',
+        marginTop: keyboardOpened
+          ? deviceInfo?.small_screen
+            ? '45%'
+            : '75%'
+          : deviceInfo?.small_screen
+          ? '60%'
+          : '100%',
       }}
       style={{ ...Shadow }}>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
@@ -131,27 +178,21 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
           </View>
         </View>
         <Fragment>
-          {/*<View style={styles.orContainer}>*/}
-          {/*  <View style={styles.or} />*/}
-          {/*  <CustomText*/}
-          {/*    children={`Sign ${page === SIGN_UP ? 'Up' : 'In'} With`}*/}
-          {/*    globalStyle={styles.orText}*/}
-          {/*  />*/}
-          {/*  <View style={styles.or} />*/}
-          {/*</View>*/}
-          {/*<View style={styles.social}>*/}
-          {/*  {deviceInfo?.ios ? (*/}
-          {/*    <TouchableOpacity style={styles.socialItems}>*/}
-          {/*      <Icon name={ICON_NAMES.BUTTON_ICON.APPLE} />*/}
-          {/*    </TouchableOpacity>*/}
-          {/*  ) : null}*/}
-          {/*  <TouchableOpacity style={styles.socialItems}>*/}
-          {/*    <Icon name={ICON_NAMES.BUTTON_ICON.GOOGLE} />*/}
-          {/*  </TouchableOpacity>*/}
-          {/*  <TouchableOpacity style={styles.socialItems}>*/}
-          {/*    <Icon name={ICON_NAMES.BUTTON_ICON.FB} />*/}
-          {/*  </TouchableOpacity>*/}
-          {/*</View>*/}
+          <View style={styles.orContainer}>
+            <View style={styles.or} />
+            <CustomText
+              children={`Sign ${page === SIGN_UP ? 'Up' : 'In'} With`}
+              globalStyle={styles.orText}
+            />
+            <View style={styles.or} />
+          </View>
+          <View style={styles.social}>
+            {deviceInfo?.ios ? <AppleAuthButton /> : null}
+            <GoogleAuthButton />
+            {/*<TouchableOpacity style={styles.socialItems}>*/}
+            {/*  <Icon name={ICON_NAMES.BUTTON_ICON.FB} />*/}
+            {/*</TouchableOpacity>*/}
+          </View>
           <View style={styles.signInTextContainer}>
             <CustomText
               children={

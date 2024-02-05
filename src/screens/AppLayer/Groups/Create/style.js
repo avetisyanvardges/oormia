@@ -11,7 +11,7 @@ const Styles = theme => {
       justifyContent: 'flex-end',
     },
     content: {
-      height: deviceInfo?.small_screen ? '95%' : '85%',
+      height: deviceInfo?.small_screen ? '98%' : '95%',
       paddingHorizontal: normalize(16),
       paddingTop: normalize(16),
       backgroundColor: Colors.white,

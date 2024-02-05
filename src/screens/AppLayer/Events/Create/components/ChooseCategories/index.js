@@ -35,6 +35,7 @@ const ChooseCategories = ({
       <FlatList
         numColumns="2"
         data={categories}
+        keyExtractor={item => item?.id?.toString()}
         renderItem={({ item }) =>
           renderCategories(item, selectedCategories, setSelectedCategories)
         }

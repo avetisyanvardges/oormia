@@ -55,6 +55,7 @@ target 'OOrmia' do
   pod 'nanopb', :modular_headers => true
   pod 'GoogleUtilities', :modular_headers => true
   pod 'react-native-google-maps', :path => rn_maps_path
+  pod 'RNIap', :path => '../node_modules/react-native-iap'
   permissions_path = '../node_modules/react-native-permissions/ios'
   pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
   pod 'Permission-LocationAccuracy', :path => "#{permissions_path}/LocationAccuracy"

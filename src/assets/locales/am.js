@@ -1,11 +1,12 @@
 import { amLoginScreen } from 'assets/locales/screens/Auth/am';
+import { amEventScreen } from 'assets/locales/screens/Event/am';
 
 export default {
   ...amLoginScreen,
-
+  ...amEventScreen,
   // LANGUAGES
   'locales.select_language': 'Ընտրեք լեզուն',
-  'locales.am': 'Հայերեն',
+  'locales.hy': 'Հայերեն',
   'locales.en': 'English',
   'locales.ru': 'Русский',
 
@@ -66,6 +67,23 @@ export default {
   'btn.Cancel': 'Չեղարկել',
   'btn.log_out': 'Դուրս գալ',
   app_version: 'Հավելվածի տարբերակը {{version}}',
+
+  'btn.follow': 'Հետևել',
+  'btn.invite': 'Հրավիրել',
+
+  // GROUPS
+  on_weekends: 'Հանգստյան օրերին',
+  monthly: 'Ամսական',
+  yearly: 'Տարեկան',
+  upload_an_image: 'Վերբեռնեք պատկեր',
+  'label.group_name': 'Սահմանեք խմբի եզակի անուն',
+  'label.group_description': 'Ստեղծեք ազդեցիկ նկարագրություն',
+  'placeholder.group_name': 'Անուն',
+  'placeholder.group_description': 'Նկարագրություն',
+  members: 'Անդամներ',
+  event_frequency: 'Իրադարձությունների հաճախականությունը',
+  categories: 'Կատեգորիաներ',
+  choose_up_to_3_categories: 'Ընտրեք մինչև 3 կատեգորիա',
 
   'label.empty': '',
 };

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "944812769510",
+    "project_id": "oormia-405505",
+    "storage_bucket": "oormia-405505.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944812769510:android:ef9fee23e9a97bc253bb27",
+        "android_client_info": {
+          "package_name": "com.oormia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "944812769510-0v4mvkcsb3q9tbppsadhsg91jgvsh3ap.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oormia",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "944812769510-kqdupndk9g1qs3jutlto97ma24tb3bc6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDegpreTKDz9yIWIAY1l93gpXc-iCkdzwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "944812769510-kqdupndk9g1qs3jutlto97ma24tb3bc6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "944812769510-9p70fih63qdvk29cogq6kj27fb6hghbj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.oormia"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

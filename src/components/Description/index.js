@@ -14,6 +14,7 @@ import { CustomText } from '../Text';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import { Colors, FontStyle } from 'assets/RootStyles';
+import i18n from 'i18next';
 
 function Description({
   label = '',
@@ -34,9 +35,14 @@ function Description({
   multiline,
   autoCapitalize = 'none',
   backgroundColor = Colors.oxford_blue['30'],
+  values,
 }) {
+  const { t } = i18n;
   const [focused, setFocused] = useState(false);
   const [viewPassword, setViewPassword] = useState(true);
+  const translatedPlaceholder = placeholder
+    ? t(`placeholder.${placeholder}`, values)
+    : t('label.empty', values);
   return (
     <KeyboardAvoidingView
       {...(deviceInfo.ios
@@ -54,7 +60,7 @@ function Description({
         onPress={onPress}>
         {label ? (
           <CustomText
-            children={label}
+            children={`label.${label}`}
             globalStyle={{
               ...styles.label,
               ...labelStyle,
@@ -87,7 +93,7 @@ function Description({
                   style={styles.inputDefault}
                   onPressIn={onPress}
                   placeholderTextColor={Colors.oxford_blue['200']}
-                  placeholder={placeholder}
+                  placeholder={translatedPlaceholder}
                   value={value}
                   onChangeText={onChange}
                   onBlur={() => {
