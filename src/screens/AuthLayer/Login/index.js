@@ -21,6 +21,7 @@ import signUpSchema from 'utils/validations/signup';
 import AppleAuthButton from 'components/AppleAuthButton';
 import GoogleAuthButton from 'components/GoogleAuthButton';
 import { userSignUp } from 'state/user/operations/userSignUp';
+import FbAuthButton from 'components/FbAuthButton';
 
 const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
   const [switchPage, setSwitchPage] = useState(true);
@@ -189,9 +190,7 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
           <View style={styles.social}>
             {deviceInfo?.ios ? <AppleAuthButton /> : null}
             <GoogleAuthButton />
-            {/*<TouchableOpacity style={styles.socialItems}>*/}
-            {/*  <Icon name={ICON_NAMES.BUTTON_ICON.FB} />*/}
-            {/*</TouchableOpacity>*/}
+            <FbAuthButton />
           </View>
           <View style={styles.signInTextContainer}>
             <CustomText

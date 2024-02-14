@@ -19,6 +19,7 @@ import { CustomText } from 'components/Text';
 import { Colors, FontStyle } from 'assets/RootStyles';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 const LOGIN = 'login';
 const SIGN_UP = 'signUp';
@@ -31,6 +32,7 @@ const Home = ({ navigation, route }) => {
   const insets = useSafeAreaInsets();
   const [page, setPage] = useState(null);
   const [keyboardOpened, setKeyboardOpened] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const pages = {
     [LOGIN]: <Login />,

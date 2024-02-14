@@ -63,7 +63,7 @@ const MapScreen = ({ navigation }) => {
       (deviceInfo.ios ? normalize(80) : normalize(60)) -
       normalize(25),
   );
-  const scrollX = useRef(new Animated.Value(0)).current;
+  // const scrollX = useRef(new Animated.Value(0)).current;
   const animatedStyles = useAnimatedStyle(() => {
     return {
       transform: [{ translateY: translateY.value }],

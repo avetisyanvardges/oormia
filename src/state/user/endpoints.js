@@ -2,6 +2,7 @@ import endpoint from 'utils/endpoint';
 
 export const refreshEndpoint = endpoint('put', 'auth/refresh');
 export const signInEndpoint = endpoint('post', 'auth/sign-in');
+export const socialLoginEndpoint = endpoint('post', 'auth/login/social');
 export const signUpEndpoint = endpoint('post', 'auth/sign-up');
 export const sendFcmEndpoint = endpoint('post', 'api/v1/users/token');
 export const fetchAllUsersEndpoint = endpoint('get', 'api/v1/users/');

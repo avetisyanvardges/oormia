@@ -17,8 +17,6 @@ const Styles = () => {
     buttons: {
       width: 0,
       height: 0,
-      top: -normalize(25),
-      bottom: -normalize(25),
       left: 25,
       right: 25,
       flexDirection: 'row',

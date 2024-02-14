@@ -10,7 +10,9 @@ import { Colors } from 'assets/RootStyles';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
 import Animated, {
+  Easing,
   interpolate,
+  ReduceMotion,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
@@ -22,19 +24,35 @@ import { routNames } from 'constants/routNames';
 const BTN_WIDTH = normalize(200);
 const BTN_HEIGHT = normalize(50);
 const CREATE_BTN_WIDTH = normalize(50);
-const PADDING = normalize(8);
+const PADDING = normalize(4);
 const BTN_COUNT = 3;
 
 function CreateButton(props) {
   const { theme, buttonColor, styles } = props;
   const [pressed, setPressed] = useState(false);
   const rotateAnim = useSharedValue(0);
-  const [actionHeight, setActionHeight] = useState(0);
+  const [actionHeight] = useState(normalize(60));
   useEffect(() => {
     if (pressed) {
-      rotateAnim.value = withSpring(1);
+      rotateAnim.value = withSpring(1, {
+        mass: 1,
+        damping: 10,
+        stiffness: 100,
+        overshootClamping: false,
+        restDisplacementThreshold: 0.01,
+        restSpeedThreshold: 2,
+        reduceMotion: ReduceMotion.System,
+      });
     } else {
-      rotateAnim.value = withSpring(0);
+      rotateAnim.value = withSpring(0, {
+        mass: 1,
+        damping: 10,
+        stiffness: 100,
+        overshootClamping: false,
+        restDisplacementThreshold: 0.01,
+        restSpeedThreshold: 2,
+        reduceMotion: ReduceMotion.System,
+      });
     }
   }, [pressed]);
 
@@ -150,7 +168,6 @@ function CreateButton(props) {
             <TouchableWithoutFeedback onPress={() => {}}>
               <View>
                 <Animated.View
-                  onLayout={e => setActionHeight(e.nativeEvent.layout.height)}
                   onTouchStart={() => {
                     setPressed(false);
                     if (false) {
@@ -192,6 +209,9 @@ function CreateButton(props) {
                   />
                 </Animated.View>
                 <Animated.View
+                  // onLayout={e => {
+                  //   setActionHeight(e.nativeEvent.layout.height);
+                  // }}
                   onTouchStart={() => {
                     setPressed(false);
                     navigate(routNames.CREATE_GROUP);
@@ -206,7 +226,7 @@ function CreateButton(props) {
                     }}
                   />
                 </Animated.View>
-                {/*<Animated.View style={[styles.buttons, buttonStyle, tripStyle]}>*/}
+                {/*<Animated.View style={[styles.buttons, buttonStyle,  tripStyle]}>*/}
                 {/*  <Icon name={ICON_NAMES.PROFILE.GROUPS} color={Colors.white} />*/}
                 {/*  <CustomText*/}
                 {/*    children={'Plan your trip'}*/}

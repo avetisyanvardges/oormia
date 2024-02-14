@@ -1,5 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { socialLogin } from 'state/user/operations/socialLogin';
+import dispatch from 'utils/dispatch/dispatch';
 
 function useContainer() {
   async function onGoogleButtonPress() {
@@ -14,6 +16,7 @@ function useContainer() {
     await auth()
       .signInWithCredential(googleCredential)
       .then(user => {
+        dispatch(socialLogin({ socialUser: user }));
         console.log('Signed in with Google!', user);
       })
       .catch(error => {
