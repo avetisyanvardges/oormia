@@ -76,6 +76,16 @@ const AdminSettings = ({ navigation }) => {
                 })
               }
             />
+            <MenuLink
+              title="Events"
+              iconName={ICON_NAMES.PROFILE.EVENTS}
+              onPress={() =>
+                navigate(routNames.ADMIN_LAYER, {
+                  screen: routNames.ADMIN.EVENTS,
+                  initial: false,
+                })
+              }
+            />
           </View>
         </TouchableWithoutFeedback>
       </View>

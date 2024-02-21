@@ -90,7 +90,7 @@ function Input({
               : focused
               ? Colors.purple['500']
               : Colors.oxford_blue['30'],
-            borderRadius: normalize(8),
+            borderRadius: inputContainerStyle?.borderRadius || normalize(8),
             paddingBottom: normalize(1.5),
             marginTop: normalize(2),
           }}>
@@ -99,6 +99,7 @@ function Input({
               style={{
                 ...styles.inputContainerDef,
                 backgroundColor: backgroundColor,
+                borderRadius: inputContainerStyle?.borderRadius || normalize(7),
               }}>
               <View
                 style={{
@@ -114,7 +115,10 @@ function Input({
                   value={value}
                   onChangeText={onChange}
                   onBlur={() => {
-                    onBlur();
+                    if (typeof onBlur === 'function') {
+                      onBlur();
+                    }
+
                     setFocused(false);
                   }}
                   editable={editable}

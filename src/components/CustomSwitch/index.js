@@ -9,18 +9,25 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { Styles } from './style';
+import { normalize } from 'assets/RootStyles/normalize';
 
-const Switch = ({ activeColor, inActiveColor, active = false, setActive }) => {
+const Switch = ({
+  trackWidth,
+  trackHeight,
+  thumbWidth,
+  thumbHeight,
+  activeColor,
+  inActiveColor,
+  active = false,
+  setActive,
+}) => {
   const styles = Styles();
-  // value for Switch Animation
   const switchTranslate = useSharedValue(0);
-  // state for activate Switch
-  // Progress Value
+  const switcherWidth = useSharedValue(24);
   const progress = useDerivedValue(() => {
     return withTiming(active ? 24 : 0);
   });
 
-  // useEffect for change the switchTranslate Value
   useEffect(() => {
     if (active) {
       switchTranslate.value = 24;
@@ -29,9 +36,9 @@ const Switch = ({ activeColor, inActiveColor, active = false, setActive }) => {
     }
   }, [active, switchTranslate]);
 
-  // Circle Animation
   const customSpringStyles = useAnimatedStyle(() => {
     return {
+      width: switcherWidth.value,
       transform: [
         {
           translateX: withSpring(switchTranslate.value, {
@@ -47,7 +54,6 @@ const Switch = ({ activeColor, inActiveColor, active = false, setActive }) => {
     };
   });
 
-  // Background Color Animation
   const backgroundColorStyle = useAnimatedStyle(() => {
     const backgroundColor = interpolateColor(
       progress.value,
@@ -59,13 +65,46 @@ const Switch = ({ activeColor, inActiveColor, active = false, setActive }) => {
     };
   });
 
+  const handleOnPress = () => {
+    setActive(!active);
+  };
+
+  const handleOnPressIn = () => {
+    if (active) {
+      switchTranslate.value = 20;
+    }
+
+    switcherWidth.value = withSpring(normalize(28));
+  };
+
+  const handleOnPressOut = () => {
+    switcherWidth.value = withSpring(normalize(24));
+  };
+
   return (
     <TouchableWithoutFeedback
-      onPress={() => {
-        setActive(!active);
-      }}>
-      <Animated.View style={[styles.container, backgroundColorStyle]}>
-        <Animated.View style={[styles.circle, customSpringStyles]} />
+      onPress={handleOnPress}
+      onPressIn={handleOnPressIn}
+      onPressOut={handleOnPressOut}>
+      <Animated.View
+        style={[
+          styles.container,
+          backgroundColorStyle,
+          {
+            width: trackWidth || normalize(50),
+            height: trackHeight || normalize(28),
+          },
+        ]}>
+        <Animated.View
+          style={[
+            styles.circle,
+            customSpringStyles,
+            {
+              width: thumbWidth || normalize(24),
+              height: thumbHeight || normalize(24),
+            },
+          ]}
+        />
       </Animated.View>
     </TouchableWithoutFeedback>
   );

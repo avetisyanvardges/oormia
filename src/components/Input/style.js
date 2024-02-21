@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.oxford_blue['30'],
-    borderRadius: normalize(7),
     borderColor: Colors.grey['100'],
     paddingHorizontal: normalize(12),
   },

@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import { navigate } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
 import LinearGradient from 'react-native-linear-gradient';
+import FastImage from 'react-native-fast-image';
 
 const WeekTopUsers = () => {
   const { speakers } = useSelector(({ user }) => user);
@@ -38,7 +39,7 @@ const WeekTopUsers = () => {
           backgroundColor: Colors.white,
           borderRadius: normalize(12),
         }}>
-        <ImageBackground
+        <FastImage
           source={{ uri: mutatedImage }}
           resizeMode="cover"
           style={{
@@ -77,7 +78,7 @@ const WeekTopUsers = () => {
               />
             </View>
           </LinearGradient>
-        </ImageBackground>
+        </FastImage>
       </TouchableOpacity>
     );
   };

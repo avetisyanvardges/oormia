@@ -53,10 +53,12 @@ const EventDetail = ({ navigation, route }) => {
   const [snapPoints, setSnapPoints] = useState(['1%', '70%', '85%']);
   const [active, setActive] = useState(route?.params?.event?.liked);
   const [event, setEvent] = useState(route?.params?.event);
+  const adm = route?.params?.adm;
   const insets = useSafeAreaInsets();
   const bottomSheetRef = useRef(null);
   const creator = currentUser?.id === event?.creator?.id;
   const [address, city, country] = event?.address?.split(', ');
+  console.log(snapIndex, snapPoints, '++++');
 
   useEffect(() => {
     if (!isEmpty(selected_event)) {
@@ -70,15 +72,16 @@ const EventDetail = ({ navigation, route }) => {
     const unsubscribe = navigation.addListener('blur', () => {
       dispatch(clean_verification_token());
     });
+    if (snapPoints.length === 3) {
+      if (deviceInfo.small_screen) {
+        setSnapPoints([`${normalize(60)}%`, `${normalize(80)}%`]);
+      } else {
+        setSnapPoints(['70%', '85%']);
+      }
+    }
+
     setTimeout(() => {
       setSnapIndex(0);
-      if (snapPoints.length === 3) {
-        if (deviceInfo.small_screen) {
-          setSnapPoints([`${normalize(60)}%`, `${normalize(80)}%`]);
-        } else {
-          setSnapPoints(['70%', '85%']);
-        }
-      }
     }, 250);
 
     return () => {
@@ -269,9 +272,9 @@ const EventDetail = ({ navigation, route }) => {
             style={{
               marginTop: insets.top + normalize(16),
             }}>
-            {creator ? (
+            {creator || adm ? (
               <TouchableOpacity
-                onPress={() => navigate(routNames.MORE_STATE, { event })}
+                onPress={() => navigate(routNames.MORE_STATE, { event, adm })}
                 style={{
                   width: normalize(35),
                   height: normalize(35),

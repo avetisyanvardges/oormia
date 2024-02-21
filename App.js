@@ -4,7 +4,9 @@ import Main from './src/main';
 import { persistor, store } from 'state/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import messaging from '@react-native-firebase/messaging';
-import { TouchableWithoutFeedback } from 'react-native';
+import { Settings } from 'react-native-fbsdk-next';
+
+Settings.setAppID('925987549179819');
 
 const App = () => {
   const onMountHandler = async () => {

@@ -19,6 +19,16 @@ const initialState = {
   not_moderated: [],
   requested_events: [],
   selected_bank: {},
+  filter_by_location: {},
+  filter_by_date: '',
+  filter_by_day: '',
+  filter_by_partOfDate: '',
+  filter_by_name: '',
+  filter_by_categories: [],
+  filter_by_time: {
+    hour: 0,
+    minute: 0,
+  },
 };
 
 export const eventsSlice = createSlice({
@@ -62,9 +72,60 @@ export const eventsSlice = createSlice({
       ...state,
       selected_bank: payload,
     }),
+    set_filter_by_location: (state = initialState, { payload }) => ({
+      ...state,
+      filter_by_location: payload,
+    }),
+    set_filter_by_date: (state = initialState, { payload }) => ({
+      ...state,
+      filter_by_date: payload,
+    }),
+    set_filter_by_day: (state = initialState, { payload }) => ({
+      ...state,
+      filter_by_day: payload,
+    }),
+    set_filter_by_partOfDate: (state = initialState, { payload }) => ({
+      ...state,
+      filter_by_partOfDate: payload,
+    }),
+    set_filter_by_name: (state = initialState, { payload }) => ({
+      ...state,
+      filter_by_name: payload,
+    }),
+    set_filter_by_categories: (state = initialState, { payload }) => ({
+      ...state,
+      filter_by_categories: payload,
+    }),
+    set_filter_by_time: (state = initialState, { payload }) => ({
+      ...state,
+      filter_by_categories: payload,
+    }),
+    reset_filters: (state = initialState, { payload }) => ({
+      ...state,
+      filter_by_location: {},
+      filter_by_date: '',
+      filter_by_partOfDate: '',
+      filter_by_name: '',
+      filter_by_categories: [],
+      filter_by_time: {
+        hour: 0,
+        minute: 0,
+      },
+    }),
   },
 });
 
-export const { clean_selected_event, set_selected_bank } = eventsSlice.actions;
+export const {
+  clean_selected_event,
+  set_selected_bank,
+  set_filter_by_location,
+  set_filter_by_date,
+  set_filter_by_day,
+  set_filter_by_partOfDate,
+  set_filter_by_name,
+  set_filter_by_categories,
+  set_filter_by_time,
+  reset_filters,
+} = eventsSlice.actions;
 
 export default eventsSlice.reducer;

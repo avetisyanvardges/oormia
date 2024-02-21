@@ -103,61 +103,61 @@ const UserInfoSection = () => {
             children={`${firstName} ${lastName}`}
             globalStyle={{ ...FontStyle.text_h3.medium }}
           />
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginTop: normalize(5),
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginRight: normalize(8),
-              }}>
-              <Icon
-                name={ICON_NAMES.PROFILE.TRIPS}
-                size={normalize(20)}
-                style={{ marginRight: normalize(4) }}
-              />
-              <CustomText
-                children={'0'}
-                globalStyle={{ ...FontStyle.text_h5.regular }}
-              />
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginRight: normalize(8),
-              }}>
-              <Icon
-                name={ICON_NAMES.PROFILE.EVENTS}
-                size={normalize(20)}
-                style={{ marginRight: normalize(4) }}
-              />
-              <CustomText
-                children={'0'}
-                globalStyle={{ ...FontStyle.text_h5.regular }}
-              />
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginRight: normalize(8),
-              }}>
-              <Icon
-                name={ICON_NAMES.PROFILE.FRIENDS}
-                size={normalize(20)}
-                style={{ marginRight: normalize(4) }}
-              />
-              <CustomText
-                children={'0'}
-                globalStyle={{ ...FontStyle.text_h5.regular }}
-              />
-            </View>
-          </View>
+          {/*<View*/}
+          {/*  style={{*/}
+          {/*    flexDirection: 'row',*/}
+          {/*    alignItems: 'center',*/}
+          {/*    marginTop: normalize(5),*/}
+          {/*  }}>*/}
+          {/*  <View*/}
+          {/*    style={{*/}
+          {/*      flexDirection: 'row',*/}
+          {/*      alignItems: 'center',*/}
+          {/*      marginRight: normalize(8),*/}
+          {/*    }}>*/}
+          {/*    <Icon*/}
+          {/*      name={ICON_NAMES.PROFILE.TRIPS}*/}
+          {/*      size={normalize(20)}*/}
+          {/*      style={{ marginRight: normalize(4) }}*/}
+          {/*    />*/}
+          {/*    <CustomText*/}
+          {/*      children={'0'}*/}
+          {/*      globalStyle={{ ...FontStyle.text_h5.regular }}*/}
+          {/*    />*/}
+          {/*  </View>*/}
+          {/*  <View*/}
+          {/*    style={{*/}
+          {/*      flexDirection: 'row',*/}
+          {/*      alignItems: 'center',*/}
+          {/*      marginRight: normalize(8),*/}
+          {/*    }}>*/}
+          {/*    <Icon*/}
+          {/*      name={ICON_NAMES.PROFILE.EVENTS}*/}
+          {/*      size={normalize(20)}*/}
+          {/*      style={{ marginRight: normalize(4) }}*/}
+          {/*    />*/}
+          {/*    <CustomText*/}
+          {/*      children={'0'}*/}
+          {/*      globalStyle={{ ...FontStyle.text_h5.regular }}*/}
+          {/*    />*/}
+          {/*  </View>*/}
+          {/*  <View*/}
+          {/*    style={{*/}
+          {/*      flexDirection: 'row',*/}
+          {/*      alignItems: 'center',*/}
+          {/*      marginRight: normalize(8),*/}
+          {/*    }}>*/}
+          {/*    <Icon*/}
+          {/*      name={ICON_NAMES.PROFILE.FRIENDS}*/}
+          {/*      size={normalize(20)}*/}
+          {/*      style={{ marginRight: normalize(4) }}*/}
+          {/*    />*/}
+          {/*    <CustomText*/}
+          {/*      children={'0'}*/}
+          {/*      globalStyle={{ ...FontStyle.text_h5.regular }}*/}
+          {/*    />*/}
+          {/*  </View>*/}
+          {/*</View>*/}
         </View>
         <View
           style={{

@@ -3,6 +3,8 @@ import {
   AppleButton,
 } from '@invertase/react-native-apple-authentication';
 import auth from '@react-native-firebase/auth';
+import dispatch from 'utils/dispatch/dispatch';
+import { socialLogin } from 'state/user/operations/socialLogin';
 
 function useContainer() {
   async function onAppleButtonPress() {
@@ -26,7 +28,10 @@ function useContainer() {
 
     auth()
       .signInWithCredential(appleCredential)
-      .then(res => console.log(res, 'res'))
+      .then(res => {
+        console.log(res, 'APPLE ');
+        dispatch(socialLogin(res));
+      })
       .catch(e => console.log(e, 'error '));
 
     // Sign the user in with the credential

@@ -16,8 +16,8 @@ function useContainer() {
     await auth()
       .signInWithCredential(googleCredential)
       .then(user => {
-        dispatch(socialLogin({ socialUser: user }));
         console.log('Signed in with Google!', user);
+        dispatch(socialLogin(user));
       })
       .catch(error => {
         console.log(error);

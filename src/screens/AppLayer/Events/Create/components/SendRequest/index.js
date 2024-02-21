@@ -168,8 +168,8 @@ function SendRequest({ speaker, setScreen, route }) {
             control={control}
             render={({ field: { value, onChange, onBlur } }) => (
               <Input
-                label={'Topic of the visit'}
-                placeholder={'Topic of the visit'}
+                label={'topic'}
+                placeholder={'topic'}
                 value={value}
                 onChange={onChange}
                 onBlur={onBlur}
@@ -252,7 +252,7 @@ function SendRequest({ speaker, setScreen, route }) {
             marginBottom: normalize(8),
           }}>
           <Button
-            title={'Send'}
+            title={'send'}
             onPress={() => {
               dispatch(
                 sendMeetingRequest({

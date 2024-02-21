@@ -1,5 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
+import dispatch from 'utils/dispatch/dispatch';
+import { socialLogin } from 'state/user/operations/socialLogin';
 
 function useContainer() {
   async function onFacebookButtonPress() {
@@ -16,6 +18,8 @@ function useContainer() {
     // Once signed in, get the users AccessToken
     const data = await AccessToken.getCurrentAccessToken();
 
+    console.log(data, 'DATA');
+
     if (!data) {
       throw 'Something went wrong obtaining access token';
     }
@@ -31,6 +35,7 @@ function useContainer() {
       .signInWithCredential(facebookCredential)
       .then(user => {
         console.log('Signed in with FB!', user);
+        dispatch(socialLogin(user));
       })
       .catch(error => {
         console.log(error);

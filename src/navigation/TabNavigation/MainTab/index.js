@@ -19,11 +19,41 @@ function MainTab() {
       }}
       tabBar={props => <TabBar {...props} />}
       initialRouteName={routNames.HOME}>
-      <Tab.Screen name={routNames.HOME} component={HomeScreen} />
-      <Tab.Screen name={routNames.MAP} component={MapScreen} />
-      <Tab.Screen name={routNames.CREATE_EVENT} component={CreateEvent} />
-      <Tab.Screen name={routNames.TICKETS} component={TicketsScreen} />
-      <Tab.Screen name={routNames.PROFILE} component={Profile} />
+      <Tab.Screen
+        name={routNames.HOME}
+        component={HomeScreen}
+        options={{
+          unmountOnBlur: true,
+        }}
+      />
+      <Tab.Screen
+        name={routNames.MAP}
+        component={MapScreen}
+        options={{
+          unmountOnBlur: true,
+        }}
+      />
+      <Tab.Screen
+        name={routNames.CREATE_EVENT}
+        component={CreateEvent}
+        options={{
+          unmountOnBlur: true,
+        }}
+      />
+      <Tab.Screen
+        name={routNames.TICKETS}
+        component={TicketsScreen}
+        options={{
+          unmountOnBlur: true,
+        }}
+      />
+      <Tab.Screen
+        name={routNames.PROFILE}
+        component={Profile}
+        options={{
+          unmountOnBlur: true,
+        }}
+      />
     </Tab.Navigator>
   );
 }

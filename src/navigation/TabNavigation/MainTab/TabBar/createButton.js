@@ -20,6 +20,7 @@ import Animated, {
 import { CustomText } from 'components/Text';
 import { navigate } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
+import { deviceInfo } from 'assets/deviceInfo';
 
 const BTN_WIDTH = normalize(200);
 const BTN_HEIGHT = normalize(50);
@@ -163,7 +164,9 @@ function CreateButton(props) {
               justifyContent: 'flex-end',
               alignItems: 'center',
               left: -(CREATE_BTN_WIDTH / 2),
-              paddingBottom: CREATE_BTN_WIDTH + normalize(16),
+              paddingBottom: deviceInfo?.android
+                ? CREATE_BTN_WIDTH + normalize(10)
+                : actionHeight + normalize(16),
             }}>
             <TouchableWithoutFeedback onPress={() => {}}>
               <View>

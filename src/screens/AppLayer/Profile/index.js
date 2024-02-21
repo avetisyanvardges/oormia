@@ -9,6 +9,8 @@ import dispatch from 'utils/dispatch/dispatch';
 import { getEventHistory } from 'state/events/operations/getEventHistory';
 import { getAllGroups } from 'state/groups/operations/getAllGroups';
 import { useSelector } from 'react-redux';
+import { navigate } from 'services/NavigationService';
+import { routNames } from 'constants/routNames';
 
 const Profile = ({ navigation }) => {
   const { currentUser } = useSelector(({ user }) => user);

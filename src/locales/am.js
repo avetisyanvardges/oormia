@@ -1,5 +1,5 @@
-import { amLoginScreen } from 'assets/locales/screens/Auth/am';
-import { amEventScreen } from 'assets/locales/screens/Event/am';
+import { amLoginScreen } from 'locales/screens/Auth/am';
+import { amEventScreen } from 'locales/screens/Event/am';
 
 export default {
   ...amLoginScreen,
@@ -70,6 +70,9 @@ export default {
 
   'btn.follow': 'Հետևել',
   'btn.invite': 'Հրավիրել',
+  'btn.invited': 'Հրավիրված',
+  'btn.send': 'Ուղարկել',
+  'btn.continue': 'Շարունակել',
 
   // GROUPS
   on_weekends: 'Հանգստյան օրերին',
@@ -84,6 +87,7 @@ export default {
   event_frequency: 'Իրադարձությունների հաճախականությունը',
   categories: 'Կատեգորիաներ',
   choose_up_to_3_categories: 'Ընտրեք մինչև 3 կատեգորիա',
+  'btn.create_group': 'Ստեղծել խումբ',
 
   'label.empty': '',
 };

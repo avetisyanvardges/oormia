@@ -6,6 +6,7 @@ export const routNames = {
   ADMIN: {
     NOT_MODERATED: 'notModeratedEventsScreen',
     CATEGORIES: 'categoriesScreen',
+    EVENTS: 'adminEventsScreen',
   },
   FORGOT: 'Forgot',
   CODE_VERIFICATION: 'CodeVerification',

@@ -1,5 +1,5 @@
-import { enLoginScreen } from 'assets/locales/screens/Auth/en';
-import { enEventScreen } from 'assets/locales/screens/Event/en';
+import { enLoginScreen } from 'locales/screens/Auth/en';
+import { enEventScreen } from 'locales/screens/Event/en';
 
 export default {
   ...enLoginScreen,
@@ -71,6 +71,9 @@ export default {
 
   'btn.follow': 'Follow',
   'btn.invite': 'Invite',
+  'btn.invited': 'Invited',
+  'btn.send': 'Send',
+  'btn.continue': 'Continue',
 
   // GROUPS
   on_weekends: 'On weekends',
@@ -85,6 +88,7 @@ export default {
   event_frequency: 'Event Frequency',
   categories: 'Categories',
   choose_up_to_3_categories: 'Choose up to 3 categories',
+  'btn.create_group': 'Create group',
 
   'label.empty': '',
 };

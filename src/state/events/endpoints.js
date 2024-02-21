@@ -35,3 +35,5 @@ export const generateRandomEventEndpoint = endpoint('post', 'event/random');
 export const setRatingEventEndpoint = endpoint('post', 'rating');
 export const sendMeetingRequestEndpoint = id =>
   endpoint('post', `/event/meeting/${id}`);
+
+export const confirmEventEndpoint = id => endpoint('get', `event/accept/${id}`);

@@ -5,6 +5,7 @@ import { resetPassword } from 'state/user/operations/resetPassword';
 import { userSignUp } from 'state/user/operations/userSignUp';
 import { fetchAllUsers } from 'state/user/operations/fetchAllUsers';
 import { refreshToken } from 'state/user/operations/refreshToken';
+import { socialLogin } from 'state/user/operations/socialLogin';
 
 const initialState = {
   currentUser: '',
@@ -21,6 +22,14 @@ export const userSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder.addCase(userSignIn.fulfilled, (state, action) => {
+      state.currentUser = action?.payload?.data?.userResponse;
+      state.refresh_token = action?.payload?.data?.refreshToken;
+      state.token = action?.payload?.data?.token;
+      if (!action?.payload?.data?.notVerified?.verify) {
+        state.verification_token = action?.payload?.data?.notVerified?.token;
+      }
+    });
+    builder.addCase(socialLogin.fulfilled, (state, action) => {
       state.currentUser = action?.payload?.data?.userResponse;
       state.refresh_token = action?.payload?.data?.refreshToken;
       state.token = action?.payload?.data?.token;

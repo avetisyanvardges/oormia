@@ -16,15 +16,7 @@ export const groupSlice = createSlice({
   },
   reducers: {
     inviteMember: (state, { payload }) => {
-      let mutatedState = state.invited_members;
-      console.log(payload.id, 'PAYLOAD ID -----');
-      if (state.invited_members.includes(payload.id)) {
-        mutatedState = state.invited_members.filter(id => id !== payload.id);
-      } else {
-        mutatedState.push(payload.id);
-      }
-
-      state.invited_members = mutatedState;
+      state.invited_members = payload;
     },
   },
 });

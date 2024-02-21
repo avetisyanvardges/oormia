@@ -562,7 +562,7 @@ function CreateGroup(props) {
                 onPress={() => back()}
               />
               <Button
-                title={'Create group'}
+                title={'create_group'}
                 textStyle={{ color: Colors.white }}
                 containerStyle={{
                   marginLeft: normalize(10),

@@ -53,7 +53,7 @@ function PreferencesScreen({ navigation, route }) {
 
     const mutationPref = data.reduce((acc, item) => {
       if (item.checked) {
-        acc.push(item.name);
+        acc.push(item.id);
       }
 
       return acc;

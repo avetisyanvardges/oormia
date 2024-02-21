@@ -32,6 +32,7 @@ const NotModeratedEvents = ({ navigation }) => {
         onPress={() => {
           navigate(routNames.EVENT_DETAIL, {
             event: item,
+            adm: true,
           });
         }}>
         <View

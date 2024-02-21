@@ -27,10 +27,17 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>fb925987549179819</string>
 				<string>com.googleusercontent.apps.944812769510-9p70fih63qdvk29cogq6kj27fb6hghbj</string>
 			</array>
 		</dict>
 	</array>
+	<key>FacebookAppID</key>
+    <string>925987549179819</string>
+    <key>FacebookDisplayName</key>
+    <string>OOrmia</string>
+    <key>FacebookClientToken</key>
+    <string>ee269fe0e50f5021a0a0e8e94433069e</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>

@@ -2,6 +2,9 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <Firebase.h>
 #import <React/RCTBundleURLProvider.h>
+#import <AuthenticationServices/AuthenticationServices.h> // <- Add This Import
+#import <SafariServices/SafariServices.h> // <- Add This Import
+#import <FBSDKCoreKit/FBSDKCoreKit-Swift.h> // <- Add This Import
 
 @implementation AppDelegate
 
@@ -10,6 +13,7 @@
   [FIRApp configure];
   self.moduleName = @"OOrmia";
   [GMSServices provideAPIKey:@"AIzaSyA3JgEsDXQmVnH6HQOVHzSpta2wKAN2Tf0"];
+  [FBSDKApplicationDelegate.sharedInstance initializeSDK];
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};

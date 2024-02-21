@@ -16,9 +16,10 @@ import { useSelector } from 'react-redux';
 import { routNames } from 'constants/routNames';
 import dispatch from 'utils/dispatch/dispatch';
 import { deleteEvent } from 'state/events/operations/deleteEvent';
+import { acceptEvent } from 'state/events/operations/acceptEvent';
 
 const MoreState = ({ route }) => {
-  const { event } = route.params;
+  const { event, adm } = route.params || {};
   const { currentUser } = useSelector(({ user }) => user);
   const creator = currentUser.id === event.creator.id;
   return (
@@ -53,7 +54,49 @@ const MoreState = ({ route }) => {
                   ...FontStyle.text_h3.medium,
                 }}
               />
-              {creator ? (
+              {adm ? (
+                <View>
+                  <TouchableOpacity
+                    onPress={() => {
+                      dispatch(acceptEvent({ id: event.id }));
+                    }}
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      marginTop: normalize(12),
+                    }}>
+                    <Icon name={ICON_NAMES.EDIT} size={normalize(24)} />
+                    <CustomText
+                      children={'Approve event'}
+                      globalStyle={{
+                        ...FontStyle.text_h5.regular,
+                        marginLeft: normalize(10),
+                      }}
+                    />
+                  </TouchableOpacity>
+                  <Underline style={{ marginVertical: normalize(16) }} />
+                  <TouchableOpacity
+                    onPress={() => {
+                      dispatch(
+                        deleteEvent({
+                          id: event.id,
+                        }),
+                      );
+                    }}
+                    style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <Icon name={ICON_NAMES.REMOVE} color={Colors.red['500']} />
+                    <CustomText
+                      children={'Delete event'}
+                      globalStyle={{
+                        ...FontStyle.text_h5.regular,
+                        color: Colors.red['500'],
+                        marginLeft: normalize(10),
+                      }}
+                    />
+                  </TouchableOpacity>
+                  <Underline style={{ marginTop: normalize(16) }} />
+                </View>
+              ) : creator ? (
                 <View>
                   <TouchableOpacity
                     onPress={() => {

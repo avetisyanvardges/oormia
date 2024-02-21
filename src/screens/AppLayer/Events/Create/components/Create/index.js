@@ -345,8 +345,8 @@ const Create = ({
                 control={control}
                 render={({ field: { value, onChange, onBlur } }) => (
                   <Input
-                    label={'Name'}
-                    placeholder={'Name'}
+                    label={'name'}
+                    placeholder={'name'}
                     value={value}
                     onChange={onChange}
                     onBlur={onBlur}
@@ -358,8 +358,8 @@ const Create = ({
                 control={control}
                 render={({ field: { value, onChange, onBlur } }) => (
                   <Input
-                    label={'Details'}
-                    placeholder={'Details'}
+                    label={'details'}
+                    placeholder={'details'}
                     value={value}
                     onChange={onChange}
                     onBlur={onBlur}
@@ -374,8 +374,8 @@ const Create = ({
                   const [first, second, third] = value?.split(', ') || [];
                   return (
                     <Input
-                      label={'Location'}
-                      placeholder={'Location'}
+                      label={'location'}
+                      placeholder={'location'}
                       value={
                         first && second
                           ? `${first}, ${second}, ${third} ...`
@@ -409,8 +409,8 @@ const Create = ({
                     control={control}
                     render={({ field: { value, onChange, onBlur } }) => (
                       <Input
-                        label={'Date'}
-                        placeholder={'Date'}
+                        label={'date'}
+                        placeholder={'date'}
                         value={moment(value).format('DD MMMM, HH:mm')}
                         onChange={onChange}
                         onBlur={onBlur}
@@ -432,8 +432,8 @@ const Create = ({
                     control={control}
                     render={({ field: { value, onChange, onBlur } }) => (
                       <Input
-                        label={'Duration'}
-                        placeholder={'Duration'}
+                        label={'duration'}
+                        placeholder={'duration'}
                         value={value}
                         onChange={onChange}
                         onBlur={onBlur}
@@ -494,8 +494,8 @@ const Create = ({
                       control={control}
                       render={({ field: { value, onChange, onBlur } }) => (
                         <Input
-                          label={'Participant count'}
-                          placeholder={'Participant count'}
+                          label={'participant_count'}
+                          placeholder={'participant_count'}
                           value={value}
                           onChange={onChange}
                           onBlur={onBlur}
@@ -514,7 +514,7 @@ const Create = ({
                           control={control}
                           render={({ field: { value, onChange, onBlur } }) => (
                             <Input
-                              label={'Currency'}
+                              label={'currency'}
                               placeholder={'Դ'}
                               value={value}
                               onChange={onChange}
@@ -530,8 +530,8 @@ const Create = ({
                           control={control}
                           render={({ field: { value, onChange, onBlur } }) => (
                             <Input
-                              label={'Price'}
-                              placeholder={'0'}
+                              label={'price'}
+                              placeholder={'price'}
                               value={value}
                               onChange={onChange}
                               onBlur={onBlur}
@@ -634,7 +634,7 @@ const Create = ({
                           activeOpacity={0.8}
                           onPress={() => onChange('OPEN')}>
                           <CustomText
-                            children={'Public'}
+                            children={'public'}
                             globalStyle={{
                               color:
                                 value === 'OPEN'
@@ -726,7 +726,7 @@ const Create = ({
           marginBottom: insets.bottom + normalize(8),
         }}>
         <Button
-          title={update ? 'Update event' : 'Create event'}
+          title={update ? 'update_event' : 'create_event'}
           textStyle={{ color: Colors.white }}
           onPress={handleSubmit(onSubmit)}
         />

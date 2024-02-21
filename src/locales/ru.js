@@ -1,5 +1,5 @@
-import { ruLoginScreen } from 'assets/locales/screens/Auth/ru';
-import { ruEventScreen } from 'assets/locales/screens/Event/ru';
+import { ruLoginScreen } from 'locales/screens/Auth/ru';
+import { ruEventScreen } from 'locales/screens/Event/ru';
 
 export default {
   ...ruLoginScreen,
@@ -70,6 +70,9 @@ export default {
 
   'btn.follow': 'Подписаться',
   'btn.invite': 'Пригласить',
+  'btn.invited': 'Приглашенный',
+  'btn.send': 'Отправить',
+  'btn.continue': 'Продолжить',
 
   // GROUPS
   on_weekends: 'В выходные',
@@ -84,6 +87,7 @@ export default {
   event_frequency: 'Частота событий',
   categories: 'Категории',
   choose_up_to_3_categories: 'Выберите до 3 категорий',
+  'btn.create_group': 'Создать группу',
 
   'label.empty': '',
 };

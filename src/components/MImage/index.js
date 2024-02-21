@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import LottieView from 'lottie-react-native';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import { normalize } from 'assets/RootStyles/normalize';
+import { Colors, FontStyle } from 'assets/RootStyles';
+import { CustomText } from 'components/Text';
 
 const loader = {
   profile: require('../../assets/lottie/profile.json'),
@@ -15,8 +19,10 @@ const MImage = ({
   type = 'image',
   resizeMode,
   onError,
+  firstChar,
 }) => {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   return (
     <FastImage
@@ -27,21 +33,31 @@ const MImage = ({
       resizeMode={resizeMode}
       style={style}
       onError={() => {
+        setLoading(false);
+        setError(true);
         onError && onError();
       }}>
       {loading ? (
+        <SkeletonPlaceholder borderRadius={style.borderRadius}>
+          <SkeletonPlaceholder.Item width={style.width} height={style.height} />
+        </SkeletonPlaceholder>
+      ) : null}
+      {error ? (
         <View
           style={{
-            flex: 1,
-            backgroundColor: 'rgb(215,215,215)',
+            width: style.width,
+            height: style.height,
+            borderRadius: normalize(25),
+            backgroundColor: Colors.purple['600'],
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <LottieView
-            style={[style, loaderStyle]}
-            source={loader[type]}
-            autoPlay
-            loop
+          <CustomText
+            children={firstChar}
+            globalStyle={{
+              ...FontStyle.text_h2.semi_bold,
+              color: Colors.white,
+            }}
           />
         </View>
       ) : null}

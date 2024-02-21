@@ -81,9 +81,14 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
         return;
       }
 
+      if (currentUser?.newUser && isEmpty(currentUser?.subcategoryId)) {
+        navigate(routNames.PREFERENCES);
+        return;
+      }
+
       replace(routNames.APP_LAYER);
     }
-  }, [token]);
+  }, [token, currentUser]);
   const handlerSubmit = values => {
     if (page === SIGN_UP) {
       // navigate(routNames.SIGN_UP_USER_DATA, { values });

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Keyboard,
   TouchableOpacity,
@@ -11,17 +11,24 @@ import { Colors, FontStyle } from 'assets/RootStyles';
 import { CustomText } from 'components/Text';
 import Icon from 'components/Svgs';
 import { ICON_NAMES } from 'components/Svgs/icon_names';
-import { useSelector } from 'react-redux';
 import Button from 'components/Button';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import dispatch from 'utils/dispatch/dispatch';
+import {
+  set_filter_by_date,
+  set_filter_by_day,
+  set_filter_by_partOfDate,
+} from 'state/events';
+import { useSelector } from 'react-redux';
 
 const FiltersScreen = ({ route }) => {
-  const [ticketCount, setTicketCount] = useState(1);
-  const [taxiNeeded, setTaxiNeeded] = useState(false);
-  const [selectedDate, setSelectedDate] = useState({ key: 'today' });
-  const [selectedTime, setSelectedTime] = useState({ key: 'day' });
-  const { event } = route.params;
-  const { currentUser } = useSelector(({ user }) => user);
+  const { filter_by_day, filter_by_partOfDay } = useSelector(
+    ({ events }) => events,
+  );
+  const [selectedDate, setSelectedDate] = useState({
+    key: filter_by_day || '',
+  });
+  const [selectedTime, setSelectedTime] = useState({ key: '' });
   const insets = useSafeAreaInsets();
   const today = selectedDate.key === 'today';
   const tomorrow = selectedDate.key === 'tomorrow';
@@ -30,6 +37,19 @@ const FiltersScreen = ({ route }) => {
   const day = selectedTime.key === 'day';
   const night = selectedTime.key === 'night';
   const choose_time = selectedTime.key === 'choose_time';
+
+  const handleSubmit = () => {
+    if (selectedDate.key && (today || tomorrow || this_week)) {
+      dispatch(set_filter_by_day(selectedDate.key));
+    }
+
+    if (selectedTime.key && (day || night)) {
+      dispatch(set_filter_by_partOfDate(selectedTime.key));
+    }
+
+    back();
+  };
+
   return (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -220,49 +240,49 @@ const FiltersScreen = ({ route }) => {
                           }}
                         />
                       </TouchableOpacity>
-                      <TouchableOpacity
-                        activeOpacity={0.9}
-                        onPress={() =>
-                          setSelectedDate({
-                            key: 'choose_date',
-                            value: '',
-                          })
-                        }
-                        style={{
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          paddingVertical: normalize(8),
-                          paddingHorizontal: normalize(12),
-                          backgroundColor: choose_date
-                            ? Colors.purple['500']
-                            : Colors.oxford_blue['30'],
-                          borderRadius: normalize(16),
-                          marginTop: normalize(8),
-                        }}>
-                        <Icon
-                          name={ICON_NAMES.CALENDAR}
-                          color={
-                            choose_date ? Colors.white : Colors.purple['500']
-                          }
-                          size={normalize(18)}
-                        />
-                        <CustomText
-                          children={
-                            selectedDate.key === 'choose_date'
-                              ? selectedDate.value
-                                ? selectedDate.value
-                                : 'Choose a date'
-                              : 'Choose a date'
-                          }
-                          globalStyle={{
-                            ...FontStyle.text_h6.regular,
-                            color: choose_date
-                              ? Colors.white
-                              : Colors.purple['500'],
-                            marginLeft: normalize(8),
-                          }}
-                        />
-                      </TouchableOpacity>
+                      {/*<TouchableOpacity*/}
+                      {/*  activeOpacity={0.9}*/}
+                      {/*  onPress={() =>*/}
+                      {/*    setSelectedDate({*/}
+                      {/*      key: 'choose_date',*/}
+                      {/*      value: '',*/}
+                      {/*    })*/}
+                      {/*  }*/}
+                      {/*  style={{*/}
+                      {/*    flexDirection: 'row',*/}
+                      {/*    alignItems: 'center',*/}
+                      {/*    paddingVertical: normalize(8),*/}
+                      {/*    paddingHorizontal: normalize(12),*/}
+                      {/*    backgroundColor: choose_date*/}
+                      {/*      ? Colors.purple['500']*/}
+                      {/*      : Colors.oxford_blue['30'],*/}
+                      {/*    borderRadius: normalize(16),*/}
+                      {/*    marginTop: normalize(8),*/}
+                      {/*  }}>*/}
+                      {/*  <Icon*/}
+                      {/*    name={ICON_NAMES.CALENDAR}*/}
+                      {/*    color={*/}
+                      {/*      choose_date ? Colors.white : Colors.purple['500']*/}
+                      {/*    }*/}
+                      {/*    size={normalize(18)}*/}
+                      {/*  />*/}
+                      {/*  <CustomText*/}
+                      {/*    children={*/}
+                      {/*      selectedDate.key === 'choose_date'*/}
+                      {/*        ? selectedDate.value*/}
+                      {/*          ? selectedDate.value*/}
+                      {/*          : 'Choose a date'*/}
+                      {/*        : 'Choose a date'*/}
+                      {/*    }*/}
+                      {/*    globalStyle={{*/}
+                      {/*      ...FontStyle.text_h6.regular,*/}
+                      {/*      color: choose_date*/}
+                      {/*        ? Colors.white*/}
+                      {/*        : Colors.purple['500'],*/}
+                      {/*      marginLeft: normalize(8),*/}
+                      {/*    }}*/}
+                      {/*  />*/}
+                      {/*</TouchableOpacity>*/}
                     </View>
                   </View>
                 </View>
@@ -332,50 +352,50 @@ const FiltersScreen = ({ route }) => {
                           }}
                         />
                       </TouchableOpacity>
-                      <TouchableOpacity
-                        activeOpacity={0.9}
-                        onPress={() =>
-                          setSelectedTime({
-                            key: 'choose_time',
-                            value: '',
-                          })
-                        }
-                        style={{
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          paddingVertical: normalize(8),
-                          paddingHorizontal: normalize(12),
-                          backgroundColor: choose_time
-                            ? Colors.purple['500']
-                            : Colors.oxford_blue['30'],
-                          borderRadius: normalize(16),
-                          marginTop: normalize(8),
-                          marginLeft: normalize(8),
-                        }}>
-                        <Icon
-                          name={ICON_NAMES.TIME}
-                          color={
-                            choose_time ? Colors.white : Colors.purple['500']
-                          }
-                          size={normalize(18)}
-                        />
-                        <CustomText
-                          children={
-                            selectedTime.key === 'choose_time'
-                              ? selectedTime.value
-                                ? selectedTime.value
-                                : 'Choose a time'
-                              : 'Choose a time'
-                          }
-                          globalStyle={{
-                            ...FontStyle.text_h6.regular,
-                            color: choose_time
-                              ? Colors.white
-                              : Colors.purple['500'],
-                            marginLeft: normalize(8),
-                          }}
-                        />
-                      </TouchableOpacity>
+                      {/*<TouchableOpacity*/}
+                      {/*  activeOpacity={0.9}*/}
+                      {/*  onPress={() =>*/}
+                      {/*    setSelectedTime({*/}
+                      {/*      key: 'choose_time',*/}
+                      {/*      value: '',*/}
+                      {/*    })*/}
+                      {/*  }*/}
+                      {/*  style={{*/}
+                      {/*    flexDirection: 'row',*/}
+                      {/*    alignItems: 'center',*/}
+                      {/*    paddingVertical: normalize(8),*/}
+                      {/*    paddingHorizontal: normalize(12),*/}
+                      {/*    backgroundColor: choose_time*/}
+                      {/*      ? Colors.purple['500']*/}
+                      {/*      : Colors.oxford_blue['30'],*/}
+                      {/*    borderRadius: normalize(16),*/}
+                      {/*    marginTop: normalize(8),*/}
+                      {/*    marginLeft: normalize(8),*/}
+                      {/*  }}>*/}
+                      {/*  <Icon*/}
+                      {/*    name={ICON_NAMES.TIME}*/}
+                      {/*    color={*/}
+                      {/*      choose_time ? Colors.white : Colors.purple['500']*/}
+                      {/*    }*/}
+                      {/*    size={normalize(18)}*/}
+                      {/*  />*/}
+                      {/*  <CustomText*/}
+                      {/*    children={*/}
+                      {/*      selectedTime.key === 'choose_time'*/}
+                      {/*        ? selectedTime.value*/}
+                      {/*          ? selectedTime.value*/}
+                      {/*          : 'Choose a time'*/}
+                      {/*        : 'Choose a time'*/}
+                      {/*    }*/}
+                      {/*    globalStyle={{*/}
+                      {/*      ...FontStyle.text_h6.regular,*/}
+                      {/*      color: choose_time*/}
+                      {/*        ? Colors.white*/}
+                      {/*        : Colors.purple['500'],*/}
+                      {/*      marginLeft: normalize(8),*/}
+                      {/*    }}*/}
+                      {/*  />*/}
+                      {/*</TouchableOpacity>*/}
                     </View>
                   </View>
                 </View>
@@ -397,6 +417,7 @@ const FiltersScreen = ({ route }) => {
                   </View>
                   <Button
                     title={'Add'}
+                    onPress={handleSubmit}
                     textStyle={{ color: Colors.white }}
                     containerStyle={{ flex: 1 }}
                   />
