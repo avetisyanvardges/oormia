@@ -15,6 +15,7 @@ import Button from 'components/Button';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import dispatch from 'utils/dispatch/dispatch';
 import {
+  reset_filters,
   set_filter_by_date,
   set_filter_by_day,
   set_filter_by_partOfDate,
@@ -407,14 +408,20 @@ const FiltersScreen = ({ route }) => {
                   marginBottom: insets.bottom ? insets.bottom : normalize(16),
                 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <View style={{ flex: 1, alignItems: 'center' }}>
+                  <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={() => {
+                      dispatch(reset_filters());
+                      back();
+                    }}
+                    style={{ flex: 1, alignItems: 'center' }}>
                     <CustomText
                       children={'RESET'}
                       globalStyle={{
                         ...FontStyle.text_h5.regular,
                       }}
                     />
-                  </View>
+                  </TouchableOpacity>
                   <Button
                     title={'Add'}
                     onPress={handleSubmit}
