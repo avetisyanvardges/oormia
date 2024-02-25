@@ -184,7 +184,7 @@ function CreateButton(props) {
                   style={[styles.buttons, buttonStyle, eventStyle]}>
                   <Icon name={ICON_NAMES.PROFILE.EVENTS} color={Colors.white} />
                   <CustomText
-                    children={'Create Event'}
+                    children={'create_event'}
                     globalStyle={{
                       marginLeft: normalize(8),
                       color: Colors.white,
@@ -204,7 +204,7 @@ function CreateButton(props) {
                     color={Colors.white}
                   />
                   <CustomText
-                    children={'Send Request'}
+                    children={'send_request'}
                     globalStyle={{
                       marginLeft: normalize(8),
                       color: Colors.white,
@@ -222,7 +222,7 @@ function CreateButton(props) {
                   style={[styles.buttons, buttonStyle, groupStyle]}>
                   <Icon name={ICON_NAMES.PROFILE.GROUPS} color={Colors.white} />
                   <CustomText
-                    children={'Create Group'}
+                    children={'create_group'}
                     globalStyle={{
                       marginLeft: normalize(8),
                       color: Colors.white,

@@ -9,7 +9,7 @@ export const findNotificationByFrom = createAsyncThunk(
       const { url } = findNotificationsByFrom(from);
       const response = await httpClient.get(url);
 
-      console.log(response, 'response');
+      // console.log(response, 'response');
     } catch {
       //
     }

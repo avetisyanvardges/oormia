@@ -25,6 +25,8 @@ export default {
   find_nearby_event: 'Find Nearby Event',
   speakers: 'Speakers',
   no_speakers_found: 'No speakers found',
+  no_speakers_available:
+    'It seems like there are no speakers available at the moment...',
   best_of_the_week: 'Best of the Week',
   no_events_found: 'No Events found',
   notifications: 'Notifications',
@@ -48,10 +50,12 @@ export default {
   // CREATE EVENT
   create_event: 'Create Event',
   send_request: 'Send a Request',
+  create_group: 'Create Group',
 
   // PROFILE
   'profile.events': 'Events',
   'profile.groups': 'Groups',
+  no_groups_yet: 'No groups yet',
   create_new_group: 'Create New Group',
   'btn.Calendar': 'Calendar',
   'btn.edit_profile': 'Edit Profile',
@@ -70,6 +74,7 @@ export default {
   app_version: 'App Version {{version}}',
 
   'btn.follow': 'Follow',
+  'btn.message': 'Message',
   'btn.invite': 'Invite',
   'btn.invited': 'Invited',
   'btn.send': 'Send',
@@ -89,6 +94,9 @@ export default {
   categories: 'Categories',
   choose_up_to_3_categories: 'Choose up to 3 categories',
   'btn.create_group': 'Create group',
+  placeholder: {
+    search: 'Search',
+  },
 
   'label.empty': '',
 };

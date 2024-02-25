@@ -109,9 +109,10 @@ function SendRequest({ speaker, setScreen, route }) {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           paddingBottom: insets.bottom + normalize(40),
+          paddingTop: insets.top,
         }}>
         <Header
-          title={'Send Request'}
+          title={'send_request'}
           backPress={() => {
             console.log(route);
             if (route?.params?.screen) {

@@ -211,7 +211,7 @@ const UserInfoSection = () => {
                 <Icon name={ICON_NAMES.EDIT_PROFILE} size={normalize(20)} />
               ) : null
             }
-            title={!currentUser ? 'Message' : 'edit_profile'}
+            title={!currentUser ? 'message' : 'edit_profile'}
             textStyle={{
               flex: 1,
               textAlign: 'center',

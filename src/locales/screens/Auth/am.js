@@ -1,6 +1,7 @@
 export const amLoginScreen = {
   // LOGIN
   'login.title': 'Մուտք',
+  'login.with': 'Մուտք գործել',
   'login.subtitle': 'Մուտքագրեք ձեր էլ. փոստը և գաղտնաբառը',
   placeholder: {
     email: 'Մուտքագրեք էլ. փոստ',
@@ -13,6 +14,7 @@ export const amLoginScreen = {
 
   // SIGN UP
   'sign_up.title': 'Գրանցվել',
+  'sign_up.with': 'Այլ եղանակ',
   'btn.sign_up': 'Գրանցվել',
   'btn.skip': 'Բաց թողնել',
   'user_information.hi': 'Ողջու՜յն {{name}}!',

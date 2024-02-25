@@ -157,7 +157,7 @@ const ChooseSpeaker = ({ setScreen, speaker, setSpeaker }) => {
                 <Icon name={ICON_NAMES.EMPTY_STATES.CHOOSE_SPEAKER} />
               </View>
               <CustomText
-                children={'No Speakers Found'}
+                children={'no_speakers_found'}
                 globalStyle={{
                   ...FontStyle.text_h2.medium,
                   color: Colors.grey['500'],
@@ -165,9 +165,7 @@ const ChooseSpeaker = ({ setScreen, speaker, setSpeaker }) => {
                 }}
               />
               <CustomText
-                children={
-                  'It seems like there are no speakers available at the moment. '
-                }
+                children={'no_speakers_available'}
                 globalStyle={{
                   ...FontStyle.text_h5.regular,
                   color: Colors.oxford_blue['200'],

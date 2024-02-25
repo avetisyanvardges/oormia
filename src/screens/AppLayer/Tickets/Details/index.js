@@ -7,10 +7,12 @@ import MImage from 'components/MImage';
 import { CustomText } from 'components/Text';
 import moment from 'moment/moment';
 import { TicketCard } from 'components/Svgs/TicketCard';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const TicketDetails = ({ navigation, route }) => {
   const [layoutWidth, setLayoutWidth] = useState(0);
   const [dotCount, setDotCount] = useState(5);
+  const insets = useSafeAreaInsets();
   const { event } = route?.params;
   const base64 = 'data:image/png;base64,';
   const onLayout = e => {
@@ -24,7 +26,11 @@ const TicketDetails = ({ navigation, route }) => {
   }, [layoutWidth]);
 
   return (
-    <ScrollView contentContainerStyle={{ paddingBottom: normalize(40) }}>
+    <ScrollView
+      contentContainerStyle={{
+        paddingBottom: normalize(40),
+        paddingTop: insets.top + normalize(16),
+      }}>
       <Header title={'My tickets'} backPress={() => navigation.goBack()} />
       <View style={{ flex: 1, marginTop: normalize(20) }}>
         <View

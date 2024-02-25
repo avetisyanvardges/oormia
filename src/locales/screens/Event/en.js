@@ -1,6 +1,11 @@
 export const enEventScreen = {
   'placeholder.select_bank': 'Select Bank',
   'label.select_bank': 'Select Bank',
+  add_bank_acc: 'Add Bank Account',
+  welcome:
+    "Welcome to the financial hub of your success! By adding your bank account, you're ensuring that the fruits of your event creation efforts are effortlessly deposited into your account. This streamlined process ensures that ticket sales revenue flows directly to you, providing a hassle-free experience.",
+  link_steps:
+    "Simply follow the easy steps below to link your bank account securely and enjoy the convenience of automatic payouts. Your success deserves to be rewarded promptly – let's make sure you don't miss a beat.",
   'placeholder.account_number': 'Account Number',
   'label.account_number': 'Account Number',
   'placeholder.account_name': 'Account Name',

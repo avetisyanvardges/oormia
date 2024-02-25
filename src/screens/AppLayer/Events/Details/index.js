@@ -41,6 +41,7 @@ import { clean_verification_token } from 'state/user';
 import { isEmpty } from 'lodash';
 import MImage from 'components/MImage';
 import { joinEvent } from 'state/events/operations/joinEvent';
+// import 'moment/dist/locale/hy-am';
 
 const EventDetail = ({ navigation, route }) => {
   const { week_top_events, selected_event } = useSelector(
@@ -88,7 +89,8 @@ const EventDetail = ({ navigation, route }) => {
       unsubscribe();
     };
   }, []);
-
+  // moment.locale('ru');
+  // console.log(moment().format('LL'), 'HAYEREN');
   const renderTopEventItem = useCallback(
     ({ item, index }) => {
       return (

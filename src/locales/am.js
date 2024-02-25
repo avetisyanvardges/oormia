@@ -25,6 +25,7 @@ export default {
   find_nearby_event: 'Գտեք մոտակա իրադարձություն',
   speakers: 'Խոսնակներ',
   no_speakers_found: 'Խոսնակներ չեն գտնվել',
+  no_speakers_available: 'Կարծես թե այս պահին հասանելի խոսնակներ չկան...',
   best_of_the_week: 'Շաբաթվա լավագույնը',
   no_events_found: 'Իրադարձություններ չեն գտնվել',
   notifications: 'Ծանուցումներ',
@@ -38,20 +39,22 @@ export default {
   past: 'Անցյալ',
   no_upcoming_tickets_found: 'Առաջիկա տոմսեր չեն գտնվել',
   no_past_tickets_found: 'Անցյալ տոմսեր չեն գտնվել',
-  no_tickets_available: 'Թվում է, թե այս պահին տոմսեր չկան',
+  no_tickets_available: 'Կարծես թե այս պահին հասանելի տոմսեր չկան',
 
   Date: 'Ամսաթիվ',
   Time: 'Ժամ',
   Place: 'Տեղ',
 
   // CREATE EVENT
-  create_event: 'Ստեղծել միջոցառում',
-  send_request: 'Ուղարկել հարցում',
+  create_event: 'Ստեղծել Միջոցառում',
+  send_request: 'Ուղարկել Հարցում',
+  create_group: 'Ստեղծել Խումբ',
 
   // PROFILE
   'profile.events': 'Միջոցառումներ',
   'profile.groups': 'Խմբեր',
   create_new_group: 'Ստեղծել նոր խումբ',
+  no_groups_yet: 'Դեռ խմբեր չկան',
   'btn.Calendar': 'Օրացույց',
   'btn.edit_profile': 'Խմբ. հաշիվը',
   edit_profile: 'Խմբագրել հաշիվը',
@@ -69,6 +72,7 @@ export default {
   app_version: 'Հավելվածի տարբերակը {{version}}',
 
   'btn.follow': 'Հետևել',
+  'btn.message': 'Գրել',
   'btn.invite': 'Հրավիրել',
   'btn.invited': 'Հրավիրված',
   'btn.send': 'Ուղարկել',
@@ -88,6 +92,6 @@ export default {
   categories: 'Կատեգորիաներ',
   choose_up_to_3_categories: 'Ընտրեք մինչև 3 կատեգորիա',
   'btn.create_group': 'Ստեղծել խումբ',
-
+  'placeholder.search': 'Որոնել',
   'label.empty': '',
 };

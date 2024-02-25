@@ -16,7 +16,6 @@ import { useSelector } from 'react-redux';
 import { routNames } from 'constants/routNames';
 import dispatch from 'utils/dispatch/dispatch';
 import { deleteEvent } from 'state/events/operations/deleteEvent';
-import { acceptEvent } from 'state/events/operations/acceptEvent';
 
 const MoreState = ({ route }) => {
   const { event, adm } = route.params || {};
@@ -58,7 +57,7 @@ const MoreState = ({ route }) => {
                 <View>
                   <TouchableOpacity
                     onPress={() => {
-                      dispatch(acceptEvent({ id: event.id }));
+                      // dispatch(acceptEvent({ id: event.id }));
                     }}
                     style={{
                       flexDirection: 'row',

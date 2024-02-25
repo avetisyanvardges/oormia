@@ -19,10 +19,12 @@ import { isEmpty } from 'lodash';
 import FastImage from 'react-native-fast-image';
 import { editProfile } from 'state/user/operations/editProfile';
 import { navigate } from 'services/NavigationService';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 function PreferencesScreen({ navigation, route }) {
   const [data, setData] = useState(faceData);
   const { values } = route?.params;
+  const insets = useSafeAreaInsets();
   const { sub_categories } = useSelector(({ categories }) => categories);
   const { currentUser } = useSelector(({ user }) => user);
 
@@ -156,7 +158,7 @@ function PreferencesScreen({ navigation, route }) {
 
   return (
     <ScreenMask style={styles.screenMask}>
-      <View style={styles.nextContainer}>
+      <View style={[styles.nextContainer, { paddingTop: insets.top }]}>
         <BtnGoBack />
         <CustomText
           globalStyle={styles.title}
