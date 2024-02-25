@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     color: Colors.black[50],
   },
   screenMask: {
-    // padding: normalize(13),
+    padding: normalize(13),
   },
   nextContainer: {
     flexDirection: 'row',

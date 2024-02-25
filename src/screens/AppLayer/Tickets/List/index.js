@@ -138,7 +138,8 @@ export const UpcomingTickets = () => {
                 globalStyle={{
                   ...FontStyle.text_h2.medium,
                   color: Colors.grey['500'],
-                  marginTop: normalize(10),
+                  marginVertical: normalize(10),
+                  textAlign: 'center',
                 }}
               />
               <CustomText
@@ -280,7 +281,8 @@ export const PastTickets = () => {
                 globalStyle={{
                   ...FontStyle.text_h2.medium,
                   color: Colors.grey['500'],
-                  marginTop: normalize(10),
+                  marginVertical: normalize(10),
+                  textAlign: 'center',
                 }}
               />
               <CustomText
@@ -329,7 +331,7 @@ const TicketsScreen = ({ navigation }) => {
     <View style={{ flex: 1 }}>
       <View
         style={{
-          paddingTop: insets.top,
+          paddingTop: insets.top + normalize(16),
           paddingHorizontal: normalize(16),
           backgroundColor: Colors.white,
         }}>

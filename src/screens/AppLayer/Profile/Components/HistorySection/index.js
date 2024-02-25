@@ -207,14 +207,14 @@ const HistorySection = () => {
                     marginHorizontal: normalize(48),
                   }}>
                   <Icon name={ICON_NAMES.EMPTY_STATES.GROUPS} />
-                  <Text
-                    style={{
+                  <CustomText
+                    children={'no_groups_yet'}
+                    globalStyle={{
                       ...FontStyle.text_h2.medium,
                       color: Colors.grey['500'],
                       marginTop: normalize(10),
-                    }}>
-                    No groups yet
-                  </Text>
+                    }}
+                  />
                 </View>
               );
             }}

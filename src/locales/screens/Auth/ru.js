@@ -1,6 +1,7 @@
 export const ruLoginScreen = {
   // LOGIN
   'login.title': 'Войти',
+  'login.with': 'Войти с помощью',
   'login.subtitle': 'Введите вашу электронную почту и пароль',
   placeholder: {
     email: 'Введите электронную почту',
@@ -13,6 +14,7 @@ export const ruLoginScreen = {
 
   // SIGN UP
   'sign_up.title': 'Зарегистрироваться',
+  'sign_up.with': 'Рег. с помощью',
   'btn.sign_up': 'Зарегистрироваться',
   'btn.skip': 'Пропустить',
   'user_information.hi': 'Привет {{name}}!',

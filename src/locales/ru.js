@@ -25,6 +25,7 @@ export default {
   find_nearby_event: 'Найти ближайшее событие',
   speakers: 'Спикеры',
   no_speakers_found: 'Спикеры не найдены',
+  no_speakers_available: 'Кажется, в данный момент спикеры недоступны...',
   best_of_the_week: 'Лучшее на неделе',
   no_events_found: 'Мероприятия не найдены',
   notifications: 'Уведомления',
@@ -45,13 +46,15 @@ export default {
   Place: 'Место',
 
   // CREATE EVENT
-  create_event: 'Создать мероприятие',
-  send_request: 'Отправить запрос',
+  create_event: 'Создать Мероприятие',
+  send_request: 'Отправить Запрос',
+  create_group: 'Создать Группу',
 
   // PROFILE
   'profile.events': 'Мероприятия',
   'profile.groups': 'Группы',
   create_new_group: 'Создать новую группу',
+  no_groups_yet: 'Пока нет групп',
   'btn.Calendar': 'Календарь',
   'btn.edit_profile': 'Ред. профиль',
   edit_profile: 'Редактировать профиль',
@@ -69,6 +72,7 @@ export default {
   app_version: 'Версия приложения {{version}}',
 
   'btn.follow': 'Подписаться',
+  'btn.message': 'Написать',
   'btn.invite': 'Пригласить',
   'btn.invited': 'Приглашенный',
   'btn.send': 'Отправить',
@@ -88,6 +92,10 @@ export default {
   categories: 'Категории',
   choose_up_to_3_categories: 'Выберите до 3 категорий',
   'btn.create_group': 'Создать группу',
+
+  placeholder: {
+    search: 'Поиск',
+  },
 
   'label.empty': '',
 };

@@ -370,7 +370,7 @@ const MapScreen = ({ navigation }) => {
             <Input
               backgroundColor={Colors.white}
               inputContainerStyle={{ borderRadius: normalize(16) }}
-              placeholder={'Search'}
+              placeholder={'search'}
             />
           </View>
           <TouchableOpacity

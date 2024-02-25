@@ -1,6 +1,7 @@
 export const enLoginScreen = {
   // LOGIN
   'login.title': 'Log in',
+  'login.with': 'Sign in With',
   'login.subtitle': 'Enter your email and password',
   placeholder: {
     email: 'Enter email',
@@ -13,6 +14,7 @@ export const enLoginScreen = {
 
   // SIGN UP
   'sign_up.title': 'Sign up',
+  'sign_up.with': 'Sign up With',
   'btn.sign_up': 'Sign up',
   'btn.skip': 'Skip',
   'user_information.hi': 'Hi {{name}}!',

@@ -43,17 +43,21 @@ const AddBankAccountScreen = () => {
   }, [selected_bank?.name]);
 
   return (
-    <View style={{ flex: 1 }}>
-      <Header title={'Add Bank Account'} />
+    <View style={{ flex: 1, paddingTop: insets.top }}>
+      <Header title={'add_bank_acc'} />
       <View style={{ flex: 1, marginHorizontal: normalize(16) }}>
         <View>
           <CustomText
-            children={
-              "Welcome to the financial hub of your success! By adding your bank account, you're ensuring that the fruits of your event creation efforts are effortlessly deposited into your account. This streamlined process ensures that ticket sales revenue flows directly to you, providing a hassle-free experience.\n" +
-              '\n' +
-              "Simply follow the easy steps below to link your bank account securely and enjoy the convenience of automatic payouts. Your success deserves to be rewarded promptly – let's make sure you don't miss a beat.\n"
-            }
+            children={'welcome'}
             globalStyle={{
+              ...FontStyle.text_h5.regular,
+              color: Colors.oxford_blue['300'],
+            }}
+          />
+          <CustomText
+            children={'link_steps'}
+            globalStyle={{
+              marginVertical: normalize(10),
               ...FontStyle.text_h5.regular,
               color: Colors.oxford_blue['300'],
             }}

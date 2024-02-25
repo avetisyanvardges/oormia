@@ -187,7 +187,7 @@ const LoginScreen = ({ setPage, page, SIGN_UP, LOGIN, FORGOT }) => {
           <View style={styles.orContainer}>
             <View style={styles.or} />
             <CustomText
-              children={`Sign ${page === SIGN_UP ? 'Up' : 'In'} With`}
+              children={page === SIGN_UP ? 'sign_up.with' : 'login.with'}
               globalStyle={styles.orText}
             />
             <View style={styles.or} />
