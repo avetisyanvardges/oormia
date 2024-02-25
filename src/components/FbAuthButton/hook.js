@@ -34,8 +34,19 @@ function useContainer() {
     await auth()
       .signInWithCredential(facebookCredential)
       .then(user => {
-        console.log('Signed in with FB!', user);
-        dispatch(socialLogin(user));
+        const mutatedUser = {
+          ...user,
+          additionalUserInfo: {
+            ...user.additionalUserInfo,
+            profile: {
+              ...user.additionalUserInfo.profile,
+              picture: user?.additionalUserInfo?.profile?.pcture?.data?.url,
+              family_name: user?.additionalUserInfo?.profile?.last_name,
+              given_name: user?.additionalUserInfo?.profile?.first_name,
+            },
+          },
+        };
+        dispatch(socialLogin(mutatedUser));
       })
       .catch(error => {
         console.log(error);

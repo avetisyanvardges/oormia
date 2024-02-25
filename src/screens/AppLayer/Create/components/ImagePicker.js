@@ -1,6 +1,7 @@
 import React from 'react';
 import { PermissionsAndroid, Pressable } from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+
 import { CustomText } from 'components/Text';
 import { normalize } from 'assets/RootStyles/normalize';
 import { Gallery } from 'components/Svgs/Gallery/Gallery';

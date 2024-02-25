@@ -47,7 +47,7 @@ const handleRequest = config => {
       }
     });
 
-    if (!isEmpty(token)) {
+    if (!isEmpty(token) && config.url !== subCategoriesUrl) {
       config.headers.Authorization = `Bearer ${token}`;
     }
   }
