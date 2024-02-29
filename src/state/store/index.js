@@ -9,6 +9,7 @@ import { persistConfig } from 'constants/reduxPersist';
 import categories from '../categories';
 import events from '../events';
 import toast from '../snackbars';
+import bank from '../bank';
 import notification from '../notifications';
 import locations from '../locations';
 import HttpClient from 'services/HttpClient';
@@ -26,6 +27,7 @@ const store = configureStore({
     theme,
     user: persistReducer(persistConfig, user),
     modal,
+    bank,
     pictures,
     groups,
     categories,

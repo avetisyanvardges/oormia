@@ -20,7 +20,7 @@ import { deleteEvent } from 'state/events/operations/deleteEvent';
 const MoreState = ({ route }) => {
   const { event, adm } = route.params || {};
   const { currentUser } = useSelector(({ user }) => user);
-  const creator = currentUser.id === event.creator.id;
+  const creator = currentUser?.id === event?.creator?.id;
   return (
     <TouchableWithoutFeedback
       onPress={() => {

@@ -3,7 +3,7 @@ import httpClient from '../../../services/HttpClient';
 import { fetchCategoriesAllEndpoint } from 'state/categories/endpoints';
 
 export const fetchCategoriesAll = createAsyncThunk(
-  'categories/fetchCategoriesAll',
+  'categories/fetchAllBankAccounts',
   async (_, { getState }) => {
     try {
       const { url } = fetchCategoriesAllEndpoint;

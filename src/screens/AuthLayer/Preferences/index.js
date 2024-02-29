@@ -62,7 +62,7 @@ function PreferencesScreen({ navigation, route }) {
     }, []);
     const mutatedBody = {
       ...values,
-      preferences: mutationPref,
+      subcategoryId: mutationPref,
     };
 
     body.append('request', {

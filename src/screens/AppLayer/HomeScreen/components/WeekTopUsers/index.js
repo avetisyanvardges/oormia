@@ -19,7 +19,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import FastImage from 'react-native-fast-image';
 
 const WeekTopUsers = () => {
-  const { speakers } = useSelector(({ user }) => user);
+  const { speakers, users } = useSelector(({ user }) => user);
 
   const renderWeekTopUsers = ({ item, index }) => {
     const mutatedImage = item?.pictures?.[
@@ -114,7 +114,7 @@ const WeekTopUsers = () => {
       </View>
       <FlatList
         horizontal
-        data={speakers}
+        data={users}
         renderItem={renderWeekTopUsers}
         ListEmptyComponent={() => {
           return (
@@ -142,7 +142,6 @@ const WeekTopUsers = () => {
         showsHorizontalScrollIndicator={false}
         ItemSeparatorComponent={() => <View style={{ width: normalize(8) }} />}
         contentContainerStyle={{
-          width: '100%',
           paddingHorizontal: normalize(16),
           paddingBottom: normalize(10),
         }}

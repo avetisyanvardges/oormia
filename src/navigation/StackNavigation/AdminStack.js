@@ -3,6 +3,7 @@ import { routNames } from 'constants/routNames';
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 import NotModeratedEvents from 'screens/Admin/NotModeratedEvents';
 import CategoriesScreen from 'screens/Admin/Categories';
+import AdminEventList from 'screens/Admin/Events';
 // import AdminEventList from 'screens/Admin/Events';
 
 const Stack = createSharedElementStackNavigator();
@@ -20,9 +21,7 @@ const AdminStack = () => {
         name={routNames.ADMIN.CATEGORIES}
         component={CategoriesScreen}
       />
-      <Stack.Screen
-        name={routNames.ADMIN.EVENTS} /*component={AdminEventList}*/
-      />
+      <Stack.Screen name={routNames.ADMIN.EVENTS} component={AdminEventList} />
     </Stack.Navigator>
   );
 };

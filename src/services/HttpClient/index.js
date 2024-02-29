@@ -13,6 +13,7 @@ import {
 import { show_toast } from 'state/snackbars';
 import { toastMessageTypes } from 'state/snackbars/types';
 import i18n from 'i18next';
+import { fetchAllBankAccountsEndpoint } from 'state/bank/endpoints';
 
 const requestConfig = {
   baseURL: baseUrlApi,

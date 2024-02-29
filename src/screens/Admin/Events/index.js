@@ -26,7 +26,7 @@ const AdminEventList = () => {
   const [selected, setSelected] = useState(false);
 
   useEffect(() => {
-    dispatch(getAllEvents({}));
+    dispatch(getAllEvents({ name: 'a' }));
   }, []);
 
   const renderEventItem = useCallback(

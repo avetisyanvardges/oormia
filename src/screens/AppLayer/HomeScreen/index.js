@@ -11,6 +11,7 @@ import { getWeekTopEvents } from 'state/events/operations/getWeekTopEvents';
 import { useSelector } from 'react-redux';
 import WeekTopUsers from 'screens/AppLayer/HomeScreen/components/WeekTopUsers';
 import { fetchAllUsers } from 'state/user/operations/fetchAllUsers';
+import { fetchAllBankAccounts } from 'state/bank/operations/fetchAllBankAccounts';
 
 const HomeScreen = ({ navigation, route }) => {
   const { week_top_events, promotion_events } = useSelector(
@@ -21,12 +22,12 @@ const HomeScreen = ({ navigation, route }) => {
   const handleFocus = useCallback(() => {
     dispatch(getPromotionEvents());
     dispatch(getWeekTopEvents());
+    dispatch(fetchAllBankAccounts());
     dispatch(
       fetchAllUsers({
         params: {
           page: 0,
           size: 100,
-          calendar: true,
         },
       }),
     );

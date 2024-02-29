@@ -54,7 +54,7 @@ const EventDetail = ({ navigation, route }) => {
   const [snapPoints, setSnapPoints] = useState(['1%', '70%', '85%']);
   const [active, setActive] = useState(route?.params?.event?.liked);
   const [event, setEvent] = useState(route?.params?.event);
-  const adm = route?.params?.adm;
+  const adm = route?.params?.adm || currentUser?.role === 'ADMIN';
   const insets = useSafeAreaInsets();
   const bottomSheetRef = useRef(null);
   const creator = currentUser?.id === event?.creator?.id;
