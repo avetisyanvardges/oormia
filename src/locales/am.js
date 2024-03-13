@@ -87,11 +87,15 @@ export default {
   'label.group_description': 'Ստեղծեք ազդեցիկ նկարագրություն',
   'placeholder.group_name': 'Անուն',
   'placeholder.group_description': 'Նկարագրություն',
-  members: 'Անդամներ',
+  members: 'Անդամներ: {{count}}',
   event_frequency: 'Իրադարձությունների հաճախականությունը',
   categories: 'Կատեգորիաներ',
   choose_up_to_3_categories: 'Ընտրեք մինչև 3 կատեգորիա',
   'btn.create_group': 'Ստեղծել խումբ',
-  'placeholder.search': 'Որոնել',
+  placeholder: {
+    search: 'Որոնել',
+    message: 'Հաղորդագրություն',
+  },
+
   'label.empty': '',
 };

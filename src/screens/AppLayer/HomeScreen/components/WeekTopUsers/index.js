@@ -29,9 +29,13 @@ const WeekTopUsers = () => {
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() => {
-          navigate(routNames.CREATE_EVENT, {
-            screen: 'send_request',
-            speaker: item,
+          // navigate(routNames.CREATE_EVENT, {
+          //   screen: 'send_request',
+          //   speaker: item,
+          // });
+          navigate(routNames.PROFILE_VIEW, {
+            // screen: 'profile_view',
+            item,
           });
         }}
         style={{

@@ -87,7 +87,7 @@ export default {
   'label.group_description': 'Создать захватывающее описание',
   'placeholder.group_name': 'Имя',
   'placeholder.group_description': 'Описание',
-  members: 'Участники',
+  members: 'Участники: {{count}}',
   event_frequency: 'Частота событий',
   categories: 'Категории',
   choose_up_to_3_categories: 'Выберите до 3 категорий',
@@ -95,6 +95,7 @@ export default {
 
   placeholder: {
     search: 'Поиск',
+    message: 'Сообщение',
   },
 
   'label.empty': '',

@@ -14,7 +14,7 @@ const Styles = theme => {
       paddingHorizontal: normalize(16),
     },
     icon_container: {
-      marginRight: normalize(16),
+      // marginRight: normalize(16),
       width: normalize(30),
       height: normalize(30),
       borderRadius: normalize(20),

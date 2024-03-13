@@ -52,15 +52,14 @@ const HistorySection = () => {
 
   const renderGroups = ({ item }) => {
     return (
-      <TouchableOpacity
+      <View
         style={{
           flexDirection: 'row',
           padding: normalize(10),
           backgroundColor: Colors.white,
           borderRadius: normalize(12),
           ...Shadow,
-        }}
-        onPress={() => navigate(routNames.GROUP_CHAT, { item })}>
+        }}>
         <MImage
           source={{
             uri: item?.pictures?.[0]?.fileDownloadUri?.replace(
@@ -91,7 +90,7 @@ const HistorySection = () => {
             }}
           />
         </View>
-      </TouchableOpacity>
+      </View>
     );
   };
 

@@ -74,11 +74,7 @@ const Settings = () => {
             <MenuLink
               title="profile.privacy_policy"
               iconName={ICON_NAMES.PROFILE.PRIVACY_POLICY}
-              onPress={() =>
-                navigate(routNames.WEB_VIEW, {
-                  uri: 'https://www.oormia.com/privacy/',
-                })
-              }
+              onPress={() => navigate(routNames.PRIVACY_POLICY)}
             />
             <MenuLink
               title="profile.delete_account"

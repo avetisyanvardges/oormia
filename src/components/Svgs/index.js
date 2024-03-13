@@ -14,6 +14,7 @@ const Icon = ({
   activeOpacity,
   style,
 }) => {
+  console.log('COLOOROOORO', color);
   return (
     <TouchableOpacity
       disabled={!onPress}
