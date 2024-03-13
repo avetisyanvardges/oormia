@@ -59,7 +59,9 @@ const EventDetail = ({ navigation, route }) => {
   const bottomSheetRef = useRef(null);
   const creator = currentUser?.id === event?.creator?.id;
   const [address, city, country] = event?.address?.split(', ');
-  console.log(snapIndex, snapPoints, '++++');
+  const mutatedImage = event?.creator?.pictures?.[
+    event?.creator?.pictures.length - 1
+  ]?.fileDownloadUri?.replace(':8085', ':8086');
 
   useEffect(() => {
     if (!isEmpty(selected_event)) {
@@ -231,6 +233,7 @@ const EventDetail = ({ navigation, route }) => {
     },
     [selected],
   );
+  console.log(event, "require('../../../../../../assets/images/noPic.jpeg')");
   return (
     <View style={{ flex: 1 }}>
       <SharedElement id={`item.${event.id}.photo`}>
@@ -332,22 +335,22 @@ const EventDetail = ({ navigation, route }) => {
                     color={active ? Colors.white : Colors.purple['500']}
                   />
                 </TouchableOpacity>
-                <TouchableOpacity
-                  // onPress={() => setActive(!active)}
-                  activeOpacity={0.9}
-                  style={{
-                    width: normalize(35),
-                    height: normalize(35),
-                    padding: normalize(10),
-                    borderRadius: normalize(30),
-                    backgroundColor: Colors.white,
-                    marginLeft: normalize(16),
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    ...Shadow,
-                  }}>
-                  <Icon name={ICON_NAMES.SHARE} color={Colors.purple['500']} />
-                </TouchableOpacity>
+                {/*<TouchableOpacity*/}
+                {/*  // onPress={() => setActive(!active)}*/}
+                {/*  activeOpacity={0.9}*/}
+                {/*  style={{*/}
+                {/*    width: normalize(35),*/}
+                {/*    height: normalize(35),*/}
+                {/*    padding: normalize(10),*/}
+                {/*    borderRadius: normalize(30),*/}
+                {/*    backgroundColor: Colors.white,*/}
+                {/*    marginLeft: normalize(16),*/}
+                {/*    alignItems: 'center',*/}
+                {/*    justifyContent: 'center',*/}
+                {/*    ...Shadow,*/}
+                {/*  }}>*/}
+                {/*  <Icon name={ICON_NAMES.SHARE} color={Colors.purple['500']} />*/}
+                {/*</TouchableOpacity>*/}
               </View>
             )}
           </View>
@@ -544,14 +547,14 @@ const EventDetail = ({ navigation, route }) => {
                       borderRadius: normalize(25),
                       backgroundColor: Colors.oxford_blue['200'],
                     }}>
-                    {/*<Image*/}
-                    {/*  source={require('../../../../assets/images/profile_1.jpg')}*/}
-                    {/*  style={{*/}
-                    {/*    width: normalize(50),*/}
-                    {/*    height: normalize(50),*/}
-                    {/*    borderRadius: normalize(25),*/}
-                    {/*  }}*/}
-                    {/*/>*/}
+                    <MImage
+                      source={mutatedImage}
+                      style={{
+                        width: normalize(50),
+                        height: normalize(50),
+                        borderRadius: normalize(25),
+                      }}
+                    />
                   </View>
                   <View style={{ marginLeft: normalize(8) }}>
                     <CustomText
@@ -576,7 +579,11 @@ const EventDetail = ({ navigation, route }) => {
                       paddingVertical: normalize(6),
                       backgroundColor: Colors.purple['200'],
                     }}
-                    title={'follow'}
+                    title={
+                      event?.creator?.followersId?.includes(currentUser?.id)
+                        ? 'following'
+                        : 'follow'
+                    }
                     textStyle={{
                       ...FontStyle.text_h5.medium,
                       color: Colors.purple['500'],
@@ -613,9 +620,14 @@ const EventDetail = ({ navigation, route }) => {
               </View>
             ) : null}
             {currentUser?.id !== event?.creator?.id ? (
-              <View style={{ flex: 1, alignItems: 'center' }}>
+              <View
+                style={{
+                  flex: 1,
+                  alignItems: 'center',
+                }}>
                 <Button
-                  title={event?.price ? 'Buy ticket' : 'Join'}
+                  title={event?.price ? 'buy_ticket' : 'join'}
+                  values={{ price: event?.price ? `${event?.price} Դ` : '' }}
                   textStyle={{
                     ...FontStyle.text_h5.medium,
                     color: Colors.white,

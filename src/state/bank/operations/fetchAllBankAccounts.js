@@ -8,7 +8,8 @@ export const fetchAllBankAccounts = createAsyncThunk(
     try {
       const { url } = fetchAllBankAccountsEndpoint;
       const { data } = await httpClient.get(url);
-      return { data };
+      console.log(data, 'DATA');
+      return data;
     } catch (err) {
       //
     }

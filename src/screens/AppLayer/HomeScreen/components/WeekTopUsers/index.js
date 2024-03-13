@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FlatList,
   ImageBackground,
@@ -17,14 +17,18 @@ import { navigate } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
 import LinearGradient from 'react-native-linear-gradient';
 import FastImage from 'react-native-fast-image';
+import MImage from 'components/MImage';
 
 const WeekTopUsers = () => {
   const { speakers, users } = useSelector(({ user }) => user);
+  const [errorImage, setErrorImage] = useState(false);
 
   const renderWeekTopUsers = ({ item, index }) => {
+    console.log(item);
     const mutatedImage = item?.pictures?.[
       item?.pictures.length - 1
     ]?.fileDownloadUri?.replace(':8085', ':8086');
+    console.log(mutatedImage, 'mutatedImage');
     return (
       <TouchableOpacity
         activeOpacity={0.8}
@@ -40,8 +44,13 @@ const WeekTopUsers = () => {
           borderRadius: normalize(12),
         }}>
         <FastImage
-          source={{ uri: mutatedImage }}
+          source={
+            mutatedImage && !errorImage
+              ? { uri: mutatedImage }
+              : require('../../../../../assets/images/noPic.jpeg')
+          }
           resizeMode="cover"
+          onError={() => setErrorImage(true)}
           style={{
             width: normalize(110),
             height: normalize(130),

@@ -33,4 +33,5 @@ export const ruEventScreen = {
   'btn.join': 'Присоединиться',
   'btn.create': 'Создать',
   'btn.add': 'Добавить',
+  'btn.buy_ticket': 'Купить билет {{price}}',
 };

@@ -50,7 +50,7 @@ const BuyTicketScreen = ({ route }) => {
             }}>
             <View style={{ flex: 1 }}>
               <CustomText
-                children={'Buy ticket'}
+                children={'buy_ticket'}
                 globalStyle={{
                   ...FontStyle.text_h3.medium,
                 }}
@@ -147,9 +147,10 @@ const BuyTicketScreen = ({ route }) => {
                   marginBottom: insets.bottom ? insets.bottom : normalize(16),
                 }}>
                 <Button
-                  title={`Buy ticket ${
-                    event?.price ? ticketCount * event?.price : ''
-                  }`}
+                  title={'buy_ticket'}
+                  values={{
+                    price: event?.price ? ticketCount * event?.price : '',
+                  }}
                   textStyle={{
                     ...FontStyle.text_h5.medium,
                     color: Colors.white,

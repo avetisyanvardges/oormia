@@ -10,8 +10,10 @@ function Button({
   containerStyle = {},
   textStyle = {},
   disabled = false,
+  values,
 }) {
   const validStyle = disabled ? { opacity: 0.7 } : {};
+  console.log(values, 'VALUES');
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -24,6 +26,7 @@ function Button({
       {icon}
       <CustomText
         children={`btn.${title}`}
+        values={values}
         globalStyle={{ ...styles.textStyle, ...textStyle }}
       />
     </TouchableOpacity>

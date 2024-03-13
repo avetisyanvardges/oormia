@@ -72,6 +72,7 @@ export default {
   app_version: 'Հավելվածի տարբերակը {{version}}',
 
   'btn.follow': 'Հետևել',
+  'btn.following': 'Հետևում եք',
   'btn.message': 'Գրել',
   'btn.invite': 'Հրավիրել',
   'btn.invited': 'Հրավիրված',

@@ -1,6 +1,9 @@
 import endpoint from 'utils/endpoint';
 
-export const fetchAllBankAccountsEndpoint = endpoint('get', 'bank-accounts');
+export const fetchAllBankAccountsEndpoint = endpoint(
+  'get',
+  'bank-accounts/user',
+);
 export const createBankAccountEndpoint = endpoint('post', 'bank-accounts');
 export const fetchBankAccountByIdEndpoint = id =>
   endpoint('get', `bank-accounts/${id}`);
