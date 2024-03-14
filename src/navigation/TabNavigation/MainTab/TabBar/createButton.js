@@ -21,6 +21,9 @@ import { CustomText } from 'components/Text';
 import { navigate } from 'services/NavigationService';
 import { routNames } from 'constants/routNames';
 import { deviceInfo } from 'assets/deviceInfo';
+import { useSelector } from 'react-redux';
+import bank from 'state/bank';
+import { isEmpty } from 'lodash';
 
 const BTN_WIDTH = normalize(200);
 const BTN_HEIGHT = normalize(50);
@@ -30,6 +33,7 @@ const BTN_COUNT = 3;
 
 function CreateButton(props) {
   const { theme, buttonColor, styles } = props;
+  const { bank_accounts } = useSelector(({ bank }) => bank);
   const [pressed, setPressed] = useState(false);
   const rotateAnim = useSharedValue(0);
   const [actionHeight] = useState(normalize(60));
@@ -146,6 +150,7 @@ function CreateButton(props) {
     };
   }, [actionHeight]);
 
+  console.log(bank_accounts, 'BANK ACCOUNTS');
   return (
     <View>
       <Modal
@@ -173,7 +178,7 @@ function CreateButton(props) {
                 <Animated.View
                   onTouchStart={() => {
                     setPressed(false);
-                    if (false) {
+                    if (!isEmpty(bank_accounts)) {
                       navigate(routNames.CREATE_EVENT, {
                         screen: 'choose_category',
                       });

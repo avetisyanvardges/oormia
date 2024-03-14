@@ -9,6 +9,7 @@ export const acceptEvent = createAsyncThunk(
     try {
       const { url } = confirmEventEndpoint(id);
       const { data } = await httpClient.get(url);
+      console.log(data, 'DATA');
       back();
     } catch (e) {
       console.log(e);

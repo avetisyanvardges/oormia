@@ -33,4 +33,5 @@ export const amEventScreen = {
   'btn.join': 'Join',
   'btn.create': 'Create',
   'btn.add': 'Ավելացնել',
+  'btn.buy_ticket': 'Գնել տոմս {{price}}',
 };

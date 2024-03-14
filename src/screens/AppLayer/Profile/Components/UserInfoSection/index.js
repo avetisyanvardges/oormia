@@ -48,46 +48,30 @@ const UserInfoSection = () => {
             bottom: -normalize(40),
             left: normalize(30),
           }}>
-          {imageError ? (
-            <View
-              style={{
-                width: normalize(80),
-                height: normalize(80),
-                borderRadius: normalize(40),
-                backgroundColor: Colors.purple['600'],
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <CustomText
-                children={currentUser?.firstName?.split('')?.[0]?.toUpperCase()}
-                globalStyle={{
-                  ...FontStyle.text_h2.semi_bold,
-                  color: Colors.white,
-                }}
-              />
-            </View>
-          ) : (
-            <MImage
-              source={{ uri: mutatedImage }}
-              style={{
-                width: normalize(80),
-                height: normalize(80),
-                borderRadius: normalize(40),
-                resizeMode: 'cover',
-              }}
-              loaderStyle={{
-                width: normalize(130),
-                height: normalize(130),
-              }}
-              // fallback={true}
-              loader={true}
-              onError={() => {
-                console.log('ERROR');
-                setImageError(true);
-              }}
-              type={'profile'}
-            />
-          )}
+          <MImage
+            source={
+              mutatedImage && !imageError
+                ? { uri: mutatedImage }
+                : require('../../../../../assets/images/noPic.jpeg')
+            }
+            style={{
+              width: normalize(80),
+              height: normalize(80),
+              borderRadius: normalize(40),
+              resizeMode: 'cover',
+            }}
+            loaderStyle={{
+              width: normalize(130),
+              height: normalize(130),
+            }}
+            // fallback={true}
+            loader={true}
+            onError={() => {
+              console.log('ERROR');
+              setImageError(true);
+            }}
+            type={'profile'}
+          />
         </View>
       </ImageBackground>
       <View

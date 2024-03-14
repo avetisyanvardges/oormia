@@ -33,4 +33,5 @@ export const enEventScreen = {
   'btn.join': 'Join',
   'btn.create': 'Create',
   'btn.add': 'Add',
+  'btn.buy_ticket': 'Buy ticket {{price}}',
 };

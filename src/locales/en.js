@@ -162,7 +162,7 @@ export default {
   app_version: 'App Version {{version}}',
 
   'btn.follow': 'Follow',
-  'btn.unfollow': 'Unfollow',
+  'btn.following': 'Following',
   'btn.message': 'Message',
   'btn.invite': 'Invite',
   'btn.invited': 'Invited',

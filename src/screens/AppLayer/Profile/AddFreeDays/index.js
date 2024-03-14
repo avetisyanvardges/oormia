@@ -224,7 +224,7 @@ const AddFreeDays = () => {
           backgroundColor: Colors.oxford_blue['30'],
         }}>
         <Button
-          title="Add"
+          title="add"
           textStyle={styles.buttonTextStyle}
           onPress={handleSubmit}
         />

@@ -26,7 +26,9 @@ const MImage = ({
 
   return (
     <FastImage
-      source={source}
+      source={
+        source && !error ? source : require('../../assets/images/noPic.jpeg')
+      }
       onLoad={() => {
         setLoading(false);
       }}
@@ -41,25 +43,6 @@ const MImage = ({
         <SkeletonPlaceholder borderRadius={style.borderRadius}>
           <SkeletonPlaceholder.Item width={style.width} height={style.height} />
         </SkeletonPlaceholder>
-      ) : null}
-      {error ? (
-        <View
-          style={{
-            width: style.width,
-            height: style.height,
-            borderRadius: normalize(25),
-            backgroundColor: Colors.purple['600'],
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <CustomText
-            children={firstChar}
-            globalStyle={{
-              ...FontStyle.text_h2.semi_bold,
-              color: Colors.white,
-            }}
-          />
-        </View>
       ) : null}
     </FastImage>
   );

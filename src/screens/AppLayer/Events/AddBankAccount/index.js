@@ -15,18 +15,16 @@ import { routNames } from 'constants/routNames';
 import { useSelector } from 'react-redux';
 import dispatch from 'utils/dispatch/dispatch';
 import { set_selected_bank } from 'state/events';
+import { createBankAccount } from 'state/bank/operations/createBankAccount';
 
 const AddBankAccountScreen = () => {
   const { selected_bank } = useSelector(({ events }) => events);
   const insets = useSafeAreaInsets();
   const { control, handleSubmit, watch, setValue, getValues, reset } = useForm({
     defaultValues: {
-      data: {
-        bank: '',
-        account_number: '',
-        account_name: '',
-      },
-      pictures: [],
+      bankName: '',
+      accountNumber: '',
+      accountName: '',
     },
   });
 
@@ -38,9 +36,21 @@ const AddBankAccountScreen = () => {
 
   useEffect(() => {
     if (selected_bank?.name) {
-      setValue('bank', selected_bank?.name);
+      setValue('bankName', selected_bank?.name);
     }
   }, [selected_bank?.name]);
+
+  const onSubmit = values => {
+    dispatch(
+      createBankAccount({
+        body: values,
+        callback: () =>
+          navigate(routNames.CREATE_EVENT, {
+            screen: 'choose_category',
+          }),
+      }),
+    );
+  };
 
   return (
     <View style={{ flex: 1, paddingTop: insets.top }}>
@@ -64,7 +74,7 @@ const AddBankAccountScreen = () => {
           />
         </View>
         <Controller
-          name={'bank'}
+          name={'bankName'}
           control={control}
           render={({ field: { value, onChange, onBlur } }) => (
             <DropDown
@@ -77,7 +87,7 @@ const AddBankAccountScreen = () => {
           )}
         />
         <Controller
-          name={'account_number'}
+          name={'accountNumber'}
           control={control}
           render={({ field: { value, onChange, onBlur } }) => (
             <Input
@@ -92,7 +102,7 @@ const AddBankAccountScreen = () => {
           )}
         />
         <Controller
-          name={'account_name'}
+          name={'accountName'}
           control={control}
           render={({ field: { value, onChange, onBlur } }) => (
             <Input
@@ -114,11 +124,7 @@ const AddBankAccountScreen = () => {
           <Button
             title={'add'}
             textStyle={{ color: Colors.white }}
-            onPress={() =>
-              navigate(routNames.CREATE_EVENT, {
-                screen: 'choose_category',
-              })
-            }
+            onPress={handleSubmit(onSubmit)}
           />
         </View>
       </View>

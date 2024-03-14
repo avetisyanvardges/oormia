@@ -71,6 +71,7 @@ const MapScreen = ({ navigation }) => {
     filter_by_time,
   } = useSelector(({ events }) => events);
   const [selectedEvent, setSelectedEvent] = useState('');
+  const [search, setSearch] = useState('');
   const [snapIndex, setSnapIndex] = useState(1);
   const translateY = useSharedValue(
     fullScreen.height -
@@ -230,8 +231,8 @@ const MapScreen = ({ navigation }) => {
       body.partOfDate = filter_by_partOfDate;
     }
 
-    if (filter_by_name) {
-      body.name = filter_by_name;
+    if (search) {
+      body.name = search;
     }
 
     if (filter_by_time.hour || filter_by_time.minute) {
@@ -261,6 +262,7 @@ const MapScreen = ({ navigation }) => {
     filter_by_name,
     filter_by_categories,
     filter_by_time,
+    search,
   ]);
 
   useEffect(() => {
@@ -371,6 +373,8 @@ const MapScreen = ({ navigation }) => {
               backgroundColor={Colors.white}
               inputContainerStyle={{ borderRadius: normalize(16) }}
               placeholder={'search'}
+              value={search}
+              onChange={setSearch}
             />
           </View>
           <TouchableOpacity

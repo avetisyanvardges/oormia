@@ -4,7 +4,6 @@ import { normalize } from 'assets/RootStyles/normalize';
 import { Colors } from 'assets/RootStyles';
 
 const CalendarIcon = ({ width, height, color }) => {
-  console.log(width);
   return (
     <Svg
       width={width || normalize(24)}

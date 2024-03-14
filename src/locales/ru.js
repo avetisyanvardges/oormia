@@ -72,6 +72,7 @@ export default {
   app_version: 'Версия приложения {{version}}',
 
   'btn.follow': 'Подписаться',
+  'btn.following': 'Подписан',
   'btn.message': 'Написать',
   'btn.invite': 'Пригласить',
   'btn.invited': 'Приглашенный',
